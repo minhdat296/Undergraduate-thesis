@@ -1,0 +1,36 @@
+\input{preambles}
+\usepackage{soul}
+
+\input{commands}
+
+\begin{document}
+
+	\title{\textbf{MATH518: Proposal
+	\\
+	Geometric unramified abelian class field theory}}
+	
+	\author{Dat Minh Ha (UCID: 30067407)\\Supervisor: Jerrod Smith}
+	\maketitle
+	
+	\begin{abstract}
+	    The Langlands Programme is a network of many deep conjectures (and recently, some theorem!) with far-reaching consequences, notably in the realms of algebraic number theory and representation theory. At its core, it is about \textbf{reciprocity}, the idea that Galois groups should admit descriptions in terms of canonical constructions. As a matter of fact, the starting point of the Langlands Programme is what we nowadays call \textbf{class field theory}, the very topic of this thesis. More specifically, we are interested in what is known as \textbf{unramified abelian class field theory}, the simplest version of class field theory, which we shall approach via algebraic geometry. This is not the traditional approach to class field theory, but it will help us understand why the study of Galois groups naturally requires representation theory, which as a consequence, helps us makes sense of class field theory being the same as the Langlands Correspondence for the group $\GL_1$.
+	
+	\end{abstract}
+	    
+	\section{Objectives}
+	    Our main objective shall be to give a proof of Deligne's geometrisation the \textbf{unramified global reciprocity law}, which asserts that for an appropriate there exists an equivalence of ($1$-)categories as follows:
+	        $$\left\{\text{$\ell$-adic local systems $\calF$ of rank $1$ on $X$}\right\}$$
+	        $$\cong$$
+	        $$\left\{\text{$\ell$-adic Hecke eigensheaves $\E_{\calF}$ on $\Bun_{\GL_1}(X)$ with eigenvalue $\calF$}\right\}$$
+        In undertaking this project, our goal is not only to learn class field theory, but also to understand the fundamental reason behind the necessity of representation theory in the study of Galois representations (as stated in the abstract). 
+	
+	\section{Approach}
+	    Before we can state and prove Deligne's theorem, we shall first have to discuss Grothendieck's approach to Galois theory via \textbf{\'etale fundamental groups}. We will also need to understand the significance of \textbf{local systems}\footnote{Which we shall think of as the categorification of the notion of locally constant functions.} and in particular, how (up to some technicalities) local systems and representations of the \'etale fundamental groups are the same; in formal terms, this is the fact that finite local systems on the \'etale site of a connected scheme $X$ form a category equivalent to that of representations of $\pi_1(X_{\et})$; the crucial detail to keep in mind is that when $X \cong \Spec K$ with $K$ a field, the \'etale fundamental group $\pi_1(X_{\et})$ is precisely the absolute Galois group $\Gal(\bar{K}/K)$ (we are interesting in Galois representations, after all). Technically speaking, the importance of local systems is also a part of Grothendieck's Galois Theory. 
+	    
+	    Aside from Grothendieck's Galois Theory, we will also be making use of various constructions from algebraic geometry as well as representation theory. Notably, the moduli space $\Bun_{\GL_1}(X)$ of line bundles on $X$ and Hecke eigensheaves thereon, which will help us state Deligne's theorem. 
+	    
+	    \cite{tendler_2015_geometric_class_field_theory} shall be our main reference, but we will also want to keep the traditional approach to (global) class field theory in mind, for which our references will be \cite[Chapter VI]{neukirch_2010_algebraic_number_theory} and \cite[Chapter VIII]{neukirch_1999_cohomology_of_number_field}. For materials on sheaf theory and algebraic geometry (in particular, Grothendieck's Galois Theory), we shall defer to \cite{stacks}. 
+	
+	\printbibliography
+
+\end{document}
