@@ -1,0 +1,46 @@
+\section{Introduction}
+    The paper will be organised into two main sections, detailing what we shall call the \textbf{Automorphic Side} and the \textbf{Spectral Side} of geometric class field theory. This introductory section will be dedicated to the outlining of our approach to these sections, as well as for laying down some conventions that we will be following until the end of the paper.
+
+    \subsection{The Automorphic Side}
+        Geometric class field theory is the idea that the study of function fields $K$ over $\F_q$ (i.e. finite extensions of $\F_q(t)$) can be formulated purely in terms of the machineries of algebraic geometry. More specifically, it is the idea that given Galois extensions $L/K$, one can decribe the Galois groups $\Gal(L/K)$ in purely geometric terms, via a gadget called the \textbf{\'etale fundamental group}. This, however, is only a meaningful endeavour should we know the underlying geometric space whose \'etale fundamental group would end up being the Galois groups that we are interested in.
+        
+        Our starting point is the following result, which explains why one might even suspect any sort of involvement of algebraic geometry in the first place:
+        \begin{lemma}[Varieties and field extensions] \label{lemma: varieties_and_field_extensions}
+            \cite[\href{https://stacks.math.columbia.edu/tag/0BXN}{Tag 0BXN}]{stacks} Let $k$ be a field. Then, $\trdeg K_X = \dim X$ for all varieties $X/k$, and there exists a canonical equivalence of categories as follows:
+                $$\{\text{Finite-type field extensions $K/k$ and $k$-algebra homomorphisms}\}^{\op}$$
+                $$\cong$$
+                $$\{\text{Varieties $X/k$ and \href{https://stacks.math.columbia.edu/tag/01RI}{\underline{dominant}} \href{https://stacks.math.columbia.edu/tag/01RR}{\underline{rational}} maps}\}$$
+        \end{lemma}
+            \begin{proof}
+                If $f: X \to Y$ is a dominant map of varieties and if $\eta_X$ and $\eta_Y$ are the unique generic points of $X$ and $Y$ (unique because varieties are integral by definition, and every integral scheme \textit{a priori} has a unique generic point), then $f(\eta_X) = \eta_Y$ per the definition of dominant morphisms. The residue field at generic points are precisely the function fields (consider the stalk of the structure sheaves at the generic points to see why this is the case), so we have obtained a map of function fields $K_Y \to K_X$. We leave the proof of finiteness up to the reader.
+            \end{proof}
+        Through lemma \ref{lemma: varieties_and_field_extensions}, one obtains the following regarding the relationship between curves (i.e. algebraic varieties of dimension $1$) and their function fields (which \textit{a priori} are of transcedence degree $1$ over the ground field) with little difficulty:
+        \begin{proposition}[Curves and function fields] \label{prop: curves_and_function_fields}
+            \cite[\href{https://stacks.math.columbia.edu/tag/0BY1}{Tag 0BY1}]{stacks} For any field $k$, one has the following canonical equivalences of categories:
+                $$\{\text{Field extensions $K/k$ of transcendence degree $1$ and $k$-algebra homomorphisms}\}^{\op}$$
+                $$\cong$$
+                $$\{\text{Curves $X/k$ and dominant rational maps}\}$$
+                $$\cong$$
+                $$\{\text{Non-singular projective curves $X/k$ and dominant rational maps}\}$$
+        \end{proposition}
+            \begin{proof}
+                The first equivalence is an obvious consequence of lemma \ref{lemma: varieties_and_field_extensions}. To show that the second equivalence holds, note firstly that there is an evident fully faithful functor from the third category to the second; we shall need to show that this functor is also essentially surjective. For this, simply recall that for each curve $X/k$, there exists a non-singular projective curve $\tilde{X}/k$ that is birational to $X/k$, namely $X^{\nu} \cup \{\infty_1, ..., \infty_n\}$, the normalisation $X^{\nu}/k$ of $X/k$ with finitely many extra points (recall also that any normal Noetherian scheme of dimension $\leq 1$ is \textit{a priori} non-singular; cf. \cite[\href{https://stacks.math.columbia.edu/tag/0BX2}{Tag 0BX2}]{stacks}).
+            \end{proof}
+            
+        Through proposition \ref{prop: curves_and_function_fields}, we obtain the first crucial tool for the geometrisation of class field theory.
+        \begin{corollary}[Galois covers of curves and Galois extensions] \label{coro: galois_covers_of_curves_and_galois_extensions}
+            Let $k$ be a field. If $X$ is a connected non-singular projective curve over $\Spec k$ with function field $K$, then there is a canonical equivalence:
+                $$({}^{K/}\Fld^{\fin, \Gal})^{\op} \cong \Sch_{/X}^{\fet, \Gal}$$
+            between the category of finite Galois extensions of $K$ and finite \'etale-Galois covers of $X$ (i.e. finite \'etale covers generated by Galois morphisms, which are necessarily dominant rational maps such that the associated function field extensions are Galois). 
+        \end{corollary}
+        The importance of corollary \ref{coro: galois_covers_of_curves_and_galois_extensions} can not be understated: what it tells us is essentially that the Galois group $\Gal(K^{\ab}/K)$ is nothing but the \'etale fundamental group of $\Sch_{/X}^{\fet, \Gal}$ (more on this later, after we have introduced the \'etale fundamental group; cf. definition \ref{def: etale_fundamental_groups}). This, already, is one side of the Artin's Reciprocity Law, which we shall refer to as \say{\textbf{The Automorphic Side}}\footnote{Some authors actually refer to this side of the Correspondence as the Geometric Side, but we will refrain from using this name, since for us, \say{geometric} is already a very loaded adjective.} per popular conventions. Actually, this is a bit of a lie: instead of formulating geometric class field theory directly in terms of the \'etale fundamental group $\pi_1^{\ab}(X_{\fet})$ (or rather, its continuous $\ell$-adic characters), we will be phrasing things in terms of $\ell$-adic local systems of rank $1$ on $\Bun_{\GL_1}(X)$, the moduli space of line bundles on our curve $X$; in fact, via theorem \ref{theorem: unramified_representations_are_sheaves_on_X}, we shall see that the notion $\ell$-adic sheaves on $\Bun_{\GL_1}(X)$ is the categorification of \say{functions} on the ad\`elic double-quotient $\GL_1(K) \backslash \GL_1(\A_K) / \GL_1(\scrO_K)$\footnote{Incidentally, functions on this double-quotient space have historically been known as \say{automorphic forms}, hence the name.}. 
+        
+        One last remark pertaining to the Automorphic Side is that because we are working in the \'etale topology, everything is necessarily unramified, since \'etale morphisms are unramified smooth morphisms by definition; cf. \cite[\href{https://stacks.math.columbia.edu/tag/00UP}{Tag 00UP}, \href{https://stacks.math.columbia.edu/tag/00U0}{Tag 00U0}, \href{https://stacks.math.columbia.edu/tag/00TH}{Tag 00TH}, and \href{https://stacks.math.columbia.edu/tag/00US}{Tag 00US}]{stacks}, wherein \'etale maps are defined as formally \'etale maps of finite presentation, with formally \'etale maps being those which are simultaneously formally smooth and formally unramified.
+    
+    \subsection{The Spectral Side}
+        Let us now move on to what is known as the \say{\textbf{Spectral Side}}\footnote{Also called the Galois Side, although we will avoid this name, since in our opinion it is not sufficiently descriptive).}, and we shall begin with the notion of \textbf{Hecke eigensheaves}. To introduce these gadgets, however, we will first need to discuss the \textbf{Hecke Stack} and the accompanying \textbf{Hecke Correspondence}. 
+        
+        By definition, the Hecke Stack is a moduli space:
+            $$\cev{h}: \Hecke(X) \to \Bun_G(X)$$
+        
+    \subsection{The main result}

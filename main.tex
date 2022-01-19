@@ -12,7 +12,7 @@
 	\maketitle
 	
 	\begin{abstract}
-	    The Langlands Programme is a network of many deep conjectures (and recently, some theorem!) with far-reaching consequences, notably in the realms of algebraic number theory and representation theory. At its core, it is about \textbf{reciprocity}, the idea that Galois groups should admit descriptions in terms of canonical constructions. As a matter of fact, the starting point of the Langlands Programme is what we nowadays call \textbf{class field theory}, the very topic of this thesis. More specifically, we are interested in what is known as \textbf{unramified abelian class field theory}, the simplest version of class field theory, which we shall approach via algebraic geometry. This is not the traditional approach to class field theory, but it will help us understand why the study of Galois groups naturally requires representation theory, which as a consequence, helps us makes sense of class field theory being the same as the Langlands Correspondence for the group $\GL_1$.
+	    The Langlands Programme is a network of many deep conjectures (and recently, some theorem!) with far-reaching consequences, notably in the realms of algebraic number theory and representation theory. At its core, it is about \textbf{reciprocity}, the idea that Galois groups should admit descriptions in terms of canonical constructions. As a matter of fact, the starting point of the Langlands Programme is what we nowadays call \textbf{class field theory}, the very topic of this thesis. More specifically, we are interested in what is known as \textbf{unramified abelian class field theory}, the simplest version of class field theory, which we shall approach via algebraic geometry. This is not the traditional approach to class field theory, but it will help us understand why the study of Galois groups naturally requires representation theory, which as a consequence, helps us makes sense of class field theory being the same as the simplest case of the Langlands Correspondence, that being for the group $\GL_1$.
 	\end{abstract}
 	
 	{
@@ -21,110 +21,11 @@
       \tableofcontents %sort sections alphabetically
     }
     
-    \section{Introduction}
-        \subsection{The Automorphic Side}
-            Geometric class field theory is the idea that the study of function fields $K$ over $\F_q$ (i.e. finite extensions of $\F_q(t)$) can be formulated purely in terms of the machineries of algebraic geometry. More specifically, it is the idea that given Galois extensions $L/K$, one can decribe the Galois groups $\Gal(L/K)$ in purely geometric terms, via a gadget called the \textbf{\'etale fundamental group}. This, however, is only a meaningful endeavour should we know the underlying geometric space whose \'etale fundamental group would end up being the Galois groups that we are interested in.
-            
-            Our starting point is the following result, which explains why one might even suspect any sort of involvement of algebraic geometry in the first place:
-            \begin{lemma}[Varieties and field extensions] \label{lemma: varieties_and_field_extensions}
-                \cite[\href{https://stacks.math.columbia.edu/tag/0BXN}{Tag 0BXN}]{stacks} Let $k$ be a field. Then, $\trdeg K_X = \dim X$ for all varieties $X/k$, and there exists a canonical equivalence of categories as follows:
-                    $$\{\text{Finite-type field extensions $k/k$ and $k$-algebra homomorphisms}\}^{\op}$$
-                    $$\cong$$
-                    $$\{\text{Varieties $X/k$ and \href{https://stacks.math.columbia.edu/tag/01RI}{\underline{dominant}} \href{https://stacks.math.columbia.edu/tag/01RR}{\underline{rational}} maps}\}$$
-            \end{lemma}
-                \begin{proof}
-                    If $f: X \to Y$ is a dominant map of varieties and if $\eta_X$ and $\eta_Y$ are the unique generic points of $X$ and $Y$ (unique because varieties are integral by definition, and every integral scheme \textit{a priori} has a unique generic point), then $f(\eta_X) = \eta_Y$ per the definition of dominant morphisms. The residue field at generic points are precisely the function fields (consider the stalk of the structure sheaves at the generic points to see why this is the case), so we have obtained a map of function fields $K_Y \to K_X$. We leave the proof of finiteness up to the reader.
-                \end{proof}
-            Through lemma \ref{lemma: varieties_and_field_extensions}, one obtains the following regarding the relationship between curves (i.e. algebraic varieties of dimension $1$) and their function fields (which \textit{a priori} are of transcedence degree $1$ over the ground field) with little difficulty:
-            \begin{proposition}[Curves and function fields] \label{prop: curves_and_function_fields}
-                \cite[\href{https://stacks.math.columbia.edu/tag/0BY1}{Tag 0BY1}]{stacks} For any field $k$, one has the following canonical equivalences of categories:
-                    $$\{\text{Field extensions $K/k$ of transcendence degree $1$ and $k$-algebra homomorphisms}\}^{\op}$$
-                    $$\cong$$
-                    $$\{\text{Curves $X/k$ and dominant rational maps}\}$$
-                    $$\cong$$
-                    $$\{\text{Non-singular projective curves $X/k$ and dominant rational maps}\}$$
-            \end{proposition}
-                \begin{proof}
-                    The first equivalence is an obvious consequence of lemma \ref{lemma: varieties_and_field_extensions}. To show that the second equivalence holds, note firstly that there is an evident fully faithful functor from the third category to the second; we shall need to show that this functor is also essentially surjective. For this, simply recall that for each curve $X/k$, there exists a non-singular projective curve $\tilde{X}/k$ that is birational to $X/k$, namely $X^{\nu} \cup \{\infty_1, ..., \infty_n\}$, the normalisation $X^{\nu}/k$ of $X/k$ with finitely many extra points (recall also that any normal Noetherian scheme of dimension $\leq 1$ is \textit{a priori} non-singular; cf. \cite[\href{https://stacks.math.columbia.edu/tag/0BX2}{Tag 0BX2}]{stacks}).
-                \end{proof}
-                
-            Through proposition \ref{prop: curves_and_function_fields}, we obtain the first crucial tool for the geometrisation of class field theory.
-            \begin{corollary}[Galois covers of curves and Galois extensions] \label{coro: galois_covers_of_curves_and_galois_extensions}
-                Let $k$ be a field. If $X$ is a connected non-singular projective curve over $\Spec k$ with function field $K$, then there is a canonical equivalence:
-                    $$({}^{K/}\Fld^{\fin, \Gal})^{\op} \cong \Sch_{/X}^{\fet, \Gal}$$
-                between the category of finite Galois extensions of $K$ and finite \'etale-Galois covers of $X$. 
-            \end{corollary}
-            The importance of corollary \ref{coro: galois_covers_of_curves_and_galois_extensions} can not be understated: what it tells us is essentially that the Galois group $\Gal(K^{\ab}/K)$ is nothing but the \'etale fundamental group of $\Sch_{/X}^{\fet, \Gal}$ (more on this later, after we have introduced the \'etale fundamental group; cf. definition \ref{def: etale_fundamental_groups}). This, already, is one side of the Artin's Reciprocity Law, which we shall refer to as \say{\textbf{The Automorphic Side}} per popular conventions. Actually, this is a bit of a lie: instead of formulating geometric class field theory directly in terms of the \'etale fundamental group $\pi_1^{\ab}(X_{\fet})$ (or rather, its continuous $\ell$-adic characters), we will be phrasing things in terms of $\ell$-adic local systems of rank $1$ on $\Bun_{\GL_1}(X)$, the moduli space of line bundles on our curve $X$ (this is actually a formal equivalence of categories; cf. theorems \ref{theorem: unramified_representations_are_sheaves_on_X} and ). 
-            
-            One last remark that we shall make is that because we are working in the \'etale topology, everything is necessarily unramified (as \'etale morphisms are unramified smooth morphisms).
-        
-        \subsection{The Spectral Side}
+    \input{Sections/introduction}
     
-    \section{Grothendieck's Galois Theory}
-        \subsection{The \'etale fundamental group}
-            \begin{definition}[Galois categories and their Noohi groups] \label{def: finite_galois_categories}
-                \noindent
-                \begin{enumerate}
-                    \item \textbf{(Finite Galois categories \cite[\href{https://stacks.math.columbia.edu/tag/0BMY}{Tag 0BMY}]{stacks}):} A \textbf{finite Galois category} is defined via the data contained in a pair $(\calG, F)$ consisting of an \textit{exact} functor $F: \calG^{\op} \to \Sets^{\fin}$ - called the \textbf{fibre functor} - on a \textit{finitely complete and finitely cocomplete} base category $\calG$, wherein objects can all be written as finite coproducts of connected objects\footnote{Objects $X \in \calG$ such that the copresheaf $\calG(X, -)$ preserves all coproducts.}.
-                    \item \textbf{(Noohi groups):} In the sense of \cite[Theorem 2.16]{noohi_fundamental_group}, a so-called \textbf{Noohi group} is the group of natural automorphisms on the $\Sets^{\fin}$-valued functor defining a Galois finite category; that is to say, given a Galois finite category $(\calG, F)$, its Noohi group is $\Aut(F)$.  
-                \end{enumerate}
-            \end{definition}
-            
-            \begin{lemma}[Profiniteness of Noohi groups] \label{lemma: profiniteness_of_noohi_groups}
-                Let $(\calG, F)$ be a finite Galois category. Then:
-                    \begin{enumerate}
-                        \item The associated Noohi group $\Aut(F)$ is profinite.
-                        \item $\calG$ is equivalent to the category of $\Aut(F)$-equivariant finite sets.
-                    \end{enumerate}
-            \end{lemma}
-                \begin{proof}
-                    \cite[Theorem 2.16]{noohi_fundamental_group}
-                \end{proof}
-            
-            Before we state the next definition, let us recall that for any given base scheme $X$, the category $(\Sch_{/X})_{\fet}$ of schemes finite and \'etale over $X$ is a category wherein:
-                \begin{itemize}
-                    \item all finite limits and all finite colimits exist, and
-                    \item all objects can be written as a (possibly empty) finite coproduct of connected objects, which happen to be schemes that are \'etale over $X$.  
-                \end{itemize}
-            In other words, the category spanned by (possibly empty) finite coproducts of schemes \'etale over $X$ can serve as the base category of a finite Galois category. 
-            \begin{definition}[\'Etale fundamental group] \label{def: etale_fundamental_groups}
-                Let $X$ be a scheme with a fixed geometric point $\bar{x}: \Spec \kappa_x^{\alg} \to X$ and define the following fibre functor:
-                    $$F_{\bar{x}}: (\Sch_{/X})_{\fet} \to \Sets^{\fin}$$
-                    $$(f: Y \to X) \mapsto |Y \x_{f, X, \bar{x}} \Spec \kappa_x^{\alg}|$$
-                The pair $((\Sch_{/X})_{\fet}, F_{\bar{x}})$ as above thus define a finite Galois category. Its Noohi group $\Aut(F_{\bar{x}})$ is commonly denoted by $\pi_1(X_{\fet}, \bar{x})$ and called the \textbf{\'etale fundamental group} of $X$ based at $\bar{x}$.
-            \end{definition}
-            \begin{remark}
-                Definition \ref{def: etale_fundamental_groups} is actually a bit subtle and honestly, somewhat ill-founded. For instance, it is not entirely clear that $F_{\bar{x}}$ is an honest-to-Grothendieck fibre functor. It is certainly left-exact, by virtue of being defined via pullbacks, and it is right-exact because any \'etale algebra over a field can be written as a finite direct sum of finite extensions of that field \cite[\href{https://stacks.math.columbia.edu/tag/00U3}{Tag 00U3}]{stacks}, and direct sums are biproducts of vector spaces. However, the fact that the sets $|Y \x_{f, X, \bar{x}} \Spec \kappa_x^{\alg}|$ are finite is not really trivial, although it is not too hard to prove either. It is also a consequence of \'etale algebras being isomorphic to finite direct sums of finite extensions: in our case, since $\kappa_x^{\alg}$ is algebraically closed, the underlying vector space of \'etale $\kappa_x^{\alg}$-algebras must be isomorphic to a finite direct sum of $\kappa_x^{\alg}$ itself. In terms of schemes, this means that when both $Y$ and $X$ are affine, the pullback $Y \x_{f, X, \bar{x}} \Spec \kappa_x^{\alg}$ would be nothing but a coproduct of finitely many copies of $\Spec \kappa_x^{\alg}$, and hence the set $|Y \x_{f, X, \bar{x}} \Spec \kappa_x^{\alg}|$ would have to be finite. Then, by using the fact the \'etale-ness is a local property, we can deduce that the set $|Y \x_{f, X, \bar{x}} \Spec \kappa_x^{\alg}|$ must be finite regardless of whether $Y$ and $X$ are finite or not. The functor:
-                    $$F_{\bar{x}}: (\Sch_{/X})_{\fet} \to \Sets^{\fin}: (f: Y \to X) \mapsto |Y \x_{f, X, \bar{x}} \Spec \kappa_x^{\alg}|$$
-                is therefore a well-defined fibre functor.
-            \end{remark}
-        
-        \subsection{\texorpdfstring{$\ell$}{}-adic sheaves}
-            \begin{theorem}[Unramified representations are sheaves on $X$] \label{theorem: unramified_representations_are_sheaves_on_X}
-                There is a canonical equivalence of categories:
-                    $$\Rep^1_{\overline{\Q_{\ell}}}(\pi_1^{\ab}(X_{\fet})) \cong \LocSys^1_{\overline{\Q_{\ell}}}(X)$$
-                between the category of continuous $\ell$-adic characters of $\pi_1^{\ab}(X_{\fet})$ and $\ell$-adic (\'etale) local systems of rank $1$ on $X$.
-            \end{theorem}
-                \begin{proof}
-                    
-                \end{proof}
-            
-        \subsection{Grothendieck's Sheaf-Function Correspondence}
+    \input{Sections/automorphic}
     
-    \section{Geometric reciprocity for global function fields}
-        \subsection{The Abel-Jacobi map}
-    
-        \subsection{Hecke eigensheaves}
-            \begin{theorem}
-                
-            \end{theorem}
-                \begin{proof}
-                        
-                \end{proof}
-        
-        \subsection{Deligne-Artin Reciprocity}
-        
-        \subsection{What about local class field theory ?}
+    \input{Sections/spectral}
 	
 	\printbibliography
 
