@@ -1,0 +1,58 @@
+\section{The Galois Side}
+    \subsection{The \'etale fundamental group}
+        \begin{definition}[Galois categories and their Noohi groups] \label{def: finite_galois_categories}
+            \noindent
+            \begin{enumerate}
+                \item \textbf{(Finite Galois categories \cite[\href{https://stacks.math.columbia.edu/tag/0BMY}{Tag 0BMY}]{stacks}):} A \textbf{finite Galois category} is defined via the data contained in a pair $(\calG, F)$ consisting of an \textit{exact} functor $F: \calG^{\op} \to \Sets^{\fin}$ - called the \textbf{fibre functor} - on a \textit{finitely complete and finitely cocomplete} base category $\calG$, wherein objects can all be written as finite coproducts of connected objects\footnote{Objects $X \in \calG$ such that the copresheaf $\calG(X, -)$ preserves all coproducts.}.
+                \item \textbf{(Noohi groups):} In the sense of \cite[Theorem 2.16]{noohi_fundamental_group}, a so-called \textbf{Noohi group} is the group of natural automorphisms on the $\Sets^{\fin}$-valued functor defining a Galois finite category; that is to say, given a Galois finite category $(\calG, F)$, its Noohi group is $\Aut(F)$.  
+            \end{enumerate}
+        \end{definition}
+        
+        \begin{lemma}[Profiniteness of Noohi groups] \label{lemma: profiniteness_of_noohi_groups}
+            Let $(\calG, F)$ be a finite Galois category. Then:
+                \begin{enumerate}
+                    \item The associated Noohi group $\Aut(F)$ is profinite.
+                    \item $\calG$ is equivalent to the category of $\Aut(F)$-equivariant finite sets.
+                \end{enumerate}
+        \end{lemma}
+            \begin{proof}
+                \cite[Theorem 2.16]{noohi_fundamental_group}
+            \end{proof}
+        
+        Before we state the next definition, let us recall that for any given base scheme $X$, the category $(\Sch_{/X})_{\fet}$ of schemes finite and \'etale over $X$ is a category wherein:
+            \begin{itemize}
+                \item all finite limits and all finite colimits exist, and
+                \item all objects can be written as a (possibly empty) finite coproduct of connected objects, which happen to be schemes that are \'etale over $X$.  
+            \end{itemize}
+        In other words, the category spanned by (possibly empty) finite coproducts of schemes \'etale over $X$ can serve as the base category of a finite Galois category. 
+        \begin{definition}[\'Etale fundamental group] \label{def: etale_fundamental_groups}
+            Let $X$ be a scheme with a fixed geometric point $\bar{x}: \Spec \kappa_x^{\alg} \to X$ and define the following fibre functor:
+                $$F_{\bar{x}}: (\Sch_{/X})_{\fet} \to \Sets^{\fin}$$
+                $$(f: Y \to X) \mapsto |Y \x_{f, X, \bar{x}} \Spec \kappa_x^{\alg}|$$
+            The pair $((\Sch_{/X})_{\fet}, F_{\bar{x}})$ as above thus define a finite Galois category. Its Noohi group $\Aut(F_{\bar{x}})$ is commonly denoted by $\pi_1(X_{\fet}, \bar{x})$ and called the \textbf{\'etale fundamental group} of $X$ based at $\bar{x}$.
+        \end{definition}
+        \begin{remark}
+            Definition \ref{def: etale_fundamental_groups} is actually a bit subtle and honestly, somewhat ill-founded. For instance, it is not entirely clear that $F_{\bar{x}}$ is an honest-to-Grothendieck fibre functor. It is certainly left-exact, by virtue of being defined via pullbacks, and it is right-exact because any \'etale algebra over a field can be written as a finite direct sum of finite extensions of that field \cite[\href{https://stacks.math.columbia.edu/tag/00U3}{Tag 00U3}]{stacks}, and direct sums are biproducts of vector spaces. However, the fact that the sets $|Y \x_{f, X, \bar{x}} \Spec \kappa_x^{\alg}|$ are finite is not really trivial, although it is not too hard to prove either. It is also a consequence of \'etale algebras being isomorphic to finite direct sums of finite extensions: in our case, since $\kappa_x^{\alg}$ is algebraically closed, the underlying vector space of \'etale $\kappa_x^{\alg}$-algebras must be isomorphic to a finite direct sum of $\kappa_x^{\alg}$ itself. In terms of schemes, this means that when both $Y$ and $X$ are affine, the pullback $Y \x_{f, X, \bar{x}} \Spec \kappa_x^{\alg}$ would be nothing but a coproduct of finitely many copies of $\Spec \kappa_x^{\alg}$, and hence the set $|Y \x_{f, X, \bar{x}} \Spec \kappa_x^{\alg}|$ would have to be finite. Then, by using the fact the \'etale-ness is a local property, we can deduce that the set $|Y \x_{f, X, \bar{x}} \Spec \kappa_x^{\alg}|$ must be finite regardless of whether $Y$ and $X$ are finite or not. The functor:
+                $$F_{\bar{x}}: (\Sch_{/X})_{\fet} \to \Sets^{\fin}: (f: Y \to X) \mapsto |Y \x_{f, X, \bar{x}} \Spec \kappa_x^{\alg}|$$
+            is therefore a well-defined fibre functor.
+        \end{remark}
+    
+    \subsection{\texorpdfstring{$\ell$}{}-adic sheaves and Grothendieck's Galois Theory}
+        \begin{theorem}[Unramified representations are sheaves on $X$] \label{theorem: unramified_representations_are_sheaves_on_X}
+            There is a canonical equivalence of categories:
+                $$\Rep^1_{\overline{\Q_{\ell}}}(\pi_1^{\ab}(X_{\fet}))^{\cont} \cong \LocSys^1_{\overline{\Q_{\ell}}}(X)$$
+            between the category of continuous $\ell$-adic characters of $\pi_1^{\ab}(X_{\fet})$ and $\ell$-adic (\'etale) local systems of rank $1$ on $X$.
+        \end{theorem}
+            \begin{proof}
+                
+            \end{proof}
+        \begin{example}
+            \noindent
+            \begin{itemize}
+                \item \textbf{($X \cong \P^1$):}
+                \item \textbf{(Elliptic curves):}
+                \item \textbf{(Counter-example: $X \cong \A^1$):}
+            \end{itemize}
+        \end{example}
+        
+    \subsection{Grothendieck's Sheaf-Function Correspondence}
