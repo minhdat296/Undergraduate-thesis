@@ -42,7 +42,7 @@
         \begin{remark}
             Definition \ref{def: etale_fundamental_groups} is actually a bit subtle and honestly, somewhat ill-founded. For instance, it is not entirely clear that $F_{\bar{x}}$ is an honest-to-Grothendieck fibre functor. It is certainly left-exact, by virtue of being defined via pullbacks, and it is right-exact because any \'etale algebra over a field can be written as a finite direct sum of finite extensions of that field \cite[\href{https://stacks.math.columbia.edu/tag/00U3}{Tag 00U3}]{stacks}, and direct sums are biproducts of vector spaces. 
             
-            However, the fact that the sets $|Y_{\bar{x}}|$ are finite is not really trivial, although it is not too hard to prove either. It is also a consequence of \'etale algebras being isomorphic to finite direct sums of finite extensions: in our case, because the separable closure $\kappa_x^{\alg}$ of the residue field of $x$ does not admit any non-trivial finite extension (since finite extensions are \textit{a priori} algebraic), the underlying vector space of any \'etale $\kappa_x^{\alg}$-algebra must be isomorphic to a finite direct sum of $\kappa_x^{\alg}$ itself. In terms of schemes, this means that when both $Y$ and $X$ are affine, the fibre $Y_{\bar{x}}$ is nothing but a coproduct of finitely many copies of $\Spec \kappa_x^{\alg}$ (i.e. of the geometric point $\bar{x}$), and hence the set $|Y_{\bar{x}}|$ has to be finite. Then, by using the fact the \'etale-ness is a local property, we can deduce that the set $|Y_{\bar{x}}|$ must be finite regardless of whether $Y$ and $X$ are finite or not. This proof also demonstrates that $F_{\bar{x}}$ necessarily reflects isomorphisms.
+            However, the fact that the sets $|Y_{\bar{x}}|$ are finite is not really trivial, although it is not too hard to prove either. It is also a consequence of \'etale algebras being isomorphic to finite direct sums of finite extensions: in our case, because the algebraic closure $\overline{\kappa_x}$ of the residue field of $x$ does not admit any non-trivial finite extension (since finite extensions are \textit{a priori} algebraic), the underlying vector space of any \'etale $\overline{\kappa_x}$-algebra must be isomorphic to a finite direct sum of $\overline{\kappa_x}$ itself. In terms of schemes, this means that when both $Y$ and $X$ are affine, the fibre $Y_{\bar{x}}$ is nothing but a coproduct of finitely many copies of $\Spec \overline{\kappa_x}$ (i.e. of the geometric point $\bar{x}$), and hence the set $|Y_{\bar{x}}|$ has to be finite. Then, by using the fact the \'etale-ness is a local property, we can deduce that the set $|Y_{\bar{x}}|$ must be finite regardless of whether $Y$ and $X$ are finite or not. This proof also demonstrates that $F_{\bar{x}}$ necessarily reflects isomorphisms.
             
             The functor from definition \ref{def: etale_fundamental_groups}:
                 $$F_{\bar{x}}: \Sch_{/X}^{\fet} \to \Fin$$
@@ -71,39 +71,54 @@
         \begin{corollary}[Uniqueness of \'etale fundamental groups] \label{coro: etale_fundamental_group_uniqueness}
             For any connected scheme $X$ and any pair of possibly distinct geometric points $\bar{x}, \bar{x}' \in X$, one has any isomorphism of \'etale fundamental groups $\pi_1(X_{\fet}, \bar{x}) \cong \pi_1(X_{\fet}, \bar{x}')$, and therefore it makes sense to only speak of \textit{the} fundamental group of $X$, which we shall denote by $\pi_1(X_{\fet})$.
         \end{corollary}
+        
+        Let us now take a break and compute certain instances of the \'etale fundamental group.
+        \begin{example}[Examples of the \'etale fundamental group] \label{example: etale_fundamental_groups}
+            \noindent
+            \begin{itemize}
+                \item \textbf{(Projective line):} It is well-known that $\P^1_k$ (for any field $k$) is a smooth connected projective curve with function field $k(t)$. Through proposition \ref{prop: curves_and_function_fields}, one sees that $\pi_1((\P^1_k)_{\fet}) \cong \pi_1((\Spec k(t))_{\fet}) \cong \Gal(\overline{k(t)}/k(t)) \cong \Gal(\bar{k}/k)$.
+                \item \textbf{(Discrete valuation rings):} Let us start with the prototypical case of $\Z_p$. Because objects of $\Sch_{/\Spec \Z_p}^{\fet}$ are \textit{a priori} finite unramified integral extensions of $\Z_p$ whose fraction fields are $p$-adic fields of the same degree over $\Q_p$ (the fraction field of $\Z_p$), one obtains a canonical equivalence of Galois categories $\Sch_{/\Spec \Q_p}^{\fet} \cong \Sch_{/\Spec \Z_p}^{\fet}$. As a consequence, $\pi_1((\Spec \Z_p)_{\fet}) \cong \pi_1((\Spec \Q_p)_{\fet}) \cong \Gal(\Q_p^{\unr}/\Q_p) \cong \hat{\Z}$, where $\Q_p^{\unr}/\Q_p$ is the maximal unramified extension of $\Q_p$, which one obtains by adjoining all $n^{th}$ roots of unity to $\Q_p$ (for all $n$ coprime to $p$).
+                
+                By arguing similarly, one will also see that $\pi_1((\Spec \F_p(\!(t)\!))_{\fet}) \cong \hat{\Z}$ as well. In fact, if $\scrV$ is any discrete valuation ring with residue field $k$ then $\pi_1((\Spec \scrV)_{\fet}) \cong \Gal(\bar{k}/k)$ (one can start with $\scrV \cong \Z_p$, and notice that the residue field of any finite unramified extension of $\Q_p$ is $\F_{p^n}$, with $n$ being the degree of that extension).
+                \item \textbf{(Algebraic integers):} Minkowski's Theorem tells us that every non-trivial finite extension of $\Q$ ramifies at some prime $(p) \in \Spec \Z$. As a consequence, $\pi_1((\Spec \Z)_{\fet}) \cong 1$.
+                \item \textbf{(Affine line):} 
+            \end{itemize}
+        \end{example}
     
     \subsection{\texorpdfstring{$\ell$}{}-adic sheaves and Grothendieck's Galois Theory}
         \begin{lemma}[The \'etale monodromy correspondence] \label{lemma: etale_monodromy}
-            Let $\Lambda$ be a commutative ring and let $X$ be a connected scheme. Then, there exists a canonical equivalence of categories:
+            Let $\Lambda$ be a commutative ring and let $X$ be a connected scheme with a fixed geometric point $\bar{x} \in X$. Then, there exists a canonical equivalence of categories:
                 $$\LocSys_{\Lambda}^{\fin}(X_{\et}) \cong \Rep_{\Lambda}^{\fin}(\pi_1(X_{\fet}))^{\cont}$$
-            between the category of \'etale locally constant sheaves of finite type $\Lambda$-modules on $X$ and the category of finite-dimensional continuous $\Lambda$-linear representations of $\pi_1(X_{\fet})$
+                $$\calL \mapsto \calL_{\bar{x}}$$
+            between the category of \'etale locally constant sheaves of finite type $\Lambda$-modules on $X$ and the category of finite-dimensional continuous $\Lambda$-linear representations of $\pi_1(X_{\fet})$.
         \end{lemma}
             \begin{proof}
                 
             \end{proof}
     
         \begin{convention} \label{conv: base_curve}
-            From this point on, $k$ shall be a separably closed field and $X$ shall be a smooth projective \textit{connected} curve over $\Spec k$. Furthermore, by \say{local systems}, we shall always mean locally constant sheaves in the \'etale topology.
+            From this point on, $X$ shall be a smooth projective \textit{connected} curve over $\Spec k$ (with $k$ some field). Furthermore, by \say{local systems}, we shall always mean locally constant sheaves in the \'etale topology.
         \end{convention}
         
         \begin{theorem}[Unramified representations are sheaves on $X$] \label{theorem: unramified_representations_are_sheaves_on_X}
-            There is a canonical equivalence of categories:
-                $$\Rep^1_{\overline{\Q_{\ell}}}(\pi_1^{\ab}(X_{\fet}))^{\cont} \cong \LocSys^1_{\overline{\Q_{\ell}}}(X)$$
-            between the category of continuous $\ell$-adic characters of $\pi_1^{\ab}(X_{\fet})$ and that of $\ell$-adic local systems of rank $1$ on $X$.
+            Fix a geometric point $\bar{x} \in X$. Then, there is a canonical equivalence of categories:
+                $$\LocSys^1_{\overline{\Q_{\ell}}}(X) \cong \Rep^1_{\overline{\Q_{\ell}}}(\pi_1^{\ab}(X_{\fet}))^{\cont}$$
+                $$\calL \mapsto \calL_{\bar{x}}$$
+            between the category of continuous (unramified\footnote{\'Etale morphisms are unramified smooth morphisms.}) $\ell$-adic characters of $\pi_1^{\ab}(X_{\fet})$ and that of $\ell$-adic local systems of rank $1$ on $X$.
         \end{theorem}
             \begin{proof}
-                Lemma \ref{lemma: etale_monodromy} tells us that we have an equivalence $\Rep^1_{\overline{\Q_{\ell}}}(\pi_1(X_{\fet}))^{\cont} \cong \LocSys^1_{\overline{\Q_{\ell}}}(X)$, so the only thing to show is that $\Rep^1_{\overline{\Q_{\ell}}}(\pi_1(X_{\fet}))^{\cont} \cong \Rep^1_{\overline{\Q_{\ell}}}(\pi_1^{\ab}(X_{\fet}))^{\cont}$. For this, observe that because characters are necessarily irreducible as linear representations, and since $\overline{\Q_{\ell}}$ is an algebraically closed field of charactersitic $0$, we get through Schur's Lemma (cf. \cite[Lemma 3.6, pp. 35]{lam_first_course_in_noncommutative_rings}) that any pair of continuous $\ell$-adic characters $\chi_1, \chi_2$ of $\pi_1(X_{\fet})$ are unique up to multiplication by units $\lambda \in \overline{\Q_{\ell}}^{\x}$, which can be easily shown to be homeomorphic group homomorphisms $\lambda: \GL_1(\overline{\Q_{\ell}}) \to \GL_1(\overline{\Q_{\ell}})$ such that:
+                Lemma \ref{lemma: etale_monodromy} tells us that we have an equivalence $\LocSys^1_{\overline{\Q_{\ell}}}(X) \cong \Rep^1_{\overline{\Q_{\ell}}}(\pi_1(X_{\fet}))^{\cont}$, so we only need to show is that $\Rep^1_{\overline{\Q_{\ell}}}(\pi_1(X_{\fet}))^{\cont} \cong \Rep^1_{\overline{\Q_{\ell}}}(\pi_1^{\ab}(X_{\fet}))^{\cont}$ and that the equivalences are compatible. For this, observe that because characters are necessarily irreducible as linear representations, and since $\overline{\Q_{\ell}}$ is an algebraically closed field of charactersitic $0$, we get through Schur's Lemma (cf. \cite[Lemma 3.6, pp. 35]{lam_first_course_in_noncommutative_rings}) that any pair of continuous $\ell$-adic characters $\chi_1, \chi_2$ of $\pi_1(X_{\fet})$ are unique up to multiplication by units $\lambda \in \overline{\Q_{\ell}}^{\x}$, which can be easily shown to be homeomorphic group homomorphisms $\lambda: \GL_1(\overline{\Q_{\ell}}) \to \GL_1(\overline{\Q_{\ell}})$ such that:
                     $$\forall \sigma \in \pi_1(X_{\fet}): \forall v \in \GL_1(\overline{\Q_{\ell}}): \chi_2(\sigma)(v) = \lambda \cdot \chi_1(\sigma)(v)$$
                 As a result, $\Rep^1_{\overline{\Q_{\ell}}}(\pi_1(X_{\fet}))^{\cont}$ is a groupoid. Now, thanks to the First Isomorphism Theorem for topological groups, any continuous $\ell$-adic character $\chi: \pi_1(X_{\fet}) \to \GL_1(\overline{\Q_{\ell}})$ necessarily factors through the canoncial quotient map $\pi_1(X_{\fet}) \to \pi_1^{\ab}(X_{\fet})$ and hence, any such character $\chi$ defines a \textit{unique} continuous \say{abelian $\ell$-adic character} $\chi^{\ab}: \pi_1^{\ab}(X_{\fet}) \to \GL_1(\overline{\Q_{\ell}})$. By combining the two observations, one sees that there exists a fully faithful and essentially surjective functor:
-                    $$\Rep^1_{\overline{\Q_{\ell}}}(\pi_1(X_{\fet}))^{\cont} \cong \Rep^1_{\overline{\Q_{\ell}}}(\pi_1^{\ab}(X_{\fet}))^{\cont}$$
+                    $$\Rep^1_{\overline{\Q_{\ell}}}(\pi_1(X_{\fet}))^{\cont} \to \Rep^1_{\overline{\Q_{\ell}}}(\pi_1^{\ab}(X_{\fet}))^{\cont}$$
                     $$\chi \mapsto \chi^{\ab}$$
-                making it an equivalence of categories\footnote{In fact, of groupoids. Note that $\LocSys_{\overline{\Q_{\ell}}}^1(X)$ is also a groupoid, and so the statement of theorem \ref{theorem: unramified_representations_are_sheaves_on_X} is actually an equivalence of groupoids.} by definition.
+                making it an equivalence of categories\footnote{In fact, of groupoids. Note that $\LocSys_{\overline{\Q_{\ell}}}^1(X)$ is also a groupoid, and so the statement of theorem \ref{theorem: unramified_representations_are_sheaves_on_X} is actually an equivalence of groupoids.} by definition. The compatibility of this equivalence with the equivalence $\LocSys^1_{\overline{\Q_{\ell}}}(X) \cong \Rep^1_{\overline{\Q_{\ell}}}(\pi_1(X_{\fet}))^{\cont}$ (given by $\calL \mapsto \calL_{\bar{x}}$) is obvious.
             \end{proof}
         \begin{example}
             \noindent
             \begin{itemize}
-                \item \textbf{($X \cong \P^1$):}
-                \item \textbf{(Elliptic curves):}
-                \item \textbf{(Counter-example: $X \cong \A^1$):}
+                \item \textbf{($X \cong \P^1_k$):} We know from example \ref{example: etale_fundamental_groups} that $\pi_1((\P^1_k)_{\fet}) \cong \Gal(\bar{k}/k)$. Hence $\pi_1^{\ab}((\P^1_k)_{\fet}) \cong \Gal(k^{\ab}/k)$, and continuous $\ell$-adic characters of $\pi_1^{\ab}((\P^1_k)_{\fet})$ are therefore nothing but continuous $\ell$-adic characters of $\Gal(k^{\ab}/k)$, viewed as a profinite group.
+                \item \textbf{(Elliptic curves over char. $0$):}
+                \item \textbf{(Counter-example: $X \cong \A^1_k, \chara k = 0$):}
             \end{itemize}
         \end{example}

@@ -2,6 +2,8 @@
     \subsection{The Hecke action and spectral decomposition}
         \begin{convention}[The setting of the main theorem]
             For us, $\Bun_{\GL_1}(X)$ shall denote the moduli space of line bundles on $X$. Traditionally, this is usually referred to as the \textbf{Picard stack} and denoted by $\Pic_X$ (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0372}{Tag 0372}]{stacks}), but we opt for the notation $\Bun_{\GL_1}(X)$ because in the wider context of the Geometric Langlands Programme, one works with $\Bun_G(X)$ for $G$ a general connected reductive group (of which $\GL_1$ is a special case). 
+            
+            In addition, let us now suppose that the base field $k$ from convention \ref{conv: base_curve} is separably closed.
         \end{convention}
         \begin{remark}[Some remarks on the geometry of $\Bun_{\GL_1}$] \label{remark: geometry_of_the_picard_stack}
             Since we are working with a smooth projective curve $X$ over a separably closed field (cf. convention \ref{conv: base_curve}), the prestack $\Bun_{\GL_1}$ is \textit{a priori} representable by a scheme (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0B9Z}{Tag 0B9Z}]{stacks}) as a sheaf on $(\Sch_{/X})_{\fppf}$ (and by representablity, also as a sheaf on $(\Sch_{/X})_{\et}$ and $(\Sch_{/X})_{\Zar}$). As a result, when considering sheaves on $\Bun_{\GL_1}(X)$, we will only need to know about sheaves on schemes instead of the entire fully general theory of sheaves on prestacks. Furthermore, should $X$ be of \href{https://stacks.math.columbia.edu/tag/0BY6}{\underline{genus}} $g \geq 0$, then one has the following decomposision:
@@ -104,9 +106,9 @@
         \begin{example}[Some examples of geometric reciprocity] \label{example: geometric_reciprocity}
             \noindent
             \begin{itemize}
-                \item \textbf{($X \cong \P^1$):}
-                \item \textbf{(Elliptic curves):}
-                \item \textbf{(Counter-example: $X \cong \A^1$):}
+                \item \textbf{($X \cong \P^1_k$):}
+                \item \textbf{(Elliptic curves over char. $0$):}
+                \item \textbf{(Counter-example: $X \cong \A^1_k, \chara k = 0$):}
             \end{itemize}
         \end{example}
         
