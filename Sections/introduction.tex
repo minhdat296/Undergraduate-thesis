@@ -43,13 +43,13 @@
             In what follows, $k$ shall be a separably closed field and $X$ shall be a smooth projective \textit{connected} curve over $\Spec k$. Additionally, $\Bun_{\GL_1}(X)$ shall denote the moduli space of line bundles on $X$.
         \end{convention}
     
-        Let us now move on to what is known as the \say{\textbf{Automorphic Side}}, and we shall begin with the notion of \textbf{Hecke eigensheaves}. To introduce these gadgets, however, we will first need to discuss the \textbf{Hecke correspondence}, the categorification of the action of the Hecke algebra on the space of functions satisfying certain smoothness and growth conditions on the double ad\`elic quotient $\GL_1(K) \backslash \GL_1(\A_K) / \GL_1(\scrO_K)$ (i.e. automorphic forms). The details will be spelled out in definition \ref{def: hecke_correspondence}, but for now, let us think of the Hecke correspondence as a span, i.e. a diagram of the form:
+        Let us now move on to what is known as the \say{\textbf{Automorphic Side}}, and we shall begin with the notion of \textbf{Hecke eigensheaves}. To introduce these gadgets, however, we will first need to discuss the \textbf{Hecke correspondence}, the categorification of the action of the Hecke algebra on the space of functions satisfying certain smoothness and growth conditions on the double ad\`elic quotient $\GL_1(K) \backslash \GL_1(\A_K) / \GL_1(\scrO_K)$ (i.e. automorphic forms). The details will be spelled out in definition \ref{def: hecke_correspondences}, but for now, let us think of the Hecke correspondence as a span, i.e. a diagram of the form:
             $$
                 \begin{tikzcd}
                 	& {\Hecke_{\GL_1}(X)} \\
                 	{\Bun_{\GL_1}(X)} && {X \x \Bun_{\GL_1}(X)}
-                	\arrow["{\cev{h}}"', from=1-2, to=2-1]
-                	\arrow["{\supp_X \x \vec{h}}", from=1-2, to=2-3]
+                	\arrow["{\cev{h}_X}"', from=1-2, to=2-1]
+                	\arrow["{\supp_X \x \vec{h}_X}", from=1-2, to=2-3]
                 \end{tikzcd}
             $$
         If we were to generically denote a given category of \say{good sheaf theory} by $\Shv(-)$\footnote{Eventually, we will be interested particularly in $\ell$-adic sheaves of rank $1$, which shall be denoted by $\Shv_{\overline{\Q_{\ell}}}^1(-)$, but more on this later. In the wider context of the Geometric Langlands Programme, $\Shv(-)$ might mean perverse sheaves, or when we are working over $\bbC$, D-modules; we shall not touch on these sheaf theories.}, then the Hecke correspondence induces the following sheaf pull-push diagram:
@@ -57,8 +57,8 @@
                 \begin{tikzcd}
                 	& {\Shv(\Hecke_{\GL_1}(X))} \\
                 	{\Shv(\Bun_{\GL_1}(X))} && {\Shv(X \x \Bun_{\GL_1}(X))}
-                	\arrow["{\cev{h}^*}", from=2-1, to=1-2]
-                	\arrow["{(\supp_X \x \vec{h})_*}", from=1-2, to=2-3]
+                	\arrow["{(\cev{h}_X)^*}", from=2-1, to=1-2]
+                	\arrow["{(\supp_X \x \vec{h}_X)_*}", from=1-2, to=2-3]
                 \end{tikzcd}
             $$
         and by composing the two functors in the obvious manner, one gets a new functor:
@@ -68,12 +68,12 @@
                 \begin{tikzcd}
                 	& {\Hecke_{\GL_1}(x)} \\
                 	{\Bun_{\GL_1}(X)} && {\Bun_{\GL_1}(X)}
-                	\arrow["{\cev{h}}"', from=1-2, to=2-1]
-                	\arrow["{\vec{h}}", from=1-2, to=2-3]
+                	\arrow["{\cev{h}_x}"', from=1-2, to=2-1]
+                	\arrow["{\vec{h}_x}", from=1-2, to=2-3]
                 \end{tikzcd}
             $$
         and one can thus define the local Hecke operator at $x \in X$ as:
-            $$\scrH_x := \vec{h}_* \cev{h}^*$$
+            $$\scrH_x := (\vec{h}_x)_* (\cev{h}_x)^*$$
         Arguably, this is more akin to the classical Hecke operator, as it is an endofunctor on $\Shv(\Bun_{\GL_1}(X))$ as opposed to the global operator $\scrH_X$, which has differing domain and codomain; henceforth, we will be thinking of the global Hecke operator $\scrH_X$ as a family $\{\scrH_x\}_{x \in X}$ of local Hecke operators parametrised by points $x \in X$. 
         
         It is now an essential technicality that we work with $\ell$-adic local systems of rank $1$ (for which we shall write $\Shv_{\overline{\Q_{\ell}}}^1(-)$) instead of simply with a generic sheaf theory $\Shv(-)$ as we have until this moment. Via the Hecke operators, one can define the Hecke eigensheaves that we eluded to earlier: as the name suggests, these are nothing but sheaves $\E \in \Shv_{\overline{\Q_{\ell}}}^1(\Bun_{\GL_1}(X))$ that are \say{eigenvectors} of the \textit{global} Hecke operators $\scrH_X$, i.e. for each such $\E$, there exists $\calL \in \Shv_{\overline{\Q_{\ell}}}^1(X)$ such that\footnote{Here, $\boxtimes$ denotes the Deligne tensor product in the $1$-category of finite abelian categories and right-exact functors; in this particular case, we shall be content with $\calL \boxtimes \E \cong \pr_1^*\calL \tensor \pr_2^*\E$.}:
@@ -88,3 +88,16 @@
             $$\Rep_{\overline{\Q_{\ell}}}^1(\pi_1^{\ab}(X_{\fet}))^{\cont} \cong \Eig^1_{\overline{\Q_{\ell}}}(\Bun_{\GL_1}(X))$$
         This is the version of global class field theory that we seek, and it tells us that $1$-dimensional continuous $\ell$-adic Galois representations are the same as automorphic forms associated to $\GL_1$.
         
+    \subsection{Conventions}
+        \begin{convention}[Category theory] \label{conv: category_theory}
+            \noindent
+            \begin{itemize}
+                \item \textbf{(Fundamentals):} We assume familiarity with the notion of categories along with fundamental categorical concepts such as universal properties, (co)slice categories, (co)limits, and adjunctions, etc. \cite{maclane} and \cite[\href{https://stacks.math.columbia.edu/tag/0011}{Tag 0011}]{stacks} shall be our main references regarding these notions.
+                \item \textbf{(Sheaf theory):} We shall assume to have theory of sheaves of sets (i.e. the theory of sheaf topoi) and of sheaves taking values in tensor categories such as module categories (cf. \cite{EGNO}) at our disposal. Readers who are not too familiar with the former are encouraged to consult \cite{sga4} and \cite[\href{https://stacks.math.columbia.edu/tag/00UZ}{Tag 00UZ}]{stacks}; for the latter, we recommend \cite[\href{https://stacks.math.columbia.edu/tag/006A}{Tag 006A}, \href{https://stacks.math.columbia.edu/tag/01AC}{Tag 01AC}, and \href{https://stacks.math.columbia.edu/tag/03A4}{Tag 03A4}]{stacks}. Also related is descent theory, for which we shall refer to \cite{vistoli_descent} and \cite[\href{https://stacks.math.columbia.edu/tag/0266}{Tag 0266} and \href{https://stacks.math.columbia.edu/tag/0238}{Tag 0238}]{stacks}.
+                \item \textbf{(Monoidal categories):} For information on monoidal categories, we refer the readers to \cite{EGNO}.
+            \end{itemize}
+        \end{convention}
+        
+        \begin{convention}[Algebraic geometry] \label{conv: algebraic_geometry}
+            For generalities on schemes, we refer the reader to \cite[Chapters II and III]{hartshorne}, as well as \cite[\href{https://stacks.math.columbia.edu/tag/01H8}{Tag 01H8}, \href{https://stacks.math.columbia.edu/tag/01QL}{Tag 01QL}, and \href{https://stacks.math.columbia.edu/tag/0209}{Tag 0209}]{stacks}.
+        \end{convention}

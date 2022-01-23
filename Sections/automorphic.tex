@@ -1,36 +1,86 @@
 \section{The Automorphic Side}
     \subsection{The Hecke action and spectral decomposition}
         \begin{convention}[The setting of the main theorem]
-            From this point on, $k$ shall be a separably closed field and $X$ shall be a smooth projective \textit{connected} curve over $\Spec k$. Additionally, $\Bun_{\GL_1}(X)$ shall denote the moduli space of line bundles on $X$.
+            For us, $\Bun_{\GL_1}(X)$ shall denote the moduli space of line bundles on $X$. Traditionally, this is usually referred to as the \textbf{Picard stack} and denoted by $\Pic_X$ (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0372}{Tag 0372}]{stacks}), but we opt for the notation $\Bun_{\GL_1}(X)$ because in the wider context of the Geometric Langlands Programme, one works with $\Bun_G(X)$ for $G$ a general connected reductive group (of which $\GL_1$ is a special case). 
         \end{convention}
+        \begin{remark}[Some remarks on the geometry of $\Bun_{\GL_1}$] \label{remark: geometry_of_the_picard_stack}
+            Since we are working with a smooth projective curve $X$ over a separably closed field (cf. convention \ref{conv: base_curve}), the prestack $\Bun_{\GL_1}$ is \textit{a priori} representable by a scheme (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0B9Z}{Tag 0B9Z}]{stacks}) as a sheaf on $(\Sch_{/X})_{\fppf}$ (and by representablity, also as a sheaf on $(\Sch_{/X})_{\et}$ and $(\Sch_{/X})_{\Zar}$). As a result, when considering sheaves on $\Bun_{\GL_1}(X)$, we will only need to know about sheaves on schemes instead of the entire fully general theory of sheaves on prestacks. Furthermore, should $X$ be of \href{https://stacks.math.columbia.edu/tag/0BY6}{\underline{genus}} $g \geq 0$, then one has the following decomposision:
+                $$\Bun_{\GL_1}(X) \cong \coprod_{d \in \Z} \Bun_{\GL_1}^d(X)$$
+            wherein each $\Bun_{\GL_1}^d(X)$ is the moduli scheme of line bundles of \href{https://stacks.math.columbia.edu/tag/0AYQ}{\underline{degree}} $d$ on $X$, which is a smooth and proper variety (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0BA0}{Tag 0BA0}]{stacks}).
+        \end{remark}
         
-        \begin{definition}[The Hecke correspondence] \label{def: hecke_correspondence}
-            The Hecke correspondence is a span, i.e. a diagram of the form:
-                $$
-                    \begin{tikzcd}
-                    	& {\Hecke_{\GL_1}(X)} \\
-                    	{\Bun_{\GL_1}(X)} && {X \x \Bun_{\GL_1}(X)}
-                    	\arrow["{\cev{h}}"', from=1-2, to=2-1]
-                    	\arrow["{\supp_X \x \vec{h}}", from=1-2, to=2-3]
-                    \end{tikzcd}
-                $$
-            wherein $\Hecke_{\GL_1}(X)$ is the moduli space of quadruples:
-                $$(\E_1, \E_2, x, \beta_x)$$
-            consisting of $\ell$-adic sheaves $\E_1, \E_2 \in \Shv_{\overline{\Q_{\ell}}}^1(\Bun_{\GL_1}(X))$, points $x \in X$, and for each such point $x$, a monomorphism $\beta_x: \E_1 \hookrightarrow \E_2$ whose cokernel is isomorphic to $k_x^{\oplus d}$ (where $k_x$ denotes the skyscraper sheaf supported at $x \in X$). It is naturally equipped with two projection functors $\cev{h}$ and $\supp_X \x \vec{h}$, which are defined via:
-                $$\cev{h}(\E_1, \E_2, x, \beta_x) \cong \E_1$$
-                $$\supp_X(\E_1, \E_2, x, \beta_x) \cong (x, \E_2)$$
-            and hence one obtains the Hecke correspondence as a span.
+        \begin{definition}[Hecke correspondences] \label{def: hecke_correspondences}
+            \noindent
+            \begin{enumerate}
+                \item \textbf{(The global Hecke correspondence):} The \textbf{global Hecke correspondence} is a span, i.e. a diagram of the form:
+                    $$
+                        \begin{tikzcd}
+                        	& {\Hecke_{\GL_1}(X)} \\
+                        	{\Bun_{\GL_1}(X)} && {X \x \Bun_{\GL_1}(X)}
+                        	\arrow["{\cev{h}_X}"', from=1-2, to=2-1]
+                        	\arrow["{\supp_X \x \vec{h}_X}", from=1-2, to=2-3]
+                        \end{tikzcd}
+                    $$
+                wherein $\Hecke_{\GL_1}(X)$ is the moduli space of quadruples:
+                    $$(\E_1, \E_2, x, \beta_x)$$
+                consisting of line bundles $\E_1, \E_2 \in \Bun_{\GL_1}(X)$, points $x \in X$, and for each such point $x$, a monomorphism $\beta_x: \E_1 \hookrightarrow \E_2$ whose cokernel is the skyscraper sheaf $k_x$ supported at $x \in X$ with value $k$. It is naturally equipped with two projection functors $\cev{h}$ and $\supp_X \x \vec{h}$, which are defined via:
+                    $$\cev{h}_X(\E_1, \E_2, x, \beta_x) \cong \E_1$$
+                    $$(\supp_X \x \vec{h}_X)(\E_1, \E_2, x, \beta_x) \cong (x, \E_2)$$
+                and hence one obtains the global Hecke correspondence as a span.
+                \item \textbf{(Local Hecke correspondences):} Since $(\supp_X \x \vec{h}_X)(\E_1, \E_2, x, \beta_x) \cong (x, \E_2)$, one obtains (via taking fibres) a canonical \textbf{local Hecke correspondence} at each point $x \in X$ as follows:
+                    $$
+                        \begin{tikzcd}
+                        	& {\Hecke_{\GL_1}(x)} \\
+                        	{\Bun_{\GL_1}(X)} && {\Bun_{\GL_1}(X)}
+                        	\arrow["{\cev{h}_x}"', from=1-2, to=2-1]
+                        	\arrow["{\vec{h}_x}", from=1-2, to=2-3]
+                        \end{tikzcd}
+                    $$
+                wherein $\Hecke_{\GL_1}(x)$ is the moduli space of triples $(\E_1, \E_2, \beta_x)$ consisting of line bundles $\E_1, \E_2 \in \Bun_{\GL_1}(X)$ along with a monomorphism $\beta_x: \E_1 \hookrightarrow \E_2$ whose cokernel is the skyscraper sheaf $k_x$ supported at $x \in X$ with value $k$, and $\cev{h}_x$ and $\vec{h}_x$ are defined in the obvious manner:
+                    $$\cev{h}_x(\E_1, \E_2, \beta_x) \cong \E_1$$
+                    $$\vec{h}_x(\E_1, \E_2, \beta_x) \cong (x, \E_2)$$
+            \end{enumerate}
         \end{definition}
         
         \begin{definition}[Hecke operators] \label{def: hecke_operators}
-            
+            \noindent
+            \begin{enumerate}
+                \item \textbf{(The global Hecke operators):} The global Hecke correspondence induces the following sheaf pull-push diagram:
+                    $$
+                        \begin{tikzcd}
+                        	& {\Shv_{\overline{\Q_{\ell}}}^1(\Hecke_{\GL_1}(X))} \\
+                        	{\Shv_{\overline{\Q_{\ell}}}^1(\Bun_{\GL_1}(X))} && {\Shv_{\overline{\Q_{\ell}}}^1(X \x \Bun_{\GL_1}(X))}
+                        	\arrow["{(\cev{h}_X)^*}", from=2-1, to=1-2]
+                        	\arrow["{(\supp_X \x \vec{h}_X)_*}", from=1-2, to=2-3]
+                        \end{tikzcd}
+                    $$
+                and by composing the two functors in the obvious manner, one gets a new functor:
+                    $$\scrH_X := (\vec{h}_X)_* (\supp_X \x \cev{h}_X)^*$$
+                which we shall call the \textbf{global Hecke operator}. 
+                \item \textbf{(Local Hecke operators):} Similarly, we define the \textbf{local Hecke operator} at each point $x \in X$ 
+                    $$
+                        \begin{tikzcd}
+                        	& {\Shv_{\overline{\Q_{\ell}}}^1(\Hecke_{\GL_1}(x))} \\
+                        	{\Shv_{\overline{\Q_{\ell}}}^1(\Bun_{\GL_1}(X))} && {\Shv_{\overline{\Q_{\ell}}}^1(\Bun_{\GL_1}(X))}
+                        	\arrow["{(\cev{h}_x)^*}", from=2-1, to=1-2]
+                        	\arrow["{(\vec{h}_x)_*}", from=1-2, to=2-3]
+                        \end{tikzcd}
+                    $$
+                to be the following composition:
+                    $$\scrH_x := (\vec{h}_x)_* (\cev{h}_x)^*$$
+                with the functors $\cev{h}_x, \vec{h}_x$ as in definition \ref{def: hecke_correspondences}.
+            \end{enumerate}
         \end{definition}
     
         \begin{definition}[Hecke eigensheaves] \label{def: hecke_eigensheaves}
             A \textit{non-zero} $\ell$-adic sheaf $\E \in \Shv_{\overline{\Q_{\ell}}}^1(\Bun_{\GL_1}(X))$ is called a \textbf{Hecke eigensheaf} (of rank $1$) if and only if there exists an $\ell$-adic sheaf $\calL \in \Shv_{\overline{\Q_{\ell}}}^1(X)$ (called the \textbf{eigenvalue} of $\E$) such that:
-                $$\H_X(\E) \cong \calL \boxtimes \E$$
-            It is easy to see that Hecke eigensheaves form a full symmetric monoidal subcategory of $\Shv_{\overline{\Q_{\ell}}}^1(\Bun_{\GL_1}(X))$, which we shall denote by $\Eig^1_{\overline{\Q_{\ell}}}(\Bun_{\GL_1}(X))$.
+                $$\scrH_X(\E) \cong \calL \boxtimes \E$$
         \end{definition}
+        \begin{remark}
+            It is easy to see that Hecke eigensheaves form a full symmetric monoidal subcategory of $\Shv_{\overline{\Q_{\ell}}}^1(\Bun_{\GL_1}(X))$, which we shall denote by $\Eig^1_{\overline{\Q_{\ell}}}(\Bun_{\GL_1}(X))$. Furthermore, each Hecke eigensheaf $\E$ with eigenvalue $\calL$ is an \say{eigenvector} of any of the local Hecke operators $\scrH_x$ in the following manner\footnote{Note that the category of $\ell$-adic local systesm of rank $1$ on each point $x \in X$ is nothing but $\Vect^1(\overline{\Q_{\ell}})$, the category of $1$-dimensional $\overline{\Q_{\ell}}$-vector spaces.}:
+                $$\scrH_x(\E) \cong (\overline{\Q_{\ell}})_x \boxtimes \E$$
+            thanks to the fact that the stalks $\calL_x$ are all isomorphic to $\overline{\Q_{\ell}}$, since $\calL$ is an $\ell$-adic local system of rank $1$.
+        \end{remark}
     
     \subsection{The Abel-Jacobi map and Deligne-Artin Reciprocity for global function fields}
         \begin{theorem}[Unramified abelian geometric class field theory] \label{theorem: unramified_abelian_geometric_class_field_theory}
@@ -41,7 +91,7 @@
             \begin{proof}
                 \noindent
                 \begin{enumerate}
-                    \item \textbf{():}
+                    \item 
                     \item
                     \item 
                 \end{enumerate}
@@ -60,6 +110,9 @@
             \end{itemize}
         \end{example}
         
-        \begin{remark}[What about local class field theory ?]
-            
-        \end{remark}
+    \subsection{Grothendieck's Sheaf-Function Dictionary and \textit{die Gr\"o{\ss}encharaktere}}
+        As a final step, let us decategorify the left-hand side of the equivalence:
+            $$\Rep_{\overline{\Q_{\ell}}}^1(\pi_1^{\ab}(X_{\fet}))^{\cont} \cong \Eig^1_{\overline{\Q_{\ell}}}(\Bun_{\GL_1}(X))$$
+        from remark \ref{remark: unramified_abelian_geometric_class_field_theory_explanation} to obtain a correspondence between continuous $\ell$-adic characters of $\pi_1^{\ab}(X_{\fet})$ and \say{\textit{die Gr\"o{\ss}encharaktere}}, using Grothendieck's Sheaf-Function Dictionary.
+        
+    \subsection{What about local class field theory ?}
