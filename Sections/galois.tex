@@ -5,12 +5,12 @@
             \begin{enumerate}
                 \item 
                     \begin{itemize}
-                        \item \textbf{(Finite Galois categories \cite[\href{https://stacks.math.columbia.edu/tag/0BMY}{Tag 0BMY}]{stacks}):} A \textbf{finite Galois category} is defined via the data contained in a pair $(\calG, F)$ consisting of:
+                        \item \textbf{(Finite Galois categories):} A \textbf{finite Galois category} is defined via the data contained in a pair $(\calG, F)$ consisting of:
                         \begin{itemize}
-                            \item a \textit{finitely complete and finitely cocomplete} base category $\calG$, wherein objects can all be written as finite coproducts of connected objects\footnote{Objects $X \in \calG$ such that the copresheaf $\calG(X, -)$ preserves all coproducts.}.
-                            \item a functor $F: \calG \to \Fin$\footnote{With $\Fin$ denoting the category of finite sets}, called the \textbf{fibre functor}, which we shall require to be exact and to reflect isomorphisms (i.e. for all bijections $Fx \cong Fy$ between finite sets, one has an isomorphism $x \cong y$ in $\calG$).
+                            \item a \textit{finitely complete and finitely cocomplete} small category $\calG$, wherein objects can all be written as finite coproducts of \textit{connected} objects\footnote{Objects $X \in \calG$ such that the copresheaf $\calG(X, -)$ preserves all coproducts.}.
+                            \item a \textit{strictly ind-corepresentable}\footnote{This means that the functor is isomorphic to a filtered colimit of corepresentable functors on $\calG$ or equivalently, corepresentable by a strict pro-object of $\calG$ (that is, as a functor on $\Pro(\calG)$).} functor $F: \calG \to \Fin$\footnote{With $\Fin$ denoting the category of finite sets}, called the \textbf{fibre functor}, which we shall require to be exact and to reflect isomorphisms (i.e. for all bijections $Fx \cong Fy$ between finite sets, one has an isomorphism $x \cong y$ in $\calG$).
                         \end{itemize}
-                        \item \textbf{(Galois objects):} An object $X$ of a (locally small) Galois category $\calG$ is a \textbf{Galois object} if and only if it has no non-trivial automorphisms, i.e. if and only if there is a bijection $\calG(\pt, X) \cong \Aut_{\calG}(X)$ (with $\pt$ a terminal object of $\calG$\footnote{Note that Galois categories must have terminal objects, as they are finitely complete and terminal objects are nothing but the limit of the empty diagram (which is finite by virtue of containing no vertices and no edges).})
+                        \item \textbf{(Galois objects):} An object $X$ of a Galois category $\calG$ is a \textbf{Galois object} if and only if it has no non-trivial automorphisms, i.e. if and only if there is a bijection $\calG(\pt, X) \cong \Aut_{\calG}(X)$ (with $\pt$ a terminal object of $\calG$\footnote{Note that Galois categories must have terminal objects, as they are finitely complete and terminal objects are nothing but the limit of the empty diagram (which is finite by virtue of containing no vertices and no edges).})
                         \item An exact functor $\Phi: \calG \to \calG'$ between Galois categories $(\calG, F), (\calG', F')$ which preserves connected objects and commute with the fibre functors in the following manner:
                             $$
                                 \begin{tikzcd}
@@ -26,26 +26,35 @@
                 \item \textbf{(Fundamental groups):} In the sense of \cite[Theorem 2.16]{noohi_fundamental_group}, the \textbf{fundamental group} of a given Galois category $(\calG, F)$ is the group $\Aut(F)$ of natural automorphisms on thefibre functor $F: \calG \to \Fin$. We shall suggestively denote the fundamental group of a given Galois category by $\pi_1(\calG, F)$. 
             \end{enumerate}
         \end{definition}
+        \begin{remark}[Some basic properties of Galois categories] \label{remark: basic_properties_of_galois_categories}
+            Fix a Galois category $(\calG, F)$.
+            \begin{enumerate}
+                \item Because the fibre functor $F: \calG \to \Fin$ is strictly ind-corepresentable (say, by $P \in \Pro(\calG)$) by definition, the fundamental group $\pi_1(\calG, F) \cong \Aut(F)$
+                \item 
+            \end{enumerate}
+        \end{remark}
         
-        Before we state the next definition, let us observe that for any given base scheme $X$, the category $\Sch_{/X}^{\fet}$ of schemes finite and \'etale over $X$ is a category wherein:
+        Before we state the next definition, let us observe that for any given base scheme $X$, the category $(\Sch_{/X})_{\fet}$ of schemes finite and \'etale over $X$ is a category wherein:
             \begin{itemize}
                 \item all finite limits and all finite colimits exist, and
                 \item all objects can be written as a (possibly empty) finite coproduct of connected objects, which happen to be schemes that are \'etale over $X$.  
             \end{itemize}
         In other words, the category spanned by (possibly empty) finite coproducts of schemes \'etale over $X$ can serve as the base category of a finite Galois category. For a detailed proof, see \cite[\href{https://stacks.math.columbia.edu/tag/0BN9}{Tag 0BN9}]{stacks}. 
         \begin{definition}[\'Etale fundamental group] \label{def: etale_fundamental_groups}
-            Let $X$ be a scheme with a fixed geometric point $\bar{x}$ and define the following fibre functor:
-                $$F_{\bar{x}}: \Sch_{/X}^{\fet} \to \Fin$$
+            Let $X$ be a scheme with a fixed geometric point $\bar{x}$ (i.e. the affine scheme corresponding to a separable closure of the residue field at $x \in X$) and define the following fibre functor:
+                $$F_{\bar{x}}: (\Sch_{/X})_{\fet} \to \Fin$$
                 $$Y \mapsto |Y_{\bar{x}}|$$
-            (where $|Y_{\bar{x}}|$ denotes the underlying set of the fibre of the $X$-scheme $Y$ over $\bar{x}$) The pair $(\Sch_{/X}^{\fet}, F_{\bar{x}})$ as above thus define a finite Galois category. Its fundamental group $\Aut(F_{\bar{x}})$ is commonly denoted by $\pi_1(X_{\fet}, \bar{x})$ and called the \textbf{\'etale fundamental group} of $X$ based at $\bar{x}$.
+            (where $|Y_{\bar{x}}|$ denotes the underlying set of the fibre of the $X$-scheme $Y$ over $\bar{x}$) The pair $((\Sch_{/X})_{\fet}, F_{\bar{x}})$ as above thus define a finite Galois category. Its fundamental group $\Aut(F_{\bar{x}})$ is commonly denoted by $\pi_1(X_{\fet}, \bar{x})$ and called the \textbf{\'etale fundamental group} of $X$ based at $\bar{x}$.
         \end{definition}
         \begin{remark}
             Definition \ref{def: etale_fundamental_groups} is actually a bit subtle and honestly, somewhat ill-founded. For instance, it is not entirely clear that $F_{\bar{x}}$ is an honest-to-Grothendieck fibre functor. It is certainly left-exact, by virtue of being defined via pullbacks, and it is right-exact because any \'etale algebra over a field can be written as a finite direct sum of finite extensions of that field \cite[\href{https://stacks.math.columbia.edu/tag/00U3}{Tag 00U3}]{stacks}, and direct sums are biproducts of vector spaces. 
             
-            However, the fact that the sets $|Y_{\bar{x}}|$ are finite is not really trivial, although it is not too hard to prove either. It is also a consequence of \'etale algebras being isomorphic to finite direct sums of finite extensions: in our case, because the algebraic closure $\overline{\kappa_x}$ of the residue field of $x$ does not admit any non-trivial finite extension (since finite extensions are \textit{a priori} algebraic), the underlying vector space of any \'etale $\overline{\kappa_x}$-algebra must be isomorphic to a finite direct sum of $\overline{\kappa_x}$ itself. In terms of schemes, this means that when both $Y$ and $X$ are affine, the fibre $Y_{\bar{x}}$ is nothing but a coproduct of finitely many copies of $\Spec \overline{\kappa_x}$ (i.e. of the geometric point $\bar{x}$), and hence the set $|Y_{\bar{x}}|$ has to be finite. Then, by using the fact the \'etale-ness is a local property, we can deduce that the set $|Y_{\bar{x}}|$ must be finite regardless of whether $Y$ and $X$ are finite or not. This proof also demonstrates that $F_{\bar{x}}$ necessarily reflects isomorphisms.
+            However, the fact that the sets $|Y_{\bar{x}}|$ are finite is not really trivial, although it is not too hard to prove either. It is also a consequence of \'etale algebras being isomorphic to finite direct sums of finite extensions: in our case, because the separable closure $\kappa_x^{\sep}$ of the residue field of $x$ does not admit any non-trivial finite \'etale extension\footnote{Note that purely inseparably extensions are not \'etale}, the underlying $\kappa_x^{\sep}$-vector space of any \'etale $\kappa_x^{\sep}$-algebra must be isomorphic to a finite direct sum of $\kappa_x^{\sep}$ itself. In terms of schemes, this means that when both $Y$ and $X$ are affine, the fibre $Y_{\bar{x}}$ is nothing but a coproduct of finitely many copies of $\Spec \kappa_x^{\sep}$ (i.e. of the geometric point $\bar{x}$), and hence the set $|Y_{\bar{x}}|$ has to be finite. Then, by using the fact the \'etale-ness is a local property, we can deduce that the set $|Y_{\bar{x}}|$ must be finite regardless of whether $Y$ and $X$ are finite or not. This proof also demonstrates that $F_{\bar{x}}$ necessarily reflects isomorphisms.
+            
+            Lastly, let us show that $F_{\bar{x}}$ is ind-corepresentable.
             
             The functor from definition \ref{def: etale_fundamental_groups}:
-                $$F_{\bar{x}}: \Sch_{/X}^{\fet} \to \Fin$$
+                $$F_{\bar{x}}: (\Sch_{/X})_{\fet} \to \Fin$$
                 $$Y \mapsto |Y_{\bar{x}}|$$
             is therefore a well-defined fibre functor.
         \end{remark}
@@ -55,7 +64,7 @@
             \noindent
             \begin{enumerate}
                 \item Let $f: Y \to X$ be a morphism of connected schemes such that the base change functor:
-                    $$f^*: \Sch_{/X}^{\fet} \to \Sch_{/Y}^{\fet}$$
+                    $$f^*: (\Sch_{/X})_{\fet} \to (\Sch_{/Y})_{\fet}$$
                     $$X' \mapsto X' \x_X Y$$
                 is an equivalence. Then, for any choice of geometric points $\bar{x} \in X$ and $\bar{y} \in Y$, one has the following isomorphism of \'etale fundamental groups $\pi_1(X_{\fet}, \bar{x}) \cong \pi_1(Y_{\fet}, \bar{y})$.
                 \item If $f: Y \to X$ is a \href{https://stacks.math.columbia.edu/tag/04DC}{\underline{universal homeomorphism}} between connected schemes then not only is the base change functor $f^*$ an equivalence, but also, one has an isomorphism of \'etale fundamental groups $\pi_1(X_{\fet}) \cong \pi_1(Y_{\fet})$\footnote{See corollary \ref{coro: etale_fundamental_group_uniqueness} for why we have ommited the base points.}. 
@@ -72,15 +81,24 @@
             For any connected scheme $X$ and any pair of possibly distinct geometric points $\bar{x}, \bar{x}' \in X$, one has any isomorphism of \'etale fundamental groups $\pi_1(X_{\fet}, \bar{x}) \cong \pi_1(X_{\fet}, \bar{x}')$, and therefore it makes sense to only speak of \textit{the} fundamental group of $X$, which we shall denote by $\pi_1(X_{\fet})$.
         \end{corollary}
         
-        Let us now take a break and compute certain instances of the \'etale fundamental group.
+        Of course, the \'etale fundamental group is not only topologically significant, but also of great importance in algebraic number theory. For instance, the \'etale fundamental group of any field $k$ is its absolute Galois group (cf. example \ref{example: etale_fundamental_groups}), which tells us that $X \cong \Spec k$ with a choice of geometric point $\bar{x} \cong \Spec k^{\sep}$ (corresponding to a choice of separable closure $k^{\sep}/k$) ought to be thought of as a point with attached automorphisms (which are precisely the field automorphisms $\sigma \in \Gal(k^{\sep}/k)$ and hence are non-trivial unless $k$ is separably closed). In this sense, the notion of \say{loop modulo homotopies} in the \'etale topology coincide with that of field automorphisms. Let us explore this idea more rigorously through the following proposition:
+        
+        Let us now compute certain instances of the \'etale fundamental group to verify for ourselves its importance within the context of arithemtic algebraic geometry.
         \begin{example}[Examples of the \'etale fundamental group] \label{example: etale_fundamental_groups}
             \noindent
             \begin{itemize}
-                \item \textbf{(Projective line):} It is well-known that $\P^1_k$ (for any field $k$) is a smooth connected projective curve with function field $k(t)$. Through proposition \ref{prop: curves_and_function_fields}, one sees that $\pi_1((\P^1_k)_{\fet}) \cong \pi_1((\Spec k(t))_{\fet}) \cong \Gal(\overline{k(t)}/k(t)) \cong \Gal(\bar{k}/k)$.
-                \item \textbf{(Discrete valuation rings):} Let us start with the prototypical case of $\Z_p$. Because objects of $\Sch_{/\Spec \Z_p}^{\fet}$ are \textit{a priori} finite unramified integral extensions of $\Z_p$ whose fraction fields are $p$-adic fields of the same degree over $\Q_p$ (the fraction field of $\Z_p$), one obtains a canonical equivalence of Galois categories $\Sch_{/\Spec \Q_p}^{\fet} \cong \Sch_{/\Spec \Z_p}^{\fet}$. As a consequence, $\pi_1((\Spec \Z_p)_{\fet}) \cong \pi_1((\Spec \Q_p)_{\fet}) \cong \Gal(\Q_p^{\unr}/\Q_p) \cong \hat{\Z}$, where $\Q_p^{\unr}/\Q_p$ is the maximal unramified extension of $\Q_p$, which one obtains by adjoining all $n^{th}$ roots of unity to $\Q_p$ (for all $n$ coprime to $p$).
+                \item \textbf{(Fields):} Let $K$ be any field. Because finite \'etale $K$-algebras are finite products of finite separable extensions of $K$ \textit{a priori} (cf. \cite[\href{https://stacks.math.columbia.edu/tag/00U3}{Tag 00U3}]{stacks}), objects of $(\Sch_{/\Spec k})_{\fet}$ are necessarily of the form $Y \cong \coprod_{i = 1}^n \Spec K_i$ wherein $K_i/K$ are finite separable extensions. 
+                \item \textbf{(Projective line):} It is well-known that $\P^1_k$ (for any field $k$) is a smooth connected projective curve with function field $k(t)$. Through proposition \ref{prop: curves_and_function_fields}, one sees that:
+                    $$\pi_1((\P^1_k)_{\fet}) \cong \pi_1((\Spec k(t))_{\fet}) \cong \Gal(k(t)^{\sep}/k(t)) \cong \Gal(k^{\sep}(t)/k(t)) \cong \Gal(k^{\sep}/k)$$
+                \item \textbf{(Discrete valuation rings):} Let us start with the prototypical case of $\Z_p$. Because objects of $(\Sch_{/\Spec \Z_p})_{\fet}$ are \textit{a priori} finite unramified integral extensions of $\Z_p$ whose fraction fields are $p$-adic fields of the same degree over $\Q_p$ (the fraction field of $\Z_p$), one obtains a canonical equivalence of Galois categories:
+                    $$(\Sch_{/\Spec \Q_p})_{\fet} \cong (\Sch_{/\Spec \Z_p})_{\fet}$$
+                As a consequence:
+                    $$\pi_1((\Spec \Z_p)_{\fet}) \cong \pi_1((\Spec \Q_p)_{\fet}) \cong \Gal(\Q_p^{\unr}/\Q_p) \cong \hat{\Z}$$
+                where $\Q_p^{\unr}/\Q_p$ is the maximal unramified extension of $\Q_p$, which one obtains by adjoining all $n^{th}$ roots of unity to $\Q_p$ (for all $n$ coprime to $p$).
                 
-                By arguing similarly, one will also see that $\pi_1((\Spec \F_p(\!(t)\!))_{\fet}) \cong \hat{\Z}$ as well. In fact, if $\scrV$ is any discrete valuation ring with residue field $k$ then $\pi_1((\Spec \scrV)_{\fet}) \cong \Gal(\bar{k}/k)$ (one can start with $\scrV \cong \Z_p$, and notice that the residue field of any finite unramified extension of $\Q_p$ is $\F_{p^n}$, with $n$ being the degree of that extension).
-                \item \textbf{(Algebraic integers):} Minkowski's Theorem tells us that every non-trivial finite extension of $\Q$ ramifies at some prime $(p) \in \Spec \Z$. As a consequence, $\pi_1((\Spec \Z)_{\fet}) \cong 1$.
+                By arguing similarly, one will also see that $\pi_1((\Spec \F_p(\!(t)\!))_{\fet}) \cong \hat{\Z}$ as well. In fact, if $\scrV$ is any discrete valuation ring with residue field $k$ then $\pi_1((\Spec \scrV)_{\fet}) \cong \Gal(k^{\sep}/k)$ (one can start with $\scrV \cong \Z_p$, and notice that the residue field of any finite unramified extension of $\Q_p$ is $\F_{p^n}$, with $n$ being the degree of that extension).
+                \item \textbf{(Algebraic integers):} Minkowski's Theorem tells us that every non-trivial finite extension of $\Q$ ramifies at some prime $(p) \in \Spec \Z$, so:
+                    $$\pi_1((\Spec \Z)_{\fet}) \cong 1$$
                 \item \textbf{(Affine line):} 
             \end{itemize}
         \end{example}
@@ -117,7 +135,7 @@
         \begin{example}
             \noindent
             \begin{itemize}
-                \item \textbf{($X \cong \P^1_k$):} We know from example \ref{example: etale_fundamental_groups} that $\pi_1((\P^1_k)_{\fet}) \cong \Gal(\bar{k}/k)$. Hence $\pi_1^{\ab}((\P^1_k)_{\fet}) \cong \Gal(k^{\ab}/k)$, and continuous $\ell$-adic characters of $\pi_1^{\ab}((\P^1_k)_{\fet})$ are therefore nothing but continuous $\ell$-adic characters of $\Gal(k^{\ab}/k)$, viewed as a profinite group.
+                \item \textbf{($X \cong \P^1_k$):} We know from example \ref{example: etale_fundamental_groups} that $\pi_1((\P^1_k)_{\fet}) \cong \Gal(k^{\sep}/k)$. Hence $\pi_1^{\ab}((\P^1_k)_{\fet}) \cong \Gal(k^{\ab}/k)$, and continuous $\ell$-adic characters of $\pi_1^{\ab}((\P^1_k)_{\fet})$ are therefore nothing but continuous $\ell$-adic characters of $\Gal(k^{\ab}/k)$, viewed as a profinite group.
                 \item \textbf{(Elliptic curves over char. $0$):}
                 \item \textbf{(Counter-example: $X \cong \A^1_k, \chara k = 0$):}
             \end{itemize}
