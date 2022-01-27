@@ -1,13 +1,13 @@
 \section{The Galois Side}
     \subsection{The \'etale fundamental group}
         Let us begin with an auxiliary notion, that of pro-representable functors, which is necessary for our first important construction, that of Galois categories.
-        \begin{definition}[pro-representable functors] \label{def: pro_representable_functors}
+        \begin{definition}[Pro-representable functors] \label{def: pro_representable_functors}
             \noindent
             \begin{enumerate}
                 \item \textbf{(Pro-completions):} Following \cite[Definition 2.1]{isaksen_2001_limits_and_colimits_in_pro_categories}, the \textbf{pro-completion} $\Pro(\C)$ of a small category $\C$ is the category whose objects are cofiltered diagrams in $\C$ and whose hom-sets are given by:
                     $$\Pro(\C)(\{X_i\}_{i \in \calI}, \{Y_j\}_{j \in \calJ}) \cong \underset{j \in \calJ}{\lim} \underset{i \in \calI}{\colim} \C(X_i, Y_j)$$
                 The dual notion is that of ind-completions; we denote the ind-completion of $\C$ by $\Ind(\C)$.
-                \item \textbf{(pro-representable functors):} Let $\C$ be a small category that is enriched in some small \href{http://nlab-pages.s3.us-east-2.amazonaws.com/nlab/show/closed+monoidal+category}{\underline{closed monoidal category}} $\V$ (e.g. the category of finite sets or the category of sets where the monoidal structure is given by products). Then, a $\V$-presheaf:
+                \item \textbf{(Pro-representable functors):} Let $\C$ be a small category that is enriched in some small \href{http://nlab-pages.s3.us-east-2.amazonaws.com/nlab/show/closed+monoidal+category}{\underline{closed monoidal category}} $\V$ (e.g. the category of finite sets or the category of sets where the monoidal structure is given by products). Then, a $\V$-presheaf:
                     $$F: \C \to \V$$
                 on $\C^{\op}$ is said to be \textbf{pro-representable} if and only if its \textbf{pro-completion}:
                     $$\Pro(F): \Pro(\C) \to \Pro(\V)$$
@@ -43,13 +43,16 @@
             \end{itemize}
         \end{definition}
         \begin{definition}[Fundamental groups of Galois categories] \label{def: fundamental_groups_of_galois_categories}
-            Following \cite[Theorem 2.16]{noohi_fundamental_group}, the \textbf{fundamental group} of a given Galois category $(\calG, F)$ is the group $\Aut(F)$ of natural automorphisms on thefibre functor $F: \calG \to \Fin$. We shall suggestively denote the fundamental group of a given Galois category by $\pi_1(\calG, F)$.
+            The \textbf{fundamental group} of a given Galois category $(\calG, F)$ is the group $\Aut(F)$ of natural automorphisms on thefibre functor $F: \calG \to \Fin$. We shall suggestively denote the fundamental group of a given Galois category by $\pi_1(\calG, F)$.
         \end{definition}
         \begin{remark}[Some basic properties of Galois categories and their fundamental groups] \label{remark: basic_properties_of_galois_categories}
             Fix a Galois category $(\calG, F)$.
             \begin{enumerate}
                 \item As $F$ is required to be pro-representable, $\Pro(F)\left(\underset{i \in \calI}{\lim} X_i\right) \cong \underset{i \in \calI}{\lim} F(X_i)$ for all $\{X_i\}_{i \in \calI} \in \Pro(\calG)$.
-                \item Because the fibre functor $F: \calG \to \Fin$ is pro-representable (say, by $P \in \Pro(\calG)$) by definition, the fundamental group $\pi_1(\calG, F) \cong \Aut(F)$
+                \item The fibre functor:
+                    $$F: \calG \to \Fin$$
+                gives rise to an equivalence of categories:
+                    $$\calG \cong \Fin^{\pi_1(\calG, F)}$$
             \end{enumerate}
         \end{remark}
         
@@ -63,15 +66,15 @@
                     \item all finite limits and all finite colimits exist, and
                     \item all objects can be written as a (possibly empty) finite coproduct of connected objects, which happen to be schemes that are \'etale over $X$.  
                 \end{itemize}
-            (for a detailed proof, see \cite[\href{https://stacks.math.columbia.edu/tag/0BN9}{Tag 0BN9}]{stacks}) so should we be able to define a fibre functor $(\Sch_{/X})_{\fet} \to \Fin$, we will have succeeded in putting a Galois category structure on $(\Sch_{/X})_{\fet}$. As a matter of fact, such a well-defined fibre functor has good reasons to exist: it is an easy consequence of \cite[\href{https://stacks.math.columbia.edu/tag/00U3}{Tag 00U3}]{stacks} that for any fixed geometric point $\bar{x} \in X$ (corresponding to a separable closure $\kappa_x^{\sep}$ of the residue field of $x \in X$), one has:
-                $$(\Spec \kappa_x^{\sep})_{\fet} \cong \Fin$$
-            (the forward direct simply involves taking the underlying set, and the inverse functors is given by $I \mapsto \coprod_{i = 1}^{|I|} \Spec \kappa_x^{\sep}$) and so for any $k$-scheme $X$, one has the following canonical defined functor:
-                $$(\Sch_{/X})_{\fet} \to (\Sch_{/\Spec \kappa_x^{\sep}})$$
+            (for a detailed proof, see \cite[\href{https://stacks.math.columbia.edu/tag/0BN9}{Tag 0BN9}]{stacks}) so should we be able to define a fibre functor $(\Sch_{/X})_{\fet} \to \Fin$, we will have succeeded in putting a Galois category structure on $(\Sch_{/X})_{\fet}$. As a matter of fact, such a well-defined fibre functor has good reasons to exist: it is an easy consequence of \cite[\href{https://stacks.math.columbia.edu/tag/00U3}{Tag 00U3}]{stacks} that for any fixed geometric point $\bar{x} \in X$ (corresponding to an algebraic closure $\kappa_x^{\alg}$ of the residue field of $x \in X$\footnote{Certain sources consider geometric points to correspond to separable closures. For us, however, geometric points are algebraically closed fields $K$ so that $\Spec K$ be a Galois object of $(\Sch_{/\Spec K})_{\fet}$ (cf. definition \ref{def: galois_categories}). In practice this choice usually does not matter, since we will mostly work over perfect field, and separable closures of perfect fields are algebraically closed (a notable exception is when we work over perfectoid fields; cf. \cite{scholze2011perfectoid}).}), one has:
+                $$(\Spec \kappa_x^{\alg})_{\fet} \cong \Fin$$
+            (the forward direct simply involves taking the underlying set, and the inverse functors is given by $I \mapsto \coprod_{i = 1}^{|I|} \Spec \kappa_x^{\alg}$) and so for any $k$-scheme $X$, one has the following canonical defined functor:
+                $$(\Sch_{/X})_{\fet} \to (\Sch_{/\Spec \kappa_x^{\alg}})$$
                 $$Y \mapsto Y_{\bar{x}}$$
-            where $Y_{\bar{x}} \cong Y \x_X \Spec \kappa_x^{\sep}$; one can then take the underlying set of $Y_{\bar{x}}$ to get the following trivially left-exact functor:
+            where $Y_{\bar{x}} \cong Y \x_X \Spec \kappa_x^{\alg}$; one can then take the underlying set of $Y_{\bar{x}}$ to get the following trivially left-exact functor:
                 $$F_{\bar{x}}: (\Sch_{/X})_{\fet} \to \Fin$$
                 $$Y \mapsto |Y_{\bar{x}}|$$
-            We should also verify that the sets $|Y_{\bar{x}}|$ are indeed finite. To this end, let us first apply the fact that pullbacks of \'etale morphisms are \'etale to see that if $Y$ is affine over $X$ then $Y_{\bar{x}}$ will have to be the spectrum of an \'etale $\kappa_x^{\sep}$-algebra; however, according to \cite[\href{https://stacks.math.columbia.edu/tag/00U3}{Tag 00U3}]{stacks}, this means that $Y_{\bar{x}} \cong \Spec (\kappa_x^{\sep})^{\oplus N}$ for some finite $N$. The locality of \'etale-ness and the finiteness of $Y$ as an $X$-scheme then tells us that in general, $Y_{\bar{x}}$ must be a finite disjoint union of affine schemes of the form $\Spec (\kappa_x^{\sep})^{\oplus N}$, meaning that $Y_{\bar{x}} \cong \Spec (\kappa_x^{\sep})^{\oplus N'}$ for some finite $N'$. The set $|Y_{\bar{x}}|$ is therefore always finite. One also sees that an immediate consequence of this proof is that $F_{\bar{x}}$ necessarily \textit{reflects isomorphisms} and is \textit{right-exact}. It thus remains to show that $F_{\bar{x}}$ is \textit{pro-representable}. For this, firstly note that because $F_{\bar{x}}(Y)$ is a finite set for all $Y \in (\Sch_{/X})_{\fet}$, there is a bijection between $F_{\bar{x}}(Y)$ and commutative diagrams of the form:
+            We should also verify that the sets $|Y_{\bar{x}}|$ are indeed finite. To this end, let us first apply the fact that pullbacks of \'etale morphisms are \'etale to see that if $Y$ is affine over $X$ then $Y_{\bar{x}}$ will have to be the spectrum of an \'etale $\kappa_x^{\alg}$-algebra; however, according to \cite[\href{https://stacks.math.columbia.edu/tag/00U3}{Tag 00U3}]{stacks}, this means that $Y_{\bar{x}} \cong \Spec (\kappa_x^{\alg})^{\oplus N}$ for some finite $N$. The locality of \'etale-ness and the finiteness of $Y$ as an $X$-scheme then tells us that in general, $Y_{\bar{x}}$ must be a finite disjoint union of affine schemes of the form $\Spec (\kappa_x^{\alg})^{\oplus N}$, meaning that $Y_{\bar{x}} \cong \Spec (\kappa_x^{\alg})^{\oplus N'}$ for some finite $N'$. The set $|Y_{\bar{x}}|$ is therefore always finite. One also sees that an immediate consequence of this proof is that $F_{\bar{x}}$ necessarily \textit{reflects isomorphisms} and is \textit{right-exact}. It thus remains to show that $F_{\bar{x}}$ is \textit{pro-representable}. For this, firstly note that because $F_{\bar{x}}(Y)$ is a finite set for all $Y \in (\Sch_{/X})_{\fet}$, there is a bijection between $F_{\bar{x}}(Y)$ and commutative diagrams of the form:
                 $$
                     \begin{tikzcd}
                     	& Y \\
@@ -83,7 +86,7 @@
                 $$
             which tells us that there is a bijection:
                 $$F_{\bar{x}}(Y) \cong \Sch_{/X}(\bar{x}, Y)$$
-            It can then be shown using the definition separable closures and the Fundamental Theorem of Galois Theory, that $\bar{x} \in \Pro\left((\Sch_{/X})_{\fet}\right)$. According to remark \ref{remark: pro_representable_functors_are_ind_objects} and Yoneda's Lemma, $F_{\bar{x}}$ is therefore pro-representable.
+            It can then be shown using the definition algebraic closures and the Fundamental Theorem of Galois Theory, that $\bar{x} \in \Pro\left((\Sch_{/X})_{\fet}\right)$. According to remark \ref{remark: pro_representable_functors_are_ind_objects} and Yoneda's Lemma, $F_{\bar{x}}$ is therefore pro-representable.
             
             We have thus constructed a well-defined fibre functor:
                 $$F_{\bar{x}}: (\Sch_{/X})_{\fet} \to \Fin$$
@@ -98,7 +101,7 @@
             \noindent
             \begin{enumerate}
                 \item Let $f: Y \to X$ be a morphism of connected schemes such that the base change functor $X' \mapsto X' \x_X Y$ is an equivalence. Then, for any choice of geometric points $\bar{x} \in X$ and $\bar{y} \in Y$, one has the following isomorphism of \'etale fundamental groups $\pi_1(X_{\fet}, \bar{x}) \cong \pi_1(Y_{\fet}, \bar{y})$.
-                \item If $f: Y \to X$ is a \href{https://stacks.math.columbia.edu/tag/04DC}{\underline{universal homeomorphism}} between connected schemes then not only is the base change functor $X' \mapsto X' \x_X Y$ an equivalence, but also, one has an isomorphism of \'etale fundamental groups $\pi_1(X_{\fet}) \cong \pi_1(Y_{\fet})$\footnote{See corollary \ref{coro: etale_fundamental_group_uniqueness} for why we have ommited the base points.}. 
+                \item If $f: Y \to X$ is a \href{https://stacks.math.columbia.edu/tag/04DC}{\underline{universal homeomorphism}} between connected schemes then not only is the base change functor $X' \mapsto X' \x_X Y$ an equivalence, but also, one has an isomorphism of \'etale fundamental groups $\pi_1(X_{\fet}) \cong \pi_1(Y_{\fet})$\footnote{See corollary \ref{coro: etale_fundamental_group_uniqueness} for why we have omited the base points.}. 
             \end{enumerate}
         \end{proposition}
             \begin{proof}
@@ -117,16 +120,16 @@
             \noindent
             \begin{itemize}
                 \item \textbf{(Fields):} For any field $K$, one has:
-                    $$\pi_1((\Spec K)_{\fet}) \cong \Gal(K^{\sep}/K)$$
+                    $$\pi_1((\Spec K)_{\fet}) \cong \Gal(K^{\alg}/K)$$
                 \item \textbf{(Projective line):} It is well-known that $\P^1_k$ (for any field $k$) is a smooth connected projective curve with function field $k(t)$. Through proposition \ref{prop: curves_and_function_fields}, one sees that:
-                    $$\pi_1((\P^1_k)_{\fet}) \cong \pi_1((\Spec k(t))_{\fet}) \cong \Gal(k(t)^{\sep}/k(t)) \cong \Gal(k^{\sep}(t)/k(t)) \cong \Gal(k^{\sep}/k)$$
+                    $$\pi_1((\P^1_k)_{\fet}) \cong \pi_1((\Spec k(t))_{\fet}) \cong \Gal(k(t)^{\alg}/k(t)) \cong \Gal(k^{\alg}(t)/k(t)) \cong \Gal(k^{\alg}/k)$$
                 \item \textbf{(Discrete valuation rings):} Let us start with the prototypical case of $\Z_p$. Because objects of $(\Sch_{/\Spec \Z_p})_{\fet}$ are \textit{a priori} finite unramified integral extensions of $\Z_p$ whose fraction fields are $p$-adic fields of the same degree over $\Q_p$ (the fraction field of $\Z_p$), one obtains a canonical equivalence of Galois categories:
                     $$(\Sch_{/\Spec \Q_p})_{\fet} \cong (\Sch_{/\Spec \Z_p})_{\fet}$$
                 As a consequence:
                     $$\pi_1((\Spec \Z_p)_{\fet}) \cong \pi_1((\Spec \Q_p)_{\fet}) \cong \Gal(\Q_p^{\unr}/\Q_p) \cong \hat{\Z}$$
                 where $\Q_p^{\unr}/\Q_p$ is the maximal unramified extension of $\Q_p$, which one obtains by adjoining all $n^{th}$ roots of unity to $\Q_p$ (for all $n$ coprime to $p$).
                 
-                By arguing similarly, one will also see that $\pi_1((\Spec \F_p(\!(t)\!))_{\fet}) \cong \hat{\Z}$ as well. In fact, if $\scrV$ is any discrete valuation ring with residue field $k$ then $\pi_1((\Spec \scrV)_{\fet}) \cong \Gal(k^{\sep}/k)$ (one can start with $\scrV \cong \Z_p$, and notice that the residue field of any finite unramified extension of $\Q_p$ is $\F_{p^n}$, with $n$ being the degree of that extension).
+                By arguing similarly, one will also see that $\pi_1((\Spec \F_p(\!(t)\!))_{\fet}) \cong \hat{\Z}$ as well. In fact, if $\scrV$ is any discrete valuation ring with residue field $k$ then $\pi_1((\Spec \scrV)_{\fet}) \cong \Gal(k^{\alg}/k)$ (one can start with $\scrV \cong \Z_p$, and notice that the residue field of any finite unramified extension of $\Q_p$ is $\F_{p^n}$, with $n$ being the degree of that extension).
                 \item \textbf{(Algebraic integers):} Minkowski's Theorem tells us that every non-trivial finite extension of $\Q$ ramifies at some prime $(p) \in \Spec \Z$, so:
                     $$\pi_1((\Spec \Z)_{\fet}) \cong 1$$
                 \item \textbf{(Affine line):} 
@@ -134,8 +137,17 @@
         \end{example}
     
     \subsection{\texorpdfstring{$\ell$}{}-adic sheaves and Grothendieck's Galois Theory}
+        \begin{convention}
+            From this point on, $(\Sch_{/X})_{\fet}$ will also be used to denote the small \'etale site of finite \'etale $X$-schemes. Note that this is a full subsite of the small \'etale site $(\Sch_{/X})_{\et}$ of \'etale $X$-schemes. 
+            
+            Additionally, by \say{local systems}, we shall always mean locally constant \'etale sheaves. For how stalks of \'etale sheaves are computed, see \cite[\href{https://stacks.math.columbia.edu/tag/03PN}{Tag 03PN}]{stacks}.
+        \end{convention}
+        \begin{convention} \label{conv: base_curve}
+            Henceforth, $X$ shall be a smooth projective \textit{connected} curve over $\Spec k$ (with $k$ some field).
+        \end{convention}
+        
         \begin{lemma}[Representations of the \'etale fundamental group are local systems] \label{lemma: representations_of_the_etale_fundamental_group}
-            Let $\Lambda$ be a commutative ring and let $X$ be a connected scheme with a fixed geometric point $\bar{x} \in X$. Then, there exists a canonical equivalence of categories:
+            Let $\Lambda$ be a commutative ring and fix a geometric point $\bar{x} \in X$. Then, there exists a canonical equivalence of categories:
                 $$\LocSys_{\Lambda}^{\fin}(X_{\et}) \cong \Rep_{\Lambda}^{\fin}(\pi_1(X_{\fet}))^{\cont}$$
                 $$\calL \mapsto \calL_{\bar{x}}$$
             between the category of \'etale locally constant sheaves of finite type $\Lambda$-modules on $X$ and the category of finite-dimensional continuous $\Lambda$-linear representations of $\pi_1(X_{\fet})$.
@@ -143,10 +155,6 @@
             \begin{proof}
                 
             \end{proof}
-    
-        \begin{convention} \label{conv: base_curve}
-            From this point on, $X$ shall be a smooth projective \textit{connected} curve over $\Spec k$ (with $k$ some field). Furthermore, by \say{local systems}, we shall always mean locally constant sheaves in the \'etale topology.
-        \end{convention}
         
         \begin{theorem}[Unramified representations are sheaves on $X$] \label{theorem: unramified_representations_are_sheaves_on_X}
             Fix a geometric point $\bar{x} \in X$. Then, there is a canonical equivalence of categories:
@@ -162,11 +170,3 @@
                     $$\chi \mapsto \chi^{\ab}$$
                 making it an equivalence of categories\footnote{In fact, of groupoids. Note that $\LocSys_{\overline{\Q_{\ell}}}^1(X)$ is also a groupoid, and so the statement of theorem \ref{theorem: unramified_representations_are_sheaves_on_X} is actually an equivalence of groupoids.} by definition. The compatibility of this equivalence with the equivalence $\LocSys^1_{\overline{\Q_{\ell}}}(X) \cong \Rep^1_{\overline{\Q_{\ell}}}(\pi_1(X_{\fet}))^{\cont}$ (given by $\calL \mapsto \calL_{\bar{x}}$) is obvious.
             \end{proof}
-        \begin{example}
-            \noindent
-            \begin{itemize}
-                \item \textbf{($X \cong \P^1_k$):} We know from example \ref{example: etale_fundamental_groups} that $\pi_1((\P^1_k)_{\fet}) \cong \Gal(k^{\sep}/k)$. Hence $\pi_1^{\ab}((\P^1_k)_{\fet}) \cong \Gal(k^{\ab}/k)$, and continuous $\ell$-adic characters of $\pi_1^{\ab}((\P^1_k)_{\fet})$ are therefore nothing but continuous $\ell$-adic characters of $\Gal(k^{\ab}/k)$, viewed as a profinite group.
-                \item \textbf{(Elliptic curves over char. $0$):}
-                \item \textbf{(Counter-example: $X \cong \A^1_k, \chara k = 0$):}
-            \end{itemize}
-        \end{example}
