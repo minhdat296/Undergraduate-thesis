@@ -110,18 +110,38 @@
         \end{definition}
         
         Now, let us make sure that the \'etale fundamental group $\pi_1(X_{\fet}, \bar{x})$ as defined in definition \ref{def: etale_fundamental_groups} actually makes sense topologically and geometrically. Namely, we would like to know the behaviours of $\pi_1(X_{\fet}, \bar{x})$ when we change the base point and when we base-change, as well as whether or not it is \say{insensitive} to (universal) homeomorphisms.
+        \begin{lemma} \label{lemma: base_change_of_thickenings}
+            If $X \subset X'$ be a \href{https://stacks.math.columbia.edu/tag/04EW}{\underline{thickening}} of schemes. Then, the following base change functor is an equivalence of Galois categories:
+                $$(\Sch_{/X'})_{\fet} \to (\Sch_{/X})_{\fet}$$
+                $$T \mapsto T \x_{X'} X$$
+        \end{lemma}
+            \begin{proof}
+                
+            \end{proof}
         \begin{proposition}[The \'etale fundamental group as a topological invariance] \label{prop: the_etale_fundamental_group_as_a_topological_invariance}
             \noindent
             \begin{enumerate}
-                \item Let $f: Y \to X$ be a morphism of connected schemes such that the base change functor $X' \mapsto X' \x_X Y$ is an equivalence. Then, for any choice of geometric points $\bar{x} \in X$ and $\bar{y} \in Y$, one has the following isomorphism of \'etale fundamental groups $\pi_1(X_{\fet}, \bar{x}) \cong \pi_1(Y_{\fet}, \bar{y})$.
-                \item If $f: Y \to X$ is a \href{https://stacks.math.columbia.edu/tag/04DC}{\underline{universal homeomorphism}} between connected schemes then not only is the base change functor $X' \mapsto X' \x_X Y$ an equivalence, but also, one has an isomorphism of \'etale fundamental groups $\pi_1(X_{\fet}) \cong \pi_1(Y_{\fet})$\footnote{See corollary \ref{coro: etale_fundamental_group_uniqueness} for why we have omited the base points.}. 
+                \item Let $f: Y \to X$ be a morphism of connected schemes such that the base change functor:
+                    $$(\Sch_{/X})_{\fet} \to (\Sch_{/Y})_{\fet}$$
+                    $$X' \mapsto X' \x_X Y$$
+                is an equivalence of Galois categories. Then, for any choice of geometric points $\bar{x} \in X$ and $\bar{y} \in Y$, one has the following isomorphism of \'etale fundamental groups $\pi_1(X_{\fet}, \bar{x}) \cong \pi_1(Y_{\fet}, \bar{y})$.
+                \item If $f: Y \to X$ is a \href{https://stacks.math.columbia.edu/tag/04DC}{\underline{universal homeomorphism}} between connected schemes and if $\bar{y} \in Y$ is a geometric point lying over a fixed geometric point $\bar{x} \in X$, then not only is the base change functor:
+                    $$(\Sch_{/X})_{\fet} \to (\Sch_{/Y})_{\fet}$$
+                    $$X' \mapsto X' \x_X Y$$
+                an equivalence of Galois categories, but also, one has an isomorphism of \'etale fundamental groups $\pi_1(X_{\fet}, \bar{x}) \cong \pi_1(Y_{\fet}, \bar{y})$. 
             \end{enumerate}
         \end{proposition}
             \begin{proof}
                 \noindent
                 \begin{enumerate}
-                    \item This is an immediate consequence of the assumption that the base change functor $X' \mapsto X' \x_X Y$ is an equivalence and from the definition of \'etale fundamental groups (cf. definition \ref{def: etale_fundamental_groups}).
-                    \item 
+                    \item This is an immediate consequence of the assumption that the base change functor:
+                        $$(\Sch_{/X})_{\fet} \to (\Sch_{/Y})_{\fet}$$
+                        $$X' \mapsto X' \x_X Y$$
+                    is an equivalence and from the definition of \'etale fundamental groups (cf. definition \ref{def: etale_fundamental_groups}).
+                    \item Because $f: Y \to X$ is a universal homeomorphism, the diagonal $\Delta_{Y/X}: Y \to Y \x_X Y$ is a thickening. By lemma \ref{lemma: base_change_of_thickenings}, this means that the base change functor:
+                        $$(\Sch_{Y \x_X Y})_{\fet} \to (\Sch_{/Y})_{\fet}$$
+                        $$T \mapsto T \x_{Y \x_X Y} Y$$
+                    is an equivalence.
                 \end{enumerate}
             \end{proof}
         \begin{corollary}[Uniqueness of \'etale fundamental groups] \label{coro: etale_fundamental_group_uniqueness}
@@ -151,9 +171,13 @@
     
     \subsection{\texorpdfstring{$\ell$}{}-adic sheaves and Grothendieck's Galois Theory}
         \begin{convention}
-            From this point on, $(\Sch_{/X})_{\fet}$ will also be used to denote the small \'etale site of finite \'etale $X$-schemes. Note that this is a full subsite of the small \'etale site $(\Sch_{/X})_{\et}$ of \'etale $X$-schemes. Additionally, for any base scheme $X$ and any field $F$, $\LocSys^n_F(X)$ shall denote the groupoid of locally constant sheaves of $n$-dimensional $F$-vector spaces and isomorphisms between them.  
+            \noindent
+            \begin{itemize}
+                \item From this point on, $(\Sch_{/X})_{\fet}$ will also be used to denote the small \'etale site of finite \'etale $X$-schemes. Note that this is a full subsite of the small \'etale site $(\Sch_{/X})_{\et}$ of \'etale $X$-schemes. 
+                \item Additionally, for any base scheme $X$ and any field $F$, $\LocSys^n_F(X)$ shall denote the groupoid of locally constant sheaves of $n$-dimensional $F$-vector spaces and isomorphisms between them. Likewise, for any topological group $G$, we shall write $\Rep_F^n(G)^{\cont}$ for the groupoid of continuous $n$-dimensional $F$-linear representations of $G$ and isomorphisms between them. 
+            \end{itemize}
         \end{convention}
-        \begin{convention} \label{conv: base_curve}
+        \begin{convention}[The Curve] \label{conv: base_curve}
             Henceforth, $X$ shall be a smooth projective \textit{connected} curve over $\Spec k$ (with $k$ some field).
         \end{convention}
         
@@ -164,7 +188,6 @@
             Let $F$ be a topological field and fix a geometric point $\bar{x} \in X$. Then, for each $n \geq 1$, there exists a canonical equivalence:
                 $$\LocSys_F^n(X_{\et}) \cong \Rep_F^n(\pi_1(X_{\fet}))^{\cont}$$
                 $$\calL \mapsto \calL_{\bar{x}}$$
-            between the groupoid of locally constant sheaves of $n$-dimensional $F$-vector spaces $X$ and that of $n$-dimensional continuous $F$-linear representations of $\pi_1(X_{\fet})$.
         \end{lemma}
             \begin{proof}
                 
@@ -188,7 +211,6 @@
             Fix a geometric point $\bar{x} \in X$. Then, there is a canonical equivalence:
                 $$\LocSys^1_{\overline{\Q_{\ell}}}(X) \cong \Rep^1_{\overline{\Q_{\ell}}}(\pi_1^{\ab}(X_{\fet}))^{\cont}$$
                 $$\calL \mapsto \calL_{\bar{x}}$$
-            between the groupoid of $\ell$-adic local systems of rank $1$ on $X$ and that of continuous (unramified\footnote{\'Etale morphisms are unramified smooth morphisms.}) $\ell$-adic characters of $\pi_1^{\ab}(X_{\fet})$.
         \end{theorem}
             \begin{proof}
                 Simply combine lemma \ref{lemma: representations_of_the_etale_fundamental_group} and lemma \ref{lemma: abelianising_continuous_characters}.
