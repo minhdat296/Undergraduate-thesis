@@ -45,16 +45,29 @@
         \begin{definition}[Fundamental groups of Galois categories] \label{def: fundamental_groups_of_galois_categories}
             The \textbf{fundamental group} of a given Galois category $(\calG, F)$ is the group $\Aut(F)$ of natural automorphisms on thefibre functor $F: \calG \to \Fin$. We shall suggestively denote the fundamental group of a given Galois category by $\pi_1(\calG, F)$.
         \end{definition}
-        \begin{remark}[Some basic properties of Galois categories and their fundamental groups] \label{remark: basic_properties_of_galois_categories}
+        
+        \begin{proposition}[Some basic properties of Galois categories and their fundamental groups] \label{prop: basic_properties_of_galois_categories}
             Fix a Galois category $(\calG, F)$.
-            \begin{enumerate}
-                \item As $F$ is required to be pro-representable, $\Pro(F)\left(\underset{i \in \calI}{\lim} X_i\right) \cong \underset{i \in \calI}{\lim} F(X_i)$ for all $\{X_i\}_{i \in \calI} \in \Pro(\calG)$.
-                \item The fibre functor:
-                    $$F: \calG \to \Fin$$
-                gives rise to an equivalence of categories:
-                    $$\calG \cong \Fin^{\pi_1(\calG, F)}$$
-            \end{enumerate}
-        \end{remark}
+                \begin{enumerate}
+                    \item There is a natural equivalence of categories $\calG \cong \pi_1(\calG, F)\-\Fin$ given by $X \mapsto F(X)$. Furthermore, if $\pi$ is a profinite group such that $\calG \cong \pi\-\Fin$ then 
+                    \item If $F': \calG \to \Fin$ is another fibre functor then $F \cong F'$.
+                \end{enumerate}
+        \end{proposition}
+            \begin{proof}
+                \noindent
+                \begin{enumerate}
+                    \item The group $\prod_{X \in \Ob(\calG)} \Aut(F(X))$\footnote{Note that this product of groups is a group because we have assumed that Galois categories are small (so in particular, this means that $\Ob(\calG)$ is a set and not a proper class).} admits $\Aut(F)$ as a natural subgroup; the natural component maps:
+                        $$\alpha_X: \Aut(F) \to \Aut(F(X))$$
+                    then endow the sets $F(X)$ with natural $\Aut(F)$-actions (i.e. $\pi_1(\calG, F)$-actions). This implies that $F$ factors through $\pi_1(\calG, F)-\Fin$.
+                    
+                    Now, because $\calG$ has all finite limits, it is necessarily cofiltered (as every finite diagram must admit a cone), and hence the (co)filtered limit $\underset{X \in \calG}{\lim} \Aut(F(X))$ has a natural profinite group structure (since the groups $\Aut(F(X))$ are finite). Furthermore, the action maps are continuous:
+                        $$\alpha_X: \Aut(F) \to \Aut(F(X))$$
+                    because the compact-open topology on finite sets (namely the sets $F(X)$) is just the discrete topology and not only that, but one also has an isomorphism of profinite groups:
+                        $$\Aut(F) \cong \underset{X \in \calG}{\lim} \Aut(F(X))$$
+                    as a consequence of the pro-representablity of $F$:  
+                    \item 
+                \end{enumerate}
+            \end{proof}
         
         Let us now try to adapt definitions \ref{def: galois_categories} and \ref{def: fundamental_groups_of_galois_categories} to a appropriate categories of schemes, namely those spanned by schemes finite-\'etale over a given base.
         \begin{remark}[\'Etale vs. finite-\'etale] \label{remark: etale_vs_finite_etale}
@@ -138,16 +151,14 @@
     
     \subsection{\texorpdfstring{$\ell$}{}-adic sheaves and Grothendieck's Galois Theory}
         \begin{convention}
-            From this point on, $(\Sch_{/X})_{\fet}$ will also be used to denote the small \'etale site of finite \'etale $X$-schemes. Note that this is a full subsite of the small \'etale site $(\Sch_{/X})_{\et}$ of \'etale $X$-schemes. 
-            
-            Additionally, by \say{local systems}, we shall always mean locally constant \'etale sheaves. For how stalks of \'etale sheaves are computed, see \cite[\href{https://stacks.math.columbia.edu/tag/03PN}{Tag 03PN}]{stacks}.
+            From this point on, $(\Sch_{/X})_{\fet}$ will also be used to denote the small \'etale site of finite \'etale $X$-schemes. Note that this is a full subsite of the small \'etale site $(\Sch_{/X})_{\et}$ of \'etale $X$-schemes. Additionally, by \say{local systems}, we shall always mean locally constant \'etale sheaves. For how stalks of \'etale sheaves are computed, see \cite[\href{https://stacks.math.columbia.edu/tag/03PN}{Tag 03PN}]{stacks}. 
         \end{convention}
         \begin{convention} \label{conv: base_curve}
             Henceforth, $X$ shall be a smooth projective \textit{connected} curve over $\Spec k$ (with $k$ some field).
         \end{convention}
         
         \begin{lemma}[Representations of the \'etale fundamental group are local systems] \label{lemma: representations_of_the_etale_fundamental_group}
-            Let $\Lambda$ be a commutative ring and fix a geometric point $\bar{x} \in X$. Then, there exists a canonical equivalence of categories:
+            Let $\Lambda$ be a commutative ring and fix a geometric point $\bar{x} \in X$. Then, there exists a canonical equivalence:
                 $$\LocSys_{\Lambda}^{\fin}(X_{\et}) \cong \Rep_{\Lambda}^{\fin}(\pi_1(X_{\fet}))^{\cont}$$
                 $$\calL \mapsto \calL_{\bar{x}}$$
             between the category of \'etale locally constant sheaves of finite type $\Lambda$-modules on $X$ and the category of finite-dimensional continuous $\Lambda$-linear representations of $\pi_1(X_{\fet})$.
@@ -155,18 +166,30 @@
             \begin{proof}
                 
             \end{proof}
-        
+        \begin{remark}[Groupoid structure on character groups] \label{remark: groupoids_of_characters}
+            Let $G$ be a topological group and $F$ an algebraically closed topological field. Observe that because characters - by being identically $1$-dimensional - are necessarily irreducible as linear representations, one gets via Schur's Lemma (cf. \cite[Lemma 3.6, pp. 35]{lam_first_course_in_noncommutative_rings}) that all discrete $F$-characters of $G$ are isomorphic. Additionally, since $F$ is an algebraically closed field, we get through another application of Schur's Lemma (or rather, the fact that invertible matrices over an algebraically closed field are diagonal) that the isomorphism between any pair of discrete $\ell$-adic characters $\chi_1, \chi_2 \in \Rep^1_F(G)$ are group homomorphisms $\varphi_{\lambda}: \GL_1(F) \to \GL_1(F)$ (for some $\lambda \in F^{\x}$) given by:
+                $$\forall g \in G: \forall v \in \GL_1(F): \chi_2(g)(v) = (\chi_1 \circ \varphi_{\lambda})(g)(v) = \lambda \cdot \chi_1(g)(v)$$
+            Evidently, if $\chi_1(g)$ is continuous for all $g \in G$ then so is $\lambda \cdot \chi_1(g)$. Thus, all the continuous $F$-characters of $G$ are also isomorphic or in other words, $\Rep^1_F(G)^{\cont}$ is a groupoid. Furthermore, $\Rep^1_F(G)^{\cont}$ has an underlying group structure, namely that of the group whose elements are continuous $F$-characters $\chi: G \to \GL_1(F)$, on which the group structure is pointwise multiplication (note that this is compatible with the previous interpretation of $\Rep^1_F(G)^{\cont}$ as a groupoid, since $\chi(g) \in F^{\x}$ for all $g \in G$ and all $\chi \in \Rep^1_F(G)^{\cont}$, and hence the characters do in fact differ by non-zero scalar multiples).
+        \end{remark}
+        \begin{lemma}[Abelianising continuous characters] \label{lemma: abelianising_continuous_characters}
+            Let $G$ be a topological group and $F$ a topological field. Then, there is an equivalence of groupoids:
+                $$\Rep^1_F(G)^{\cont} \cong \Rep^1_F(G^{\ab})^{\cont}$$
+        \end{lemma}
+            \begin{proof}
+                Thanks to remark \ref{remark: groupoids_of_characters}, it shall suffice to show that the underlying discrete groups of the two groupoids are isomorphic. There is a natural injective group homomorphism:
+                    $$\Rep^1_F(G)^{\cont} \to \Rep^1_F(G^{\ab})^{\cont}$$
+                    $$\chi \mapsto \chi^{\ab}$$
+                coming from the canonical quotient map $G \to G^{\ab}$, so the only thing to do is to show that this homomorphism is surjective. For this, it shall suffice to show that the group $\Rep^1_F([G, G])^{\cont}$ is trivial: but this is evident from the fact that $\GL_1(F)$ is abelian and from the definition of the commutator subgroup $[G, G]$, namely that $[G, G] := \<ghg^{-1}h^{-1} \mid \forall g, h \in G\>$ (so for all $x \in [G, G]$ and all $\chi \in \Rep^1_F([G, G])$, $\chi(x) = 1$), so we are done.
+            \end{proof}
         \begin{theorem}[Unramified representations are sheaves on $X$] \label{theorem: unramified_representations_are_sheaves_on_X}
-            Fix a geometric point $\bar{x} \in X$. Then, there is a canonical equivalence of categories:
+            Fix a geometric point $\bar{x} \in X$. Then, there is a canonical equivalence:
                 $$\LocSys^1_{\overline{\Q_{\ell}}}(X) \cong \Rep^1_{\overline{\Q_{\ell}}}(\pi_1^{\ab}(X_{\fet}))^{\cont}$$
                 $$\calL \mapsto \calL_{\bar{x}}$$
-            between the category of continuous (unramified\footnote{\'Etale morphisms are unramified smooth morphisms.}) $\ell$-adic characters of $\pi_1^{\ab}(X_{\fet})$ and that of $\ell$-adic local systems of rank $1$ on $X$.
+            between the groupoid of $\ell$-adic local systems of rank $1$ on $X$ and that of continuous (unramified\footnote{\'Etale morphisms are unramified smooth morphisms.}) $\ell$-adic characters of $\pi_1^{\ab}(X_{\fet})$.
         \end{theorem}
             \begin{proof}
-                Lemma \ref{lemma: representations_of_the_etale_fundamental_group} tells us that we have an equivalence $\LocSys^1_{\overline{\Q_{\ell}}}(X) \cong \Rep^1_{\overline{\Q_{\ell}}}(\pi_1(X_{\fet}))^{\cont}$, so we only need to show is that $\Rep^1_{\overline{\Q_{\ell}}}(\pi_1(X_{\fet}))^{\cont} \cong \Rep^1_{\overline{\Q_{\ell}}}(\pi_1^{\ab}(X_{\fet}))^{\cont}$ and that the equivalences are compatible. For this, observe that because characters are necessarily irreducible as linear representations, and since $\overline{\Q_{\ell}}$ is an algebraically closed field of charactersitic $0$, we get through Schur's Lemma (cf. \cite[Lemma 3.6, pp. 35]{lam_first_course_in_noncommutative_rings}) that any pair of continuous $\ell$-adic characters $\chi_1, \chi_2$ of $\pi_1(X_{\fet})$ are unique up to multiplication by units $\lambda \in \overline{\Q_{\ell}}^{\x}$, which can be easily shown to be homeomorphic group homomorphisms $\lambda: \GL_1(\overline{\Q_{\ell}}) \to \GL_1(\overline{\Q_{\ell}})$ such that:
-                    $$\forall \sigma \in \pi_1(X_{\fet}): \forall v \in \GL_1(\overline{\Q_{\ell}}): \chi_2(\sigma)(v) = \lambda \cdot \chi_1(\sigma)(v)$$
-                As a result, $\Rep^1_{\overline{\Q_{\ell}}}(\pi_1(X_{\fet}))^{\cont}$ is a groupoid. Now, thanks to the First Isomorphism Theorem for topological groups, any continuous $\ell$-adic character $\chi: \pi_1(X_{\fet}) \to \GL_1(\overline{\Q_{\ell}})$ necessarily factors through the canoncial quotient map $\pi_1(X_{\fet}) \to \pi_1^{\ab}(X_{\fet})$ and hence, any such character $\chi$ defines a \textit{unique} continuous \say{abelian $\ell$-adic character} $\chi^{\ab}: \pi_1^{\ab}(X_{\fet}) \to \GL_1(\overline{\Q_{\ell}})$. By combining the two observations, one sees that there exists a fully faithful and essentially surjective functor:
-                    $$\Rep^1_{\overline{\Q_{\ell}}}(\pi_1(X_{\fet}))^{\cont} \to \Rep^1_{\overline{\Q_{\ell}}}(\pi_1^{\ab}(X_{\fet}))^{\cont}$$
-                    $$\chi \mapsto \chi^{\ab}$$
-                making it an equivalence of categories\footnote{In fact, of groupoids. Note that $\LocSys_{\overline{\Q_{\ell}}}^1(X)$ is also a groupoid, and so the statement of theorem \ref{theorem: unramified_representations_are_sheaves_on_X} is actually an equivalence of groupoids.} by definition. The compatibility of this equivalence with the equivalence $\LocSys^1_{\overline{\Q_{\ell}}}(X) \cong \Rep^1_{\overline{\Q_{\ell}}}(\pi_1(X_{\fet}))^{\cont}$ (given by $\calL \mapsto \calL_{\bar{x}}$) is obvious.
+                Simply combine lemma \ref{lemma: representations_of_the_etale_fundamental_group} and lemma \ref{lemma: abelianising_continuous_characters}.
             \end{proof}
+        \begin{example}
+            
+        \end{example}
