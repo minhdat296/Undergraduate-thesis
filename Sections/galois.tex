@@ -151,17 +151,20 @@
     
     \subsection{\texorpdfstring{$\ell$}{}-adic sheaves and Grothendieck's Galois Theory}
         \begin{convention}
-            From this point on, $(\Sch_{/X})_{\fet}$ will also be used to denote the small \'etale site of finite \'etale $X$-schemes. Note that this is a full subsite of the small \'etale site $(\Sch_{/X})_{\et}$ of \'etale $X$-schemes. Additionally, by \say{local systems}, we shall always mean locally constant \'etale sheaves. For how stalks of \'etale sheaves are computed, see \cite[\href{https://stacks.math.columbia.edu/tag/03PN}{Tag 03PN}]{stacks}. 
+            From this point on, $(\Sch_{/X})_{\fet}$ will also be used to denote the small \'etale site of finite \'etale $X$-schemes. Note that this is a full subsite of the small \'etale site $(\Sch_{/X})_{\et}$ of \'etale $X$-schemes. Additionally, for any base scheme $X$ and any field $F$, $\LocSys^n_F(X)$ shall denote the groupoid of locally constant sheaves of $n$-dimensional $F$-vector spaces and isomorphisms between them.  
         \end{convention}
         \begin{convention} \label{conv: base_curve}
             Henceforth, $X$ shall be a smooth projective \textit{connected} curve over $\Spec k$ (with $k$ some field).
         \end{convention}
         
+        \begin{remark}
+            For how stalks of \'etale sheaves are computed, see \cite[\href{https://stacks.math.columbia.edu/tag/03PN}{Tag 03PN}]{stacks}.
+        \end{remark}
         \begin{lemma}[Representations of the \'etale fundamental group are local systems] \label{lemma: representations_of_the_etale_fundamental_group}
-            Let $\Lambda$ be a commutative ring and fix a geometric point $\bar{x} \in X$. Then, there exists a canonical equivalence:
-                $$\LocSys_{\Lambda}^{\fin}(X_{\et}) \cong \Rep_{\Lambda}^{\fin}(\pi_1(X_{\fet}))^{\cont}$$
+            Let $F$ be a topological field and fix a geometric point $\bar{x} \in X$. Then, for each $n \geq 1$, there exists a canonical equivalence:
+                $$\LocSys_F^n(X_{\et}) \cong \Rep_F^n(\pi_1(X_{\fet}))^{\cont}$$
                 $$\calL \mapsto \calL_{\bar{x}}$$
-            between the category of \'etale locally constant sheaves of finite type $\Lambda$-modules on $X$ and the category of finite-dimensional continuous $\Lambda$-linear representations of $\pi_1(X_{\fet})$.
+            between the groupoid of locally constant sheaves of $n$-dimensional $F$-vector spaces $X$ and that of $n$-dimensional continuous $F$-linear representations of $\pi_1(X_{\fet})$.
         \end{lemma}
             \begin{proof}
                 
@@ -190,6 +193,3 @@
             \begin{proof}
                 Simply combine lemma \ref{lemma: representations_of_the_etale_fundamental_group} and lemma \ref{lemma: abelianising_continuous_characters}.
             \end{proof}
-        \begin{example}
-            
-        \end{example}
