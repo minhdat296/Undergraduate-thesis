@@ -29,7 +29,7 @@
                         $$F: \calG \to \Fin$$
                     called the \textbf{fibre functor}, which we shall require to be exact and to reflect isomorphisms (i.e. for all bijections $Fx \cong Fy$ between finite sets, one has an isomorphism $x \cong y$ in $\calG$).
                 \end{itemize}
-                \item \textbf{(Galois objects):} An object $X$ of a Galois category $\calG$ is a \textbf{Galois object} if and only if it has no non-trivial automorphisms, i.e. if and only if there is a bijection $\calG(\pt, X) \cong \Aut_{\calG}(X)$ (with $\pt$ a terminal object of $\calG$\footnote{Note that Galois categories must have terminal objects, as they are finitely complete and terminal objects are nothing but the limit of the empty diagram (which is finite by virtue of containing no vertices and no edges).})
+                \item \textbf{(Galois objects):} An object $X$ of a Galois category $\calG$ is a \textbf{Galois object} if and only if it has no non-trivial automorphisms, i.e. if and only if $X/\Aut_{\calG}(X) \cong \pt$, with $\pt$ a terminal object of $\calG$.\footnote{Note that Galois categories must have terminal objects, as they are finitely complete and terminal objects are nothing but the limit of the empty diagram (which is finite by virtue of containing no vertices and no edges).}
                 \item \textbf{(Galois functors):} A \textbf{Galois functor} is an exact functor $\Phi: \calG \to \calG'$ between Galois categories $(\calG, F), (\calG', F')$ which preserves connected objects and commute with the fibre functors in the following manner:
                     $$
                         \begin{tikzcd}
@@ -109,7 +109,7 @@
             For any scheme $X$ with a fixed geometric point $\bar{x}$, the pair $((\Sch_{/X})_{\fet}, F_{\bar{x}})$ as in remark \ref{remark: finite_etale_schemes} defines a Galois category. Its fundamental group $\Aut(F_{\bar{x}})$ is commonly denoted by $\pi_1(X_{\fet}, \bar{x})$ and called the \textbf{\'etale fundamental group} of $X$ based at $\bar{x}$.
         \end{definition}
         
-        Now, let us make sure that the \'etale fundamental group $\pi_1(X_{\fet}, \bar{x})$ as defined in definition \ref{def: etale_fundamental_groups} actually makes sense topologically and geometrically. Namely, we would like to know the behaviours of $\pi_1(X_{\fet}, \bar{x})$ when we change the base point and when we base-change, as well as whether or not it is \say{insensitive} to (universal) homeomorphisms.
+        Now, let us make sure that the \'etale fundamental group $\pi_1(X_{\fet}, \bar{x})$ as defined in definition \ref{def: etale_fundamental_groups} is meaningful as a formal construction. Namely, we would like to know the behaviours of $\pi_1(X_{\fet}, \bar{x})$ when we change the base point and when we base-change, as well as whether or not it is homotopically invariant in some sense, as well as whether or not \'etale fundamental group enjoys a functoriality property. Our efforts will culminate in propositions \ref{prop: the_etale_fundamental_group_as_a_topological_invariance} and \ref{prop: etale_fundamental_group_functoriality}.
         \begin{lemma} \label{lemma: base_change_of_thickenings}
             If $X \subset X'$ be a \href{https://stacks.math.columbia.edu/tag/04EW}{\underline{thickening}} of schemes. Then, the following base change functor is an equivalence of Galois categories:
                 $$(\Sch_{/X'})_{\fet} \to (\Sch_{/X})_{\fet}$$
@@ -121,7 +121,7 @@
         \begin{proposition}[The \'etale fundamental group as a topological invariance] \label{prop: the_etale_fundamental_group_as_a_topological_invariance}
             \noindent
             \begin{enumerate}
-                \item Let $f: Y \to X$ be a morphism of connected schemes such that the base change functor:
+                \item Let $f: Y \to X$ be a morphism of connected qcqs\footnote{quasi-compact and quasi-separated} schemes such that the base change functor:
                     $$(\Sch_{/X})_{\fet} \to (\Sch_{/Y})_{\fet}$$
                     $$X' \mapsto X' \x_X Y$$
                 is an equivalence of Galois categories. Then, for any choice of geometric points $\bar{x} \in X$ and $\bar{y} \in Y$, one has the following isomorphism of \'etale fundamental groups $\pi_1(X_{\fet}, \bar{x}) \cong \pi_1(Y_{\fet}, \bar{y})$.
@@ -138,17 +138,37 @@
                         $$(\Sch_{/X})_{\fet} \to (\Sch_{/Y})_{\fet}$$
                         $$X' \mapsto X' \x_X Y$$
                     is an equivalence and from the definition of \'etale fundamental groups (cf. definition \ref{def: etale_fundamental_groups}).
-                    \item Because $f: Y \to X$ is a universal homeomorphism, the diagonal $\Delta_{Y/X}: Y \to Y \x_X Y$ is a thickening. By lemma \ref{lemma: base_change_of_thickenings}, this means that the base change functor:
+                    \item Because $f: Y \to X$ is a universal homeomorphism, the diagonal $\Delta_{Y/X}: Y \to Y \x_X Y$ is a thickening; lemma \ref{lemma: base_change_of_thickenings} implies that the base change functor:
                         $$(\Sch_{Y \x_X Y})_{\fet} \to (\Sch_{/Y})_{\fet}$$
                         $$T \mapsto T \x_{Y \x_X Y} Y$$
-                    is an equivalence.
+                    is an equivalence. 
                 \end{enumerate}
             \end{proof}
         \begin{corollary}[Uniqueness of \'etale fundamental groups] \label{coro: etale_fundamental_group_uniqueness}
-            For any connected scheme $X$ and any pair of possibly distinct geometric points $\bar{x}, \bar{x}' \in X$, one has any isomorphism of \'etale fundamental groups $\pi_1(X_{\fet}, \bar{x}) \cong \pi_1(X_{\fet}, \bar{x}')$, and therefore it makes sense to only speak of \textit{the} fundamental group of $X$, which we shall denote by $\pi_1(X_{\fet})$.
+            For any connected qcqs scheme $X$ and any pair of possibly distinct geometric points $\bar{x}, \bar{x}' \in X$, one has any isomorphism of \'etale fundamental groups $\pi_1(X_{\fet}, \bar{x}) \cong \pi_1(X_{\fet}, \bar{x}')$, and therefore it makes sense to only speak of \textit{the} fundamental group of $X$, which we shall denote by $\pi_1(X_{\fet})$.
         \end{corollary}
         
-        Let us now compute certain instances of the \'etale fundamental group to verify for ourselves its importance within the context of arithemtic algebraic geometry.
+        \begin{proposition}[Functoriality of the \'etale fundamental group] \label{prop: etale_fundamental_group_functoriality}
+            For any fixed connected qcqs scheme $X$, there exists the following adjunction:
+                $$\Grp(\pi_1(X_{\fet}), G) \cong (\Sch_{/X})_{\fet}(X, \bfB G)$$
+        \end{proposition}
+            \begin{proof}
+                Each homomorphism $\rho: \pi_1(X_{\fet}) \to G$ determines a unique $G$-torsor in $\pi_1(X_{\fet})\-\Fin$. Because there is an equivalence $\pi_1(X_{\fet})\-\Fin \cong (\Sch_{/X})_{\fet}$ and because schemes are representable \'etale sheaves, each such $G$-torsor in $\pi_1(X_{\fet})\-\Fin$ corresponds to a unique morphism of schemes $X \to \bfB G$.
+            \end{proof}
+        \begin{corollary}[The \'etale Eckmann-Hilton Duality] \label{coro: etale_eckmann_hilton_duality}
+            For any connected qcqs scheme $X$ over a field of characteristic coprime to $\ell$, one has the following canonical isomorphisms of abelian groups for any $\ell$-torsion abelian group $A$:
+                $$\Grp(\pi_1(X_{\fet}), A) \cong H^1_{\et}(X, A) \cong (\Sch_{/X})_{\fet}(X, \bfB A)$$
+        \end{corollary}
+        
+        Now, while proposition \ref{prop: the_etale_fundamental_group_as_a_topological_invariance} has already demonstrated that \'etale fundamental groups exhibits all the \say{right} formal properties, one should also verify that for a suitable pointed scheme $(X, \bar{x})$, $\pi_1(X_{\fet}, \bar{x})$ should inform us of topological properties of $X$, such as the relationship between the connectedness of $X$ and its \'etale fundamental group, as well as arithmetic data, such as the correspondence between Galois covers (cf. remark \ref{remark: galois_covers}) of a connected scheme and normal subgroups of its \'etale fundamental group, or the relationship between the absolute Galois group of the function field $K_X$ of a variety $X$ and the \'etale fundamental group of the generic fibre $\pi_1((X_{\eta})_{\fet})$.
+        \begin{convention}
+            From this point on, $(\Sch_{/X})_{\fet}$ will also be used to denote the small \'etale site of finite-\'etale $X$-schemes. Note that this is a full subsite of the small \'etale site $(\Sch_{/X})_{\et}$ of \'etale $X$-schemes. 
+        \end{convention}
+        \begin{remark}[Galois covers] \label{remark: galois_covers}
+            Fix a base scheme $X$, and thanks to the fact that objects of Galois categories ($(\Sch_{/X})_{\fet}$ in this instance) can be written as finite coproducts of connected objects, we can assume without loss of generality that $X$ is connected. By definition \ref{def: galois_categories}, a Galois object in $(\Sch_{/X})_{\fet}$ is a finite-\'etale $X$-scheme $Y$ such that $Y/\Aut_X(Y) \cong X$.
+        \end{remark}
+        
+        Below are some examples that illustrate the arithmetic significance of the \'etale fundamental group.
         \begin{example}[Examples of the \'etale fundamental group] \label{example: etale_fundamental_groups}
             \noindent
             \begin{itemize}
@@ -165,27 +185,19 @@
                 By arguing similarly, one will also see that $\pi_1((\Spec \F_p(\!(t)\!))_{\fet}) \cong \hat{\Z}$ as well. In fact, if $\scrV$ is any discrete valuation ring with residue field $k$ then $\pi_1((\Spec \scrV)_{\fet}) \cong \Gal(k^{\alg}/k)$ (one can start with $\scrV \cong \Z_p$, and notice that the residue field of any finite unramified extension of $\Q_p$ is $\F_{p^n}$, with $n$ being the degree of that extension).
                 \item \textbf{(Algebraic integers):} Minkowski's Theorem tells us that every non-trivial finite extension of $\Q$ ramifies at some prime $(p) \in \Spec \Z$, so:
                     $$\pi_1((\Spec \Z)_{\fet}) \cong 1$$
-                \item \textbf{(Affine line):} 
             \end{itemize}
         \end{example}
     
     \subsection{\texorpdfstring{$\ell$}{}-adic sheaves and Grothendieck's Galois Theory}
         \begin{convention}
-            \noindent
-            \begin{itemize}
-                \item From this point on, $(\Sch_{/X})_{\fet}$ will also be used to denote the small \'etale site of finite \'etale $X$-schemes. Note that this is a full subsite of the small \'etale site $(\Sch_{/X})_{\et}$ of \'etale $X$-schemes. 
-                \item Additionally, for any base scheme $X$ and any field $F$, $\LocSys^n_F(X)$ shall denote the groupoid of locally constant sheaves of $n$-dimensional $F$-vector spaces and isomorphisms between them. Likewise, for any topological group $G$, we shall write $\Rep_F^n(G)^{\cont}$ for the groupoid of continuous $n$-dimensional $F$-linear representations of $G$ and isomorphisms between them. 
-            \end{itemize}
+            Additionally, for any base scheme $X$ and any field $F$, $\LocSys^n_F(X)$ shall denote the groupoid of locally constant sheaves of $n$-dimensional $F$-vector spaces and isomorphisms between them. Likewise, for any topological group $G$, we shall write $\Rep_F^n(G)^{\cont}$ for the groupoid of continuous $n$-dimensional $F$-linear representations of $G$ and isomorphisms between them. 
         \end{convention}
         \begin{convention}[The Curve] \label{conv: base_curve}
             Henceforth, $X$ shall be a smooth projective \textit{connected} curve over $\Spec k$ (with $k$ some field).
         \end{convention}
         
-        \begin{remark}
-            For how stalks of \'etale sheaves are computed, see \cite[\href{https://stacks.math.columbia.edu/tag/03PN}{Tag 03PN}]{stacks}.
-        \end{remark}
         \begin{lemma}[Representations of the \'etale fundamental group are local systems] \label{lemma: representations_of_the_etale_fundamental_group}
-            Let $F$ be a topological field and fix a geometric point $\bar{x} \in X$. Then, for each $n \geq 1$, there exists a canonical equivalence:
+            Let $F$ be a topological field and fix a geometric point $\bar{x} \in X$. Then, for each $n \geq 1$, there exists a canonical equivalence\footnote{For how stalks of \'etale sheaves are computed, see \cite[\href{https://stacks.math.columbia.edu/tag/03PN}{Tag 03PN}]{stacks}.}:
                 $$\LocSys_F^n(X_{\et}) \cong \Rep_F^n(\pi_1(X_{\fet}))^{\cont}$$
                 $$\calL \mapsto \calL_{\bar{x}}$$
         \end{lemma}
