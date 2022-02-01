@@ -99,7 +99,7 @@
                 $$
             which tells us that there is a bijection:
                 $$F_{\bar{x}}(Y) \cong \Sch_{/X}(\bar{x}, Y)$$
-            It can then be shown using the definition algebraic closures and the Fundamental Theorem of Galois Theory, that $\bar{x} \in \Pro\left((\Sch_{/X})_{\fet}\right)$. According to remark \ref{remark: pro_representable_functors_are_ind_objects} and Yoneda's Lemma, $F_{\bar{x}}$ is therefore pro-representable.
+            It can then be shown using the definition algebraic closures and the Fundamental Theorem of Galois Theory, that $\bar{x} \in (\Sch_{/X})_{\profet}$. According to remark \ref{remark: pro_representable_functors_are_ind_objects} and Yoneda's Lemma, $F_{\bar{x}}$ is therefore pro-representable.
             
             We have thus constructed a well-defined fibre functor:
                 $$F_{\bar{x}}: (\Sch_{/X})_{\fet} \to \Fin$$
@@ -109,7 +109,7 @@
             For any scheme $X$ with a fixed geometric point $\bar{x}$, the pair $((\Sch_{/X})_{\fet}, F_{\bar{x}})$ as in remark \ref{remark: finite_etale_schemes} defines a Galois category. Its fundamental group $\Aut(F_{\bar{x}})$ is commonly denoted by $\pi_1(X_{\fet}, \bar{x})$ and called the \textbf{\'etale fundamental group} of $X$ based at $\bar{x}$.
         \end{definition}
         
-        Now, let us make sure that the \'etale fundamental group $\pi_1(X_{\fet}, \bar{x})$ as defined in definition \ref{def: etale_fundamental_groups} is meaningful as a formal construction. Namely, we would like to know the behaviours of $\pi_1(X_{\fet}, \bar{x})$ when we change the base point and when we base-change, as well as whether or not it is homotopically invariant in some sense, as well as whether or not \'etale fundamental group enjoys a functoriality property. Our efforts will culminate in propositions \ref{prop: the_etale_fundamental_group_as_a_topological_invariance} and \ref{prop: etale_fundamental_group_functoriality}.
+        Now, let us make sure that the \'etale fundamental group $\pi_1(X_{\fet}, \bar{x})$ as defined in definition \ref{def: etale_fundamental_groups} is meaningful as a formal construction. Namely, we would like to know the behaviours of $\pi_1(X_{\fet}, \bar{x})$ when we change the base point and when we base-change, as well as whether or not it is homotopically invariant in some sense (cf. proposition \ref{prop: the_etale_fundamental_group_as_a_topological_invariance}). In addition, we would like to check whether or not \'etale fundamental group is dual - in some sense - to the construction of an Eilenberg-MacLane space, thereby having concrete connections to the $1^{st}$ \'etale cohomology group and in turn, admitting descriptions in terms of torsors (cf. proposition \ref{prop: etale_eckmann_hilton_duality}.). 
         \begin{lemma} \label{lemma: base_change_of_thickenings}
             If $X \subset X'$ be a \href{https://stacks.math.columbia.edu/tag/04EW}{\underline{thickening}} of schemes. Then, the following base change functor is an equivalence of Galois categories:
                 $$(\Sch_{/X'})_{\fet} \to (\Sch_{/X})_{\fet}$$
@@ -138,29 +138,39 @@
                         $$(\Sch_{/X})_{\fet} \to (\Sch_{/Y})_{\fet}$$
                         $$X' \mapsto X' \x_X Y$$
                     is an equivalence and from the definition of \'etale fundamental groups (cf. definition \ref{def: etale_fundamental_groups}).
-                    \item Because $f: Y \to X$ is a universal homeomorphism, the diagonal $\Delta_{Y/X}: Y \to Y \x_X Y$ is a thickening; lemma \ref{lemma: base_change_of_thickenings} implies that the base change functor:
+                    \item Because $f: Y \to X$ is a universal homeomorphism, the diagonal $\Delta_{Y/X}: Y \to Y \x_X Y$ is a thickening; lemma \ref{lemma: base_change_of_thickenings} implies that the following base change functor is an equivalence:
                         $$(\Sch_{Y \x_X Y})_{\fet} \to (\Sch_{/Y})_{\fet}$$
                         $$T \mapsto T \x_{Y \x_X Y} Y$$
-                    is an equivalence. 
                 \end{enumerate}
             \end{proof}
         \begin{corollary}[Uniqueness of \'etale fundamental groups] \label{coro: etale_fundamental_group_uniqueness}
             For any connected qcqs scheme $X$ and any pair of possibly distinct geometric points $\bar{x}, \bar{x}' \in X$, one has any isomorphism of \'etale fundamental groups $\pi_1(X_{\fet}, \bar{x}) \cong \pi_1(X_{\fet}, \bar{x}')$, and therefore it makes sense to only speak of \textit{the} fundamental group of $X$, which we shall denote by $\pi_1(X_{\fet})$.
         \end{corollary}
         
-        \begin{proposition}[Functoriality of the \'etale fundamental group] \label{prop: etale_fundamental_group_functoriality}
-            For any fixed connected qcqs scheme $X$, there exists the following adjunction:
-                $$\Grp(\pi_1(X_{\fet}), G) \cong (\Sch_{/X})_{\fet}(X, \bfB G)$$
+        \begin{remark}[Points of the moduli stack of $G$-torsors]
+            For proposition \ref{prop: etale_eckmann_hilton_duality}, a basic fact one should keep in mind is that should $G$ be a constant group\footnote{As opposed to say, an algebraic group or more general group schemes}, then the groupoid $\Bun_{\underline{G}}(X) := \Sch_{/\Spec k}(X, \underline{G})$ of \'etale $\underline{G}$-torsors\footnote{Here, $\underline{G}$ denotes the group scheme represented by $\coprod_{g \in G} \Spec k$. Note how it is \'etale over $\Spec k$.} on a scheme $X$ over a field $k$ is equivalent to the groupoid $\Bun_{\underline{G}}(\Spec k)(X) := \Sch_{/\Spec k}(X, \underline{G(k)})$ of $X$-points of the moduli stack of $\underline{G}$-torsors on $\Spec k$.
+        \end{remark}
+        \begin{proposition}[The \'etale Eckmann-Hilton Duality] \label{prop: etale_eckmann_hilton_duality}
+            For any smooth projective connected curve $X$\footnote{Actually, this proposition holds also when $X$ is any irreducible geometrically unibranch scheme (which can be thought of as analogues of path-connected spaces), but we are not interested in such generalities.} over a field $k$ and any constant profinite group $G$, there exists a canonical equivalence of groupoids:
+                $$\Pro\Fin\Grp(\pi_1(X_{\fet}), G) \cong \Bun_{\underline{G}}(X_{\profet})$$
+            between the groupoid of continuous homomorphisms $\pi_1(X_{\fet}) \to G$ of profinite groups and that of profinite-\'etale $\underline{G}$-torsors on $X$.
         \end{proposition}
             \begin{proof}
-                Each homomorphism $\rho: \pi_1(X_{\fet}) \to G$ determines a unique $G$-torsor in $\pi_1(X_{\fet})\-\Fin$. Because there is an equivalence $\pi_1(X_{\fet})\-\Fin \cong (\Sch_{/X})_{\fet}$ and because schemes are representable \'etale sheaves, each such $G$-torsor in $\pi_1(X_{\fet})\-\Fin$ corresponds to a unique morphism of schemes $X \to \bfB G$.
+                Each continuous homomorphism $\pi_1(X_{\fet}) \to G$ determines a unique $G$-torsor in $\pi_1(X_{\fet})\-\Pro\Fin$. Because there is an equivalence $\pi_1(X_{\fet})\-\Pro\Fin \cong (\Sch_{/X})_{\profet}$ (cf. proposition \ref{prop: basic_properties_of_galois_categories}) and because schemes are representable \'etale sheaves, each such $G$-torsor in $\pi_1(X_{\fet})\-\Pro\Fin$ corresponds to a unique profinite-\'etale $\underline{G}$-torsor on $X$. Such a profinite-\'etale $\underline{G}$-torsor on $X$, in turn, is an $X$-point of the classifying stack $\Bun_{\underline{G}}((\Spec k)_{\profet})$, i.e. a morphism $X \to \underline{G}$ of $k$-schemes, and the proposition follows suite.
             \end{proof}
-        \begin{corollary}[The \'etale Eckmann-Hilton Duality] \label{coro: etale_eckmann_hilton_duality}
-            For any connected qcqs scheme $X$ over a field of characteristic coprime to $\ell$, one has the following canonical isomorphisms of abelian groups for any $\ell$-torsion abelian group $A$:
-                $$\Grp(\pi_1(X_{\fet}), A) \cong H^1_{\et}(X, A) \cong (\Sch_{/X})_{\fet}(X, \bfB A)$$
+        \begin{convention}
+            From now on, if $E$ is a non-archimedean normed field then its subring of power-bounded elements shall be denoted by $E^{\circ}$. 
+        \end{convention}
+        \begin{corollary}[Continuous representations of the \'etale fundamental group are torsors on a point] \label{coro: continuous_representations_of_the_etale_fundamental_group_are_torsors_on_a_point}
+            Let $\ell$ be a prime, let $E$ be an $\ell$-adic number field (i.e. a finite extension of $\Q_{\ell}$). For any smooth projective connected curve over a field $k$ along with any choice of discrete group $G$, there exists a canonical equivalence:
+                $$\Rep^1_{E^{\circ}}(\pi_1(X_{\fet}))^{\cont} \cong \Bun_{\underline{\GL_1(E^{\circ})}}(X_{\profet})$$
+            between the groupoid of continuous $1$-dimensional $E^{\circ}$-linear representations of $\pi_1(X_{\fet})$ and that of profinite-\'etale $\GL_1(E^{\circ})$-torsors on $X$.
         \end{corollary}
+        \begin{remark}[What about higher-dimensional representations ?]
+            Corollary \ref{coro: continuous_representations_of_the_etale_fundamental_group_are_torsors_on_a_point} does not hold for $\GL_n(E^{\circ})$ with $n > 1$ nor $\GL_n(E)$ for any $n \geq 1$, as these groups are only locally profinite, as opposed to being strictly profinite like $\GL_1(E^{\circ})$.
+        \end{remark}
         
-        Now, while proposition \ref{prop: the_etale_fundamental_group_as_a_topological_invariance} has already demonstrated that \'etale fundamental groups exhibits all the \say{right} formal properties, one should also verify that for a suitable pointed scheme $(X, \bar{x})$, $\pi_1(X_{\fet}, \bar{x})$ should inform us of topological properties of $X$, such as the relationship between the connectedness of $X$ and its \'etale fundamental group, as well as arithmetic data, such as the correspondence between Galois covers (cf. remark \ref{remark: galois_covers}) of a connected scheme and normal subgroups of its \'etale fundamental group, or the relationship between the absolute Galois group of the function field $K_X$ of a variety $X$ and the \'etale fundamental group of the generic fibre $\pi_1((X_{\eta})_{\fet})$.
+        Now, while proposition \ref{prop: the_etale_fundamental_group_as_a_topological_invariance} and proposition \ref{prop: etale_eckmann_hilton_duality} have already demonstrated that \'etale fundamental groups exhibits all the \say{right} formal properties, one should also verify that for a suitable pointed scheme $(X, \bar{x})$, $\pi_1(X_{\fet}, \bar{x})$ should inform us of topological properties of $X$, such as the relationship between the connectedness of $X$ and its \'etale fundamental group, as well as arithmetic data, such as the correspondence between Galois covers (cf. remark \ref{remark: galois_covers}) of a connected scheme and normal subgroups of its \'etale fundamental group, or the relationship between the absolute Galois group of the function field $K_X$ of a variety $X$ and the \'etale fundamental group of the generic fibre $\pi_1((X_{\eta})_{\fet})$.
         \begin{convention}
             From this point on, $(\Sch_{/X})_{\fet}$ will also be used to denote the small \'etale site of finite-\'etale $X$-schemes. Note that this is a full subsite of the small \'etale site $(\Sch_{/X})_{\et}$ of \'etale $X$-schemes. 
         \end{convention}
@@ -189,41 +199,50 @@
         \end{example}
     
     \subsection{\texorpdfstring{$\ell$}{}-adic sheaves and Grothendieck's Galois Theory}
-        \begin{convention}
-            Additionally, for any base scheme $X$ and any field $F$, $\LocSys^n_F(X)$ shall denote the groupoid of locally constant sheaves of $n$-dimensional $F$-vector spaces and isomorphisms between them. Likewise, for any topological group $G$, we shall write $\Rep_F^n(G)^{\cont}$ for the groupoid of continuous $n$-dimensional $F$-linear representations of $G$ and isomorphisms between them. 
+        \begin{convention} \label{conv: categories_of_representations}
+            For any base scheme $X$ and any field $E$, $\LocSys^n_E(X)$ shall denote the groupoid of locally constant sheaves of $n$-dimensional $E$-vector spaces and isomorphisms between them. Likewise, for any topological group $G$, we shall write $\Rep_E^n(G)^{\cont}$ for the groupoid of continuous $n$-dimensional $E$-linear representations of $G$ and isomorphisms between them. 
         \end{convention}
         \begin{convention}[The Curve] \label{conv: base_curve}
             Henceforth, $X$ shall be a smooth projective \textit{connected} curve over $\Spec k$ (with $k$ some field).
         \end{convention}
         
-        \begin{lemma}[Representations of the \'etale fundamental group are local systems] \label{lemma: representations_of_the_etale_fundamental_group}
-            Let $F$ be a topological field and fix a geometric point $\bar{x} \in X$. Then, for each $n \geq 1$, there exists a canonical equivalence\footnote{For how stalks of \'etale sheaves are computed, see \cite[\href{https://stacks.math.columbia.edu/tag/03PN}{Tag 03PN}]{stacks}.}:
-                $$\LocSys_F^n(X_{\et}) \cong \Rep_F^n(\pi_1(X_{\fet}))^{\cont}$$
-                $$\calL \mapsto \calL_{\bar{x}}$$
+        \begin{lemma}[Torsors and local systems] \label{lemma: torsors_and_local_systems}
+            Let $\ell$ be a prime and $E$ be an $\ell$-adic number field. Then, there exists an equivalence of groupoids:
+                $$\LocSys_{E^{\circ}}^1(X_{\profet}) \cong \Bun_{\underline{\GL_1(E^{\circ})}}(X_{\profet})$$
         \end{lemma}
             \begin{proof}
-                
+                This is a tautology of the fact that for any algebraic group $G$, the automorphism group of any trivial $G$-torsor on $\Spec k$ is $G$.
+            \end{proof}
+        \begin{proposition}[Representations of the \'etale fundamental group are local systems] \label{prop: representations_of_the_etale_fundamental_group}
+            Let $E$ be a topological field and fix a geometric point $\bar{x} \in X$. Then there exists a canonical equivalence\footnote{For how stalks of \'etale sheaves are computed, see \cite[\href{https://stacks.math.columbia.edu/tag/03PN}{Tag 03PN}]{stacks}.}:
+                $$\LocSys_E^1(X_{\profet}) \cong \Rep_E^1(\pi_1(X_{\fet}))^{\cont}$$
+                $$\calL \mapsto \calL_{\bar{x}}$$
+        \end{proposition}
+            \begin{proof}
+                By combining corollary \ref{coro: continuous_representations_of_the_etale_fundamental_group_are_torsors_on_a_point} and lemma \ref{lemma: torsors_and_local_systems}, we get an equivalence:
+                    $$\LocSys_{E^{\circ}}^1(X_{\profet}) \cong \Rep_{E^{\circ}}^1(\pi_1(X_{\fet}))^{\cont}$$
+                    $$\calL \mapsto \calL_{\bar{x}}$$
             \end{proof}
         \begin{remark}[Groupoid structure on character groups] \label{remark: groupoids_of_characters}
-            Let $G$ be a topological group and $F$ an algebraically closed topological field. Observe that because characters - by being identically $1$-dimensional - are necessarily irreducible as linear representations, one gets via Schur's Lemma (cf. \cite[Lemma 3.6, pp. 35]{lam_first_course_in_noncommutative_rings}) that all discrete $F$-characters of $G$ are isomorphic. Additionally, since $F$ is an algebraically closed field, we get through another application of Schur's Lemma (or rather, the fact that invertible matrices over an algebraically closed field are diagonal) that the isomorphism between any pair of discrete $\ell$-adic characters $\chi_1, \chi_2 \in \Rep^1_F(G)$ are group homomorphisms $\varphi_{\lambda}: \GL_1(F) \to \GL_1(F)$ (for some $\lambda \in F^{\x}$) given by:
-                $$\forall g \in G: \forall v \in \GL_1(F): \chi_2(g)(v) = (\chi_1 \circ \varphi_{\lambda})(g)(v) = \lambda \cdot \chi_1(g)(v)$$
-            Evidently, if $\chi_1(g)$ is continuous for all $g \in G$ then so is $\lambda \cdot \chi_1(g)$. Thus, all the continuous $F$-characters of $G$ are also isomorphic or in other words, $\Rep^1_F(G)^{\cont}$ is a groupoid. Furthermore, $\Rep^1_F(G)^{\cont}$ has an underlying group structure, namely that of the group whose elements are continuous $F$-characters $\chi: G \to \GL_1(F)$, on which the group structure is pointwise multiplication (note that this is compatible with the previous interpretation of $\Rep^1_F(G)^{\cont}$ as a groupoid, since $\chi(g) \in F^{\x}$ for all $g \in G$ and all $\chi \in \Rep^1_F(G)^{\cont}$, and hence the characters do in fact differ by non-zero scalar multiples).
+            Let $G$ be a topological group and $E$ an algebraically closed topological field. Observe that because characters - by being identically $1$-dimensional - are necessarily irreducible as linear representations, one gets via Schur's Lemma (cf. \cite[Lemma 3.6, pp. 35]{lam_first_course_in_noncommutative_rings}) that all discrete $E$-characters of $G$ are isomorphic. Additionally, since $E$ is an algebraically closed field, we get through another application of Schur's Lemma (or rather, the fact that invertible matrices over an algebraically closed field are diagonal) that the isomorphism between any pair of discrete $\ell$-adic characters $\chi_1, \chi_2 \in \Rep^1_E(G)$ are group homomorphisms $\varphi_{\lambda}: \GL_1(E) \to \GL_1(E)$ (for some $\lambda \in E^{\x}$) given by:
+                $$\forall g \in G: \forall v \in \GL_1(E): \chi_2(g)(v) = (\chi_1 \circ \varphi_{\lambda})(g)(v) = \lambda \cdot \chi_1(g)(v)$$
+            Evidently, if $\chi_1(g)$ is continuous for all $g \in G$ then so is $\lambda \cdot \chi_1(g)$. Thus, all the continuous $E$-characters of $G$ are also isomorphic or in other words, $\Rep^1_E(G)^{\cont}$ is a groupoid. Furthermore, $\Rep^1_E(G)^{\cont}$ has an underlying group structure, namely that of the group whose elements are continuous $E$-characters $\chi: G \to \GL_1(E)$, on which the group structure is pointwise multiplication (note that this is compatible with the previous interpretation of $\Rep^1_E(G)^{\cont}$ as a groupoid, since $\chi(g) \in F^{\x}$ for all $g \in G$ and all $\chi \in \Rep^1_E(G)^{\cont}$, and hence the characters do in fact differ by non-zero scalar multiples).
         \end{remark}
         \begin{lemma}[Abelianising continuous characters] \label{lemma: abelianising_continuous_characters}
-            Let $G$ be a topological group and $F$ a topological field. Then, there is an equivalence of groupoids:
-                $$\Rep^1_F(G)^{\cont} \cong \Rep^1_F(G^{\ab})^{\cont}$$
+            Let $G$ be a topological group and $E$ a topological field. Then, there is an equivalence of groupoids:
+                $$\Rep^1_E(G)^{\cont} \cong \Rep^1_E(G^{\ab})^{\cont}$$
         \end{lemma}
             \begin{proof}
                 Thanks to remark \ref{remark: groupoids_of_characters}, it shall suffice to show that the underlying discrete groups of the two groupoids are isomorphic. There is a natural injective group homomorphism:
-                    $$\Rep^1_F(G)^{\cont} \to \Rep^1_F(G^{\ab})^{\cont}$$
+                    $$\Rep^1_E(G)^{\cont} \to \Rep^1_E(G^{\ab})^{\cont}$$
                     $$\chi \mapsto \chi^{\ab}$$
-                coming from the canonical quotient map $G \to G^{\ab}$, so the only thing to do is to show that this homomorphism is surjective. For this, it shall suffice to show that the group $\Rep^1_F([G, G])^{\cont}$ is trivial: but this is evident from the fact that $\GL_1(F)$ is abelian and from the definition of the commutator subgroup $[G, G]$, namely that $[G, G] := \<ghg^{-1}h^{-1} \mid \forall g, h \in G\>$ (so for all $x \in [G, G]$ and all $\chi \in \Rep^1_F([G, G])$, $\chi(x) = 1$), so we are done.
+                coming from the canonical quotient map $G \to G^{\ab}$, so the only thing to do is to show that this homomorphism is surjective. For this, it shall suffice to show that the group $\Rep^1_E([G, G])^{\cont}$ is trivial: but this is evident from the fact that $\GL_1(E)$ is abelian and from the definition of the commutator subgroup $[G, G]$, namely that $[G, G] := \<ghg^{-1}h^{-1} \mid \forall g, h \in G\>$ (so for all $x \in [G, G]$ and all $\chi \in \Rep^1_E([G, G])$, $\chi(x) = 1$), so we are done.
             \end{proof}
         \begin{theorem}[Unramified representations are sheaves on $X$] \label{theorem: unramified_representations_are_sheaves_on_X}
             Fix a geometric point $\bar{x} \in X$. Then, there is a canonical equivalence:
-                $$\LocSys^1_{\overline{\Q_{\ell}}}(X) \cong \Rep^1_{\overline{\Q_{\ell}}}(\pi_1^{\ab}(X_{\fet}))^{\cont}$$
+                $$\LocSys^1_{\overline{\Q_{\ell}}}(X_{\profet}) \cong \Rep^1_{\overline{\Q_{\ell}}}(\pi_1^{\ab}(X_{\fet}))^{\cont}$$
                 $$\calL \mapsto \calL_{\bar{x}}$$
         \end{theorem}
             \begin{proof}
-                Simply combine lemma \ref{lemma: representations_of_the_etale_fundamental_group} and lemma \ref{lemma: abelianising_continuous_characters}.
+                Simply combine proposition \ref{prop: representations_of_the_etale_fundamental_group} and lemma \ref{lemma: abelianising_continuous_characters}.
             \end{proof}

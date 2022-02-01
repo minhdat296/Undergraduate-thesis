@@ -1,7 +1,7 @@
 \section{The Automorphic Side}
     \subsection{The Hecke action and spectral decomposition}
         \begin{convention}[The setting of the main theorem] \label{conv: automorphic_side_conventions}
-            For us, $\Bun_{\GL_1}(X)$ shall denote the moduli space of line bundles on $X$. Traditionally, this is usually referred to as the \textbf{Picard stack} and denoted by $\Pic_X$ (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0372}{Tag 0372}]{stacks}), but we opt for the notation $\Bun_{\GL_1}(X)$ because in the wider context of the Geometric Langlands Programme, one works with $\Bun_G(X)$ for $G$ a general connected reductive group (of which $\GL_1$ is a special case). 
+            For us, $\Bun_{\GL_1}(X)$ shall denote the moduli stack of line bundles on $X$. Traditionally, this is usually referred to as the \textbf{Picard stack} and denoted by $\Pic_X$ (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0372}{Tag 0372}]{stacks}), but we opt for the notation $\Bun_{\GL_1}(X)$ because in the wider context of the Geometric Langlands Programme, one works with $\Bun_G(X)$ for $G$ a general connected reductive group (of which $\GL_1$ is a special case). 
             
             In addition, let us now suppose that the base field $k$ from convention \ref{conv: base_curve} is algebraically closed (hence separably closed).
         \end{convention}
@@ -23,7 +23,7 @@
                         	\arrow["{\supp_X \x \vec{h}_X}", from=1-2, to=2-3]
                         \end{tikzcd}
                     $$
-                wherein $\Hecke_{\GL_1}(X)$ is the moduli space of quadruples:
+                wherein $\Hecke_{\GL_1}(X)$ is the moduli stack of quadruples:
                     $$(\E_1, \E_2, x, \beta_x)$$
                 consisting of line bundles $\E_1, \E_2 \in \Bun_{\GL_1}(X)$, points $x \in X$, and for each such point $x$, a monomorphism $\beta_x: \E_1 \hookrightarrow \E_2$ whose cokernel is the skyscraper sheaf $k_x$ supported at $x \in X$ with value $k$. It is naturally equipped with two projection functors $\cev{h}_X$ and $\supp_X \x \vec{h}_X$, which are defined via:
                     $$\cev{h}_X(\E_1, \E_2, x, \beta_x) \cong \E_1$$
@@ -38,7 +38,7 @@
                         	\arrow["{\vec{h}_x}", from=1-2, to=2-3]
                         \end{tikzcd}
                     $$
-                wherein $\Hecke_{\GL_1}(x)$ is the moduli space of triples $(\E_1, \E_2, \beta_x)$ consisting of line bundles $\E_1, \E_2 \in \Bun_{\GL_1}(X)$ along with a monomorphism $\beta_x: \E_1 \hookrightarrow \E_2$ whose cokernel is the skyscraper sheaf $k_x$ supported at $x \in X$ with value $k$, and $\cev{h}_x$ and $\vec{h}_x$ are defined in the obvious manner:
+                wherein $\Hecke_{\GL_1}(x)$ is the moduli stack of triples $(\E_1, \E_2, \beta_x)$ consisting of line bundles $\E_1, \E_2 \in \Bun_{\GL_1}(X)$ along with a monomorphism $\beta_x: \E_1 \hookrightarrow \E_2$ whose cokernel is the skyscraper sheaf $k_x$ supported at $x \in X$ with value $k$, and $\cev{h}_x$ and $\vec{h}_x$ are defined in the obvious manner:
                     $$\cev{h}_x(\E_1, \E_2, \beta_x) \cong \E_1$$
                     $$\vec{h}_x(\E_1, \E_2, \beta_x) \cong (x, \E_2)$$
             \end{enumerate}
