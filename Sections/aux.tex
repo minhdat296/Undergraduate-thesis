@@ -1,0 +1,30 @@
+\begin{remark}[Groupoid structure on character groups] \label{remark: groupoids_of_characters}
+            Let $G$ be a topological group and $E$ an algebraically closed topological field. Observe that because characters - by being identically $1$-dimensional - are necessarily irreducible as linear representations, one gets via Schur's Lemma (cf. \cite[Lemma 3.6, pp. 35]{lam_first_course_in_noncommutative_rings}) that all discrete $E$-characters of $G$ are isomorphic. Additionally, since $E$ is an algebraically closed field, we get through another application of Schur's Lemma (or rather, the fact that invertible matrices over an algebraically closed field are diagonal) that the isomorphism between any pair of discrete $\ell$-adic characters $\chi_1, \chi_2 \in \Rep^1_E(G)$ are group homomorphisms $\varphi_{\lambda}: \GL_1(E) \to \GL_1(E)$ (for some $\lambda \in E^{\x}$) given by:
+                $$\forall g \in G: \forall v \in \GL_1(E): \chi_2(g)(v) = (\chi_1 \circ \varphi_{\lambda})(g)(v) = \lambda \cdot \chi_1(g)(v)$$
+            Evidently, if $\chi_1(g)$ is continuous for all $g \in G$ then so is $\lambda \cdot \chi_1(g)$. Thus, all the continuous $E$-characters of $G$ are also isomorphic or in other words, $\Rep^1_E(G)^{\cont}$ is a groupoid. Furthermore, $\Rep^1_E(G)^{\cont}$ has an underlying group structure, namely that of the group whose elements are continuous $E$-characters $\chi: G \to \GL_1(E)$, on which the group structure is pointwise multiplication (note that this is compatible with the previous interpretation of $\Rep^1_E(G)^{\cont}$ as a groupoid, since $\chi(g) \in F^{\x}$ for all $g \in G$ and all $\chi \in \Rep^1_E(G)^{\cont}$, and hence the characters do in fact differ by non-zero scalar multiples).
+        \end{remark}
+        
+Furthermore, if $\pi$ is a profinite group\footnote{Which need not be strictly profinite; e.g. $\Gal(\Q^{\alg}/\Q)$ will have many finite-index normal subgroups which are not open if one assumes the Axiom of Choice (cf. \cite[Proposition 7.26]{milne_field_theory}).} such that $\calG \cong \pi\-\Fin$ then $\pi_1(\calG, F) \cong \pi$.
+
+\begin{remark}[The \'etale fundamental group satisfies descent] \label{remark: the_etale_fundamental_group_satisfies_descent}
+            In proposition \ref{prop: etale_eckmann_hilton_duality}, we demonstrated that for any connected qcqs base scheme $X$ and for all profinite groups $G$, there is a natural bijection:
+                $$\Grp(\Pro\Fin)(\pi_1(X_{\fet}), G) \cong \Sch_{/\Spec k}(X, \underline{G})$$
+            From this and form the fact that schemes are representable \'etale sheaves, one infers that for all profinite groups $G$, the functor:
+                $$\Grp(\Pro\Fin)(\pi_1(-), G): (\Sch_{/X})_{\fet}^{\op} \to \Grp(\Pro\Fin)$$
+            satisfies \'etale descent. As a consequence, an appropriate choice of $G$ (e.g. we shall be concerned with $G \cong \GL_n(\Z_{\ell})$) can help us compute $\pi_1(X_{\fet})$ using descent-theoretic techniques. In particular, should $\{Y_i \to X\}_{i \in \calI}$ be a Galois cover of $X$, then:
+                $$\Grp(\Pro\Fin)(\pi_1(X_{\fet}), G) \cong \underset{i \in I}{\lim} \Grp(\Pro\Fin)(\pi_1((Y_i)_{\fet}), G)$$
+        \end{remark}
+        
+        If $f: Y \to X$ is a \href{https://stacks.math.columbia.edu/tag/04DC}{\underline{universal homeomorphism}} between connected schemes and if $\bar{y} \in Y$ is a geometric point lying over a fixed geometric point $\bar{x} \in X$, then not only is the base change functor:
+                    $$(\Sch_{/X})_{\fet} \to (\Sch_{/Y})_{\fet}$$
+                    $$X' \mapsto X' \x_X Y$$
+                an equivalence of Galois categories, but also, one has an isomorphism of \'etale fundamental groups $\pi_1(X_{\fet}, \bar{x}) \cong \pi_1(Y_{\fet}, \bar{y})$. 
+                
+        \begin{lemma} \label{lemma: base_change_of_thickenings}
+            If $X \subset X'$ be a \href{https://stacks.math.columbia.edu/tag/04EW}{\underline{thickening}} of schemes. Then, the following base change functor is an equivalence of Galois categories:
+                $$(\Sch_{/X'})_{\fet} \to (\Sch_{/X})_{\fet}$$
+                $$T \mapsto T \x_{X'} X$$
+        \end{lemma}
+            \begin{proof}
+                
+            \end{proof}

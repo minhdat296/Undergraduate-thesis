@@ -15,7 +15,9 @@
             \end{enumerate}
         \end{definition}
         \begin{remark} \label{remark: pro_representable_functors_are_ind_objects}
-            Observe that due to Yoneda's Lemma, for $\C$ any small category and $\V$ any small closed monoidal category, the category of pro-representable $\V$-presheaves on $\C^{\op}$ is equivalent to $\Pro(\C)^{\op}$. 
+            Observe that due to Yoneda's Lemma, for $\C$ any small category and $\V$ any small closed monoidal category, the category of pro-representable $\V$-presheaves on $\C^{\op}$ is equivalent to $\Pro(\C)^{\op}$.
+            
+            Additionally, note that any pro-completion of a finite complete small category is necessarily cofiltered, since every finite cone must therefore admit a cone. Furthermore, pro-completions are their own maximal cofinal cofiltered subdiagram.
         \end{remark}
         
         We now officially begin our discussion of Grothendieck's Galois Theory with the notion of Galois categories, axiomatic settings in which one can \say{do Galois theory}, in the sense of classifying subobjects of a given universal object by checking whether or not they remain stable under certain \say{Galois group} actions; the idea is that Galois categories behave similarly to the category of finite sets (which can be thought of as the prototypical Galois category), in the same manner that sheaf topoi resemble the category of sets. Do keep in mind that for the sake of convenience (although without loss of generality, at least for our purposes), definition \ref{def: galois_categories} is a combination of \cite[Expos\'e V, Section 4 and D\'efinition 5.1]{SGA1} and \cite[\href{https://stacks.math.columbia.edu/tag/0BMY}{Tag 0BMY}]{stacks}; namely, we require that the fibre functor is \textit{pro-representable}, which the latter source does not.
@@ -43,31 +45,32 @@
             \end{itemize}
         \end{definition}
         \begin{definition}[Fundamental groups of Galois categories] \label{def: fundamental_groups_of_galois_categories}
-            The \textbf{fundamental group} of a given Galois category $(\calG, F)$ is the group $\Aut(F)$ of natural automorphisms on thefibre functor $F: \calG \to \Fin$. We shall suggestively denote the fundamental group of a given Galois category by $\pi_1(\calG, F)$.
+            The \textbf{fundamental group} of a given Galois category $(\calG, F)$, denoted by $\pi_1(\calG, F)$, is defined to be the automorphism group $\Aut(\Pro(F))$.
         \end{definition}
         
-        \begin{proposition}[Some basic properties of Galois categories and their fundamental groups] \label{prop: basic_properties_of_galois_categories}
-            Fix a Galois category $(\calG, F)$.
-                \begin{enumerate}
-                    \item There is a natural equivalence of categories $\calG \cong \pi_1(\calG, F)\-\Fin$ given by $X \mapsto F(X)$. Furthermore, if $\pi$ is a profinite group such that $\calG \cong \pi\-\Fin$ then 
-                    \item If $F': \calG \to \Fin$ is another fibre functor then $F \cong F'$.
-                \end{enumerate}
+        \begin{proposition}[The Categorical Galois Correspondence] \label{prop: categorical_galois_correspondence}
+            Fix a Galois category $(\calG, F)$ with terminal objects $\pt$. Then there are the following equivalences of categories:
+                $$\calG \cong \pi_1(\calG, F)\-\Fin\Sets$$
+                $$Y \mapsto F(Y)$$
+                $$\{\text{Finite-index subgroups of $\pi_1(\calG, F)$}\} \cong \pi_1(\calG, F)\-\Fin\Sets$$
+                $$H \mapsto \pi_1(\calG, F)/H$$
+            Furthermore, there is the following restricted equivalence:
+                $$\calG^{\Gal} \cong \{\text{Finite-index normal subgroups of $\pi_1(\calG, F)$}\}$$
         \end{proposition}
             \begin{proof}
-                \noindent
-                \begin{enumerate}
-                    \item The group $\prod_{X \in \Ob(\calG)} \Aut(F(X))$\footnote{Note that this product of groups is a group because we have assumed that Galois categories are small (so in particular, this means that $\Ob(\calG)$ is a set and not a proper class).} admits $\Aut(F)$ as a natural subgroup; the natural component maps:
-                        $$\alpha_X: \Aut(F) \to \Aut(F(X))$$
-                    then endow the sets $F(X)$ with natural $\Aut(F)$-actions (i.e. $\pi_1(\calG, F)$-actions). This implies that $F$ factors through $\pi_1(\calG, F)-\Fin$.
+                
                     
-                    Now, because $\calG$ has all finite limits, it is necessarily cofiltered (as every finite diagram must admit a cone), and hence the (co)filtered limit $\underset{X \in \calG}{\lim} \Aut(F(X))$ has a natural profinite group structure (since the groups $\Aut(F(X))$ are finite). Furthermore, the action maps are continuous:
-                        $$\alpha_X: \Aut(F) \to \Aut(F(X))$$
-                    because the compact-open topology on finite sets (namely the sets $F(X)$) is just the discrete topology and not only that, but one also has an isomorphism of profinite groups:
-                        $$\Aut(F) \cong \underset{X \in \calG}{\lim} \Aut(F(X))$$
-                    as a consequence of the pro-representablity of $F$:  
-                    \item 
-                \end{enumerate}
+                The second equivalence is a direct consequence of the Third Isomorphism Theorem for groups and the third is obvious from the second.\footnote{Note that in the classical setting, $\calG \cong {}^{K/}\Fld^{\fin}$ (for some field $K$) and the Galois objects are precisely the finite Galois extensions of $K$}.
             \end{proof}
+            
+        \begin{definition}[Universal covers] \label{def: universal_covers}
+            Let $(\calG, F)$ be a Galois category. A pro-object $\tilde{X} \in \Pro(\calG)$ is called a \textbf{universal cover} if and only if its fundamental group $\pi_1(\tilde{X}) \cong \Aut(\Pro(F)(\tilde{X}))$ is trivial (i.e. if and only if it is simply-connected).
+        \end{definition}
+        \begin{remark}[Fundamental groups are automorphism groups of universal covers] \label{remark: fundamental_groups_are_automorphism_groups_of_universal_covers}
+            Let $(\calG, F)$ be a Galois category. Next, pick an arbitrary cofiltered diagram $\tilde{Y} := \{Y_i\}_{i \in \calI}$ and consider the following:
+                $$\Aut(\Pro(F))(\lim \tilde{Y}) \cong \Aut\left(\Pro(F)(\lim \tilde{Y})\right) \cong \Aut\left(\lim \Pro(F)(\tilde{Y})\right) \cong \Aut\left(\underset{i \in \calI}{\lim} F(Y_i)\right)$$
+            where the second isomorphism holds thanks to the pro-representability of $F$ and the fact that hom-functors preseve limits in either entry (cf. \cite{nlab:hom-functor_preserves_limits}). The limit $\underset{i \in \calI}{\lim} F(Y_i)$ is of course a profinite set, and since $\tilde{Y} \in \Pro(\calG)$ is arbitrary, the above shows that $\Aut(\Pro(F))$ is a presheaf of profinite groups on $\Pro(\calG)^{\op}$. 
+        \end{remark}
         
         Let us now try to adapt definitions \ref{def: galois_categories} and \ref{def: fundamental_groups_of_galois_categories} to a appropriate categories of schemes, namely those spanned by schemes finite-\'etale over a given base.
         \begin{remark}[\'Etale vs. finite-\'etale] \label{remark: etale_vs_finite_etale}
@@ -87,153 +90,153 @@
             where $Y_{\bar{x}} \cong Y \x_X \Spec \kappa_x^{\alg}$; one can then take the underlying set of $Y_{\bar{x}}$ to get the following trivially left-exact functor:
                 $$F_{\bar{x}}: (\Sch_{/X})_{\fet} \to \Fin$$
                 $$Y \mapsto |Y_{\bar{x}}|$$
-            We should also verify that the sets $|Y_{\bar{x}}|$ are indeed finite. To this end, let us first apply the fact that pullbacks of \'etale morphisms are \'etale to see that if $Y$ is affine over $X$ then $Y_{\bar{x}}$ will have to be the spectrum of an \'etale $\kappa_x^{\alg}$-algebra; however, according to \cite[\href{https://stacks.math.columbia.edu/tag/00U3}{Tag 00U3}]{stacks}, this means that $Y_{\bar{x}} \cong \Spec (\kappa_x^{\alg})^{\oplus N}$ for some finite $N$. The locality of \'etale-ness and the finiteness of $Y$ as an $X$-scheme then tells us that in general, $Y_{\bar{x}}$ must be a finite disjoint union of affine schemes of the form $\Spec (\kappa_x^{\alg})^{\oplus N}$, meaning that $Y_{\bar{x}} \cong \Spec (\kappa_x^{\alg})^{\oplus N'}$ for some finite $N'$. The set $|Y_{\bar{x}}|$ is therefore always finite. One also sees that an immediate consequence of this proof is that $F_{\bar{x}}$ necessarily \textit{reflects isomorphisms} and is \textit{right-exact}. It thus remains to show that $F_{\bar{x}}$ is \textit{pro-representable}. For this, firstly note that because $F_{\bar{x}}(Y)$ is a finite set for all $Y \in (\Sch_{/X})_{\fet}$, there is a bijection between $F_{\bar{x}}(Y)$ and commutative diagrams of the form:
-                $$
-                    \begin{tikzcd}
-                    	& Y \\
-                    	{\bar{x}} & X
-                    	\arrow[dashed, from=2-1, to=1-2]
-                    	\arrow[from=2-1, to=2-2]
-                    	\arrow[from=1-2, to=2-2]
-                    \end{tikzcd}
-                $$
-            which tells us that there is a bijection:
-                $$F_{\bar{x}}(Y) \cong \Sch_{/X}(\bar{x}, Y)$$
-            It can then be shown using the definition algebraic closures and the Fundamental Theorem of Galois Theory, that $\bar{x} \in (\Sch_{/X})_{\profet}$. According to remark \ref{remark: pro_representable_functors_are_ind_objects} and Yoneda's Lemma, $F_{\bar{x}}$ is therefore pro-representable.
+            We should also verify that the sets $|Y_{\bar{x}}|$ are indeed finite. To this end, let us first apply the fact that pullbacks of \'etale morphisms are \'etale to see that if $Y$ is affine over $X$ then $Y_{\bar{x}}$ will have to be the spectrum of an \'etale $\kappa_x^{\alg}$-algebra; however, according to \cite[\href{https://stacks.math.columbia.edu/tag/00U3}{Tag 00U3}]{stacks}, this means that $Y_{\bar{x}} \cong \Spec (\kappa_x^{\alg})^{\oplus N}$ for some finite $N$. The locality of \'etale-ness and the finiteness of $Y$ as an $X$-scheme then tells us that in general, $Y_{\bar{x}}$ must be a finite disjoint union of affine schemes of the form $\Spec (\kappa_x^{\alg})^{\oplus N}$, meaning that $Y_{\bar{x}} \cong \Spec (\kappa_x^{\alg})^{\oplus N'}$ for some finite $N'$. The set $|Y_{\bar{x}}|$ is therefore always finite. One also sees that an immediate consequence of this proof is that $F_{\bar{x}}$ necessarily \textit{reflects isomorphisms} and is \textit{right-exact}. 
             
-            We have thus constructed a well-defined fibre functor:
+            It thus remains to show that $F_{\bar{x}}$ is \textit{pro-representable}. For this, observe first of all that as a functor on $\Sch_{/X}$ (as opposed to a functor on $(\Sch_{/X})_{\fet}$), $F_{\bar{x}}$ is naturally isomorphic to $\Sch_{/X}(\bar{x}, -)$. Since $\bar{x}$ is a pro-object of $(\Sch_{/\Spec \kappa_x})_{\fet}$, 
+            
+            We have thus constructed a well-defined fibre functor, in the sense of definition \ref{def: galois_categories}:
                 $$F_{\bar{x}}: (\Sch_{/X})_{\fet} \to \Fin$$
                 $$Y \mapsto |Y_{\bar{x}}|$$
         \end{remark}
-        \begin{definition}[\'Etale fundamental group] \label{def: etale_fundamental_groups}
-            For any scheme $X$ with a fixed geometric point $\bar{x}$, the pair $((\Sch_{/X})_{\fet}, F_{\bar{x}})$ as in remark \ref{remark: finite_etale_schemes} defines a Galois category. Its fundamental group $\Aut(F_{\bar{x}})$ is commonly denoted by $\pi_1(X_{\fet}, \bar{x})$ and called the \textbf{\'etale fundamental group} of $X$ based at $\bar{x}$.
+        \begin{remark}[Finite \'etale Galois schemes] \label{remark: galois_schemes}
+            Fix a base scheme $X$, and thanks to the fact that objects of Galois categories ($(\Sch_{/X})_{\fet}$ in this instance) can be written as finite coproducts of connected objects, we can assume without loss of generality that $X$ is connected. By definition \ref{def: galois_categories}, a Galois object in $(\Sch_{/X})_{\fet}$ is a finite-\'etale $X$-scheme $Y$ such that $Y/\Aut_X(Y) \cong X$. 
+        \end{remark}
+        \begin{definition}[\'Etale fundamental groups] \label{def: etale_fundamental_groups}
+            For any scheme $X$ with a fixed geometric point $\bar{x}$, the pair $((\Sch_{/X})_{\fet}, F_{\bar{x}})$ as in remark \ref{remark: finite_etale_schemes} defines a Galois category. Its fundamental group is commonly denoted by $\pi_1(X_{\fet}, \bar{x})$ and called the \textbf{\'etale fundamental group} of $X$ based at $\bar{x}$.
         \end{definition}
+        \begin{remark}[\'Etale fundamental groups as automorphism groups of universal covers] \label{remark: etale_fundamental_groups_as_automorphism_groups_of_universal_covers}
+            In remark \ref{remark: finite_etale_schemes}, we have implicitly shown that the full subcategory $(\Sch_{/X})_{\fet}^{\Gal}$ is a diagram in $(\Sch_{/X})_{\fet}$ such that  
+        \end{remark}
+        \begin{remark}[The Geometric Galois Correspondence] \label{remark: geometric_galois_correspondence}
+            Let $(X, \bar{x})$ be a pointed connected scheme. Then by proposition \ref{prop: categorical_galois_correspondence}, there is an equivalence of categories:
+                $$\{\text{Finite-index subgroups of $\pi_1(X_{\fet}, \bar{x})$}\}$$
+                $$\cong$$
+                $$\{\text{Finite \'etale $X$-schemes $Y$ with base points $\bar{y}$ lying over $\bar{x}$}\}$$
+            Furthermore (and also thanks to proposition \ref{prop: categorical_galois_correspondence}), this equivalence restricts down to:
+                $$\{\text{Finite-index normal subgroups of $\pi_1(X_{\fet}, \bar{x})$}\}$$
+                $$\cong$$
+                $$\{\text{Finite \'etale Galois $X$-schemes $Y$ with base points $\bar{y}$ lying over $\bar{x}$}\}$$
+            As a consequence, should $H$ be a finite-index normal subgroup of $\pi_1(X_{\fet}, \bar{x})$ and $(X^H, \bar{x}^H)$ be the corresponding Galois $X$-scheme with a choice of base point $\bar{x}^H$ lying over $\bar{x}$, then $\pi_1(X^H_{\fet}, \bar{x}^H) \cong H$. 
+        \end{remark}
+        \begin{example}[The \'etale fundamental group of a field] \label{example: etale_fundamental_group_of_a_field}
+            As a sanity check, note that if $K$ is a field then finite-\'etale Galois schemes over $\Spec K$ shall be of the form $\Spec L \to \Spec K$, where $L/K$ is a finite Galois extension, and as a consequence, there are there are the following equivalences of lattices, which demonstrate that remark \ref{remark: geometric_galois_correspondence} directly generalises the classical Galois Correspondence:
+                $$\{\text{Finite-index normal subgroups of $\pi_1((\Spec K)_{\fet})$}\}$$
+                $$\cong$$
+                $$\{\text{Finite \'etale Galois schemes over $\Spec K$}\}$$
+                $$\cong$$
+                $$\{\text{Finite Galois extensions of $K$}\}^{\op}$$
+                $$\cong$$
+                $$\{\text{Finite-index normal subgroups of $\Gal(K^{\alg}/K)$}\}$$
+        \end{example}
+        \begin{example}[The \'etale fundamental group of a curve] \label{example: etale_fundamental_group_of_a_curve}
+            Let $k$ be a field. If $X$ is a connected non-singular projective curve over $\Spec k$ with function field $K$, then there is a canonical equivalence $({}^{K/}\Fld^{\fin, \Gal})^{\op} \cong (\Sch_{/X})_{\fet}^{\Gal}$ between the lattice of finite Galois extensions of $K$ and Galois $X$-schemes (which are precisely dominant rational maps whose associated function field extensions are Galois). Through this, it is easy to see that:
+                $$\pi_1(X_{\fet}) \cong \Gal(K^{\alg}/K)$$
+            For instance, we have:
+                $$\pi_1((\P^1_k)_{\fet}) \cong \Gal(k^{\alg}/k)$$
+            (since the function field of $\P^1_k$ is $k(t)$), which tells us that $\P^1_k$ is simply \'etale-connected if and only if $k$ is algebraically closed (since $\Gal(k^{\alg}/k)$ is \textit{a fortiori} trivial in that case). 
+            
+            Another interesting case that one might wish to consider is that of elliptic curves; for the sake of simplicity, let us work with an elliptic curve $E$ over an algebraically closed field $k$ of characteristic $0$. First of all, because $k$ is algebraically closed, every $k$-rational point $x \in E(k)$ is automatically geometric; therefore, we might as well work with $x = 0$. Now, it can be shown without too much difficulty (cf. \cite[Proposition 5.11]{kundu_etale_fundamental_group_of_elliptic_curves}) that every scheme finite \'etale over an elliptic curve over any field is automatically Galois. Together with the definition of $\pi_1(E_{\fet})$, this implies that for any cofinal diagram $\{Y_i\}_{i \in \calI}$ in $(\Sch_{/E})_{\fet}$, one has:
+                $$\pi_1(E_{\fet}) \cong \underset{i \in \calI}{\lim} \Aut(F_0(Y_i)) \cong \underset{i \in \calI}{\lim} \Aut(|(Y_i)_0|)$$
+            Luckily, there is a canonical choice of such a cofinal diagram, namely $\{E[n]\}_{n \in \N}$ (cf. \cite[Proposition 3.8]{kundu_etale_fundamental_group_of_elliptic_curves}), which are nothing but the fibres over $0 \in E(k)$ (i.e. kernels) of the $n$-torsion maps $[n]: E \to E$ (this is why we chose the base point $x = 0$). It is well-known that:
+                $$\Aut(|E[n]|) \cong (\Z/n\Z)^{\oplus 2}$$
+            so by taking the limit, one obtains:
+                $$\pi_1(E_{\fet}) \cong \hat{\Z}^{\oplus 2}$$
+            Elliptic curves over (algebraically closed) fields of positive characteristics $p_0$ behave somewhat differently, but it is also difficult to compute their \'etale fundamental groups (provided). If $E$ is supersingular (i.e. if the $p_0$-torsion map $[p_0]: E \to E$ has trivial kernel) then one has the following description of the \'etale fundamental group of $E$ (cf. \cite[Proposition 5.13]{kundu_etale_fundamental_group_of_elliptic_curves}):
+                $$\pi_1(E_{\fet}) \cong \bigoplus_{(p) \in |\Spec \Z| \setminus \{(0), (p_0)\}} \Z_p^{\oplus 2}$$
+            and otherwise, if $E$ is an ordinary elliptic curve, one has the following (cf. \cite[Proposition 5.14]{kundu_etale_fundamental_group_of_elliptic_curves}):
+                $$\pi_1(E_{\fet}) \cong \Z_{p_0} \oplus \bigoplus_{(p) \in |\Spec \Z| \setminus \{(0), (p_0)\}} \Z_p^{\oplus 2}$$
+        \end{example}
         
-        Now, let us make sure that the \'etale fundamental group $\pi_1(X_{\fet}, \bar{x})$ as defined in definition \ref{def: etale_fundamental_groups} is meaningful as a formal construction. Namely, we would like to know the behaviours of $\pi_1(X_{\fet}, \bar{x})$ when we change the base point and when we base-change, as well as whether or not it is homotopically invariant in some sense (cf. proposition \ref{prop: the_etale_fundamental_group_as_a_topological_invariance}). In addition, we would like to check whether or not \'etale fundamental group is dual - in some sense - to the construction of an Eilenberg-MacLane space, thereby having concrete connections to the $1^{st}$ \'etale cohomology group and in turn, admitting descriptions in terms of torsors (cf. proposition \ref{prop: etale_eckmann_hilton_duality}.). 
-        \begin{lemma} \label{lemma: base_change_of_thickenings}
-            If $X \subset X'$ be a \href{https://stacks.math.columbia.edu/tag/04EW}{\underline{thickening}} of schemes. Then, the following base change functor is an equivalence of Galois categories:
-                $$(\Sch_{/X'})_{\fet} \to (\Sch_{/X})_{\fet}$$
-                $$T \mapsto T \x_{X'} X$$
-        \end{lemma}
-            \begin{proof}
-                
-            \end{proof}
+        Now, let us make sure that the \'etale fundamental group $\pi_1(X_{\fet}, \bar{x})$ as defined in definition \ref{def: etale_fundamental_groups} is meaningful as a formal construction. Namely, we would like to know the behaviours of $\pi_1(X_{\fet}, \bar{x})$ when we change the base point and when we base-change, as well as whether or not it is homotopically invariant in some sense (cf. proposition \ref{prop: the_etale_fundamental_group_as_a_topological_invariance}). 
         \begin{proposition}[The \'etale fundamental group as a topological invariance] \label{prop: the_etale_fundamental_group_as_a_topological_invariance}
-            \noindent
-            \begin{enumerate}
-                \item Let $f: Y \to X$ be a morphism of connected qcqs\footnote{quasi-compact and quasi-separated} schemes such that the base change functor:
-                    $$(\Sch_{/X})_{\fet} \to (\Sch_{/Y})_{\fet}$$
-                    $$X' \mapsto X' \x_X Y$$
-                is an equivalence of Galois categories. Then, for any choice of geometric points $\bar{x} \in X$ and $\bar{y} \in Y$, one has the following isomorphism of \'etale fundamental groups $\pi_1(X_{\fet}, \bar{x}) \cong \pi_1(Y_{\fet}, \bar{y})$.
-                \item If $f: Y \to X$ is a \href{https://stacks.math.columbia.edu/tag/04DC}{\underline{universal homeomorphism}} between connected schemes and if $\bar{y} \in Y$ is a geometric point lying over a fixed geometric point $\bar{x} \in X$, then not only is the base change functor:
-                    $$(\Sch_{/X})_{\fet} \to (\Sch_{/Y})_{\fet}$$
-                    $$X' \mapsto X' \x_X Y$$
-                an equivalence of Galois categories, but also, one has an isomorphism of \'etale fundamental groups $\pi_1(X_{\fet}, \bar{x}) \cong \pi_1(Y_{\fet}, \bar{y})$. 
-            \end{enumerate}
+            Let $f: Y \to X$ be a morphism of connected qcqs\footnote{quasi-compact and quasi-separated} schemes such that the base change functor:
+                $$(\Sch_{/X})_{\fet} \to (\Sch_{/Y})_{\fet}$$
+                $$X' \mapsto X' \x_X Y$$
+            is an equivalence of Galois categories. Then, for any choice of geometric points $\bar{x} \in X$ and $\bar{y} \in Y$, one has the following isomorphism of \'etale fundamental groups $\pi_1(X_{\fet}, \bar{x}) \cong \pi_1(Y_{\fet}, \bar{y})$.
         \end{proposition}
             \begin{proof}
-                \noindent
-                \begin{enumerate}
-                    \item This is an immediate consequence of the assumption that the base change functor:
-                        $$(\Sch_{/X})_{\fet} \to (\Sch_{/Y})_{\fet}$$
-                        $$X' \mapsto X' \x_X Y$$
-                    is an equivalence and from the definition of \'etale fundamental groups (cf. definition \ref{def: etale_fundamental_groups}).
-                    \item Because $f: Y \to X$ is a universal homeomorphism, the diagonal $\Delta_{Y/X}: Y \to Y \x_X Y$ is a thickening; lemma \ref{lemma: base_change_of_thickenings} implies that the following base change functor is an equivalence:
-                        $$(\Sch_{Y \x_X Y})_{\fet} \to (\Sch_{/Y})_{\fet}$$
-                        $$T \mapsto T \x_{Y \x_X Y} Y$$
-                \end{enumerate}
+                This is an immediate consequence of the assumption that the base change functor:
+                    $$(\Sch_{/X})_{\fet} \to (\Sch_{/Y})_{\fet}$$
+                    $$X' \mapsto X' \x_X Y$$
+                is an equivalence and from the definition of \'etale fundamental groups (cf. definition \ref{def: etale_fundamental_groups}).
             \end{proof}
         \begin{corollary}[Uniqueness of \'etale fundamental groups] \label{coro: etale_fundamental_group_uniqueness}
             For any connected qcqs scheme $X$ and any pair of possibly distinct geometric points $\bar{x}, \bar{x}' \in X$, one has any isomorphism of \'etale fundamental groups $\pi_1(X_{\fet}, \bar{x}) \cong \pi_1(X_{\fet}, \bar{x}')$, and therefore it makes sense to only speak of \textit{the} fundamental group of $X$, which we shall denote by $\pi_1(X_{\fet})$.
         \end{corollary}
-        
+    
+    \subsection{\texorpdfstring{$\ell$}{}-adic sheaves and Grothendieck's Galois Theory}
+        We begin by checking whether or not \'etale fundamental group is dual - in some sense - to the construction of an Eilenberg-MacLane space, thereby having concrete connections to the $1^{st}$ \'etale cohomology group and in turn, admitting descriptions in terms of torsors.
         \begin{remark}[Points of the moduli stack of $G$-torsors]
             For proposition \ref{prop: etale_eckmann_hilton_duality}, a basic fact one should keep in mind is that should $G$ be a constant group\footnote{As opposed to say, an algebraic group or more general group schemes}, then the groupoid $\Bun_{\underline{G}}(X) := \Sch_{/\Spec k}(X, \underline{G})$ of \'etale $\underline{G}$-torsors\footnote{Here, $\underline{G}$ denotes the group scheme represented by $\coprod_{g \in G} \Spec k$. Note how it is \'etale over $\Spec k$.} on a scheme $X$ over a field $k$ is equivalent to the groupoid $\Bun_{\underline{G}}(\Spec k)(X) := \Sch_{/\Spec k}(X, \underline{G(k)})$ of $X$-points of the moduli stack of $\underline{G}$-torsors on $\Spec k$.
         \end{remark}
         \begin{proposition}[The \'etale Eckmann-Hilton Duality] \label{prop: etale_eckmann_hilton_duality}
-            For any smooth projective connected curve $X$\footnote{Actually, this proposition holds also when $X$ is any irreducible geometrically unibranch scheme (which can be thought of as analogues of path-connected spaces), but we are not interested in such generalities.} over a field $k$ and any constant profinite group $G$, there exists a canonical equivalence of groupoids:
-                $$\Pro\Fin\Grp(\pi_1(X_{\fet}), G) \cong \Bun_{\underline{G}}(X_{\profet})$$
+            For any smooth projective connected curve $X$\footnote{Actually, this proposition holds also when $X$ is any irreducible geometrically unibranch scheme (which can be thought of as analogues of path-connected spaces), but we are not interested in such generalities.} over a field $k$ and any constant profinite group $G$, there exists the following adjunction:
+                $$
+                    \begin{tikzcd}
+                    	{\Grp(\Fin)} & {(\Sch_{/X})_{\fet}}
+                    	\arrow[""{name=0, anchor=center, inner sep=0}, "{\Sch_{/\Spec k}(X, -)}"', bend right, from=1-1, to=1-2]
+                    	\arrow[""{name=1, anchor=center, inner sep=0}, "{\pi_1^{\fet}}"', bend right, from=1-2, to=1-1]
+                    	\arrow["\dashv"{anchor=center, rotate=-90}, draw=none, from=1, to=0]
+                    \end{tikzcd}
+                $$
+            and in addition, a canonical equivalence:
+                $$\Grp(\Pro\Fin)(\pi_1(X_{\fet}), G) \cong \Bun_{\underline{G}}(X_{\profet})$$
             between the groupoid of continuous homomorphisms $\pi_1(X_{\fet}) \to G$ of profinite groups and that of profinite-\'etale $\underline{G}$-torsors on $X$.
         \end{proposition}
             \begin{proof}
-                Each continuous homomorphism $\pi_1(X_{\fet}) \to G$ determines a unique $G$-torsor in $\pi_1(X_{\fet})\-\Pro\Fin$. Because there is an equivalence $\pi_1(X_{\fet})\-\Pro\Fin \cong (\Sch_{/X})_{\profet}$ (cf. proposition \ref{prop: basic_properties_of_galois_categories}) and because schemes are representable \'etale sheaves, each such $G$-torsor in $\pi_1(X_{\fet})\-\Pro\Fin$ corresponds to a unique profinite-\'etale $\underline{G}$-torsor on $X$. Such a profinite-\'etale $\underline{G}$-torsor on $X$, in turn, is an $X$-point of the classifying stack $\Bun_{\underline{G}}((\Spec k)_{\profet})$, i.e. a morphism $X \to \underline{G}$ of $k$-schemes, and the proposition follows suite.
+                Each continuous homomorphism $\pi_1(X_{\fet}) \to G$ determines a unique $G$-torsor in $\pi_1(X_{\fet})\-\Pro\Fin$. Because there is an equivalence $\pi_1(X_{\fet})\-\Pro\Fin \cong (\Sch_{/X})_{\profet}$ (cf. proposition \ref{prop: categorical_galois_correspondence}) and because schemes are representable \'etale sheaves, each such $G$-torsor in $\pi_1(X_{\fet})\-\Pro\Fin$ corresponds to a unique profinite-\'etale $\underline{G}$-torsor on $X$. Such a profinite-\'etale $\underline{G}$-torsor on $X$, in turn, is an $X$-point of the classifying stack $\Bun_{\underline{G}}((\Spec k)_{\profet})$, i.e. a morphism $X \to \underline{G}$ of $k$-schemes, and the proposition follows suite.
             \end{proof}
         \begin{convention}
             From now on, if $E$ is a non-archimedean normed field then its subring of power-bounded elements shall be denoted by $E^{\circ}$. 
         \end{convention}
-        \begin{corollary}[Continuous representations of the \'etale fundamental group are torsors on a point] \label{coro: continuous_representations_of_the_etale_fundamental_group_are_torsors_on_a_point}
+        \begin{corollary}[Continuous representations of the \'etale fundamental group are torsors] \label{coro: continuous_representations_of_the_etale_fundamental_group_are_torsors}
             Let $\ell$ be a prime, let $E$ be an $\ell$-adic number field (i.e. a finite extension of $\Q_{\ell}$). For any smooth projective connected curve over a field $k$ along with any choice of discrete group $G$, there exists a canonical equivalence:
-                $$\Rep^1_{E^{\circ}}(\pi_1(X_{\fet}))^{\cont} \cong \Bun_{\underline{\GL_1(E^{\circ})}}(X_{\profet})$$
-            between the groupoid of continuous $1$-dimensional $E^{\circ}$-linear representations of $\pi_1(X_{\fet})$ and that of profinite-\'etale $\GL_1(E^{\circ})$-torsors on $X$.
+                $$\Rep^n_{E^{\circ}}(\pi_1(X_{\fet}))^{\cont} \cong \Bun_{\underline{\GL_n(E^{\circ})}}(X_{\profet})$$
+            between the groupoid of continuous $n$-dimensional $E^{\circ}$-linear representations of $\pi_1(X_{\fet})$ and that of profinite-\'etale $\GL_n(E^{\circ})$-torsors on $X$.
         \end{corollary}
         \begin{remark}[What about higher-dimensional representations ?]
-            Corollary \ref{coro: continuous_representations_of_the_etale_fundamental_group_are_torsors_on_a_point} does not hold for $\GL_n(E^{\circ})$ with $n > 1$ nor $\GL_n(E)$ for any $n \geq 1$, as these groups are only locally profinite, as opposed to being strictly profinite like $\GL_1(E^{\circ})$.
+            Corollary \ref{coro: continuous_representations_of_the_etale_fundamental_group_are_torsors} does not hold for $\GL_n(E)$ (for any $n \geq 1$), as these groups are only locally profinite, as opposed to being globally profinite like $\GL_n(E^{\circ})$.
         \end{remark}
-        
-        Now, while proposition \ref{prop: the_etale_fundamental_group_as_a_topological_invariance} and proposition \ref{prop: etale_eckmann_hilton_duality} have already demonstrated that \'etale fundamental groups exhibits all the \say{right} formal properties, one should also verify that for a suitable pointed scheme $(X, \bar{x})$, $\pi_1(X_{\fet}, \bar{x})$ should inform us of topological properties of $X$, such as the relationship between the connectedness of $X$ and its \'etale fundamental group, as well as arithmetic data, such as the correspondence between Galois covers (cf. remark \ref{remark: galois_covers}) of a connected scheme and normal subgroups of its \'etale fundamental group, or the relationship between the absolute Galois group of the function field $K_X$ of a variety $X$ and the \'etale fundamental group of the generic fibre $\pi_1((X_{\eta})_{\fet})$.
-        \begin{convention}
-            From this point on, $(\Sch_{/X})_{\fet}$ will also be used to denote the small \'etale site of finite-\'etale $X$-schemes. Note that this is a full subsite of the small \'etale site $(\Sch_{/X})_{\et}$ of \'etale $X$-schemes. 
-        \end{convention}
-        \begin{remark}[Galois covers] \label{remark: galois_covers}
-            Fix a base scheme $X$, and thanks to the fact that objects of Galois categories ($(\Sch_{/X})_{\fet}$ in this instance) can be written as finite coproducts of connected objects, we can assume without loss of generality that $X$ is connected. By definition \ref{def: galois_categories}, a Galois object in $(\Sch_{/X})_{\fet}$ is a finite-\'etale $X$-scheme $Y$ such that $Y/\Aut_X(Y) \cong X$.
-        \end{remark}
-        
-        Below are some examples that illustrate the arithmetic significance of the \'etale fundamental group.
-        \begin{example}[Examples of the \'etale fundamental group] \label{example: etale_fundamental_groups}
-            \noindent
-            \begin{itemize}
-                \item \textbf{(Fields):} For any field $K$, one has:
-                    $$\pi_1((\Spec K)_{\fet}) \cong \Gal(K^{\alg}/K)$$
-                \item \textbf{(Projective line):} It is well-known that $\P^1_k$ (for any field $k$) is a smooth connected projective curve with function field $k(t)$. Through proposition \ref{prop: curves_and_function_fields}, one sees that:
-                    $$\pi_1((\P^1_k)_{\fet}) \cong \pi_1((\Spec k(t))_{\fet}) \cong \Gal(k(t)^{\alg}/k(t)) \cong \Gal(k^{\alg}(t)/k(t)) \cong \Gal(k^{\alg}/k)$$
-                \item \textbf{(Discrete valuation rings):} Let us start with the prototypical case of $\Z_p$. Because objects of $(\Sch_{/\Spec \Z_p})_{\fet}$ are \textit{a priori} finite unramified integral extensions of $\Z_p$ whose fraction fields are $p$-adic fields of the same degree over $\Q_p$ (the fraction field of $\Z_p$), one obtains a canonical equivalence of Galois categories:
-                    $$(\Sch_{/\Spec \Q_p})_{\fet} \cong (\Sch_{/\Spec \Z_p})_{\fet}$$
-                As a consequence:
-                    $$\pi_1((\Spec \Z_p)_{\fet}) \cong \pi_1((\Spec \Q_p)_{\fet}) \cong \Gal(\Q_p^{\unr}/\Q_p) \cong \hat{\Z}$$
-                where $\Q_p^{\unr}/\Q_p$ is the maximal unramified extension of $\Q_p$, which one obtains by adjoining all $n^{th}$ roots of unity to $\Q_p$ (for all $n$ coprime to $p$).
-                
-                By arguing similarly, one will also see that $\pi_1((\Spec \F_p(\!(t)\!))_{\fet}) \cong \hat{\Z}$ as well. In fact, if $\scrV$ is any discrete valuation ring with residue field $k$ then $\pi_1((\Spec \scrV)_{\fet}) \cong \Gal(k^{\alg}/k)$ (one can start with $\scrV \cong \Z_p$, and notice that the residue field of any finite unramified extension of $\Q_p$ is $\F_{p^n}$, with $n$ being the degree of that extension).
-                \item \textbf{(Algebraic integers):} Minkowski's Theorem tells us that every non-trivial finite extension of $\Q$ ramifies at some prime $(p) \in \Spec \Z$, so:
-                    $$\pi_1((\Spec \Z)_{\fet}) \cong 1$$
-            \end{itemize}
-        \end{example}
     
-    \subsection{\texorpdfstring{$\ell$}{}-adic sheaves and Grothendieck's Galois Theory}
         \begin{convention} \label{conv: categories_of_representations}
-            For any base scheme $X$ and any field $E$, $\LocSys^n_E(X)$ shall denote the groupoid of locally constant sheaves of $n$-dimensional $E$-vector spaces and isomorphisms between them. Likewise, for any topological group $G$, we shall write $\Rep_E^n(G)^{\cont}$ for the groupoid of continuous $n$-dimensional $E$-linear representations of $G$ and isomorphisms between them. 
+            For any base scheme $X$ and any field $E$, $\LocSys^n_E(X)$ shall denote the groupoid of locally constant sheaves of $n$-dimensional $E$-vector spaces and isomorphisms between them\footnote{We will ultimately be interested in stalks of these sheaves. For how stalks of \'etale sheaves are computed, see \cite[\href{https://stacks.math.columbia.edu/tag/03PN}{Tag 03PN}]{stacks}.}. Likewise, for any topological group $G$, we shall write $\Rep_E^n(G)^{\cont}$ for the groupoid of continuous $n$-dimensional $E$-linear representations of $G$ and isomorphisms between them. 
         \end{convention}
         \begin{convention}[The Curve] \label{conv: base_curve}
             Henceforth, $X$ shall be a smooth projective \textit{connected} curve over $\Spec k$ (with $k$ some field).
         \end{convention}
         
-        \begin{lemma}[Torsors and local systems] \label{lemma: torsors_and_local_systems}
-            Let $\ell$ be a prime and $E$ be an $\ell$-adic number field. Then, there exists an equivalence of groupoids:
-                $$\LocSys_{E^{\circ}}^1(X_{\profet}) \cong \Bun_{\underline{\GL_1(E^{\circ})}}(X_{\profet})$$
-        \end{lemma}
-            \begin{proof}
-                This is a tautology of the fact that for any algebraic group $G$, the automorphism group of any trivial $G$-torsor on $\Spec k$ is $G$.
-            \end{proof}
-        \begin{proposition}[Representations of the \'etale fundamental group are local systems] \label{prop: representations_of_the_etale_fundamental_group}
-            Let $E$ be a topological field and fix a geometric point $\bar{x} \in X$. Then there exists a canonical equivalence\footnote{For how stalks of \'etale sheaves are computed, see \cite[\href{https://stacks.math.columbia.edu/tag/03PN}{Tag 03PN}]{stacks}.}:
-                $$\LocSys_E^1(X_{\profet}) \cong \Rep_E^1(\pi_1(X_{\fet}))^{\cont}$$
-                $$\calL \mapsto \calL_{\bar{x}}$$
+        \begin{proposition}[$\ell$-adic representations are $\ell$-adic torsors] \label{prop: ell_adic_representations_are_ell_adic_torsors}
+            Let $\ell$ be a prime and $E$ be an $\ell$-adic number field. Then there exists a canonical equivalence of groupoids as follows, for all $n \geq 1$:
+                $$\Rep_E^n(\pi_1(X_{\fet}))^{\cont} \cong \Bun_{\underline{\GL_n(E)}}(X_{\profet})$$
         \end{proposition}
             \begin{proof}
-                By combining corollary \ref{coro: continuous_representations_of_the_etale_fundamental_group_are_torsors_on_a_point} and lemma \ref{lemma: torsors_and_local_systems}, we get an equivalence:
-                    $$\LocSys_{E^{\circ}}^1(X_{\profet}) \cong \Rep_{E^{\circ}}^1(\pi_1(X_{\fet}))^{\cont}$$
-                    $$\calL \mapsto \calL_{\bar{x}}$$
+                Let $\rho: \pi_1(X_{\fet}) \to \GL_n(E)$ be a continuous representation. $\GL_n(E^{\circ})$ is an open subgroup of $\GL_n(E)$, so the preimage $H := \rho^{-1}(\GL_n(E^{\circ}))$ must be an open subgroup of $\pi_1(X_{\fet})$; since $\pi_1(X_{\fet})$ is profinite, $H$ is furthermore normal. Consequently, there exists a Galois $X$-scheme $X^H$ such that $\pi_1(X^H_{\fet}) \cong H$; as a result, we obtain the following pullback of topological groups:
+                    $$
+                        \begin{tikzcd}
+                        	{\pi_1(X^H_{\fet})} & {\GL_n(E^{\circ})} \\
+                        	{\pi_1(X_{\fet})} & {\GL_n(E)}
+                        	\arrow[hook, from=1-2, to=2-2]
+                        	\arrow["\rho", from=2-1, to=2-2]
+                        	\arrow[from=1-1, to=2-1]
+                        	\arrow["{(\rho^H)^{\circ}}", from=1-1, to=1-2]
+                        	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+                        \end{tikzcd}
+                    $$
+                Now, due to corollary \ref{coro: continuous_representations_of_the_etale_fundamental_group_are_torsors}, each representation $(\rho^H)^{\circ}: \pi_1(X^H_{\fet}) \to \GL_n(E^{\circ})$ corresponds to a unique profinite-\'etale $\underline{\GL_n(E^{\circ})}$-torsor on $X^H$, and since $\Bun_{\underline{\GL_n(E^{\circ})}}$ satisfies (profinite-)\'etale descent, one thus obtains in addition a unique $\underline{\GL_n(E^{\circ})}$-torsor on $X$, i.e. a representation $\rho^{\circ}: \pi_1(X_{\fet}) \to \GL_n(E^{\circ})$. There is thus a fully faithful embedding of $\Rep_E^n(\pi_1(X_{\fet}))^{\cont}$ into $\Bun_{\underline{\GL_n(E)}}(X_{\profet})$. Now, to show that this embedding is also essentially surjective, observer that because $(\Sch_{/X})_{\profet} \cong \pi_1(X_{\fet})\-\Pro\Fin$, each profinite-\'etale $\underline{\GL_n(E)}$-torsor on $X$ corresponds to a unique (continuous) $\GL_n(E)$-torsor in $\pi_1(X_{\fet})\-\Pro\Fin$. But such a torsor is nothing but a continuous representation $\pi_1(X_{\fet}) \to \GL_n(E)$, so we are done.
             \end{proof}
-        \begin{remark}[Groupoid structure on character groups] \label{remark: groupoids_of_characters}
-            Let $G$ be a topological group and $E$ an algebraically closed topological field. Observe that because characters - by being identically $1$-dimensional - are necessarily irreducible as linear representations, one gets via Schur's Lemma (cf. \cite[Lemma 3.6, pp. 35]{lam_first_course_in_noncommutative_rings}) that all discrete $E$-characters of $G$ are isomorphic. Additionally, since $E$ is an algebraically closed field, we get through another application of Schur's Lemma (or rather, the fact that invertible matrices over an algebraically closed field are diagonal) that the isomorphism between any pair of discrete $\ell$-adic characters $\chi_1, \chi_2 \in \Rep^1_E(G)$ are group homomorphisms $\varphi_{\lambda}: \GL_1(E) \to \GL_1(E)$ (for some $\lambda \in E^{\x}$) given by:
-                $$\forall g \in G: \forall v \in \GL_1(E): \chi_2(g)(v) = (\chi_1 \circ \varphi_{\lambda})(g)(v) = \lambda \cdot \chi_1(g)(v)$$
-            Evidently, if $\chi_1(g)$ is continuous for all $g \in G$ then so is $\lambda \cdot \chi_1(g)$. Thus, all the continuous $E$-characters of $G$ are also isomorphic or in other words, $\Rep^1_E(G)^{\cont}$ is a groupoid. Furthermore, $\Rep^1_E(G)^{\cont}$ has an underlying group structure, namely that of the group whose elements are continuous $E$-characters $\chi: G \to \GL_1(E)$, on which the group structure is pointwise multiplication (note that this is compatible with the previous interpretation of $\Rep^1_E(G)^{\cont}$ as a groupoid, since $\chi(g) \in F^{\x}$ for all $g \in G$ and all $\chi \in \Rep^1_E(G)^{\cont}$, and hence the characters do in fact differ by non-zero scalar multiples).
-        \end{remark}
+        \begin{corollary}[Representations of the \'etale fundamental group are local systems] \label{coro: representations_of_the_etale_fundamental_group}
+            Let $\ell$ be a prime and $E$ be an $\ell$-adic number field. In addition, fix a geometric point $\bar{x} \in X$. Then there exists a canonical equivalence as follows, for all $n \geq 1$:
+                $$\LocSys^n_E(X) \cong \Rep_E^n(\pi_1(X_{\fet}))^{\cont}$$
+                $$\calL \mapsto \calL_{\bar{x}}$$
+        \end{corollary}
+            
+        The following result crucially exploits the fact that $\GL_1(E)$ is abelian, unlike $\GL_n(E)$ for $n \geq 2$.
         \begin{lemma}[Abelianising continuous characters] \label{lemma: abelianising_continuous_characters}
             Let $G$ be a topological group and $E$ a topological field. Then, there is an equivalence of groupoids:
                 $$\Rep^1_E(G)^{\cont} \cong \Rep^1_E(G^{\ab})^{\cont}$$
         \end{lemma}
             \begin{proof}
-                Thanks to remark \ref{remark: groupoids_of_characters}, it shall suffice to show that the underlying discrete groups of the two groupoids are isomorphic. There is a natural injective group homomorphism:
+                There is a natural injective group homomorphism:
                     $$\Rep^1_E(G)^{\cont} \to \Rep^1_E(G^{\ab})^{\cont}$$
                     $$\chi \mapsto \chi^{\ab}$$
                 coming from the canonical quotient map $G \to G^{\ab}$, so the only thing to do is to show that this homomorphism is surjective. For this, it shall suffice to show that the group $\Rep^1_E([G, G])^{\cont}$ is trivial: but this is evident from the fact that $\GL_1(E)$ is abelian and from the definition of the commutator subgroup $[G, G]$, namely that $[G, G] := \<ghg^{-1}h^{-1} \mid \forall g, h \in G\>$ (so for all $x \in [G, G]$ and all $\chi \in \Rep^1_E([G, G])$, $\chi(x) = 1$), so we are done.
@@ -244,5 +247,5 @@
                 $$\calL \mapsto \calL_{\bar{x}}$$
         \end{theorem}
             \begin{proof}
-                Simply combine proposition \ref{prop: representations_of_the_etale_fundamental_group} and lemma \ref{lemma: abelianising_continuous_characters}.
+                Simply combine corollary \ref{coro: representations_of_the_etale_fundamental_group} and lemma \ref{lemma: abelianising_continuous_characters}.
             \end{proof}
