@@ -2,9 +2,7 @@
     The paper will be organised into two main sections, detailing what we shall call the \textbf{Galois Side} and the \textbf{Automorphic Side} of geometric class field theory. This introductory section will be dedicated to the outlining of our approaches to these sections, as well as for laying down some conventions that we will be following until the end of the paper.
 
     \subsection{The Galois Side}
-        Geometric class field theory is the idea that the study of function fields $K$ over $\F_q$ (i.e. finite extensions of $\F_q(t)$) can be formulated purely in terms of the machineries of algebraic geometry. More specifically, it is the idea that given Galois extensions $L/K$, one can decribe the Galois groups $\Gal(L/K)$ in purely geometric terms, via a gadget called the \textbf{\'etale fundamental group}. This, however, is only a meaningful endeavour should we know the underlying geometric space whose \'etale fundamental group would end up being the Galois groups that we are interested in.
-        
-        Our starting point is the following result, which explains why one might even suspect any sort of involvement of algebraic geometry in the first place:
+        The goal of this section is to define the \'etale fundamental group, as well as investigate its relationship with representations of absolute Galois groups. Our starting point is the following result, which explains why one might even suspect any sort of involvement of algebraic geometry in the first place:
         \begin{lemma}[Varieties and field extensions] \label{lemma: varieties_and_field_extensions}
             \cite[\href{https://stacks.math.columbia.edu/tag/0BXN}{Tag 0BXN}]{stacks} Let $k$ be a field. Then, $\trdeg K_X = \dim X$ for all varieties $X/k$, and there exists a canonical equivalence of categories as follows:
                 $$\{\text{Finite-type field extensions $K/k$ and $k$-algebra homomorphisms}\}^{\op}$$
@@ -82,7 +80,7 @@
         
         At this point, we can state and prove the main theorem of this section, which establishes a canonical equivalence between the category of rank-$1$ $\ell$-adic local systems on $X$ and the category of ($\ell$-adic) Hecke eigensheaves of rank $1$ on $\Bun_{\GL_1(X)}$:
             $$\LocSys_{\overline{\Q_{\ell}}}^1(X) \cong \Eig^1_{\overline{\Q_{\ell}}}(\Bun_{\GL_1}(X))$$
-        which maps each local system $\calL \in \LocSys_{\overline{\Q_{\ell}}}^1(X)$ to a Hecke eigensheaf $\Aut_{\calL} \in \Eig^1_{\overline{\Q_{\ell}}}(\Bun_{\GL_1}(X))$ with eigenvalue $\calL$. Finally, by putting theorem \ref{theorem: unramified_representations_are_sheaves_on_X} and theorem \ref{theorem: unramified_abelian_geometric_class_field_theory} together, one obtains a canonical equivalence of categories as follows:
+        which maps each local system $\calL \in \LocSys_{\overline{\Q_{\ell}}}^1(X)$ to a Hecke eigensheaf $\Autom_X(\calL) \in \Eig^1_{\overline{\Q_{\ell}}}(\Bun_{\GL_1}(X))$ with eigenvalue $\calL$. Finally, by putting theorem \ref{theorem: unramified_representations_are_sheaves_on_X} and theorem \ref{theorem: unramified_abelian_geometric_class_field_theory} together, one obtains a canonical equivalence of categories as follows:
             $$\Rep_{\overline{\Q_{\ell}}}^1(\pi_1^{\ab}(X_{\fet}))^{\cont} \cong \Eig^1_{\overline{\Q_{\ell}}}(\Bun_{\GL_1}(X))$$
         This is the version of global class field theory that we seek, and it tells us that $1$-dimensional continuous $\ell$-adic Galois representations are the same as automorphic forms associated to $\GL_1$.
         

@@ -1,14 +1,63 @@
 \section{The Automorphic Side}
-    \subsection{The Hecke action and spectral decomposition}
+    \subsection{Symmetric powers of curves, Jacobians, and the Abel-Jacobi map}
+        \begin{remark}[Quotient of schemes by finite group schemes] \label{remark: quotients_of_schemes_by_finite_group_schemes}
+            For details on quotients of schemes by finite groups, we refer the reader to \cite[Expos\'e V]{SGA1}. For our purposes, we shall only need to keep in mind the following facts: 
+                \begin{enumerate}
+                    \item Let $S$ be a base scheme and $Y$ be an $S$-scheme that is either \textit{(quasi-)projective or (quasi-)affine}, and if additionally. If $G$ be a \textit{finite, flat, and locally of finite presentation} group $S$-scheme acting \textit{freely}\footnote{This is to ensure that the $G$-action induces an fppf equivalence relation on $Y$, since the $G$-action on $Y$ is free if and only if the corresponding homomorphism of sheaves of groups $G \to \Aut_{S_{\fppf}}(Y)$ is injective.} on $Y$, then the algebraic space $Y/G$ is a scheme (cf. \cite[\href{https://stacks.math.columbia.edu/tag/07S7}{Tag 07S7}]{stacks}). 
+                    \item If $Y$ is a (quasi-)affine scheme $\Spec A$ then the quotient $Y/G$ will also be affine and will be isomorphic to $\Spec A^G$, thanks to the group-cohomological fact that $H^0(A, G) \cong A^G$. 
+                    
+                    If $Y$ is (quasi-)projective then $Y/G$ will also be (quasi-)projective.
+                \end{enumerate}
+        \end{remark}
+        \begin{definition}[Symmetric powers of schemes] \label{def: symmetric_powers_of_schemes}
+            Let $S$ be a base scheme and let $Y$ be an $S$-scheme that is either (quasi-)projective or (quasi-)affine\footnote{In particular, the curve $X$ from convention \ref{conv: base_curve} is projective.}. Then for any $d \geq 1$, the \textbf{$d^{th}$ symmetric power} of $Y$ is the quotient scheme $\Sym^d_S(Y) := Y^d/\underline{\Sigma_d}_{/S}$ of $Y$ by the constant symmetric $S$-group scheme $\underline{\Sigma_d}_{/S}$ on $d$ elements (which is finite, flat, and locally of finite presentation over $S$, since it is represented by $\coprod_{\sigma \in \Sigma_d} S$); here, $\underline{\Sigma_d}_{/S}$ acts via permutations, which is well-known to be a free action.
+        \end{definition}
+        \begin{convention}
+            Because the base field $k$ of our curve from convention \ref{conv: base_curve} is fixed, let us write $X^{(d)}$ instead of $\Sym^d_k(X)$ for simplicity.
+        \end{convention}
+        \begin{proposition}[Smoothness of symmetric powers] \label{prop: smoothness_of_symmetric_powers}
+            If $Y$ is a smooth variety over some field $C$ of dimension $\leq 1$ then so is $\Sym_F^d(Y)$.
+        \end{proposition}
+            \begin{proof}
+                Smoothness is preserved by base change, so we might as well assume that $C$ is algebraically closed. The case $\dim Y = 0$ is trivial, so let us assume that $\dim Y = 1$ (i.e. that $Y$ is a curve); in this case, the formal completion of the stalk $\calO_{Y, y}$ at any point $y \in |Y|$ is necessarily isomorphic to $C[\![y]\!]$\footnote{We are intentionally confusing the point $y \in |Y|$ and the formal variable $y \in C[\![y]\!]$ because $(y)$ is the unique maximal ideal of $C[\![y]\!]$.}, since $\calO_{Y, y}$ shall be a finite-type commutative algebra over an algebraically closed field; as a result, the formal completion of the stalk $\calO_{\Sym^d_C(Y), \vec{y}}$ at any point $\vec{y} \in \Sym^d_C(Y)$ is isomorphic to symmetric formal power series ring $k[\![y_1, ..., y_d]\!]^{\Sigma_d}$, which itself is isomorphic to $k[\![y_1, ..., y_d]\!]$ \textit{a priori}. A Noetherian local ring $(A, \m)$ is regular if and only if its $\m$-adic completion is regular, and if $A, B$ are finite-type regular commutative algebras over an algebraically closed field $C$ then $A \tensor_C B$ will also be regular as a $C$-algebra, so $\Sym_C^d(Y)$ will be smooth if $C[\![y]\!]$ is regular, which is rather self-evident.
+            \end{proof}
+        
+        \begin{definition}[Divisors] \label{def: divisors}
+            Let $Y$ be a scheme. An \textbf{effective (Cartier) divisor} on $Y$ is then a closed subscheme $D \subset Y$ whose ideal sheaf $\calI_D$ is a line bundle on $Y$.
+        \end{definition}
+        \begin{convention}
+            Given any effective divisor $D \subset Y$, any integer $n$, and any $\E \in \QCoh(X_{\Zar})$, let us write $\E(nD) \cong \E \tensor_{\calO_Y} \calI_D^{\tensor (-n)}$ (wherein $\calI_D^{\tensor (-n)} \cong (\calI_D^{\vee})^{\tensor n}$). In particular, note that $\calO_Y(-D) \cong \calI_D$.
+        \end{convention}
+        \begin{definition}[The Abel-Jacobi map] \label{def: the_abel_jacobi_map}
+            
+        \end{definition}
+        
+        \begin{convention}[Fibrations of schemes] \label{conv: fibrations}
+            Following \cite[\href{https://stacks.math.columbia.edu/tag/01OA}{Tag 01OA}]{stacks}, if $S$ is a scheme and $\E$ is a quasi-coherent $\calO_S$-module, then its associated \textbf{projective bundle} shall be the $S$-scheme $\P_S(\E) \cong \Proj_S(\Sym_{\calO_S}(\E))$ (here, $\Proj_S: \Sch_{/S}^{\op} \to \Sets$ denotes the $\Proj$-construction; for details, see \cite[\href{https://stacks.math.columbia.edu/tag/01NM}{Tag 01NM} and \href{https://stacks.math.columbia.edu/tag/01NS}{Tag 01NS}]{stacks}).
+        \end{convention}
+        \begin{lemma}[The Abel-Jacobi map is a smooth fibration] \label{lemma: the_abel_jacobi_map_is_a_smooth_fibration}
+            
+        \end{lemma}
+            \begin{proof}
+                
+            \end{proof}
+        \begin{convention}
+            Denote the \href{https://stacks.math.columbia.edu/tag/0BY6}{\underline{genus}} of our curve $X$ by $g$.  
+        \end{convention}
+        \begin{remark}
+            If we were to take the Riemann-Roch Theorem for granted (a proof along with related discussions can be found at \cite[\href{https://stacks.math.columbia.edu/tag/0B5B}{Tag 0B5B}]{stacks}), then a direct consequence will be that if $d \geq 2g - 1$ then
+        \end{remark}
+    
+    \subsection{Hecke eigensheaves and Categorical-Geometric Global Langlands for \texorpdfstring{$\GL_1$}{} (the function field case)}
         \begin{convention}[The setting of the main theorem] \label{conv: automorphic_side_conventions}
             For us, $\Bun_{\GL_1}(X)$ shall denote the moduli stack of line bundles on $X$. Traditionally, this is usually referred to as the \textbf{Picard stack} and denoted by $\Pic_X$ (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0372}{Tag 0372}]{stacks}), but we opt for the notation $\Bun_{\GL_1}(X)$ because in the wider context of the Geometric Langlands Programme, one works with $\Bun_G(X)$ for $G$ a general connected reductive group (of which $\GL_1$ is a special case). 
             
-            In addition, let us now suppose that the base field $k$ from convention \ref{conv: base_curve} is algebraically closed (hence separably closed).
+            In addition, let us now suppose that the base field $k$ from convention \ref{conv: base_curve} is perfect, and that our curve $X$ from convention \ref{conv: base_curve} is, in addition, geometrically connected.
         \end{convention}
-        \begin{remark}[Some remarks on the geometry of $\Bun_{\GL_1}$] \label{remark: geometry_of_the_picard_stack}
-            Since we are working with a smooth projective curve $X$ over an algebraically closed field (cf. convention \ref{conv: automorphic_side_conventions}) and hence over a separably closed field, the prestack $\Bun_{\GL_1}$ is \textit{a priori} representable by a scheme (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0B9Z}{Tag 0B9Z}]{stacks}) as a sheaf on $(\Sch_{/X})_{\fppf}$ (and by representablity, also as a sheaf on $(\Sch_{/X})_{\et}$ and $(\Sch_{/X})_{\Zar}$). As a result, when considering sheaves on $\Bun_{\GL_1}(X)$, we will only need to know about sheaves on schemes instead of the entire fully general theory of sheaves on prestacks. Furthermore, should $X$ be of \href{https://stacks.math.columbia.edu/tag/0BY6}{\underline{genus}} $g \geq 0$, then one has the following decomposision:
-                $$\Bun_{\GL_1}(X) \cong \coprod_{d \in \Z} \Bun_{\GL_1}^d(X)$$
-            wherein each $\Bun_{\GL_1}^d(X)$ is the moduli scheme of line bundles of \href{https://stacks.math.columbia.edu/tag/0AYQ}{\underline{degree}} $d$ on $X$, which is a smooth and proper variety (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0BA0}{Tag 0BA0}]{stacks}).
+        \begin{remark}[The geometry of $\Bun_{\GL_1}$] \label{remark: geometry_of_the_picard_stack}
+            Since we are working with a smooth projective curve $X$ over an algebraically closed field (cf. convention \ref{conv: automorphic_side_conventions}) and hence over a separably closed field, the prestack $\Bun_{\GL_1}$ is \textit{a priori} represented by a scheme (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0B9Z}{Tag 0B9Z}]{stacks}) as an fppf-sheaf on $X$ (and hence as an \'etale and as a Zariski sheaves, since the fppf toppology is finer than both these topologies). As a result, when considering sheaves on $\Bun_{\GL_1}(X)$, we will only need to know about sheaves on schemes instead of the entire fully general theory of sheaves on prestacks. Furthermore, should $X$ be of \href{https://stacks.math.columbia.edu/tag/0BY6}{\underline{genus}} $g \geq 0$, then one has the following decomposision:
+                $$\Bun_{\GL_1}(X) \cong \coprod_{d \in \Z} \Bun_{\GL_1}^{(d)}(X)$$
+            wherein each $\Bun_{\GL_1}^{(d)}(X)$ is the moduli scheme of line bundles of \href{https://stacks.math.columbia.edu/tag/0AYQ}{\underline{degree}} $d$ on $X$, which is a proper smooth variety (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0BA0}{Tag 0BA0}]{stacks}).
         \end{remark}
         
         \begin{definition}[Hecke correspondences] \label{def: hecke_correspondences}
@@ -45,7 +94,7 @@
         \end{definition}
         
         \begin{definition}[Hecke operators] \label{def: hecke_operators}
-            \noindent
+            The Hecke operators are integral transforms induced by the Hecke Correspondence in the following manners:
             \begin{enumerate}
                 \item \textbf{(The global Hecke operators):} The global Hecke correspondence induces the following sheaf pull-push diagram:
                     $$
@@ -84,33 +133,29 @@
             thanks to the fact that the stalks $\calL_x$ are all isomorphic to $\overline{\Q_{\ell}}$, since $\calL$ is an $\ell$-adic local system of rank $1$.
         \end{remark}
     
-    \subsection{The Abel-Jacobi map and Deligne-Artin Reciprocity for global function fields}
         \begin{theorem}[Unramified abelian geometric class field theory] \label{theorem: unramified_abelian_geometric_class_field_theory}
             There exists a canonical equivalence between the groupoid of rank-$1$ $\ell$-adic local systems on $X$ and the groupoid of ($\ell$-adic) Hecke eigensheaves of rank $1$ on $\Bun_{\GL_1(X)}$:
-                $$\LocSys_{\overline{\Q_{\ell}}}^1(X) \cong \Eig^1_{\overline{\Q_{\ell}}}(\Bun_{\GL_1}(X))$$
-            which maps each local system $\calL \in \LocSys_{\overline{\Q_{\ell}}}^1(X)$ to a Hecke eigensheaf $\Aut_{\calL} \in \Eig^1_{\overline{\Q_{\ell}}}(\Bun_{\GL_1}(X))$ with eigenvalue $\calL$.
+                $$\LocSys^1_{\overline{\Q_{\ell}}}(X) \cong \Eig^1_{\overline{\Q_{\ell}}}(\Bun_{\GL_1}(X))$$
+                $$\calL \to \Autom_X(\calL)$$
+            which maps each local system $\calL \in \LocSys^1_{\overline{\Q_{\ell}}}(X)$ to a Hecke eigensheaf $\Autom_X(\calL) \in \Eig^1_{\overline{\Q_{\ell}}}(\Bun_{\GL_1}(X))$ with eigenvalue $\calL$.
         \end{theorem}
             \begin{proof}
-                \noindent
-                \begin{enumerate}
-                    \item 
-                    \item
-                    \item 
-                \end{enumerate}
+                Our strategy for this proof is to explicitly construct - for each $\calL \in \LocSys^1_{\overline{\Q_{\ell}}}$ - the corresponding Hecke eigensheaf $\Autom_X(\calL)$, and this will involve three steps:
+                    \begin{enumerate}
+                        \item \textbf{(A local system on $X^{(d)}$):} Denote the quotient map defining $X^{(d)}$ by $q^{(d)}: X^d \to X^{(d)}$ and define $\Delta_X^{(d)} := q^{(d)} \circ \Delta_X^d$. Next, consider the following right-exact functor:
+                            $$\LocSys^1_{\overline{\Q_{\ell}}}(X) \to \LocSys^1_{\overline{\Q_{\ell}}}(X^{(d)})$$
+                            $$\calL \mapsto \calL^{(d)} := ((\Delta_X^{(d)})_*\calL)^{\Sigma_d}$$
+                        The first observation that one can make is that $(q^{(d)})^*\calL^{(d)} \cong \calL^{\boxtimes d} \cong (\Delta_X^d)_*\calL$.
+                        \item \textbf{(Pushing the local system forward):}
+                        \item \textbf{(Obtaining a Hecke eigensheaf):}
+                    \end{enumerate}
             \end{proof}
         \begin{remark}[How should we interpret theorem \ref{theorem: unramified_abelian_geometric_class_field_theory} ?] \label{remark: unramified_abelian_geometric_class_field_theory_explanation}
             By putting theorem \ref{theorem: unramified_representations_are_sheaves_on_X} and theorem \ref{theorem: unramified_abelian_geometric_class_field_theory} together, one gets a canonical equivalence of categories as follows:
                 $$\Rep_{\overline{\Q_{\ell}}}^1(\pi_1^{\ab}(X_{\fet}))^{\cont} \cong \Eig^1_{\overline{\Q_{\ell}}}(\Bun_{\GL_1}(X))$$
+                $$\chi \mapsto \Autom_X(\chi)$$
             Modulo technicalities, what this essentially tells us is that $1$-dimensional continuous $\ell$-adic Galois representations are the same as automorphic forms associated to $\GL_1$, and as such, the combination of theorem \ref{theorem: unramified_representations_are_sheaves_on_X} and theorem \ref{theorem: unramified_abelian_geometric_class_field_theory} can be understood as the Categorical Global Unramified Geometric Langlands Correspondence in its simplest non-trivial form, that being for the (connnected reductive group $G \cong \GL_1$)\footnote{Incidentally, this is why it is commonly asserted that the Langlands Correspondence for $\GL_1$ \say{is just class field theory}.}. 
         \end{remark}
-        \begin{example}[Some examples of geometric reciprocity] \label{example: geometric_reciprocity}
-            \noindent
-            \begin{itemize}
-                \item \textbf{($X \cong \P^1_k$):}
-                \item \textbf{(Elliptic curves over char. $0$):}
-                \item \textbf{(Counter-example: $X \cong \A^1_k, \chara k = 0$):}
-            \end{itemize}
-        \end{example}
         
     \subsection{Grothendieck's Sheaf-Function Dictionary and \textit{die Gr\"o{\ss}encharaktere}}
         As a final step, let us decategorify the left-hand side of the equivalence:

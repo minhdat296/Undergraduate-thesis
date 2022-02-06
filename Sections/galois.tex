@@ -67,9 +67,7 @@
             Let $(\calG, F)$ be a Galois category. A pro-object $\tilde{X} \in \Pro(\calG)$ is called a \textbf{universal cover} if and only if its fundamental group $\pi_1(\tilde{X}) \cong \Aut(\Pro(F)(\tilde{X}))$ is trivial (i.e. if and only if it is simply-connected).
         \end{definition}
         \begin{remark}[Fundamental groups are automorphism groups of universal covers] \label{remark: fundamental_groups_are_automorphism_groups_of_universal_covers}
-            Let $(\calG, F)$ be a Galois category. Next, pick an arbitrary cofiltered diagram $\tilde{Y} := \{Y_i\}_{i \in \calI}$ and consider the following:
-                $$\Aut(\Pro(F))(\lim \tilde{Y}) \cong \Aut\left(\Pro(F)(\lim \tilde{Y})\right) \cong \Aut\left(\lim \Pro(F)(\tilde{Y})\right) \cong \Aut\left(\underset{i \in \calI}{\lim} F(Y_i)\right)$$
-            where the second isomorphism holds thanks to the pro-representability of $F$ and the fact that hom-functors preseve limits in either entry (cf. \cite{nlab:hom-functor_preserves_limits}). The limit $\underset{i \in \calI}{\lim} F(Y_i)$ is of course a profinite set, and since $\tilde{Y} \in \Pro(\calG)$ is arbitrary, the above shows that $\Aut(\Pro(F))$ is a presheaf of profinite groups on $\Pro(\calG)^{\op}$. 
+            
         \end{remark}
         
         Let us now try to adapt definitions \ref{def: galois_categories} and \ref{def: fundamental_groups_of_galois_categories} to a appropriate categories of schemes, namely those spanned by schemes finite-\'etale over a given base.
@@ -163,6 +161,14 @@
         \begin{corollary}[Uniqueness of \'etale fundamental groups] \label{coro: etale_fundamental_group_uniqueness}
             For any connected qcqs scheme $X$ and any pair of possibly distinct geometric points $\bar{x}, \bar{x}' \in X$, one has any isomorphism of \'etale fundamental groups $\pi_1(X_{\fet}, \bar{x}) \cong \pi_1(X_{\fet}, \bar{x}')$, and therefore it makes sense to only speak of \textit{the} fundamental group of $X$, which we shall denote by $\pi_1(X_{\fet})$.
         \end{corollary}
+        
+        \begin{proposition}[The \'etale homotopy exact sequence] \label{prop: etale_homotopy_exact_sequence}
+            Let $X$ be a connected scheme. If $f: Y \to X$ be a flat proper morphism of finite presentation whose geometric fibres $Y_{\bar{x}}$ are connected and reduced, then for any geometric point $\bar{x} \in X$, there exists a right-exact sequence of groups as follows:
+                $$\pi_1((Y_{\bar{x}})_{\fet}) \to \pi_1(Y_{\fet}) \to \pi_1(X_{\fet}) \to 1$$
+        \end{proposition}
+            \begin{proof}
+                
+            \end{proof}
     
     \subsection{\texorpdfstring{$\ell$}{}-adic sheaves and Grothendieck's Galois Theory}
         We begin by checking whether or not \'etale fundamental group is dual - in some sense - to the construction of an Eilenberg-MacLane space, thereby having concrete connections to the $1^{st}$ \'etale cohomology group and in turn, admitting descriptions in terms of torsors.
