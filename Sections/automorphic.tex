@@ -1,10 +1,49 @@
 \section{The Automorphic Side}
     \subsection{Symmetric powers of curves, Jacobians, and the Abel-Jacobi map}
+        \begin{convention}[The Picard group] \label{conv: picard_group}
+            For any base scheme $S$ and any $S$-scheme $Y$, we shall write $|\Pic_{Y/S}|$ for the group of isomorphism classes of line bundles on $Y$, whose group structure is given by tensor products of invertible quasi-coherent $\calO_{Y/S}$-modules.
+        \end{convention}
+        \begin{definition}[Effective divisors] \label{def: effective_divisors}
+            Let $Y$ be a scheme. An \textbf{effective (Cartier) divisor} on $Y$ is then a closed subscheme $D \subset Y$ whose ideal sheaf $\calI_D$ is a line bundle on $Y$. Its \textbf{degree} is the \href{https://stacks.math.columbia.edu/tag/0AYQ}{\underline{degree}} of the line bundle $\calI_D$.  
+            The set of effective divisors (respectively, effective divisors of degree $d$) shall be denoted by $|\Div_Y^{\eff}|$ (respectively, $|\Div_Y^{\eff, (d)}|$), and as a straightforward consequence of the definition of effective divisors, it is precisely the set of invertible\footnote{A quasi-coherent ideal sheaf $\calJ \subset \calO_Y$ is invertible if and only if its local sections $\calJ(V)$ are principal ideals of $\calO_Y(V)$.} quasi-coherent $\calO_Y$-ideals (respectively, quasi-coherent $\calO_Y$-ideals of degree $d$).
+        \end{definition}
+        \begin{convention}
+            Given any effective divisor $D \subset Y$, any integer $n$, and any $\E \in \QCoh_X$, let us write $\E(nD) \cong \E \tensor_{\calO_Y} \calI_D^{\tensor (-n)}$ (wherein $\calI_D^{\tensor (-n)} \cong (\calI_D^{\vee})^{\tensor n}$). In particular, note that $\calO_Y(-D) \cong \calI_D$.
+        \end{convention}
+        \begin{remark}[Groups of effective divisors] \label{remark: groups_of_effective_divisors}
+            Let $Y$ be a scheme. Because effective divisors are line bundles, they are trivially flat\footnote{Given any line bundle $\calL \in |\Pic_Y|$, the functor $- \tensor_{\calO_Y} \calL$ is an auto-equivalence of $\Coh_Y$, which is an abelian category, so $- \tensor_{\calO_Y} \calL$ is automatically (left-)exact.}, so given any pair of effective divisors $D, D' \subset Y$, one can define a new effective divisor $D + D'$ corresponding to the $\calO_Y$-ideal $\calI_D \calI_{D'}$, which is isomorphic to $\calI_D \tensor_{\calO_{X/k}} \calI_{D'}$ due to flatness. The set $|\Div_Y^{\eff}|$ thus inherits the group structure of $|\Pic_Y|$ (the group identity of $|\Div_Y^{\eff}|$ is the empty scheme, corresponding to the zero ideal), and it can be easily shown that the injective group homomorphism identifying $|\Div_Y^{\eff}|$ as a subgroup of $|\Pic_Y|$ is:
+                $$|\AJ_Y|: |\Div_Y^{\eff}| \to |\Pic_Y|$$
+                $$D \mapsto \calO_Y(-D)$$
+        \end{remark}
+        
+        \begin{convention}[The setting for geometric class field theory] \label{conv: automorphic_side_conventions}
+            For us, $\Bun_{\GL_1}(X)$ shall denote the moduli space of line bundles on $X$. Traditionally, this is usually referred to as the \textbf{Picard stack} and denoted by $\Pic_{X/k}$ (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0372}{Tag 0372}]{stacks}), but we opt for the notation $\Bun_{\GL_1}(X)$ because in the wider context of the Geometric Langlands Programme, one works with $\Bun_G(X)$ for $G$ a general connected reductive group (of which $\GL_1$ is a special case), and to not confuse the moduli space $\Bun_{\GL_1}(X)$ with the group $|\Pic_{X/k}|$ (cf. convention \ref{conv: picard_group}). 
+            
+            In addition, let us now suppose that the base field $k$ from convention \ref{conv: base_curve} is perfect, and that our curve $X$ from convention \ref{conv: base_curve} is, in addition, geometrically connected.
+        \end{convention}
+        \begin{remark}[The geometry of $\Bun_{\GL_1}$] \label{remark: geometry_of_the_picard_stack}
+            Since we are working with a smooth projective curve $X$ over an algebraically closed field (cf. convention \ref{conv: automorphic_side_conventions}) and hence over a separably closed field, the prestack $\Bun_{\GL_1}$ is \textit{a priori} represented by a scheme (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0B9Z}{Tag 0B9Z}]{stacks}) as an fppf sheaf on $X$ (and hence as an \'etale and as a Zariski sheaves, since the fppf toppology is finer than both these topologies). As a result, when considering sheaves on $\Bun_{\GL_1}(X)$, we will only need to know about sheaves on schemes instead of the entire fully general theory of sheaves on prestacks. Furthermore, if the genus of $X$ is $g \geq 0$, then one will have the following decomposision:
+                $$\Bun_{\GL_1}(X) \cong \coprod_{d \in \Z} \Bun_{\GL_1}^{(d)}(X)$$
+            wherein each $\Bun_{\GL_1}^{(d)}(X)$ is the moduli scheme of line bundles of degree $d$ on $X$, which is a proper smooth variety of dimension $g$ over $\Spec k$ (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0BA0}{Tag 0BA0}]{stacks}).
+        \end{remark}
+        
+         \begin{remark}[Moduli of effective divisors] \label{remark: moduli_of_effective_divisors}
+            For any base scheme $S$ and any $S$-scheme $Y$, let us define the \textbf{Hilbert functor} of closed subschemes of degree $d \geq 0$ to be the presheaf:
+                $$\Hilb_{Y/S}^{(d)}: \Sch_{/S}^{\op} \to \Sets$$
+                $$T \mapsto \{\text{Finite locally free closed subschemes $D \subset Y_T$ of degree $d$}\}$$
+            Should $Y$ be a geometrically irreducible smooth proper curve over a field $C$ then interestingly, not only are finite locally free closed subschemes $D \subset Y_{C'}$ of degree $d$ precisely the effective divisors of degree $d$ on $Y_{C'}$ for any field extension $C'/C$ (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0B9D}{Tag 0B9D}]{stacks}), but also, one has a bijection:
+                $$|\Div_{Y_{C'}/C'}^{\eff, (d)}| \cong \Hilb_{Y/C}^{(d)}(C')$$
+            between the set of $C'$-rational points of $\Hilb_{Y/C}^{(d)}$ and that of degree-$d$ effective divisors on $Y_{C'}$ (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0B9I}{Tag 0B9I}]{stacks}); in this sense, \textit{$\Hilb_{Y/C}^{(d)}$ is the moduli space of degree-$d$ effective divisors on $Y$}. Moreover, \cite[\href{https://stacks.math.columbia.edu/tag/0B9H}{Tag 0B9H} and \href{https://stacks.math.columbia.edu/tag/0B9I}{Tag 0B9I}]{stacks} that in $\Hilb_{Y/C}^{(d)}$ is represented by a smooth proper variety of dimension $d$ over $\Spec C$, and hence an \'etale sheaf on $\Sch_{/S}$. By putting everything together, one obtains a fine moduli space $\Div_{Y/C}^{\eff, (d)} \in (Y/C)_{\fppf}$ parametrising degree-$d$ effective divisors on $Y$, represented by a smooth proper variety of dimension $d$ over $\Spec C$.
+            
+            By combining this fact with the discussions from remark \ref{remark: geometry_of_the_picard_stack} and remark \ref{remark: groups_of_effective_divisors}, one obtains a fine moduli space $\Div_{X/k}^{\eff} \in (X/k)_{\fppf}$ of effective divisors on $X$ that admits a decomposition into $d$-dimensional smooth proper varieties over $\Spec k$ in the following manner:
+                $$\Div_{X/k}^{\eff} \cong \coprod_{d \in \Z} \Div_{X/k}^{\eff, (d)}$$
+        \end{remark}
+        
         \begin{remark}[Quotient of schemes by finite group schemes] \label{remark: quotients_of_schemes_by_finite_group_schemes}
             For details on quotients of schemes by finite groups, we refer the reader to \cite[Expos\'e V]{SGA1}. For our purposes, we shall only need to keep in mind the following facts: 
                 \begin{enumerate}
                     \item Let $S$ be a base scheme and $Y$ be an $S$-scheme that is either \textit{(quasi-)projective or (quasi-)affine}, and if additionally. If $G$ be a \textit{finite, flat, and locally of finite presentation} group $S$-scheme acting \textit{freely}\footnote{This is to ensure that the $G$-action induces an fppf equivalence relation on $Y$, since the $G$-action on $Y$ is free if and only if the corresponding homomorphism of sheaves of groups $G \to \Aut_{S_{\fppf}}(Y)$ is injective.} on $Y$, then the algebraic space $Y/G$ is a scheme (cf. \cite[\href{https://stacks.math.columbia.edu/tag/07S7}{Tag 07S7}]{stacks}). 
-                    \item If $Y$ is a (quasi-)affine scheme $\Spec A$ then the quotient $Y/G$ will also be affine and will be isomorphic to $\Spec A^G$, thanks to the group-cohomological fact that $H^0(A, G) \cong A^G$. 
+                    \item If $Y$ is a (quasi-)affine scheme $\Spec A$ then the quotient $Y/G$ will also be affine and will be isomorphic to $\Spec A^G$, thanks to the group-cohomological fact that $H_{\Zar}^0(A, G) \cong A^G$. 
                     
                     If $Y$ is (quasi-)projective then $Y/G$ will also be (quasi-)projective.
                 \end{enumerate}
@@ -15,51 +54,52 @@
         \begin{convention}
             Because the base field $k$ of our curve from convention \ref{conv: base_curve} is fixed, let us write $X^{(d)}$ instead of $\Sym^d_k(X)$ for simplicity.
         \end{convention}
-        \begin{proposition}[Smoothness of symmetric powers] \label{prop: smoothness_of_symmetric_powers}
-            If $Y$ is a smooth variety over some field $C$ of dimension $\leq 1$ then so is $\Sym_F^d(Y)$.
-        \end{proposition}
-            \begin{proof}
-                Smoothness is preserved by base change, so we might as well assume that $C$ is algebraically closed. The case $\dim Y = 0$ is trivial, so let us assume that $\dim Y = 1$ (i.e. that $Y$ is a curve); in this case, the formal completion of the stalk $\calO_{Y, y}$ at any point $y \in |Y|$ is necessarily isomorphic to $C[\![y]\!]$\footnote{We are intentionally confusing the point $y \in |Y|$ and the formal variable $y \in C[\![y]\!]$ because $(y)$ is the unique maximal ideal of $C[\![y]\!]$.}, since $\calO_{Y, y}$ shall be a finite-type commutative algebra over an algebraically closed field; as a result, the formal completion of the stalk $\calO_{\Sym^d_C(Y), \vec{y}}$ at any point $\vec{y} \in \Sym^d_C(Y)$ is isomorphic to symmetric formal power series ring $k[\![y_1, ..., y_d]\!]^{\Sigma_d}$, which itself is isomorphic to $k[\![y_1, ..., y_d]\!]$ \textit{a priori}. A Noetherian local ring $(A, \m)$ is regular if and only if its $\m$-adic completion is regular, and if $A, B$ are finite-type regular commutative algebras over an algebraically closed field $C$ then $A \tensor_C B$ will also be regular as a $C$-algebra, so $\Sym_C^d(Y)$ will be smooth if $C[\![y]\!]$ is regular, which is rather self-evident.
-            \end{proof}
-        
-        \begin{definition}[Divisors] \label{def: divisors}
-            Let $Y$ be a scheme. An \textbf{effective (Cartier) divisor} on $Y$ is then a closed subscheme $D \subset Y$ whose ideal sheaf $\calI_D$ is a line bundle on $Y$.
-        \end{definition}
-        \begin{convention}
-            Given any effective divisor $D \subset Y$, any integer $n$, and any $\E \in \QCoh(X_{\Zar})$, let us write $\E(nD) \cong \E \tensor_{\calO_Y} \calI_D^{\tensor (-n)}$ (wherein $\calI_D^{\tensor (-n)} \cong (\calI_D^{\vee})^{\tensor n}$). In particular, note that $\calO_Y(-D) \cong \calI_D$.
-        \end{convention}
-        \begin{definition}[The Abel-Jacobi map] \label{def: the_abel_jacobi_map}
-            
-        \end{definition}
-        
-        \begin{convention}[Fibrations of schemes] \label{conv: fibrations}
-            Following \cite[\href{https://stacks.math.columbia.edu/tag/01OA}{Tag 01OA}]{stacks}, if $S$ is a scheme and $\E$ is a quasi-coherent $\calO_S$-module, then its associated \textbf{projective bundle} shall be the $S$-scheme $\P_S(\E) \cong \Proj_S(\Sym_{\calO_S}(\E))$ (here, $\Proj_S: \Sch_{/S}^{\op} \to \Sets$ denotes the $\Proj$-construction; for details, see \cite[\href{https://stacks.math.columbia.edu/tag/01NM}{Tag 01NM} and \href{https://stacks.math.columbia.edu/tag/01NS}{Tag 01NS}]{stacks}).
-        \end{convention}
-        \begin{lemma}[The Abel-Jacobi map is a smooth fibration] \label{lemma: the_abel_jacobi_map_is_a_smooth_fibration}
-            
+        \begin{lemma}[Smoothness of symmetric powers] \label{lemma: smoothness_of_symmetric_powers}
+            If $Y$ is a smooth variety over some field $C$ of dimension $\leq 1$ then so is $\Sym_C^d(Y)$.
         \end{lemma}
+            \begin{proof}
+                Smoothness is preserved by base change, so we might as well assume that $C$ is algebraically closed. The case $\dim Y = 0$ is trivial, so let us assume that $\dim Y = 1$ (i.e. that $Y$ is a curve); in this case, the formal completion of the stalk $\calO_{Y, y}$ at any point $y \in |Y|$ is necessarily isomorphic to $C[\![y]\!]$\footnote{We are intentionally confusing the point $y \in |Y|$ and the formal variable $y \in C[\![y]\!]$ because $(y)$ is the unique maximal ideal of $C[\![y]\!]$.}, since $\calO_{Y, y}$ shall be a finite-type commutative algebra over an algebraically closed field; as a result, the formal completion of the stalk $\calO_{\Sym^d_C(Y), \vec{y}}$ at any point $\vec{y} \in \Sym^d_C(Y)$ is isomorphic to symmetric formal power series ring $k[\![y_1, ..., y_d]\!]^{\Sigma_d}$, which itself is isomorphic to $k[\![y_1, ..., y_d]\!]$ \textit{a priori}. A Noetherian local ring $(A, \m)$ is regular if and only if its $\m$-adic completion is regular, and if $A, B$ are finite-type regular commutative algebras over an algebraically closed field $C$ then $A \tensor_C B$ will also be regular as a $C$-algebra, so $\Sym_C^d(Y)$ will be smooth if $C[\![y]\!]$ is regular, which is definitely the case since $\dim C[\![y]\!] = \dim_C (y)/(y)^2 = 1$.
+            \end{proof}
+        \begin{proposition}[Symmetric powers of curves parametrise divisors] \label{prop: symmetric_powers_of_curves_parametrise_divisors}
+            For each $d$, the fine moduli space $\Div_{X/k}^{\eff, (d)}$ is represented by the smooth variety $X^{(d)}$.
+        \end{proposition}
             \begin{proof}
                 
             \end{proof}
-        \begin{convention}
-            Denote the \href{https://stacks.math.columbia.edu/tag/0BY6}{\underline{genus}} of our curve $X$ by $g$.  
-        \end{convention}
-        \begin{remark}
-            If we were to take the Riemann-Roch Theorem for granted (a proof along with related discussions can be found at \cite[\href{https://stacks.math.columbia.edu/tag/0B5B}{Tag 0B5B}]{stacks}), then a direct consequence will be that if $d \geq 2g - 1$ then
-        \end{remark}
+        
+        \begin{definition}[The Abel-Jacobi map] \label{def: the_abel_jacobi_map}
+            Let $Y$ be a geometrically connected smooth projective curve over some field $C$. Then, the \textbf{$d^{th}$ Abel-Jacobi map} associated to $Y/C$ is the morphism of smooth proper varieties:
+                $$\AJ_{Y/C}^{(d)}: \Div_{Y/C}^{\eff, (d)} \to \Bun_{\GL_1}^{(d)}(Y)$$
+            which section-wise (i.e. at each field extension $C'/C$) associates to each degree-$d$ effective divisor $D \in |\Div_{Y_{C'}/C'}^{\eff, (d)}|$ to its corresponding invertible quasi-coherent $\calO_{Y_{C'}}$-ideal $\calI_D \in |\Pic_{Y_{C'}/C'}^{(d)}|$.
+        \end{definition}
+        \begin{proposition}[The Abel-Jacobi map is a smooth fibration] \label{prop: the_abel_jacobi_map_is_a_smooth_fibration}
+            Denote the \href{https://stacks.math.columbia.edu/tag/0BY6}{\underline{genus}} of our curve $X$ by $g$. If $d \geq 2g - 1$ then every Abel-Jacobi map $\AJ_{X/k}^{(d)}: \Div_{X/k}^{\eff, (d)} \to \Bun_{\GL_1}^{(d)}(X)$ will be a surjective smooth proper morphism with fibres\footnote{Note that these are precisely the geometric fibres, since $k$ is algebraically closed.} over $k$-rational points isomorphic to $\P^{d - g}_k$.
+        \end{proposition}
+            \begin{proof}
+                $\P^n_k$ is smooth and proper (since being projective implies being proper) for all $n \geq 0$ \textit{a priori}, and both smoothness and properness are preserved by base change, so it shall suffice to show that $\AJ_{X/k}^{(d)}$ is surjective with fibres over $k$-rational points being $\P^{d - g}_k$. For this, let us first apply the Riemann-Roch Theorem (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0BS6}{Tag 0BS6}]{stacks}; note that the theorem is applicable to our situation because $X$ is a geometrically connected smooth projective curve and therefore a Gorenstein\footnote{Smooth schemes are Gorenstein because their stalks are regular local rings.} scheme of equidimension $1$ over a field), which tells us that should $\E \in \Vect_{X/k}^n$ be a be a locally free quasi-coherent $\calO_{X/k}$-module of constant rank $n$, then:
+                    $$\chi(X, \E) = \deg(\E) - \frac12\rank(\E) \deg(\omega_{X/k})$$
+                where $\omega_{X/k}$ denotes the dualising sheaf (which is a line bundle due also to the Riemann-Roch Theorem) and $\chi(X, \E)$ denotes the Euler characteristic of $\E$ as a coherent sheaf on the proper $k$-scheme $X$. Because $\deg(\omega_{X/k}) = 2g - 2$ (thanks to \cite[\href{https://stacks.math.columbia.edu/tag/0C19}{Tag 0C19}]{stacks}, which is applicable in this situation because $X$ is a proper Gorenstein $k$-scheme such that $H^0_{\Zar}(X, \calO_{X/k}) \cong k$), the above tells us that for any degree-$d$ line bundle $\calL \in \Bun_{\GL_1}^{(d)}(X)$, we have:
+                    $$
+                        \begin{aligned}
+                            \chi(X, \calL) & = \deg(\calL) - \frac12 \rank(\calL) \deg(\omega_{X/k})
+                            \\
+                            & = d - \frac12 \cdot 1 \cdot (2g - 2)
+                            \\
+                            & = d - g + 1
+                        \end{aligned}
+                    $$
+                Line bundles are particular cases of coherent sheaves with support dimension $\leq 0$, and since $X$ is proper over a field, we can apply \cite[\href{https://stacks.math.columbia.edu/tag/0AYT}{Tag 0AYT}]{stacks} to get that:
+                    $$\dim_k H^0_{\Zar}(X, \calL) = \chi(X, \calL) = d - g + 1$$
+                
+            \end{proof}
+        \begin{corollary}[Galois representations induced by the Abel-Jacobi map] \label{coro: galois_representations_induced_by_the_abel_jacobi_map}
+            Because $\AJ_{X/k}^{(d)}$ is proper and smooth, it is proper, flat, and of finite presentation, and so there is an induced \'etale homotopy sequence:
+                $$\pi_1((\P^{d - g}_k)_{\fet}) \to \pi_1((\Div_{X/k}^{\eff, (d)})_{\fet}) \to \pi_1((\Bun_{\GL_1}^{(d)}(X))_{\fet}) \to 1$$
+            and since $\P^{d - g}_k$ is \'etale-simply connected, one thus obtains an isomorphism of \'etale fundamental groups:
+                $$\pi_1((\Div_{X/k}^{\eff, (d)})_{\fet}) \cong \pi_1((\Bun_{\GL_1}^{(d)}(X))_{\fet})$$
+        \end{corollary}
     
     \subsection{Hecke eigensheaves and Categorical-Geometric Global Langlands for \texorpdfstring{$\GL_1$}{} (the function field case)}
-        \begin{convention}[The setting of the main theorem] \label{conv: automorphic_side_conventions}
-            For us, $\Bun_{\GL_1}(X)$ shall denote the moduli stack of line bundles on $X$. Traditionally, this is usually referred to as the \textbf{Picard stack} and denoted by $\Pic_X$ (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0372}{Tag 0372}]{stacks}), but we opt for the notation $\Bun_{\GL_1}(X)$ because in the wider context of the Geometric Langlands Programme, one works with $\Bun_G(X)$ for $G$ a general connected reductive group (of which $\GL_1$ is a special case). 
-            
-            In addition, let us now suppose that the base field $k$ from convention \ref{conv: base_curve} is perfect, and that our curve $X$ from convention \ref{conv: base_curve} is, in addition, geometrically connected.
-        \end{convention}
-        \begin{remark}[The geometry of $\Bun_{\GL_1}$] \label{remark: geometry_of_the_picard_stack}
-            Since we are working with a smooth projective curve $X$ over an algebraically closed field (cf. convention \ref{conv: automorphic_side_conventions}) and hence over a separably closed field, the prestack $\Bun_{\GL_1}$ is \textit{a priori} represented by a scheme (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0B9Z}{Tag 0B9Z}]{stacks}) as an fppf-sheaf on $X$ (and hence as an \'etale and as a Zariski sheaves, since the fppf toppology is finer than both these topologies). As a result, when considering sheaves on $\Bun_{\GL_1}(X)$, we will only need to know about sheaves on schemes instead of the entire fully general theory of sheaves on prestacks. Furthermore, should $X$ be of \href{https://stacks.math.columbia.edu/tag/0BY6}{\underline{genus}} $g \geq 0$, then one has the following decomposision:
-                $$\Bun_{\GL_1}(X) \cong \coprod_{d \in \Z} \Bun_{\GL_1}^{(d)}(X)$$
-            wherein each $\Bun_{\GL_1}^{(d)}(X)$ is the moduli scheme of line bundles of \href{https://stacks.math.columbia.edu/tag/0AYQ}{\underline{degree}} $d$ on $X$, which is a proper smooth variety (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0BA0}{Tag 0BA0}]{stacks}).
-        \end{remark}
-        
         \begin{definition}[Hecke correspondences] \label{def: hecke_correspondences}
             \noindent
             \begin{enumerate}
@@ -128,25 +168,35 @@
                 $$\scrH_X(\E) \cong \calL \boxtimes \E$$
         \end{definition}
         \begin{remark}
-            It is easy to see that Hecke eigensheaves form a full symmetric monoidal subcategory of $\Shv_{\overline{\Q_{\ell}}}^1(\Bun_{\GL_1}(X))$, which we shall denote by $\Eig^1_{\overline{\Q_{\ell}}}(\Bun_{\GL_1}(X))$. Furthermore, each Hecke eigensheaf $\E$ with eigenvalue $\calL$ is an \say{eigenvector} of any of the local Hecke operators $\scrH_x$ in the following manner\footnote{Note that the category of $\ell$-adic local systesm of rank $1$ on each point $x \in X$ is nothing but $\Vect^1(\overline{\Q_{\ell}})$, the category of $1$-dimensional $\overline{\Q_{\ell}}$-vector spaces.}:
+            It is easy to see that Hecke eigensheaves form a full symmetric monoidal subcategory of $\Shv_{\overline{\Q_{\ell}}}^1(\Bun_{\GL_1}(X))$, which we shall denote by $\Eig^1_{\overline{\Q_{\ell}}}(\Bun_{\GL_1}(X))$. Furthermore, each Hecke eigensheaf $\E$ with eigenvalue $\calL$ is an \say{eigenvector} of any of the local Hecke operators $\scrH_x$ in the following manner\footnote{Note that the category of $\ell$-adic local systesm of rank $1$ on each point $x \in X$ is nothing but $\Vect^1_{\overline{\Q_{\ell}}}$, the category of $1$-dimensional $\overline{\Q_{\ell}}$-vector spaces.}:
                 $$\scrH_x(\E) \cong (\overline{\Q_{\ell}})_x \boxtimes \E$$
-            thanks to the fact that the stalks $\calL_x$ are all isomorphic to $\overline{\Q_{\ell}}$, since $\calL$ is an $\ell$-adic local system of rank $1$.
+            thanks to the fact that the stalks $\calL_x$ are all isomorphic to $\overline{\Q_{\ell}}$, since $\calL$ is an $\ell$-adic $\ell$-adic local system of rank $1$.
         \end{remark}
-    
+        
+        \begin{definition}[Character sheaves] \label{def: character_sheaves}
+            
+        \end{definition}
+        \begin{lemma}[Character sheaves of group schemes and group characters] \label{lemma: character_sheav es_of_group_schemes_and_group_characters}
+            Let $G$ be a connected and separated abelian algebraic group a perfect field $k$ of characteristic $p > 0$. Then, there is an equivalence of categories between the category of character sheaves of $G$ and that of $\ell$-adic characters of $G(k)$:
+                $$\Char\Shv_{\overline{\Q_{\ell}}}(G) \cong \Rep^1_{\overline{\Q_{\ell}}}(G(k))$$
+        \end{lemma}
+            \begin{proof}
+                
+            \end{proof}
         \begin{theorem}[Unramified abelian geometric class field theory] \label{theorem: unramified_abelian_geometric_class_field_theory}
             There exists a canonical equivalence between the groupoid of rank-$1$ $\ell$-adic local systems on $X$ and the groupoid of ($\ell$-adic) Hecke eigensheaves of rank $1$ on $\Bun_{\GL_1(X)}$:
-                $$\LocSys^1_{\overline{\Q_{\ell}}}(X) \cong \Eig^1_{\overline{\Q_{\ell}}}(\Bun_{\GL_1}(X))$$
+                $$\Shv^1_{\overline{\Q_{\ell}}}(X) \cong \Eig^1_{\overline{\Q_{\ell}}}(\Bun_{\GL_1}(X))$$
                 $$\calL \to \Autom_X(\calL)$$
-            which maps each local system $\calL \in \LocSys^1_{\overline{\Q_{\ell}}}(X)$ to a Hecke eigensheaf $\Autom_X(\calL) \in \Eig^1_{\overline{\Q_{\ell}}}(\Bun_{\GL_1}(X))$ with eigenvalue $\calL$.
+            which maps each $\ell$-adic local system $\calL \in \Shv^1_{\overline{\Q_{\ell}}}(X)$ to a Hecke eigensheaf $\Autom_X(\calL) \in \Eig^1_{\overline{\Q_{\ell}}}(\Bun_{\GL_1}(X))$ with eigenvalue $\calL$.
         \end{theorem}
             \begin{proof}
-                Our strategy for this proof is to explicitly construct - for each $\calL \in \LocSys^1_{\overline{\Q_{\ell}}}$ - the corresponding Hecke eigensheaf $\Autom_X(\calL)$, and this will involve three steps:
+                Our strategy for this proof is to explicitly construct - for each $\calL \in \Shv^1_{\overline{\Q_{\ell}}}$ - the corresponding Hecke eigensheaf $\Autom_X(\calL)$, and this will involve three steps:
                     \begin{enumerate}
-                        \item \textbf{(A local system on $X^{(d)}$):} Denote the quotient map defining $X^{(d)}$ by $q^{(d)}: X^d \to X^{(d)}$ and define $\Delta_X^{(d)} := q^{(d)} \circ \Delta_X^d$. Next, consider the following right-exact functor:
-                            $$\LocSys^1_{\overline{\Q_{\ell}}}(X) \to \LocSys^1_{\overline{\Q_{\ell}}}(X^{(d)})$$
+                        \item \textbf{(A $\ell$-adic local system on $X^{(d)}$):} Denote the quotient map defining $X^{(d)}$ by $q^{(d)}: X^d \to X^{(d)}$ and define $\Delta_X^{(d)} := q^{(d)} \circ \Delta_X^d$. Next, consider the following right-exact functor:
+                            $$\Shv^1_{\overline{\Q_{\ell}}}(X) \to \Shv^1_{\overline{\Q_{\ell}}}(X^{(d)})$$
                             $$\calL \mapsto \calL^{(d)} := ((\Delta_X^{(d)})_*\calL)^{\Sigma_d}$$
                         The first observation that one can make is that $(q^{(d)})^*\calL^{(d)} \cong \calL^{\boxtimes d} \cong (\Delta_X^d)_*\calL$.
-                        \item \textbf{(Pushing the local system forward):}
+                        \item \textbf{(Pushing the $\ell$-adic local system forward):} The previously $\ell$-adic character sheaf on $X^{(d)}$ can then be pushed forward to another $\ell$-adic character sheaf on $\Bun_{\GL_1}^{(d)}(X)$; the procedure has been described in corollary \ref{coro: galois_representations_induced_by_the_abel_jacobi_map}.
                         \item \textbf{(Obtaining a Hecke eigensheaf):}
                     \end{enumerate}
             \end{proof}

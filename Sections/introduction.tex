@@ -32,7 +32,7 @@
             between the category of finite Galois extensions of $K$ and finite \'etale-Galois covers of $X$ (cf. remark \ref{remark: geometric_galois_correspondence}). 
         \end{corollary}
         The importance of corollary \ref{coro: galois_covers_of_curves_and_galois_extensions} can not be understated: what it tells us is essentially that the Galois group $\Gal(K^{\ab}/K)$ is nothing but the \'etale fundamental group of $(\Sch_{/X})_{\fet}^{\Gal}$ (more on this later, after we have introduced the \'etale fundamental group; cf. definition \ref{def: etale_fundamental_groups}). This, already, is one side of the Artin's Reciprocity Law, which we shall refer to as \say{\textbf{The Galois Side}} per popular conventions. Actually, this is a bit of a lie: instead of formulating geometric class field theory directly in terms of the \'etale fundamental group $\pi_1^{\ab}(X_{\fet})$ (or rather, its continuous $\ell$-adic characters), we will be phrasing things in terms of $\ell$-adic local systems of rank $1$ on $X$; the main result on the Galois Side shall be theorem \ref{theorem: unramified_representations_are_sheaves_on_X}, which rigorously and precisely establishes the categorification of continuous representations of $\pi_1^{\ab}(X_{\fet})$ to $\ell$-adic local systems on $X$ via a canonical equivalence of categories:
-            $$\Rep^1_{\overline{\Q_{\ell}}}(\pi_1^{\ab}(X_{\fet}))^{\cont} \cong \LocSys^1_{\overline{\Q_{\ell}}}(X)$$
+            $$\Rep^1_{\overline{\Q_{\ell}}}(\pi_1^{\ab}(X_{\fet}))^{\cont} \cong \Shv^1_{\overline{\Q_{\ell}}}(X)$$
     
     \subsection{The Automorphic Side}
         \begin{convention}[The setting of the main theorem]
@@ -74,13 +74,13 @@
         
         It is now an essential technicality that we work with $\ell$-adic local systems of rank $1$ (for which we shall write $\Shv_{\overline{\Q_{\ell}}}^1(-)$) instead of simply with a generic sheaf theory $\Shv(-)$ as we have until this moment. Via the Hecke operators, one can define the Hecke eigensheaves that we eluded to earlier: as the name suggests, these are nothing but sheaves $\E \in \Shv_{\overline{\Q_{\ell}}}^1(\Bun_{\GL_1}(X))$ that are \say{eigenvectors} of the \textit{global} Hecke operators $\scrH_X$, i.e. for each such $\E$, there exists $\calL \in \Shv_{\overline{\Q_{\ell}}}^1(X)$ such that\footnote{Here, $\boxtimes$ denotes the Deligne tensor product in the $1$-category of finite abelian categories and right-exact functors; in this particular case, we shall be content with $\calL \boxtimes \E \cong \pr_1^*\calL \tensor \pr_2^*\E$.}:
             $$\scrH_X(\E) \cong \calL \boxtimes \E$$
-        Now, because $\calL$ is an $\ell$-adic local system of rank $1$ on $X$, its stalk $\calL_x$ at any point $x \in X$ is nothing but $\overline{\Q_{\ell}}$. Consequently, the corresponding local Hecke operators $\scrH_x$ admit $(\overline{\Q_{\ell}})_x \in \Shv(X)$ - the skyscraper sheaf with value $\overline{\Q_{\ell}}$ and supported at $x \in X$ - as an \say{eigenvalue}:
+        Now, because $\calL$ is an $\ell$-adic local systems of rank $1$ on $X$, its stalk $\calL_x$ at any point $x \in X$ is nothing but $\overline{\Q_{\ell}}$. Consequently, the corresponding local Hecke operators $\scrH_x$ admit $(\overline{\Q_{\ell}})_x \in \Shv(X)$ - the skyscraper sheaf with value $\overline{\Q_{\ell}}$ and supported at $x \in X$ - as an \say{eigenvalue}:
             $$\scrH_x(\E) \cong (\overline{\Q_{\ell}})_x \boxtimes \E$$
         (and thus one may think of $\calL$ as a family of eigenvalues of $\E$ parametrised by points $x \in X$). It is easy to see that Hecke eigensheaves form a full symmetric monoidal subcategory of $\Shv_{\overline{\Q_{\ell}}}^1(\Bun_{\GL_1}(X))$, which we shall denote by $\Eig^1_{\overline{\Q_{\ell}}}(\Bun_{\GL_1}(X))$. 
         
         At this point, we can state and prove the main theorem of this section, which establishes a canonical equivalence between the category of rank-$1$ $\ell$-adic local systems on $X$ and the category of ($\ell$-adic) Hecke eigensheaves of rank $1$ on $\Bun_{\GL_1(X)}$:
-            $$\LocSys_{\overline{\Q_{\ell}}}^1(X) \cong \Eig^1_{\overline{\Q_{\ell}}}(\Bun_{\GL_1}(X))$$
-        which maps each local system $\calL \in \LocSys_{\overline{\Q_{\ell}}}^1(X)$ to a Hecke eigensheaf $\Autom_X(\calL) \in \Eig^1_{\overline{\Q_{\ell}}}(\Bun_{\GL_1}(X))$ with eigenvalue $\calL$. Finally, by putting theorem \ref{theorem: unramified_representations_are_sheaves_on_X} and theorem \ref{theorem: unramified_abelian_geometric_class_field_theory} together, one obtains a canonical equivalence of categories as follows:
+            $$\Shv_{\overline{\Q_{\ell}}}^1(X) \cong \Eig^1_{\overline{\Q_{\ell}}}(\Bun_{\GL_1}(X))$$
+        which maps each local system $\calL \in \Shv_{\overline{\Q_{\ell}}}^1(X)$ to a Hecke eigensheaf $\Autom_X(\calL) \in \Eig^1_{\overline{\Q_{\ell}}}(\Bun_{\GL_1}(X))$ with eigenvalue $\calL$. Finally, by putting theorem \ref{theorem: unramified_representations_are_sheaves_on_X} and theorem \ref{theorem: unramified_abelian_geometric_class_field_theory} together, one obtains a canonical equivalence of categories as follows:
             $$\Rep_{\overline{\Q_{\ell}}}^1(\pi_1^{\ab}(X_{\fet}))^{\cont} \cong \Eig^1_{\overline{\Q_{\ell}}}(\Bun_{\GL_1}(X))$$
         This is the version of global class field theory that we seek, and it tells us that $1$-dimensional continuous $\ell$-adic Galois representations are the same as automorphic forms associated to $\GL_1$.
         
@@ -98,6 +98,8 @@
             \noindent
             \begin{itemize}
                 \item \textbf{(Schemes):} For generalities on schemes, we refer the reader to \cite[Chapters II and III]{hartshorne}, as well as \cite[\href{https://stacks.math.columbia.edu/tag/01H8}{Tag 01H8}, \href{https://stacks.math.columbia.edu/tag/01QL}{Tag 01QL}, and \href{https://stacks.math.columbia.edu/tag/0209}{Tag 0209}]{stacks}.
+                
+                One notion that is indispensible for us is that of base change, for which we introduce the following short-hand: for any base scheme $S$, and any pair of $S$-schemes $X, T$, the base change $X \x_S T$ shall be denoted by $X_T$.
                 \item \textbf{(Topologies on schemes):} For information on topologies on the category of schemes, we refer the reader to \cite[\href{https://stacks.math.columbia.edu/tag/0214}{Tag 0214}]{stacks}. For a general categorical treatment of descent theory, we refer the reader to \cite{vistoli_descent}, \cite[section C2.1]{elephant1}, \cite[Chapter III]{sheaves_in_geometry_and_logic}, and \cite[\href{https://stacks.math.columbia.edu/tag/0266}{Tag 0266} and \href{https://stacks.math.columbia.edu/tag/0238}{Tag 0238}]{stacks}.
             \end{itemize}
         \end{convention}

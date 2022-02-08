@@ -186,19 +186,19 @@
                     \end{tikzcd}
                 $$
             and in addition, a canonical equivalence:
-                $$\Grp(\Pro\Fin)(\pi_1(X_{\fet}), G) \cong \Bun_{\underline{G}}(X_{\profet})$$
-            between the groupoid of continuous homomorphisms $\pi_1(X_{\fet}) \to G$ of profinite groups and that of profinite-\'etale $\underline{G}$-torsors on $X$.
+                $$\Grp(\Pro\Fin)(\pi_1(X_{\fet}), G) \cong \Bun_{\underline{G}}(X)$$
+            between the groupoid of continuous homomorphisms $\pi_1(X_{\fet}) \to G$ of profinite groups and that of $\underline{G}$-torsors on $X$.
         \end{proposition}
             \begin{proof}
-                Each continuous homomorphism $\pi_1(X_{\fet}) \to G$ determines a unique $G$-torsor in $\pi_1(X_{\fet})\-\Pro\Fin$. Because there is an equivalence $\pi_1(X_{\fet})\-\Pro\Fin \cong (\Sch_{/X})_{\profet}$ (cf. proposition \ref{prop: categorical_galois_correspondence}) and because schemes are representable \'etale sheaves, each such $G$-torsor in $\pi_1(X_{\fet})\-\Pro\Fin$ corresponds to a unique profinite-\'etale $\underline{G}$-torsor on $X$. Such a profinite-\'etale $\underline{G}$-torsor on $X$, in turn, is an $X$-point of the classifying stack $\Bun_{\underline{G}}((\Spec k)_{\profet})$, i.e. a morphism $X \to \underline{G}$ of $k$-schemes, and the proposition follows suite.
+                Each continuous homomorphism $\pi_1(X_{\fet}) \to G$ determines a unique $G$-torsor in $\pi_1(X_{\fet})\-\Pro\Fin$. Because there is an equivalence $\pi_1(X_{\fet})\-\Pro\Fin \cong (\Sch_{/X})_{\profet}$ (cf. proposition \ref{prop: categorical_galois_correspondence}) and because schemes are representable \'etale sheaves, each such $G$-torsor in $\pi_1(X_{\fet})\-\Pro\Fin$ corresponds to a unique $\underline{G}$-torsor on $X$. Such a $\underline{G}$-torsor on $X$, in turn, is an $X$-point of the classifying stack $\Bun_{\underline{G}}((\Spec k))$, i.e. a morphism $X \to \underline{G}$ of $k$-schemes, and the proposition follows suite.
             \end{proof}
         \begin{convention}
             From now on, if $E$ is a non-archimedean normed field then its subring of power-bounded elements shall be denoted by $E^{\circ}$. 
         \end{convention}
         \begin{corollary}[Continuous representations of the \'etale fundamental group are torsors] \label{coro: continuous_representations_of_the_etale_fundamental_group_are_torsors}
             Let $\ell$ be a prime, let $E$ be an $\ell$-adic number field (i.e. a finite extension of $\Q_{\ell}$). For any smooth projective connected curve over a field $k$ along with any choice of discrete group $G$, there exists a canonical equivalence:
-                $$\Rep^n_{E^{\circ}}(\pi_1(X_{\fet}))^{\cont} \cong \Bun_{\underline{\GL_n(E^{\circ})}}(X_{\profet})$$
-            between the groupoid of continuous $n$-dimensional $E^{\circ}$-linear representations of $\pi_1(X_{\fet})$ and that of profinite-\'etale $\GL_n(E^{\circ})$-torsors on $X$.
+                $$\Rep^n_{E^{\circ}}(\pi_1(X_{\fet}))^{\cont} \cong \Bun_{\underline{\GL_n(E^{\circ})}}(X)$$
+            between the groupoid of continuous $n$-dimensional $E^{\circ}$-linear representations of $\pi_1(X_{\fet})$ and that of $\GL_n(E^{\circ})$-torsors on $X$.
         \end{corollary}
         \begin{remark}[What about higher-dimensional representations ?]
             Corollary \ref{coro: continuous_representations_of_the_etale_fundamental_group_are_torsors} does not hold for $\GL_n(E)$ (for any $n \geq 1$), as these groups are only locally profinite, as opposed to being globally profinite like $\GL_n(E^{\circ})$.
@@ -211,9 +211,9 @@
             Henceforth, $X$ shall be a smooth projective \textit{connected} curve over $\Spec k$ (with $k$ some field).
         \end{convention}
         
-        \begin{proposition}[$\ell$-adic representations are $\ell$-adic torsors] \label{prop: ell_adic_representations_are_ell_adic_torsors}
+        \begin{proposition}[$\ell$-adic representations are $\ell$-adic torsors] \label{prop: E_representations_are_E_local_systems}
             Let $\ell$ be a prime and $E$ be an $\ell$-adic number field. Then there exists a canonical equivalence of groupoids as follows, for all $n \geq 1$:
-                $$\Rep_E^n(\pi_1(X_{\fet}))^{\cont} \cong \Bun_{\underline{\GL_n(E)}}(X_{\profet})$$
+                $$\Rep_E^n(\pi_1(X_{\fet}))^{\cont} \cong \Bun_{\underline{\GL_n(E)}}(X)$$
         \end{proposition}
             \begin{proof}
                 Let $\rho: \pi_1(X_{\fet}) \to \GL_n(E)$ be a continuous representation. $\GL_n(E^{\circ})$ is an open subgroup of $\GL_n(E)$, so the preimage $H := \rho^{-1}(\GL_n(E^{\circ}))$ must be an open subgroup of $\pi_1(X_{\fet})$; since $\pi_1(X_{\fet})$ is profinite, $H$ is furthermore normal. Consequently, there exists a Galois $X$-scheme $X^H$ such that $\pi_1(X^H_{\fet}) \cong H$; as a result, we obtain the following pullback of topological groups:
@@ -228,7 +228,7 @@
                         	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
                         \end{tikzcd}
                     $$
-                Now, due to corollary \ref{coro: continuous_representations_of_the_etale_fundamental_group_are_torsors}, each representation $(\rho^H)^{\circ}: \pi_1(X^H_{\fet}) \to \GL_n(E^{\circ})$ corresponds to a unique profinite-\'etale $\underline{\GL_n(E^{\circ})}$-torsor on $X^H$, and since $\Bun_{\underline{\GL_n(E^{\circ})}}$ satisfies (profinite-)\'etale descent, one thus obtains in addition a unique $\underline{\GL_n(E^{\circ})}$-torsor on $X$, i.e. a representation $\rho^{\circ}: \pi_1(X_{\fet}) \to \GL_n(E^{\circ})$. There is thus a fully faithful embedding of $\Rep_E^n(\pi_1(X_{\fet}))^{\cont}$ into $\Bun_{\underline{\GL_n(E)}}(X_{\profet})$. Now, to show that this embedding is also essentially surjective, observer that because $(\Sch_{/X})_{\profet} \cong \pi_1(X_{\fet})\-\Pro\Fin$, each profinite-\'etale $\underline{\GL_n(E)}$-torsor on $X$ corresponds to a unique (continuous) $\GL_n(E)$-torsor in $\pi_1(X_{\fet})\-\Pro\Fin$. But such a torsor is nothing but a continuous representation $\pi_1(X_{\fet}) \to \GL_n(E)$, so we are done.
+                Now, due to corollary \ref{coro: continuous_representations_of_the_etale_fundamental_group_are_torsors}, each representation $(\rho^H)^{\circ}: \pi_1(X^H_{\fet}) \to \GL_n(E^{\circ})$ corresponds to a unique $\underline{\GL_n(E^{\circ})}$-torsor on $X^H$, and since $\Bun_{\underline{\GL_n(E^{\circ})}}$ satisfies (profinite-)\'etale descent, one thus obtains in addition a unique $\underline{\GL_n(E^{\circ})}$-torsor on $X$, i.e. a representation $\rho^{\circ}: \pi_1(X_{\fet}) \to \GL_n(E^{\circ})$. There is thus a fully faithful embedding of $\Rep_E^n(\pi_1(X_{\fet}))^{\cont}$ into $\Bun_{\underline{\GL_n(E)}}(X)$. Now, to show that this embedding is also essentially surjective, observer that because $(\Sch_{/X})_{\profet} \cong \pi_1(X_{\fet})\-\Pro\Fin$, each $\underline{\GL_n(E)}$-torsor on $X$ corresponds to a unique (continuous) $\GL_n(E)$-torsor in $\pi_1(X_{\fet})\-\Pro\Fin$. But such a torsor is nothing but a continuous representation $\pi_1(X_{\fet}) \to \GL_n(E)$, so we are done.
             \end{proof}
         \begin{corollary}[Representations of the \'etale fundamental group are local systems] \label{coro: representations_of_the_etale_fundamental_group}
             Let $\ell$ be a prime and $E$ be an $\ell$-adic number field. In addition, fix a geometric point $\bar{x} \in X$. Then there exists a canonical equivalence as follows, for all $n \geq 1$:
@@ -247,11 +247,21 @@
                     $$\chi \mapsto \chi^{\ab}$$
                 coming from the canonical quotient map $G \to G^{\ab}$, so the only thing to do is to show that this homomorphism is surjective. For this, it shall suffice to show that the group $\Rep^1_E([G, G])^{\cont}$ is trivial: but this is evident from the fact that $\GL_1(E)$ is abelian and from the definition of the commutator subgroup $[G, G]$, namely that $[G, G] := \<ghg^{-1}h^{-1} \mid \forall g, h \in G\>$ (so for all $x \in [G, G]$ and all $\chi \in \Rep^1_E([G, G])$, $\chi(x) = 1$), so we are done.
             \end{proof}
+            
+        We need one last notion before, that of $\ell$-adic sheaves, before we can conclude with the main theorem of this section, with the underpinning rationale being that the category of $\ell$-adic sheaves enjoy better geometric properties than that of na\"ive local systems with values in $\overline{\Q_{\ell}}$-vector spaces. This is also a necessity, since $\overline{\Q_{\ell}}/\Q_{\ell}$ is not a finite extension, and thus one can not simply apply proposition \ref{prop: E_representations_are_E_local_systems} to the case of $E \cong \overline{\Q_{\ell}}$.
+        \begin{definition}[$\ell$-adic sheaves] \label{def: l_adic_sheaves}
+            Suppose that $Y$ is a Noetherian scheme, and that there exists a (necessarily finite) stratification $Y \cong \coprod_{i \in I} Y_i$ of $Y$ into Zariski-locally closed subschemes $Y_i$. Additionally, let $\ell$ be a prime and suppose that $E$ is an $\ell$-adic number field with ring of integers $E^{\circ}$, whose maximal ideal we shall denote by $\m_E$. 
+                \begin{enumerate}
+                    \item \textbf{($E^{\circ}$-sheaves):} An \textbf{$E^{\circ}$-sheaf} on $Y$ is the limit of a cofiltered diagram $\{\calF_n\}_{n \in \N}$ of sheaves of \href{https://stacks.math.columbia.edu/tag/05BE}{\underline{constructible}} abelian groups such that for each $n \in \N$, one has that $\calF_n \in \Shv_{E^{\circ}/\m_E^n}(X)$ and that $\calF_{n + 1}/\m_E^n \cong \calF_n$. It is not hard to see that $E^{\circ}$-sheaves on $Y$ form a full abelian subcategory of $\Ab(Y)$ (cf. \cite[\href{https://stacks.math.columbia.edu/tag/03UO}{Tag 03UO}]{stacks}), which we shall denote by $\Shv_{E^{\circ}}(Y)$. 
+                    \item \textbf{($E$-sheaves):} The category of $E$-sheaves on $Y$ is the 
+                    \item \textbf{($\ell$-adic sheaves):}
+                \end{enumerate}
+        \end{definition}
         \begin{theorem}[Unramified representations are sheaves on $X$] \label{theorem: unramified_representations_are_sheaves_on_X}
             Fix a geometric point $\bar{x} \in X$. Then, there is a canonical equivalence:
-                $$\LocSys^1_{\overline{\Q_{\ell}}}(X_{\profet}) \cong \Rep^1_{\overline{\Q_{\ell}}}(\pi_1^{\ab}(X_{\fet}))^{\cont}$$
+                $$\Shv^1_{\overline{\Q_{\ell}}}(X) \cong \Rep^1_{\overline{\Q_{\ell}}}(\pi_1^{\ab}(X_{\fet}))^{\cont}$$
                 $$\calL \mapsto \calL_{\bar{x}}$$
         \end{theorem}
             \begin{proof}
-                Simply combine corollary \ref{coro: representations_of_the_etale_fundamental_group} and lemma \ref{lemma: abelianising_continuous_characters}.
+                Simply combine corollary \ref{coro: representations_of_the_etale_fundamental_group} and lemma \ref{lemma: abelianising_continuous_characters} with the construction of $\ell$-adic sheaves in definition \ref{def: l_adic_sheaves}.
             \end{proof}
