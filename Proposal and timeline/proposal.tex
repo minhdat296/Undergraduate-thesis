@@ -18,7 +18,7 @@
 	    
 	\section{Objectives}
 	    Our main objective shall be to give a proof of Deligne's geometrisation the \textbf{unramified global reciprocity law}, which asserts that for an appropriate there exists an equivalence:
-	        $$\Rep_{\overline{\Q_{\ell}}}^1(\pi_1^{\ab}(X_{\fet}))^{\cont} \cong \Eig^1_{\overline{\Q_{\ell}}}(\Bun_{\GL_1}(X))$$
+	        $$\Rep_{\bar{\Q}_{\ell}}^1(\pi_1^{\ab}(X_{\fet}))^{\cont} \cong \Eig^1_{\bar{\Q}_{\ell}}(\Bun_{\GL_1}(X))$$
 	    between the categories of $1$-dimensional representations of the abelianisation of the so-called \'etale fundaemtnal group of a smooth projective connected curve $X$, and that of so-called Hecke eigensheaves of rank $1$ on the moduli space $\Bun_{\GL_1}(X)$ of line bundles on $X$. Respectively, these categories are analogues of the sets of $1$-dimensional Galois representations and of automorphic forms for $\GL_1$. Since the Langlands Programme seeks to relate Galois representations to automorphic forms (and vice versa), geometric class field theory is therefore indeed the special case of the Langlands Correspondence for $\GL_1$.
 	
 	\section{Approach}
@@ -26,16 +26,16 @@
 
         \subsection{The Galois Side}
             The goal of this section is to define the \'etale fundamental group, as well as investigate its relationship with representations of absolute Galois groups. Our starting point is the fact that for any field $k$, one has an equivalence between the category of field extensions $K/k$ of transcendence degree $1$ and $k$-algebra homomorphisms and that of curves $X/k$ and \href{https://stacks.math.columbia.edu/tag/01RI}{\underline{dominant}} \href{https://stacks.math.columbia.edu/tag/01RR}{\underline{rational}} maps between them. This implies that the \'etale fundamental group of a curve $X$ is precisely the same as the absolute Galois group of its function field $K$, and thanks to it, absolute Galois groups of global fields can be studied using algebraic curves. In fact, this is the content of the main theorem of this section, which states that there is an equivalence:
-                $$\Rep^1_{\overline{\Q_{\ell}}}(\pi_1^{\ab}(X_{\fet}))^{\cont} \cong \LocSys^1_{\overline{\Q_{\ell}}}(X)$$
+                $$\Rep^1_{\bar{\Q}_{\ell}}(\pi_1^{\ab}(X_{\fet}))^{\cont} \cong \LocSys^1_{\bar{\Q}_{\ell}}(X)$$
             between the category of $1$-dimensional continuous representations of the abelianised \'etale fundamental group of a suitable algebraic curve $X$ and that of $1$-dimensional local systems on $X$.
         
         \subsection{The Automorphic Side}
             Let us now move on to what is known as the \say{\textbf{Automorphic Side}}, and we shall begin with the notion of \textbf{Hecke eigensheaves}. To introduce these gadgets, however, we will first need to discuss the \textbf{Hecke correspondence}, the categorification of the action of the Hecke algebra on the space of automorphic forms, which are certain kinds of functions on the double ad\`elic quotient $\GL_1(K) \backslash \GL_1(\A_K) / \GL_1(\scrO_K)$ satisfying certain smoothness and growth conditions. Once that is done, we will be able to define, at each point $x \in X$, local Hecke operators:
                 $$\scrH_x: \Shv(\Bun_{\GL_1}(X)) \to \Shv(\Bun_{\GL_1}(X))$$
-            on $\Shv(\Bun_{\GL_1}(X))$, a particular category of sheaves on the moduli space of line bundles on $X$, which we should think of as an analogue of the space of functions on the ad\`elic double-quotient space. The category $\Shv(\Bun_{\GL_1}(X))$ enjoys certain \say{linearity} properties (much like how function spaces are topological vector spaces) and we shall make use of these properties to define Hecke eigensheaves as \say{eigenvectors} of the Hecke operators. These Hecke eigensheaves form a category, whihc we shall denote by $\Eig^1_{\overline{\Q_{\ell}}}(\Bun_{\GL_1}(X))$. The main theorem concerning these objects is that there is an equivalence of categories:
-                $$\LocSys_{\overline{\Q_{\ell}}}^1(X) \cong \Eig^1_{\overline{\Q_{\ell}}}(\Bun_{\GL_1}(X))$$
-            which maps each local system $\calL \in \LocSys_{\overline{\Q_{\ell}}}^1(X)$ to a Hecke eigensheaf $\Autom(\calL) \in \Eig^1_{\overline{\Q_{\ell}}}(\Bun_{\GL_1}(X))$ with eigenvalue $\calL$. Finally, by putting the Galois Side and Automorphic Side together, one obtains an equivalence of categories:
-                $$\Rep_{\overline{\Q_{\ell}}}^1(\pi_1^{\ab}(X_{\fet}))^{\cont} \cong \Eig^1_{\overline{\Q_{\ell}}}(\Bun_{\GL_1}(X))$$
+            on $\Shv(\Bun_{\GL_1}(X))$, a particular category of sheaves on the moduli space of line bundles on $X$, which we should think of as an analogue of the space of functions on the ad\`elic double-quotient space. The category $\Shv(\Bun_{\GL_1}(X))$ enjoys certain \say{linearity} properties (much like how function spaces are topological vector spaces) and we shall make use of these properties to define Hecke eigensheaves as \say{eigenvectors} of the Hecke operators. These Hecke eigensheaves form a category, whihc we shall denote by $\Eig^1_{\bar{\Q}_{\ell}}(\Bun_{\GL_1}(X))$. The main theorem concerning these objects is that there is an equivalence of categories:
+                $$\LocSys_{\bar{\Q}_{\ell}}^1(X) \cong \Eig^1_{\bar{\Q}_{\ell}}(\Bun_{\GL_1}(X))$$
+            which maps each local system $\calL \in \LocSys_{\bar{\Q}_{\ell}}^1(X)$ to a Hecke eigensheaf $\Autom(\calL) \in \Eig^1_{\bar{\Q}_{\ell}}(\Bun_{\GL_1}(X))$ with eigenvalue $\calL$. Finally, by putting the Galois Side and Automorphic Side together, one obtains an equivalence of categories:
+                $$\Rep_{\bar{\Q}_{\ell}}^1(\pi_1^{\ab}(X_{\fet}))^{\cont} \cong \Eig^1_{\bar{\Q}_{\ell}}(\Bun_{\GL_1}(X))$$
             which relates Galois representations and automorphic forms in a concise manner. This is the version of global class field theory that we seek, and it tells us that $1$-dimensional continuous $\ell$-adic Galois representations are the same as automorphic forms associated to $\GL_1$.
 	    
         \subsection{References}
