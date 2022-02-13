@@ -118,16 +118,6 @@
         \end{corollary}
     
     \subsection{Hecke eigensheaves and Categorical-Geometric Global Langlands for \texorpdfstring{$\GL_1$}{} (the function field case)}
-        In order to streamline the discussion surrounding Hecke eigensheaves, let us first take a breif detour and familiarise ourselves with the notion of tensor products at the level of categories, namely the notion of (external) tensor products of presentable categories due to Deligne (and then due to Lurie in \cite{HA}, and even later on, due to Stefanich in \cite{stefanich_2020_higher_presentable_categories}). 
-        \begin{definition}[Deligne tensor products] \label{def: deligne_tensor_products}
-            Let $\Pres\Cat^{\rex}$ denote the $1$-category of (small) presentable categories and right-exact functors between them. The \textbf{Deligne tensor product} (also known as the \textbf{external tensor product}) is then a bifunctor:
-                $$\boxtimes: \Pres\Cat^{\rex} \x \Pres\Cat^{\rex} \to \Pres\Cat^{\rex}$$
-            satisfying the following universal property: for any pair $\C, \D$ of presentable categories and any pair of right-exact functors $F: \C \x \D \to \E$ and $T: \C \x \D \to \C \boxtimes \D$, there exists a unique right-exact functor $\tilde{F}: \C \boxtimes \D \to \E$ such that $F = \tilde{F} \circ T$\footnote{Note now this is very similar to the universal property of say, tensor products of $R$-modules.}. 
-        \end{definition}
-        \begin{example}
-            Finite abelian categories are presentable, so the notion of Deligne tensor products makes sense for them. 
-        \end{example}
-    
         \begin{definition}[Hecke correspondences] \label{def: hecke_correspondences}
             \noindent
             \begin{enumerate}
