@@ -15,10 +15,8 @@
         \begin{convention}
             Given any effective divisor $D \subset Y$, any integer $n$, and any $\E \in \QCoh_X$, let us write $\E(nD) \cong \E \tensor_{\calO_Y} \calI_D^{\tensor (-n)}$ (wherein $\calI_D^{\tensor (-n)} \cong (\calI_D^{\vee})^{\tensor n}$). In particular, note that $\calO_Y(-D) \cong \calI_D$.
         \end{convention}
-        \begin{remark}[Groups of effective divisors] \label{remark: groups_of_effective_divisors}
-            Let $Y$ be a scheme. Because effective divisors are line bundles, they are trivially flat\footnote{Given any line bundle $\calL \in |\Pic_Y|$, the functor $- \tensor_{\calO_Y} \calL$ is an auto-equivalence of $\Coh_Y$, which is an abelian category, so $- \tensor_{\calO_Y} \calL$ is automatically (left-)exact.}, so given any pair of effective divisors $D, D' \subset Y$, one can define a new effective divisor $D + D'$ corresponding to the $\calO_Y$-ideal $\calI_D \calI_{D'}$, which is isomorphic to $\calI_D \tensor_{\calO_{X/k}} \calI_{D'}$ due to flatness. The set $|\Div_Y^{\eff}|$ thus inherits the group structure of $|\Pic_Y|$ (the group identity of $|\Div_Y^{\eff}|$ is the empty scheme, corresponding to the zero ideal), and it can be easily shown that the injective group homomorphism identifying $|\Div_Y^{\eff}|$ as a subgroup of $|\Pic_Y|$ is:
-                $$|\AJ_Y|: |\Div_Y^{\eff}| \to |\Pic_Y|$$
-                $$D \mapsto \calO_Y(-D)$$
+        \begin{remark}[Groups of effective divisors] \label{remark: adding_effective_divisors}
+            Let $Y$ be a scheme. Because effective divisors are line bundles, they are trivially flat\footnote{Given any line bundle $\calL \in |\Pic_Y|$, the functor $- \tensor_{\calO_Y} \calL$ is an auto-equivalence of $\Coh_Y$, which is an abelian category, so $- \tensor_{\calO_Y} \calL$ is automatically (left-)exact.}, so given any pair of effective divisors $D, D' \subset Y$, one can define a new effective divisor $D + D'$ corresponding to the $\calO_Y$-ideal $\calI_D \calI_{D'}$, which is isomorphic to $\calI_D \tensor_{\calO_{X/k}} \calI_{D'}$ due to flatness, and hence $\deg(D + D') = \deg D + \deg D'$.
         \end{remark}
         
         \begin{convention}[The setting for geometric class field theory] \label{conv: automorphic_side_conventions}
@@ -90,20 +88,9 @@
                 $$\AJ_{Y/C}^{(d)}: \Div_{Y/C}^{\eff, (d)} \to \Bun_{\GL_1}^{(d)}(Y)$$
             which section-wise (i.e. at each field extension $C'/C$) associates to each degree-$d$ effective divisor $D \in |\Div_{Y_{C'}/C'}^{\eff, (d)}|$ to its corresponding invertible quasi-coherent $\calO_{Y_{C'}}$-ideal $\calI_D \in |\Pic_{Y_{C'}/C'}^{(d)}|$.
         \end{definition}
-        The main result concerning proposition \ref{prop: the_abel_jacobi_map_is_a_smooth_projective_fibration}, but before we reach it, one final detour that we shall have to make is defining the notion of so-called \textbf{Poincar\'e bundles} (cf. \cite[Exercise 4.3]{kleiman2005picard}).
-        \begin{definition}[Poincar\'e bundles] \label{def: poincare_bundles}
-            Let $C$ be a separably closed field and let $Y$ be a smooth projective curve over $\Spec C$ (these assumptions are in place so that $\Bun_{\GL_1}(Y)$ would be representable by a scheme; cf. remark \ref{remark: geometry_of_the_picard_stack}). The \textbf{$d^{th}$ Poincar\'e bundle} is thus a line bundle of degree $d$ on $Y \x_{\Spec C} \Bun_{\GL_1}^{(d)}(Y)$, which we shall denote by $\calP_{Y/C}^{(d)}$, such that for all $C$-rational point $\calL \in |\Bun_{\GL_1}^{(d)}(Y)|$, it is the case that:
-                $$(\id_X \x \{\calL\})^* \calP_{Y/C}^{(d)} \cong \calL$$
-        \end{definition}
         \begin{convention}[Genus of the curve] \label{conv: genus_of_the_curve}
             From now on, denote the \href{https://stacks.math.columbia.edu/tag/0BY6}{\underline{genus}} of our curve $X$ by $g$.
         \end{convention}
-        \begin{lemma}[The Poincar\'e bundle defines a line bundle on $\Bun_{\GL_1}(X)$] \label{lemma: projective_bundle_defined_by_poincare_bundle}
-            For each $d \geq 0$, the pushforward $(\pr_2)_*\calP_{X/k}^{(d)}$ of the $d^{th}$ Poincar\'e bundle on $X/k$ along the second canonical projection is a vector bundle of constant rank $d - g + 1$ on $\Bun_{\GL_1}^{(d)}(X)$. 
-        \end{lemma}
-            \begin{proof}
-                
-            \end{proof}
         \begin{proposition}[The Abel-Jacobi map is a smooth projective fibration] \label{prop: the_abel_jacobi_map_is_a_smooth_projective_fibration}
             If $d \geq 2g - 1$ then every Abel-Jacobi map $\AJ_{X/k}^{(d)}: \Div_{X/k}^{\eff, (d)} \to \Bun_{\GL_1}^{(d)}(X)$ will be a surjective smooth projective morphism with fibres\footnote{Note that these are precisely the geometric fibres, since $k$ is algebraically closed.} over $k$-rational points isomorphic to $\P^{d - g}_k$.
         \end{proposition}
@@ -116,11 +103,11 @@
                             $$\chi(X, \calL) = \deg(\calL) - \frac12 \rank(\calL) \deg(\omega_{X/k}) = d - \frac12 \cdot 1 \cdot (2g - 2) = d - g + 1$$
                         Line bundles are particular cases of coherent sheaves with support dimension $\leq 0$, and since $X$ is proper over a field, we can apply \cite[\href{https://stacks.math.columbia.edu/tag/0AYT}{Tag 0AYT}]{stacks} to get that:
                             $$\dim_k H^0_{\Zar}(X, \calL) = \chi(X, \calL) = d - g + 1$$
-                        This implies that the (set-theoretic) fibres of $\AJ_{X/k}^{(d)}$ are projective spaces of dimension $d - g$, i.e. isomorphic to $\P^{d - g}_k$ (empty if $d < g$).
+                        This implies that the (set-theoretic) fibres of $\AJ_{X/k}^{(d)}$ over $k$-rational points $\calL \in |\Bun_{\GL_1}^{(d)}(X)|$ are isomorphic to $\P^{d - g}_k$ (empty if $d < g$).
                         \item \textbf{(Smoothness):} $\Bun_{\GL_1}^{(d)}(X)$ is smooth (cf. remark \ref{remark: geometry_of_the_picard_stack}), hence it is regular, and $X^{(d)}$ is also smooth (cf. lemma \ref{lemma: smoothness_of_symmetric_powers}) and hence it is Cohen-Macaulay (because regular local rings are Cohen-Macaulay \textit{a priori}; cf. \cite[\href{https://stacks.math.columbia.edu/tag/00NQ}{Tag 00NQ}]{stacks}). Moreover, we have shown above that given any $\calL \in \Bun_{\GL_1}^{(d)}(X)$, the corresponding fibre of the Abel-Jacobi map is isomorphic to $\P^{d - g}_k$, and since $\dim \Bun_{\GL_1}^{(d)}(X) = g$ (cf. remark \ref{remark: geometry_of_the_picard_stack}) while $\dim X^{(d)} = \dim \Div_{X/k}^{\eff, (d)} = d$ (cf. remark \ref{remark: moduli_space_of_effective_divisors}), we have:
                             $$\dim \P^{d - g}_k = \dim (\AJ_{X/k}^{(d)})^{-1}(\calL) = \dim \Div_{X/k}^{\eff, (d)} - \dim \Bun_{\GL_1}^{(d)}(X) = d - g$$
                         The Miracle Flatness Theorem (cf. \cite[\href{https://stacks.math.columbia.edu/tag/00R4}{Tag 00R4}]{stacks}) can then be applied, which tells us that the Abel-Jacobi map is flat everywhere, and because the fibres are isomorphic to $\P^{d - g}_k$, which is smooth over $\Spec k$, this means that the Abel-Jacobi map is also smooth everywhere.
-                        \item \textbf{(Surjectivity):} Finally, for the purpose of showin that the Abel-Jacobi map is surjective, we claim that $\Div_{X/k}^{\eff, (d)}$ is a projective bundle over $\Bun_{\GL_1}^{(d)}(X)$ by virtue of being isomorphic to $\P((\pr_2)_*\calP_{X/k})$, which is a projective bundle of dimension $d - g$ and with fibres isomorphic to $\P_k^{d - g}$ (cf. lemma \ref{lemma: projective_bundle_defined_by_poincare_bundle}). 
+                        \item \textbf{(Surjectivity):}
                     \end{enumerate}
             \end{proof}
         \begin{corollary}[Galois representations induced by the Abel-Jacobi map] \label{coro: galois_representations_induced_by_the_abel_jacobi_map}
@@ -131,11 +118,11 @@
                 $$\chi \mapsto \chi \circ (\AJ_{X/k}^{(d)})_*$$
         \end{corollary}
     
-    \subsection{Hecke eigensheaves and Categorical-Geometric Global Langlands for \texorpdfstring{$\GL_1$}{} (the function field case)}
-        \begin{definition}[Hecke correspondences] \label{def: hecke_correspondences}
+    \subsection{Hecke eigensheaves}
+        \begin{definition}[Hecke operators] \label{def: hecke_operators}
             \noindent
             \begin{enumerate}
-                \item \textbf{(The global Hecke correspondence):} The \textbf{global Hecke correspondence} is a span, i.e. a diagram of the form:
+                \item \textbf{(The Hecke correspondence):} The \textbf{Hecke correspondence} is a span, i.e. a diagram of the form:
                     $$
                         \begin{tikzcd}
                         	& {\Hecke_{\GL_1}(X)} \\
@@ -149,26 +136,8 @@
                 consisting of line bundles $\E_1, \E_2 \in \Bun_{\GL_1}(X)$, points $x \in X$, and for each such point $x$, a monomorphism $\beta_x: \E_1 \hookrightarrow \E_2$ whose cokernel is the skyscraper sheaf $k_x$ supported at $x \in X$ with value $k$. It is naturally equipped with two projection functors $\cev{h}_X$ and $\supp_X \x \vec{h}_X$, which are defined via:
                     $$\cev{h}_X(\E_1, \E_2, x, \beta_x) \cong \E_1$$
                     $$(\supp_X \x \vec{h}_X)(\E_1, \E_2, x, \beta_x) \cong (x, \E_2)$$
-                and hence one obtains the global Hecke correspondence as a span.
-                \item \textbf{(Local Hecke correspondences):} Since $(\supp_X \x \vec{h}_X)(\E_1, \E_2, x, \beta_x) \cong (x, \E_2)$, one obtains (via taking fibres) a canonical \textbf{local Hecke correspondence} at each point $x \in X$ as follows:
-                    $$
-                        \begin{tikzcd}
-                        	& {\Hecke_{\GL_1}(x)} \\
-                        	{\Bun_{\GL_1}(X)} && {\Bun_{\GL_1}(X)}
-                        	\arrow["{\cev{h}_x}"', from=1-2, to=2-1]
-                        	\arrow["{\vec{h}_x}", from=1-2, to=2-3]
-                        \end{tikzcd}
-                    $$
-                wherein $\Hecke_{\GL_1}(x)$ is the moduli stack of triples $(\E_1, \E_2, \beta_x)$ consisting of line bundles $\E_1, \E_2 \in \Bun_{\GL_1}(X)$ along with a monomorphism $\beta_x: \E_1 \hookrightarrow \E_2$ whose cokernel is the skyscraper sheaf $k_x$ supported at $x \in X$ with value $k$, and $\cev{h}_x$ and $\vec{h}_x$ are defined in the obvious manner:
-                    $$\cev{h}_x(\E_1, \E_2, \beta_x) \cong \E_1$$
-                    $$\vec{h}_x(\E_1, \E_2, \beta_x) \cong (x, \E_2)$$
-            \end{enumerate}
-        \end{definition}
-        
-        \begin{definition}[Hecke operators] \label{def: hecke_operators}
-            The Hecke operators are integral transforms induced by the Hecke Correspondence in the following manners:
-            \begin{enumerate}
-                \item \textbf{(The global Hecke operators):} The global Hecke correspondence induces the following sheaf pull-push diagram:
+                and hence one obtains the Hecke correspondence as a span.
+                \item \textbf{(The Hecke operator):} The Hecke correspondence induces the following sheaf pull-push diagram:
                     $$
                         \begin{tikzcd}
                         	& {\Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(\Hecke_{\GL_1}(X))} \\
@@ -179,31 +148,14 @@
                     $$
                 and by composing the two functors in the obvious manner, one gets a new functor:
                     $$\scrH_X := (\vec{h}_X)_* (\supp_X \x \cev{h}_X)^*$$
-                which we shall call the \textbf{global Hecke operator}. 
-                \item \textbf{(Local Hecke operators):} Similarly, we define the \textbf{local Hecke operator} at each point $x \in X$ 
-                    $$
-                        \begin{tikzcd}
-                        	& {\Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(\Hecke_{\GL_1}(x))} \\
-                        	{\Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(\Bun_{\GL_1}(X))} && {\Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(\Bun_{\GL_1}(X))}
-                        	\arrow["{(\cev{h}_x)^*}", from=2-1, to=1-2]
-                        	\arrow["{(\vec{h}_x)_*}", from=1-2, to=2-3]
-                        \end{tikzcd}
-                    $$
-                to be the following composition:
-                    $$\scrH_x := (\vec{h}_x)_* (\cev{h}_x)^*$$
-                with the functors $\cev{h}_x, \vec{h}_x$ as in definition \ref{def: hecke_correspondences}.
+                which we shall call the \textbf{Hecke operator}. 
             \end{enumerate}
         \end{definition}
-    
         \begin{definition}[Hecke eigensheaves] \label{def: hecke_eigensheaves}
-            A \textit{non-zero} $\ell$-adic sheaf $\E \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(\Bun_{\GL_1}(X))$ is called a \textbf{Hecke eigensheaf} (of rank $1$) if and only if there exists an $\ell$-adic sheaf $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X)$ (called the \textbf{eigenvalue} of $\E$) such that:
+            A \textit{non-zero} $\ell$-adic local system $\E \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(\Bun_{\GL_1}(X))$ is called a \textbf{Hecke eigensheaf} (of rank $1$) if and only if there exists an $\ell$-adic sheaf $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X)$ (called the \textbf{eigenvalue} of $\E$) such that:
                 $$\scrH_X(\E) \cong \calL \boxtimes \E$$
+            It is easy to see that Hecke eigensheaves form a full symmetric monoidal subcategory of $\Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(\Bun_{\GL_1}(X))$, which we shall denote by $\Eig_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$.
         \end{definition}
-        \begin{remark}
-            It is easy to see that Hecke eigensheaves form a full symmetric monoidal subcategory of $\Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(\Bun_{\GL_1}(X))$, which we shall denote by $\Eig_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$. Furthermore, each Hecke eigensheaf $\E$ with eigenvalue $\calL$ is an \say{eigenvector} of any of the local Hecke operators $\scrH_x$ in the following manner\footnote{Note that the category of $\ell$-adic local systesm of rank $1$ on each point $x \in X$ is nothing but $\Vect^1_{\bar{\Q}_{\ell}}$, the category of $1$-dimensional $\bar{\Q}_{\ell}$-vector spaces.}:
-                $$\scrH_x(\E) \cong (\bar{\Q}_{\ell})_x \boxtimes \E$$
-            thanks to the fact that the stalks $\calL_x$ are all isomorphic to $\bar{\Q}_{\ell}$, since $\calL$ is an $\ell$-adic $\ell$-adic local system of rank $1$.
-        \end{remark}
         
         \begin{definition}[Character sheaves] \label{def: character_sheaves}
             Let $G$ be a connected and separated abelian algebraic group a perfect field $k$ of characteristic $p > 0$, whose group structure is given by $m: G \x G \to G$. Then, an \textbf{$\ell$-adic character sheaf} of $G$ shall be an $\ell$-adic local system $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(G)$ such that $m^*\calL \cong \calL \boxtimes \calL$. 
@@ -215,6 +167,8 @@
             \begin{proof}
                 
             \end{proof}
+        
+    \subsection{Grothendieck's Sheaf-Function Dictionary and \textit{die Gr\"o{\ss}encharaktere}}
         \begin{theorem}[Unramified abelian geometric class field theory] \label{theorem: unramified_abelian_geometric_class_field_theory}
             There exists a canonical equivalence between the groupoid of rank-$1$ $\ell$-adic local systems on $X$ and the groupoid of ($\ell$-adic) Hecke eigensheaves of rank $1$ on $\Bun_{\GL_1(X)}$:
                 $$\Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X) \cong \Eig_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$$
@@ -224,22 +178,28 @@
             \begin{proof}
                 Our strategy for this proof is to explicitly construct - for each $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}$ - the corresponding Hecke eigensheaf $\Autom_X(\calL)$, and this will involve three steps:
                     \begin{enumerate}
-                        \item \textbf{(A $\ell$-adic local system on $X^{(d)}$):} Denote the quotient map defining $X^{(d)}$ by $\sigma^{(d)}: X^d \to X^{(d)}$ and set $\Delta_X^{(d)} := \sigma^{(d)} \circ \Delta_X^d$. Next, for each $\ell$-adic local system $\calL \in \Shv_{\bar{\Q}_{\ell}}(X)$, we can construct an $\ell$-adic local system $\calL^{(d)} \in \Shv_{\bar{\Q}_{\ell}}(X^{(d)})$ given by:
+                        \item In this step we shall construct an $\ell$-local system on $X^{(d)}$ (hence on $\bigcup_{d \geq 2g - 1} X^{(d)}$); cf. proposition \ref{prop: the_abel_jacobi_map_is_a_smooth_projective_fibration} satisfying an analogue of the Hecke eigensheaf property (cf. definition \ref{def: hecke_eigensheaves}) with the purpose in mind being that by pushing this local system forward using the Abel-Jacobi map, one shall obtain a legitimate Hecke eigensheaf on $\Bun_{\GL_1}^{(d)}$ (hence on $\bigcup_{d \geq 2g - 1} \Bun_{\GL_1}^{(d)}(X)$).
+                        
+                        Write $\sigma^{(d)}: X^d \to X^{(d)}$ for the canonical quotient map and set $\Delta_X^{(d)} := \sigma^{(d)} \circ \Delta_X^d$. Next, for each $\ell$-adic local system $\calL \in \Shv_{\bar{\Q}_{\ell}}(X)$, we can construct an $\ell$-adic local system $\calL^{(d)} \in \Shv_{\bar{\Q}_{\ell}}(X^{(d)})$ given by:
                             $$\calL^{(d)} \cong ((\Delta_X^{(d)})_*\calL)^{\Sigma_d}$$
-                        The first observation that one can make is that one has the following isomorphisms of $\ell$-adic local systems on $X^d$:
-                            $$(\sigma^{(d)})^*\calL^{(d)} \cong \calL^{\boxtimes d} \cong (\Delta_X^d)_*\calL$$
-                        \item \textbf{(A $\ell$-adic local system on $\Bun_{\GL_1}^{(d)}(X)$):} Through corollary \ref{coro: galois_representations_induced_by_the_abel_jacobi_map} and lemma \ref{lemma: character_sheav es_of_group_schemes_and_group_characters}, we obtain the $\ell$-adic local system $(\AJ_{X/k}^{(d)})_*\calL^{(d)} \in \Shv^1_{\bar{\Q}_{\ell}}(\Bun_{\GL_1}^{(d)}(X))$ from the previously constructed $\calL^{(d)} \in \Shv_{\bar{\Q}_{\ell}}(X^{(d)})$.
-                        \item \textbf{(A Hecke eigensheaf on $\Bun_{\GL_1}(X)$):}
+                        The first observation that one can make is that there is an isomorphism $(\sigma^{(d)})^*\calL^{(d)} \cong \calL^{\boxtimes d}$ of $\ell$-adic local systems on $X^d$. Next, recall that for every degree $d \geq 0$, there exists a canonical addition map (cf. remark \ref{remark: adding_effective_divisors}):
+                            $$\alpha^{(d)}: \Div_{X/k}^{\eff, (1)} \x \Div_{X/k}^{\eff, (d)} \to \Div_{X/k}^{\eff, (d + 1)}$$
+                            $$([x], D) \mapsto [x] + D$$
+                        
+                        \item 
+                        \item 
                     \end{enumerate}
             \end{proof}
-        \begin{remark}[How should we interpret theorem \ref{theorem: unramified_abelian_geometric_class_field_theory} ?] \label{remark: unramified_abelian_geometric_class_field_theory_explanation}
+        \begin{corollary}[Geometric Langlands for $\GL_1$] \label{coro: geometric_langlands_for_GL1}
             By putting theorem \ref{theorem: unramified_representations_are_sheaves_on_X} and theorem \ref{theorem: unramified_abelian_geometric_class_field_theory} together, one gets a canonical equivalence of categories as follows:
                 $$\Rep_{\bar{\Q}_{\ell}}^1(\pi_1^{\ab}(X_{\fet}))^{\cont} \cong \Eig_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$$
                 $$\chi \mapsto \Autom_X(\chi)$$
             Modulo technicalities, what this essentially tells us is that $1$-dimensional continuous $\ell$-adic Galois representations are the same as automorphic forms associated to $\GL_1$, and as such, the combination of theorem \ref{theorem: unramified_representations_are_sheaves_on_X} and theorem \ref{theorem: unramified_abelian_geometric_class_field_theory} can be understood as the Categorical Global Unramified Geometric Langlands Correspondence in its simplest non-trivial form, that being for the (connnected reductive group $G \cong \GL_1$)\footnote{Incidentally, this is why it is commonly asserted that the Langlands Correspondence for $\GL_1$ \say{is just class field theory}.}. 
+        \end{corollary}
+        \begin{remark}[How should we interpret theorem \ref{theorem: unramified_abelian_geometric_class_field_theory} ?] \label{remark: unramified_abelian_geometric_class_field_theory_explanation}
+            
         \end{remark}
-        
-    \subsection{Grothendieck's Sheaf-Function Dictionary and \textit{die Gr\"o{\ss}encharaktere}}
+    
         As a final step, let us decategorify the left-hand side of the equivalence:
             $$\Rep_{\bar{\Q}_{\ell}}^1(\pi_1^{\ab}(X_{\fet}))^{\cont} \cong \Eig_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$$
-        from remark \ref{remark: unramified_abelian_geometric_class_field_theory_explanation} to obtain a correspondence between continuous $\ell$-adic characters of $\pi_1^{\ab}(X_{\fet})$ and \say{\textit{die Gr\"o{\ss}encharaktere}}, using Grothendieck's Sheaf-Function Dictionary.
+        from corollary \ref{coro: geometric_langlands_for_GL1} to obtain a correspondence between continuous $\ell$-adic characters of $\pi_1^{\ab}(X_{\fet})$ and \say{\textit{die Gr\"o{\ss}encharaktere}}, using Grothendieck's Sheaf-Function Dictionary.

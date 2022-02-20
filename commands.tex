@@ -93,6 +93,7 @@
 \newcommand{\Pic}{\mathrm{Pic}}
 \newcommand{\Div}{\mathrm{Div}}
 \newcommand{\Jac}{\mathrm{Jac}}
+\newcommand{\Alb}{\mathrm{Alb}} %albanese variety
 \newcommand{\Bun}{\mathrm{Bun}}
 \newcommand{\loopspace}{\mathbf{\Omega}}
 \newcommand{\suspension}{\mathbf{\Sigma}}
@@ -195,6 +196,8 @@
 \newcommand{\Pres}{\mathrm{Pres}} %presentable categories
 
 \newcommand{\Aut}{\mathrm{Aut}}
+\newcommand{\Inn}{\mathrm{Inn}}
+\newcommand{\Out}{\mathrm{Out}}
 \newcommand{\frakgl}{\mathfrak{gl}}
 \newcommand{\der}{\mathfrak{der}} %derivations on Lie algebras
 \newcommand{\inn}{\mathfrak{inn}} %inner derivations
@@ -217,13 +220,13 @@
 \newcommand{\colim}{\operatorname{colim} \:}
 \renewcommand{\lim}{\operatorname{lim} \:}
 \newcommand{\toto}{\rightrightarrows}
-\newcommand{\tensor}{\otimes}
-%\NewDocumentCommand{\tensor}{e{_^}}{%
-  %\mathbin{\mathop{\otimes}\displaylimits
-    %\IfValueT{#1}{_{#1}}
-    %\IfValueT{#2}{^{#2}}
-  %}%
-%}
+%\newcommand{\tensor}{\otimes}
+\NewDocumentCommand{\tensor}{e{_^}}{%
+  \mathbin{\mathop{\otimes}\displaylimits
+    \IfValueT{#1}{_{#1}}
+    \IfValueT{#2}{^{#2}}
+  }%
+}
 \newcommand{\eq}{\operatorname{eq}}
 \newcommand{\coeq}{\operatorname{coeq}}
 \newcommand{\Hom}{\mathrm{Hom}}

@@ -12,37 +12,27 @@
         It should be noted that we have required $\Lambda$ to be Noetherian because otherwise, we can not guarantee that $\Shv_{\Lambda}^c(\calX_{\lisse\-\et})$ would be a thick subcategory of the abelian category $\Lambda\mod(\calX_{\lisse\-\et})$ of sheaves of $\Lambda$-modules (the relevance of this fact will become clear shortly). In addition, we require that $\Lambda$ is Gorenstein so that as a Noetherian ring, it would admit a dualising complex (in fact, a Noetherian ring has a dualising complex if and only if it is a quotient of a finite-dimensional Gorenstein ring; cf. \cite[Corollary 1.4]{kawasaki_macaulayfication_of_noetherian_rings}). Lastly, $\dim \Lambda = 0$ because otherwise, we would have to keep track of cohomological shifts (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0AWS}{Tag 0AWS} and \href{https://stacks.math.columbia.edu/tag/0B5A}{Tag 0B5A}]{stacks}), which are inessential technicalities.
     \end{remark}
     
-    \subsection{Gluing adic sheaves along simplicial covers}
-        \begin{proposition}[Gluing adic sheaves along simplicial covers]
-            Consider $(\scrX_{\bullet}, \calO_{\scrX_{\bullet}})$ a ringed simplicial topos along with an ordinary (i.e. $0$-coconnective) ringed topos $(X_{\lisse\-\et}, \calO_X)$ and a flat geometric morphism:
-                $$
-                    \begin{tikzcd}
-                    	{(\scrX_{\bullet}, \calO_{\scrX_{\bullet}})} & {(X, \calO_X)}
-                    	\arrow[""{name=0, anchor=center, inner sep=0}, "{\e_*}"', bend right, from=1-1, to=1-2]
-                    	\arrow[""{name=1, anchor=center, inner sep=0}, "{\e^*}"', bend right, from=1-2, to=1-1]
-                    	\arrow["\dashv"{anchor=center, rotate=-90}, draw=none, from=1, to=0]
-                    \end{tikzcd}
-                $$
-            If $\S$ is a thick subcategory of the triangulated category $\calO_X\mod$ and if $\S^{\bullet}$ is the essential image of $\L\e^*: \calO_X\mod \to \calO_{\scrX_{\bullet}}\mod$, then not only is $\S^{\bullet}$ a thick subcategory of $\calO_{\scrX_{\bullet}}\mod$ but also, one has the following adjoint equivalence of triangulated categories:
-                $$
-                    \begin{tikzcd}
-                    	{\S_{\bullet}} & {\S}
-                    	\arrow[""{name=0, anchor=center, inner sep=0}, "{\L\e_*}"', bend right, from=1-1, to=1-2]
-                    	\arrow[""{name=1, anchor=center, inner sep=0}, "{\R\e^*}"', bend right, from=1-2, to=1-1]
-                    	\arrow["\dashv"{anchor=center, rotate=-90}, draw=none, from=1, to=0]
-                    \end{tikzcd}
-                $$
-        \end{proposition}
-            \begin{proof}
-                \cite[Lemma 2.2.2 and Theorem 2.2.3]{laszlo_olsson_adic_sheaves_on_artin_stacks_1}.
-            \end{proof}
-        \begin{example}[Gluing constructible sheaves] \label{example: gluing_constructible_sheaves}
-            Consider a smooth (hence flat) simplicial cover $U_{\bullet} \to \calX$ of the algebraic stack $\calX$ from convention \ref{conv: l_adic_sheaves_conventions} by simplicial algebraic spaces and assume furthermore that $\Lambda$ is Artinian (e..g $\Lambda \cong \Z/\ell^n\Z$). Additionally, recall that the construction of lisse-\'etale sites is functorial with respect to smooth morphisms and let the distinguished ring object of the topos $\calX_{\lisse\-\et}$ be the constant sheaf $\underline{\Lambda}$ (so that the category of modules on $\calX_{\lisse\-\et}$ that we shall be working with will be $\Lambda\mod$). If $\S \cong \Shv_{\Lambda}^c(\calX_{\lisse\-\et})$ - and recall that $\Shv_{\Lambda}^c(\calX_{\lisse\-\et})$ is a thick subcategory of the triangulated category $\Lambda\mod(\calX_{\lisse\-\et})$ \textit{a priori} (cf. \cite[\href{https://stacks.math.columbia.edu/tag/03RZ}{Tag 03RZ}]{stacks}) - then $\S_{\bullet} \cong \Shv_{\Lambda}^c((U_{\bullet})_{\lisse\-\et}) \cong \Shv_{\Lambda}^c((U_{\bullet})_{\et})$, and so:
-                $$\Shv_{\Lambda}^c(\calX_{\lisse\-\et}) \cong \Shv_{\Lambda}^c((U_{\bullet})_{\et})$$
-            Since (simplicial) algebraic spaces are \'etale-locally affine, this equivalence allows one to replace the (simplicial) algebraic spaces $U_{\bullet}$ by (simplicial) affine schemes. 
-        \end{example}
-        
-    \subsection{Four functors for adic sheaves}
-        Throughout the paper (particularly the second half), we consider pullbacks, pushforwards, as well as tensor products of $\ell$-adic local systems. Therefore, let us write down the results that precisely state that these functors are well-defined constructions for adic sheaves. 
+    \begin{proposition}[Gluing adic sheaves along simplicial covers]
+        Consider $(\scrX_{\bullet}, \calO_{\scrX_{\bullet}})$ a ringed simplicial topos along with an ordinary (i.e. $0$-coconnective) ringed topos $(X_{\lisse\-\et}, \calO_X)$ and a flat geometric morphism:
+            $$
+                \begin{tikzcd}
+                	{(\scrX_{\bullet}, \calO_{\scrX_{\bullet}})} & {(X, \calO_X)}
+                	\arrow[""{name=0, anchor=center, inner sep=0}, "{\e_*}"', bend right, from=1-1, to=1-2]
+                	\arrow[""{name=1, anchor=center, inner sep=0}, "{\e^*}"', bend right, from=1-2, to=1-1]
+                	\arrow["\dashv"{anchor=center, rotate=-90}, draw=none, from=1, to=0]
+                \end{tikzcd}
+            $$
+        If $\S$ is a thick subcategory of the triangulated category $\calO_X\mod$ and if $\S^{\bullet}$ is the essential image of $\L\e^*: \calO_X\mod \to \calO_{\scrX_{\bullet}}\mod$, then not only is $\S^{\bullet}$ a thick subcategory of $\calO_{\scrX_{\bullet}}\mod$ but also, the pair $\L\e^* \ladjoint \R\e_*$ is an adjoint equivalence between $\S^{\bullet}$ and $\S$.
+    \end{proposition}
+        \begin{proof}
+            \cite[Lemma 2.2.2 and Theorem 2.2.3]{laszlo_olsson_adic_sheaves_on_artin_stacks_1}.
+        \end{proof}
+    \begin{example}[Gluing constructible sheaves] \label{example: gluing_constructible_sheaves}
+        Consider a smooth (hence flat) simplicial cover $U_{\bullet} \to \calX$ of the algebraic stack $\calX$ from convention \ref{conv: l_adic_sheaves_conventions} by simplicial algebraic spaces and assume furthermore that $\Lambda$ is Artinian (e..g $\Lambda \cong \Z/\ell^n\Z$). Additionally, recall that the construction of lisse-\'etale sites is functorial with respect to smooth morphisms and let the distinguished ring object of the topos $\calX_{\lisse\-\et}$ be the constant sheaf $\underline{\Lambda}$ (so that the category of modules on $\calX_{\lisse\-\et}$ that we shall be working with will be $\Lambda\mod$). If $\S \cong \Shv_{\Lambda}^c(\calX_{\lisse\-\et})$ - and recall that $\Shv_{\Lambda}^c(\calX_{\lisse\-\et})$ is a thick subcategory of the triangulated category $\Lambda\mod(\calX_{\lisse\-\et})$ \textit{a priori} (cf. \cite[\href{https://stacks.math.columbia.edu/tag/03RZ}{Tag 03RZ}]{stacks}) - then $\S^{\bullet} \cong \Shv_{\Lambda}^c((U_{\bullet})_{\lisse\-\et}) \cong \Shv_{\Lambda}^c((U_{\bullet})_{\et})$, and so:
+            $$\Shv_{\Lambda}^c(\calX_{\lisse\-\et}) \cong \Shv_{\Lambda}^c((U_{\bullet})_{\et})$$
+        Since (simplicial) algebraic spaces are \'etale-locally affine, this equivalence allows one to replace the (simplicial) algebraic spaces $U_{\bullet}$ by (simplicial) affine schemes. 
+    \end{example}
+    
+    Throughout the paper (particularly the second half), we consider pullbacks, pushforwards, as well as tensor products of $\ell$-adic local systems. Therefore, let us write down the results that precisely state that these functors are well-defined constructions for adic sheaves. 
         
         

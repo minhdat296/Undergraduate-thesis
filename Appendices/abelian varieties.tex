@@ -1,0 +1,49 @@
+\section{Abelian varieties}
+    Since the theory of abelian variety is too rich for us to present in any amount of substantial details, we shall recommend that the reader consult \cite{bhatt_abelian_varieties} instead. Regardless, we shall collect here a list of necessary machineries that shall help us understand the role that abelian varieties (particularly, Jacobians) play in the establishment of geometric class field theory.
+    
+    Let us begin with the definition of abelian varieties.
+    \begin{definition}[Abelian varieties] \label{def: abelian_varieties}
+        Let $S$ be a base scheme. An \textbf{abelian $S$-scheme} is thus a group $S$-scheme that is smooth, proper and has geometrically connected fibres, which we refer to as \textbf{abelian varieties}.
+    \end{definition}
+    \begin{remark}[Some basic properties of abelian varieties] \label{remark: basic_properties_of_abelian_varieties}
+        The following are important basic properties of abelian varieties that the reader should keep in mind:
+        \begin{itemize}
+            \item \textbf{(Stability under base change):} Smoothness, properness, and geometric connectedness are all preserved by pullbacks, so pullbacks of abelian schemes are also abelian schemes. In fact, for each fixed base $S$, the category of abelian $S$-schemes is a symmetric monoidal full subcategory of the category of $S$-schemes that are smooth, proper, and with geometrically connected fibres.  
+            \item \textbf{(Abelian group structure):} Abelian schemes, like their name suggests, are actually abelian group schemes, although this is a somewhat non-trivial phenomenon (see \cite[Proposition 2.1 and Corollaries 2.2, 2.3, and 2.4]{bhatt_abelian_varieties}). 
+            \item \textbf{(Projectivity):} Abelian schemes over fields (i.e. abelian varieties) are not just proper, but actually projective. This is one more a non-trivial fact, and one proof is \cite[Theorem 11.1]{bhatt_abelian_varieties}.
+        \end{itemize}
+    \end{remark}
+    \begin{example}[Some instances of abelian varieties]
+        \noindent
+        \begin{itemize}
+            \item \textbf{(Elliptic curves):} Elliptic curves are nothing but abelian varieties of (pure) dimension $1$. 
+            \item \textbf{(Abelian varieties of higher dimensions):} Algebraic groups over characteristic $0$ are smooth \textit{a priori} (cf. \cite[\href{https://stacks.math.columbia.edu/tag/047N}{Tag 047N}]{stacks}), so any proper characteristic-$0$ group scheme with geometrically connected fibres (e.g. $\Proj\left(\frac{\Z\left[x, y, z, \frac{1}{\Delta}\right]}{(y^2z - x^3 - axz^2 - bz^3)}\right)$, where $a, b \in \Z$ are such that $\Delta := -16(4a^3 + 27b^2)$ is non-zero) is automatically an abelian variety. In particular, a complex abelian variety of dimension $n$, through Serre's GAGA theorem, corresponds to a compact and connected complex Lie group of the form $\bbC^n/\Lambda$ for some full-rank lattice $\Lambda$ (cf. \cite[Remark 1.9]{bhatt_abelian_varieties}); the converse is not necessarily true.
+            
+            Over positive characteristics, one can use the fact that an algebraic group over a perfect field is smooth if it is geometrically reduced (cf. \cite[\href{https://stacks.math.columbia.edu/tag/047P}{Tag 047P}]{stacks}) to single out the class of abelian varieties from the class of algebraic groups. Similar to above, one might consider $\Proj\left(\frac{\F_p\left[x, y, z, \frac{1}{\Delta}\right]}{(y^2z - x^3 - axz^2 - bz^3)}\right)$ for $p \not = 2, 3$ and $\Delta \not \equiv 0 \pmod{p}$.
+        \end{itemize}
+    \end{example}
+    
+    Like abelian locally compact groups, abelian varieties and their duals are related to one another by an analogue of the Fourier transform for said topological groups, namely the Fourier-Mukai transform. In fact, if one were to think of the various derived categories of sheaves over abelian varieties as generalisations of the algebras of, say, $L^2$-functions on abelian locally compact groups, then the notion of Fourier-Mukai transforms can be thought of as a direct categorification of the notion of Fourier transforms as integral transforms. Before we can establish a link between abelian varieties and their duals, we must first know how dual abelian varieties are constructed at the level of objects. 
+    \begin{proposition}[Existence and uniqueness of dual abelian varieties] \label{prop: dual_abelian_varieties}
+        Let $A$ be an abelian variety over some algebraically closed field $k$. Then, there exists a unique abelian variety over $\Spec k$ (up to natural isomorphisms, of course), commonly denoted by $A^{\vee}$ and known as the \textbf{dual} of $A$\footnote{In the sense of dual abelian group.} whose functor of points is the presheaf which assigns to each $S \in \Sch_{/\Spec k}$ the data of:
+            \begin{itemize}
+                \item a line bundle $\calL \in \Bun_{\GL_1}(S \x_{\Spec k} A)$ such that for every (geometric) point $s \in S$, $(s \x \id_A)^*\calL \in \Bun_{\GL_1}(A)$, and
+                \item a \say{rigidifying} isomorphism $(\id_S \x 0_A)^*\calL \cong \calO_{S/k}$.
+            \end{itemize}
+        Furthermore, the assignment of abelian varieties to their duals is functorial, and any abelian variety $A$ is canonically isomorphic to its double dual $A^{\vee \vee}$.
+    \end{proposition}
+        \begin{proof}
+            \cite[Sections 8 and 13]{mumford_1970_abelian_varieties} and \cite[Subsection 15.2 and Theorem 16.2]{bhatt_abelian_varieties}.
+        \end{proof}
+    Now, let us define the Fourier-Mukai transform and utilise it for the sake of establishing a categorical relationship between abelian varieties and their duals.
+    \begin{convention}
+        From now on, if $k$ is a field and then $\Sch_{/\Spec k}^{\ft}$ shall denote the category of schemes that are of finite type over $\Spec k$. Futhermore, by $\QCoh, \Coh$, etc. we shall actually mean the corresponding unbounded derived categories (perhaps with decorations such as $b, \leq 0, \geq 0$, etc.), and likewise for the various functors .
+    \end{convention}
+    \begin{definition}[Integral transforms] \label{def: integral_transforms}
+        For any $X, Y \in \Sch_{/\Spec k}^{\ft}$, the \textbf{integral transform} with \textbf{kernel} $K \in \QCoh(X \x Y)$ the functor:
+            $$\Phi_K: \QCoh(X) \to \QCoh(Y)$$
+            $$\calF \mapsto (\pr_2)_*\left( \pr_1^* \calF \tensor_{\calO_{X \x Y}} K \right)$$
+    \end{definition}
+    \begin{proposition}[Convolution of sheaves] \label{prop: convolution_of_sheaves}
+        
+    \end{proposition}
