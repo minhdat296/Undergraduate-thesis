@@ -80,7 +80,7 @@
             $k$-rational points of $X$ are precisely the degree-$1$ effective divisors.
         \end{corollary}
         \begin{convention}
-            From this point on, we shall write $\Div_{X/k}^{\eff, (d)}$ instead of $X^{(d)}$ whenever we would like to put emphasis on the fact that points of $X^{(d)}$ are effective divisors of degree $d$ on $X$ (such as in \ref{prop: the_abel_jacobi_map_is_a_smooth_projective_fibration}), and \textit{vice versa}, we shall write $X^{(d)}$ when symmetry is of importance, like in theorem \ref{theorem: unramified_abelian_geometric_class_field_theory}.
+            From this point on, we shall write $\Div_{X/k}^{\eff, (d)}$ instead of $X^{(d)}$ whenever we would like to put emphasis on the fact that points of $X^{(d)}$ are effective divisors of degree $d$ on $X$ (such as in \ref{prop: the_unramified_abel_jacobi_map_is_a_projective_bundle}), and \textit{vice versa}, we shall write $X^{(d)}$ when symmetry is of importance, like in theorem \ref{theorem: unramified_abelian_geometric_class_field_theory}.
         \end{convention}
         
         \begin{definition}[The Abel-Jacobi map] \label{def: the_abel_jacobi_map}
@@ -94,7 +94,7 @@
         \begin{convention}[Genus of the curve] \label{conv: genus_of_the_curve}
             From now on, denote the \href{https://stacks.math.columbia.edu/tag/0BY6}{\underline{genus}} of our curve $X$ by $g$.
         \end{convention}
-        \begin{proposition}[The Abel-Jacobi map is a smooth projective fibration] \label{prop: the_abel_jacobi_map_is_a_smooth_projective_fibration}
+        \begin{proposition}[The Abel-Jacobi map is a projective bundle] \label{prop: the_unramified_abel_jacobi_map_is_a_projective_bundle}
             If $d \geq 2g - 1$ then every Abel-Jacobi map $\alpha_{X/k}^{(d)}: \Div_{X/k}^{\eff, (d)} \to \Bun_{\GL_1}^{(d)}(X)$ will be a surjective smooth projective morphism with fibres\footnote{Note that these are precisely the geometric fibres, since $k$ is algebraically closed.} over $k$-rational points isomorphic to $\P^{d - g}_k$.
         \end{proposition}
             \begin{proof}
@@ -113,59 +113,79 @@
                         \item \textbf{(Surjectivity):}
                     \end{enumerate}
             \end{proof}
-        \begin{corollary}[Galois representations induced by the Abel-Jacobi map] \label{coro: galois_representations_induced_by_the_abel_jacobi_map}
+        \begin{corollary}[Unramified Galois representations induced by the Abel-Jacobi map] \label{coro: unramified_galois_representations_induced_by_the_abel_jacobi_map}
             Because $\alpha_{X/k}^{(d)}$ is proper and smooth, it is proper, flat, and of finite presentation, so by proposition \ref{prop: etale_homotopy_exact_sequence} there is an induced \'etale homotopy sequence as follows:
                 $$\pi_1((\P^{d - g}_k)_{\fet}) \to \pi_1((\Div_{X/k}^{\eff, (d)})_{\fet}) \to \pi_1((\Bun_{\GL_1}^{(d)}(X))_{\fet}) \to 1$$
             Since $\P^{d - g}_k$ is \'etale-simply connected (this is a consequence of $k$ being algebraically closed; cf. example \ref{example: etale_fundamental_group_of_a_curve}), one thus obtains an equivalence between the categories of continuous $\ell$-adic characters of $\pi_1((\Div_{X/k}^{\eff, (d)})_{\fet})$ and of $\pi_1((\Bun_{\GL_1}^{(d)}(X))_{\fet})$ as below, wherein $(\alpha_{X/k}^{(d)})^*$ is the pullback of $\ell$-adic sheaves along the Abel-Jacobi map $\alpha_{X/k}^{(d)}: \Div_{X/k}^{\eff, (d)} \to \Bun_{\GL_1}^{(d)}(X)$:
                 $$\Rep^1_{\bar{\Q}_{\ell}}(\pi_1((\Div_{X/k}^{\eff, (d)})_{\fet})) \cong \Rep^1_{\bar{\Q}_{\ell}}(\pi_1((\Bun_{\GL_1}^{(d)}(X))_{\fet}))$$
                 $$\chi \mapsto \chi \circ (\alpha_{X/k}^{(d)})^*$$
         \end{corollary}
+        \begin{definition}[Prime divisors and Weil divisors] \label{def: prime_divisors_and_weil_divisors}
+            For our purposes, a \textbf{prime divisor} on $X$ (as in convention \ref{conv: base_curve}) shall be a closed point, and a \textbf{Weil divisor} shall be a formal finite linear combination of prime divisors. A Weil divisor is said to be \textbf{tame} if its coefficients are all equal to either $0$ or $1$ (i.e. if it is either empty or a pure sum of prime divisors).
+        \end{definition}
+        \begin{convention}[Line bundles with prescribed trivialisations] \label{conv: line_bundles_with_prescribed_trivialisations}
+            If $D$ is a tame Weil divisor on $X$ then we shall (abusively) denote by $\Bun_{\GL_1}(X \setminus D)$ the moduli space of line bundles $\calL \in \Bun_{\GL_1}(X)$ with a trivialisation $\calL|_D \cong \calO_X|_D$.
+        \end{convention}
+        \begin{proposition}[The tamely ramified Abel-Jacobi map is a vector bundle] \label{prop: the_tamely_ramified_abel_jacobi_map_is_a_vector_bundle}
+            Let $D$ be a tame Weil divisor on $X$. If $d \geq 2g - 1$ then every Abel-Jacobi map $\alpha_{(X \setminus D)/k}^{(d)}: \Div_{(X \setminus D)/k}^{\eff, (d)} \to \Bun_{\GL_1}^{(d)}(X \setminus D)$ will be a vector bundle with fibres over $k$-rational points being isomorphic to $\A^{(d - g + 1) - \deg D}_k$.
+        \end{proposition}
+            \begin{proof}
+                
+            \end{proof}
+        \begin{corollary}[Tamely ramified Galois representations induced by the Abel-Jacobi map] \label{coro: tamely_ramified_galois_representations_induced_by_the_abel_jacobi_map}
+            Like in corollary \ref{coro: unramified_galois_representations_induced_by_the_abel_jacobi_map}, we can make use of proposition \ref{prop: etale_homotopy_exact_sequence} (along with the fact that finite-dimensional affine spaces are \'etale-simply connected in characteristic $0$; cf. example \ref{example: etale_fundamental_group_of_the_affine_line}) to show that for $D$ any tame Weil divisor on $X$, there an equivalence between the categories of continuous $\ell$-adic characters of $\pi_1((\Div_{(X \setminus D)/k}^{\eff, (d)})_{\fet})$ and of $\pi_1((\Bun_{\GL_1}^{(d)}(X \setminus D))_{\fet})$ as below, wherein $(\alpha_{(X \setminus D)/k}^{(d)})^*$ is the pullback of $\ell$-adic sheaves along the Abel-Jacobi map $\alpha_{(X \setminus D)/k}^{(d)}: \Div_{(X \setminus D)/k}^{\eff, (d)} \to \Bun_{\GL_1}^{(d)}(X \setminus D)$:
+                $$\Rep^1_{\bar{\Q}_{\ell}}(\pi_1((\Div_{(X \setminus D)/k}^{\eff, (d)})_{\fet})) \cong \Rep^1_{\bar{\Q}_{\ell}}(\pi_1((\Bun_{\GL_1}^{(d)}(X \setminus D))_{\fet}))$$
+                $$\chi \mapsto \chi \circ (\alpha_{(X \setminus D)/k}^{(d)})^*$$
+        \end{corollary}
     
      \subsection{Hecke eigensheaves and geometric class field theory}
         \begin{definition}[Hecke eigensheaves] \label{def: hecke_eigensheaves}
             A \textit{non-zero} $\ell$-adic local system $\E \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(\Bun_{\GL_1}(X))$ is called a \textbf{Hecke eigensheaf} (of rank $1$) if and only if there exists an $\ell$-adic sheaf $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X)$ (called the \textbf{eigenvalue} of $\E$) such that:
-                $$\scrH(\E) \cong \calL \boxtimes \E$$
-            where $\scrH := \cev{h}^*$, with $\cev{h}$ being the canonical action of $\Bun_{\GL_1}(X)$ on $X$, namely:
-                $$\cev{h}: X \x \Bun_{\GL_1}(X) \to \Bun_{\GL_1}(X)$$
+                $$\cev{h}_X^*(\E) \cong \calL \boxtimes \E$$
+            with $\cev{h}_X$ being the canonical action of $\Bun_{\GL_1}(X)$ on $X$, namely:
+                $$\cev{h}_X: X \x \Bun_{\GL_1}(X) \to \Bun_{\GL_1}(X)$$
                 $$([x], \calL) \mapsto \calL([x])$$
         \end{definition}
         \begin{remark}
             It is easy to see that Hecke eigensheaves form a full symmetric monoidal subcategory of $\Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(\Bun_{\GL_1}(X))$, which we shall denote by $\Eig_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$.
         \end{remark}
-        The following lemma regarding the \say{globality} of Hecke eigensheaves is merely a technicality in service of theorem \ref{theorem: unramified_abelian_geometric_class_field_theory}. The reader can safely skip ahead and refer back to it later.
+        Lemma \ref{lemma: hecke_eigensheaves_extend_to_lower_degrees}, which is regarding the \say{globality} of Hecke eigensheaves is merely a technicality in service of theorem \ref{theorem: unramified_abelian_geometric_class_field_theory}. The reader can safely skip ahead and refer back to it later. To be able to discuss it, however, it will be convenient to have the notion of \textbf{character sheaves} at our disposal.
+        \begin{definition}[Character sheaves] \label{def: character_sheaves}
+            Let $G$ be a connected and separated abelian algebraic group over a perfect field, whose group structure is given by $m: G \x G \to G$. Then, an \textbf{$\ell$-adic character sheaf} of $G$ shall be an $\ell$-adic local system $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(G)$ such that $m^*\calL \cong \calL \boxtimes \calL$. 
+        \end{definition}
         \begin{lemma}[Hecke eigensheaves extend to lower degrees] \label{lemma: hecke_eigensheaves_extend_to_lower_degrees}
-            Let $\E$ be a Hecke eigensheaf on $\bigcup_{d \geq d_0 + 1} \Bun_{\GL_1}^{(d)}(X)$ (for any $d_0 \geq 0$). Then, $\E$ can be extended uniquely to a Hecke eigensheaf on $\bigcup_{d \geq d_0} \Bun_{\GL_1}^{(d)}(X)$.
+            Let $\E$ be a Hecke eigensheaf on $\bigcup_{d \geq d_0 + 1} \Bun_{\GL_1}^{(d)}(X)$ (for any $d_0 \geq 0$) with eigenvalue $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X)$. Then, $\E$ can be extended uniquely to a Hecke eigensheaf on $\bigcup_{d \geq d_0} \Bun_{\GL_1}^{(d)}(X)$, also with eigenvalue $\calL$.
         \end{lemma}
             \begin{proof}
-                
+                By definition, we have an isomorphism $\cev{h}_X^*\E \cong \calL \boxtimes \E$ for any Hecke eigensheaf $\E$ on $\bigcup_{d \geq 2g - 1} \Bun_{\GL_1}^{(d)}(X)$ with eigenvalue $\calL$, which induces an isomorphism $\cev{h}_x^*\E \cong (\bar{\Q}_{\ell})_x \boxtimes \E$ at each geometric point $x \in X$ (here, $\cev{h}_x$ denotes the evaluation of line bundles $\calL \in \bigcup_{d \geq 2g - 1} \Bun_{\GL_1}^{(d)}(X)$ at $[x]$, i.e. $\cev{h}_x(\calL) \cong \calL([x])$).
             \end{proof}
             
-        Let us now begin our discussion of geometric class field theory with the unramified case. The proof of the ramified case (cf. theorem \ref{theorem: ramified_abelian_geometric_class_field_theory}), as it turns out, will only include a slight modification of the proof of the unramified case (cf. theorem \ref{theorem: unramified_abelian_geometric_class_field_theory}).
+        Let us now begin our discussion of geometric class field theory with the unramified case. The proof of the tamely ramified case (cf. theorem \ref{theorem: tamely_ramified_abelian_geometric_class_field_theory}), as it turns out, will only include a slight modification of the proof of the unramified case (cf. theorem \ref{theorem: unramified_abelian_geometric_class_field_theory}).
         \begin{theorem}[Unramified abelian geometric class field theory] \label{theorem: unramified_abelian_geometric_class_field_theory}
-            There exists a canonical equivalence between the groupoid of rank-$1$ $\ell$-adic local systems on $X$ and the groupoid of ($\ell$-adic) Hecke eigensheaves of rank $1$ on $\Bun_{\GL_1(X)}$:
+            There exists a canonical equivalence between the groupoid of rank-$1$ $\ell$-adic local systems on $X$ and the groupoid of ($\ell$-adic) Hecke eigensheaves of rank $1$ on $\Bun_{\GL_1}(X)$:
                 $$\Autom: \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X) \to \Eig_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$$
             which maps each $\ell$-adic local system $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X)$ to a Hecke eigensheaf $\Autom(\calL) \in \Eig_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$ with eigenvalue $\calL$.
         \end{theorem}
             \begin{proof}
                 Our strategy for this proof is to explicitly construct - for each $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X)$ - the corresponding Hecke eigensheaf $\Autom(\calL)$, and this will involve three steps:
                     \begin{enumerate}
-                        \item \textbf{(A \say{Hecke eigensheaf} on $X^{(d)}$):} In this step we shall construct an $\ell$-local system on $X^{(d)}$ (hence on $\bigcup_{d \geq 2g - 1} X^{(d)}$); cf. proposition \ref{prop: the_abel_jacobi_map_is_a_smooth_projective_fibration} satisfying an analogue of the Hecke eigensheaf property (cf. definition \ref{def: hecke_eigensheaves}) with the purpose in mind being that by pushing this local system forward using the Abel-Jacobi map, one shall obtain a legitimate Hecke eigensheaf on $\Bun_{\GL_1}^{(d)}(X)$ (hence on $\bigcup_{d \geq 2g - 1} \Bun_{\GL_1}^{(d)}(X)$).
+                        \item \textbf{(A \say{Hecke eigensheaf} on $X^{(d)}$):} In this step we shall construct an $\ell$-local system on $X^{(d)}$ (hence on $\bigcup_{d \geq 2g - 1} X^{(d)}$); cf. proposition \ref{prop: the_unramified_abel_jacobi_map_is_a_projective_bundle} satisfying an analogue of the Hecke eigensheaf property (cf. definition \ref{def: hecke_eigensheaves}) with the purpose in mind being that by pushing this local system forward using the Abel-Jacobi map, one shall obtain a legitimate Hecke eigensheaf on $\Bun_{\GL_1}^{(d)}(X)$ (hence on $\bigcup_{d \geq 2g - 1} \Bun_{\GL_1}^{(d)}(X)$).
                         
                         Write $\sigma^{(d)}: X^d \to X^{(d)}$ for the canonical quotient map and set $\Delta_X^{(d)} := \sigma^{(d)} \circ \Delta_X^d$. Next, for each $\ell$-adic local system $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}(X)$, we can construct an $\ell$-adic local system $\calL^{(d)} \in \Shv_{\underline{\bar{\Q}_{\ell}}}(X^{(d)})$ given by:
                             $$\calL^{(d)} \cong ((\Delta_X^{(d)})_*\calL)^{\Sigma_d}$$
-                        The first observation that one can make is that there is an isomorphism $(\sigma^{(d)})^*\calL^{(d)} \cong \calL^{\boxtimes d}$ of $\ell$-adic local systems on $X^d$. Next, notice how there are commutative diagrams of the following form, wherein the maps $\tilde{h}^{(d)}$ are given by $([x], D) \mapsto [x] + D$ (cf. remark \ref{remark: adding_effective_divisors}):
+                        The first observation that one can make is that there is an isomorphism $(\sigma^{(d)})^*\calL^{(d)} \cong \calL^{\boxtimes d}$ of $\ell$-adic local systems on $X^d$. Next, notice how there are commutative diagrams of the following form, wherein the maps $\tilde{h}_X^{(d)}$ are given by $([x], D) \mapsto [x] + D$ (cf. remark \ref{remark: adding_effective_divisors}):
                             $$
                                 \begin{tikzcd}
                                 	{X \x X^d} & {X^{(d + 1)}} \\
                                 	{X \x X^{(d)}}
                                 	\arrow["{\id_X \x \sigma^{(d)}}"', from=1-1, to=2-1]
-                                	\arrow["{\tilde{h}^{(d)}}"', dashed, from=2-1, to=1-2]
+                                	\arrow["{\tilde{h}_X^{(d)}}"', dashed, from=2-1, to=1-2]
                                 	\arrow["{\sigma^{(d + 1)}}", from=1-1, to=1-2]
                                 \end{tikzcd}
                             $$
                         We thus have, as follows, a $\Sigma_d$-equivariant analogue on $X \x X^{(d)}$ of the Hecke eigensheaf property for all $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X)$:
-                            $$(\tilde{h}^{(d)})^* \calL^{(d + 1)} \cong \calL \boxtimes \calL^{(d)}$$
-                        \item \textbf{(A Hecke eigensheaf on $\Bun_{\GL_1}^{(d)}(X)$):} Now, recall from corollary \ref{coro: galois_representations_induced_by_the_abel_jacobi_map} that for every $d \geq 2g - 1$ and example \ref{example: gluing_constructible_sheaves}, there exists an adjoint equivalence:
+                            $$(\tilde{h}_X^{(d)})^* \calL^{(d + 1)} \cong \calL \boxtimes \calL^{(d)}$$
+                        \item \textbf{(A Hecke eigensheaf on $\Bun_{\GL_1}^{(d)}(X)$):} Now, recall from corollary \ref{coro: unramified_galois_representations_induced_by_the_abel_jacobi_map} that for every $d \geq 2g - 1$ and example \ref{example: gluing_constructible_sheaves}, there exists an adjoint equivalence:
                             $$
                                 \begin{tikzcd}
                                 	{\Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X^{(d)})} & {\Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(\Bun_{\GL_1}^{(d)}(X))}
@@ -174,78 +194,74 @@
                                 	\arrow["\dashv"{anchor=center, rotate=-90}, draw=none, from=1, to=0]
                                 \end{tikzcd}
                             $$ 
-                        From this, one infers that every $\ell$-adic local system $\calF \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X^{(d)})$ has the form $(\alpha_{X/k}^{(d)})^* \E$ for some other $\ell$-adic local system $\E \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(\Bun_{\GL_1}^{(d)}(X))$, meaning that there exists $\ell$-adic local systems $\E_{\calL^{(d)}}, \E_{\calL^{(d + 1)}} \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(\Bun_{\GL_1}^{(d)}(X))$ corresponding to $\calL^{(d)}, \calL^{(d + 1)} \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X^{(d)})$ respectively (and ultimately, to $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X)$) satisfying the following equation in $\Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X \x X^{(d)})$:
-                            $$(\tilde{h}^{(d)})^* (\alpha_{X/k}^{(d + 1)})^* \E_{\calL^{(d + 1)}} \cong \calL \boxtimes (\alpha_{X/k}^{(d)})^*\E_{\calL^{(d)}}$$
-                        Now, for each $d \geq 2g - 1$, let us write $\cev{h}t^{(d)}: X \x \Bun_{\GL_1}^{(d)}(X) \to \Bun_{\GL_1}^{(d + 1)}(X)$ for the map given by $\cev{h}^{(d)}([x], \E) \cong \calO_X([x]) \tensor_{\calO_X} \E$. Next, consider the following commutative diagram:
+                        From this, one infers that every $\ell$-adic local system $\calF \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X^{(d)})$ has the form $(\alpha_{X/k}^{(d)})^* \E$ for some \textit{unique} $\ell$-adic local system $\E \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(\Bun_{\GL_1}^{(d)}(X))$, meaning that there exists $\ell$-adic local systems $\E_{\calL^{(d)}}, \E_{\calL^{(d + 1)}} \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(\Bun_{\GL_1}^{(d)}(X))$ corresponding to $\calL^{(d)}, \calL^{(d + 1)} \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X^{(d)})$ respectively (and ultimately, to $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X)$) satisfying the following equation in $\Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X \x X^{(d)})$:
+                            $$(\tilde{h}_X^{(d)})^* (\alpha_{X/k}^{(d + 1)})^* \E_{\calL^{(d + 1)}} \cong \calL \boxtimes (\alpha_{X/k}^{(d)})^*\E_{\calL^{(d)}}$$
+                        Now, for each $d \geq 2g - 1$, let us write $\cev{h}_X^{(d)}: X \x \Bun_{\GL_1}^{(d)}(X) \to \Bun_{\GL_1}^{(d + 1)}(X)$ for the map given by $\cev{h}_X^{(d)}([x], \E) \cong \calO_X([x]) \tensor_{\calO_X} \E$. Next, consider the following commutative diagram:
                             $$
                                 \begin{tikzcd}
                                 	{X \x X^{(d)}} & {X^{(d + 1)}} \\
                                 	{X \x \Bun_{\GL_1}^{(d)}(X)} & {\Bun_{\GL_1}^{(d + 1)}(X)}
-                                	\arrow["{\cev{h}^{(d)}}", from=2-1, to=2-2]
+                                	\arrow["{\cev{h}_X^{(d)}}", from=2-1, to=2-2]
                                 	\arrow["{\id_X \x \alpha_{X/k}^{(d)}}"', from=1-1, to=2-1]
                                 	\arrow["{\alpha^{(d + 1)}}", from=1-2, to=2-2]
-                                	\arrow["{\tilde{h}^{(d)}}", from=1-1, to=1-2]
+                                	\arrow["{\tilde{h}_X^{(d)}}", from=1-1, to=1-2]
                                 \end{tikzcd}
                             $$
                         which induces the following equations in $\Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X \x X^{(d)})$ for all $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X)$:
                             $$
                                 \begin{aligned}
-                                    (\id_X \x \alpha_{X/k}^{(d)})^* (\cev{h}^{(d)})^* \E_{\calL^{(d + 1)}} & \cong (\tilde{h}^{(d)})^* (\alpha^{(d + 1)})^* \E_{\calL^{(d + 1)}}
+                                    (\id_X \x \alpha_{X/k}^{(d)})^* (\cev{h}_X^{(d)})^* \E_{\calL^{(d + 1)}} & \cong (\tilde{h}_X^{(d)})^* (\alpha^{(d + 1)})^* \E_{\calL^{(d + 1)}}
                                     \\
                                     & \cong \calL \boxtimes (\alpha_{X/k}^{(d)})^*\E_{\calL^{(d)}}
                                     \\
                                     & \cong (\id_X \x \alpha_{X/k}^{(d)})^*(\calL \boxtimes \E_{\calL^{(d)}})
                                 \end{aligned}
                             $$
-                        and since $(\id_X \x \alpha_{X/k}^{(d)})^*$ is an invertible functor (cf. corollary \ref{coro: galois_representations_induced_by_the_abel_jacobi_map}), we have, furthermore, the following equation in $\Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X \x \Bun_{\GL_1}^{(d)}(X))$, which is precisely the Hecke eigensheaf property from definition \ref{def: hecke_eigensheaves}:
-                            $$(\cev{h}^{(d)})^* \E_{\calL^{(d + 1)}} \cong \calL \boxtimes \E_{\calL^{(d)}}$$
-                        We have thus obtained a unique Hecke eigensheaf on $\bigcup_{d \geq 2g - 1} \Bun_{\GL_1}^{(d)}(X)$ from an arbitrary $\ell$-adic local system $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X)$.
+                        and since $(\id_X \x \alpha_{X/k}^{(d)})^*$ is an invertible functor (cf. corollary \ref{coro: unramified_galois_representations_induced_by_the_abel_jacobi_map}), we have, furthermore, the following equation in $\Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X \x \Bun_{\GL_1}^{(d)}(X))$, which is precisely the Hecke eigensheaf property from definition \ref{def: hecke_eigensheaves}:
+                            $$(\cev{h}_X^{(d)})^* \E_{\calL^{(d + 1)}} \cong \calL \boxtimes \E_{\calL^{(d)}}$$
+                        We have thus obtained a \textit{unique} Hecke eigensheaf on $\bigcup_{d \geq 2g - 1} \Bun_{\GL_1}^{(d)}(X)$ from an arbitrary $\ell$-adic local system $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X)$.
                         \item \textbf{(A Hecke eigensheaf on $\Bun_{\GL_1}(X)$):} Finally, in order extend the Hecke eigensheaf that we have constructed on $\bigcup_{d \geq 2g - 1} \Bun_{\GL_1}^{(d)}(X)$ to $\Bun_{\GL_1}(X)$ (i.e. to degrees $d < 2g - 1$), simply apply lemma \ref{lemma: hecke_eigensheaves_extend_to_lower_degrees}.
                     \end{enumerate}
             \end{proof}
         
-        The keen reader might have noticed that the proof of theorem \ref{theorem: unramified_abelian_geometric_class_field_theory} did not make use of the fact that the Abel-Jacobi map is surjective (cf. proposition \ref{prop: the_abel_jacobi_map_is_a_smooth_projective_fibration}). This, however, was to be expected, since the crucial technicality that was utilised in that proof was corollary \ref{coro: galois_representations_induced_by_the_abel_jacobi_map}, which is ultimately a direct consequence of proposition \ref{prop: etale_homotopy_exact_sequence}, in which one considers \'etale fibrations (which, by definition, need not be surjective). However, in order to establish a version of geometric class field theory that is also capable of describing ramifications, one will need to rely crucially on the fact that the Abel-Jacobi map is surjective\footnote{One might heuristically think of how primes that ramify split into many primes in the extension field by definition.}.
+        The keen reader might have noticed that the proof of theorem \ref{theorem: unramified_abelian_geometric_class_field_theory} did not make use of the fact that the Abel-Jacobi map is surjective (cf. proposition \ref{prop: the_unramified_abel_jacobi_map_is_a_projective_bundle}). This, however, was to be expected, since the crucial technicality that was utilised in that proof was corollary \ref{coro: unramified_galois_representations_induced_by_the_abel_jacobi_map}, which is ultimately a direct consequence of proposition \ref{prop: etale_homotopy_exact_sequence}, in which one considers \'etale fibrations (which, by definition, need not be surjective). However, in order to establish a version of geometric class field theory that is also capable of describing ramifications, one will need to rely crucially on the fact that the Abel-Jacobi map is surjective\footnote{One might heuristically think of how primes that ramify split into many primes in the extension field by definition.}.
         
-        \begin{convention}[Line bundles with prescribed trivialisations] \label{conv: line_bundles_with_prescribed_trivialisations}
-            If $D$ is an effective Weil divisor on $X$ then we shall denote by $\Bun_{\GL_1}(X \setminus D)$ the moduli space of line bundles $\calL \in \Bun_{\GL_1}(X)$ with a trivialisation $\calL|_D \cong \calO_X|_D$.
-        \end{convention}
-        An interesting feature of ramified geometric class field theory is that the zero-characteristic and the positive-characteristic cases behave somewhat differently.
-        \begin{theorem}[Ramified abelian geometric class field theory] \label{theorem: ramified_abelian_geometric_class_field_theory}
-            Throughout, we work with an effective Weil divisors $D \in \Div_{X/k}^{\eff}$.
+        An interesting feature of tamely ramified geometric class field theory is that the zero-characteristic and the positive-characteristic cases behave somewhat differently, owing to the fact that field extensions are always separable in characteristic $0$, while extensions in prime characteristics can be purely inseparable.
+        \begin{theorem}[Tamely ramified abelian geometric class field theory] \label{theorem: tamely_ramified_abelian_geometric_class_field_theory}
+            Throughout, suppose that $D$ is a tame Weil divisor on $X$.
                 \begin{enumerate}
-                    \item \textbf{(Characteristic $0$):} 
-                    \item \textbf{(Characteristics $p > 0$):}
+                    \item \textbf{(Characteristic $0$):} Suppose that the ground field $k$ from convention \ref{conv: base_curve} is of characteristic $0$. There thus exists a canonical equivalence between the groupoid of rank-$1$ $\ell$-adic local systems on $X \setminus D$ and the groupoid of Hecke eigensheaves of rank $1$ on $\Bun_{\GL_1}(X \setminus D)$:
+                        $$\Autom_D: \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X \setminus D) \to \Eig_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X \setminus D))$$
+                    which maps each $\ell$-adic local system $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X)$ to a Hecke eigensheaf $\Autom(\calL) \in \Eig_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$ with eigenvalue $\calL$.
+                    \item \textbf{(Characteristics $p > 0$):} Suppose that $\chara k = p$ with $p$ being some prime. Then, there exists a canonical equivalence between the groupoid $\Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X \setminus D)^{\tame}$ of rank-$1$ $\ell$-adic local systems on $X \setminus D$ which correspond (via theorem \ref{theorem: galois_representations_are_sheaves_on_X}) to tamely ramified representations of $\pi_1^{\ab}((X \setminus D)_{\fet})$, and that of Hecke eigensheaves of rank $1$ on $\Bun_{\GL_1}(X \setminus D)$:
+                        $$\Autom_D: \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X \setminus D) \to \Eig_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X \setminus D))$$
+                    which maps each $\ell$-adic local system $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X)$ to a Hecke eigensheaf $\Autom(\calL) \in \Eig_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$ with eigenvalue $\calL$.
                 \end{enumerate}
         \end{theorem}
             \begin{proof}
                 \noindent
                 \begin{enumerate}
-                    \item \textbf{(Characteristic $0$):} 
+                    \item \textbf{(Characteristic $0$):} For this case, one can simply mimic the proof of theorem \ref{theorem: unramified_abelian_geometric_class_field_theory}, but this time, instead of employing corollary \ref{coro: unramified_galois_representations_induced_by_the_abel_jacobi_map} to relate $\ell$-adic local systems on $\Bun_{\GL_1}^{(d)}(X \setminus D)$ with those on $X^{(d)}$, corollary \ref{coro: tamely_ramified_galois_representations_induced_by_the_abel_jacobi_map} (which crucially relies on the assumption that $\chara k = 0$) would be made use of instead.
                     \item \textbf{(Characteristics $p > 0$):}
                 \end{enumerate}
             \end{proof}
         
         \begin{corollary}[Geometric Langlands for $\GL_1$] \label{coro: geometric_langlands_for_GL1}
-            By putting theorem \ref{theorem: unramified_representations_are_sheaves_on_X} (respectively theorem \ref{theorem: ramified_abelian_geometric_class_field_theory}) and theorem \ref{theorem: unramified_abelian_geometric_class_field_theory} together, one gets a canonical equivalence of categories as follows:
+            By putting theorem \ref{theorem: galois_representations_are_sheaves_on_X} (respectively theorem \ref{theorem: tamely_ramified_abelian_geometric_class_field_theory}) and theorem \ref{theorem: unramified_abelian_geometric_class_field_theory} together, one gets a canonical equivalence of categories as follows:
                 $$\Rep_{\bar{\Q}_{\ell}}^1(\pi_1^{\ab}((X \setminus D)_{\fet}))^{\cont} \cong \Eig_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X \setminus D))$$
-                $$\chi \mapsto \Autom(\chi)$$
-            wherein $D$ is a Weil divisor on $X$ (the unramified version corresponds to taking $D \cong \varnothing$). What this essentially tells us is that $1$-dimensional continuous $\ell$-adic Galois representations are the same as automorphic forms associated to $\GL_1$, and as such, the combination of theorem \ref{theorem: unramified_representations_are_sheaves_on_X} and theorem \ref{theorem: unramified_abelian_geometric_class_field_theory} can be understood as a geometrisation of the Global Langlands Correspondence for the (connnected reductive) group $\GL_1$\footnote{Incidentally, this is why it is commonly asserted that the Langlands Correspondence for $\GL_1$ \say{is just class field theory}.}. 
+                $$\chi \mapsto \Autom_D(\chi)$$
+            wherein $D$ is a tame Weil divisor on $X$ (the unramified version corresponds to taking $D \cong \varnothing$). What this essentially tells us is that $1$-dimensional continuous $\ell$-adic Galois representations are the same as automorphic forms associated to $\GL_1$, and as such, the combination of theorem \ref{theorem: galois_representations_are_sheaves_on_X} and theorem \ref{theorem: unramified_abelian_geometric_class_field_theory} can be understood as a geometrisation of the Global Langlands Correspondence for the (connnected reductive) group $\GL_1$\footnote{Incidentally, this is why it is commonly asserted that the Langlands Correspondence for $\GL_1$ \say{is just class field theory}.}. 
         \end{corollary}
         \begin{remark}[Comparison with the classical formulation] \label{remark: geometric_vs_classical_class_field_theory}
-            One interesting feature of the ramified version of geometric class field theory is that due to $D$ being a finite formal linear combination of closed points of $X$ (with multiplicities), the resulting equivalence of categories can be interpreted to hold only \textit{almost everywhere} on $X$. This is, however, to be expected. To understand why, let us first recall 
+            One interesting feature of the tamely ramified version of geometric class field theory is that due to $D$ being a finite formal linear combination of closed points of $X$ (with multiplicities), the resulting equivalence of categories can be interpreted to hold only \textit{almost everywhere} on $X$. This is, however, to be expected. To understand why, let us first recall 
         \end{remark}
         
     \subsection{Grothendieck's Sheaf-Function Dictionary and \textit{die Gr\"o{\ss}encharaktere}}
         As a final step, let us decategorify the left-hand side of the equivalence:
             $$\Rep_{\bar{\Q}_{\ell}}^1(\pi_1^{\ab}((X \setminus D)_{\fet}))^{\cont} \cong \Eig_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X \setminus D))$$
         from corollary \ref{coro: geometric_langlands_for_GL1} to obtain a correspondence between continuous $\ell$-adic characters of $\pi_1^{\ab}(X_{\fet})$ and \say{\textit{die Gr\"o{\ss}encharaktere}}, using Grothendieck's Sheaf-Function Dictionary.
-        
-        We begin with the notion of character sheaves.
-        \begin{definition}[Character sheaves] \label{def: character_sheaves}
-            Let $G$ be a connected and separated abelian algebraic group a perfect field $k$ of characteristic $p > 0$, whose group structure is given by $m: G \x G \to G$. Then, an \textbf{$\ell$-adic character sheaf} of $G$ shall be an $\ell$-adic local system $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(G)$ such that $m^*\calL \cong \calL \boxtimes \calL$. 
-        \end{definition}
         \begin{lemma}[Character sheaves of group schemes and group characters] \label{lemma: character_sheav es_of_group_schemes_and_group_characters}
-            Let $G$ be a connected and separated abelian algebraic group a perfect field $k$ of characteristic $p > 0$. Then, there is an equivalence of categories between the category of character sheaves of $G$ and that of $\ell$-adic characters of $G(k)$:
+            Let $G$ be a connected and separated abelian algebraic group over a perfect field $k$ of characteristic $p > 0$. Then, there is an equivalence of categories between the category of character sheaves of $G$ and that of $\ell$-adic characters of $G(k)$:
                 $$\Char\Shv_{\underline{\bar{\Q}_{\ell}}}(G) \cong \Rep^1_{\bar{\Q}_{\ell}}(G(k))$$
         \end{lemma}
             \begin{proof}
