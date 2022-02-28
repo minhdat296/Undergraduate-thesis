@@ -202,15 +202,15 @@
                 Each continuous homomorphism $\pi_1(X_{\fet}) \to G$ determines a unique $G$-torsor in $\pi_1(X_{\fet})\-\Pro\Fin$. Because there is an equivalence $\pi_1(X_{\fet})\-\Pro\Fin \cong (\Sch_{/X})_{\profet}$ (cf. proposition \ref{prop: categorical_galois_correspondence}) and because schemes are representable \'etale sheaves, each such $G$-torsor in $\pi_1(X_{\fet})\-\Pro\Fin$ corresponds to a unique $\underline{G}$-torsor on $X$. Such a $\underline{G}$-torsor on $X$, in turn, is an $X$-point of the classifying stack $\Bun_{\underline{G}}((\Spec k))$, i.e. a morphism $X \to \underline{G}$ of $k$-schemes, and the proposition follows suite.
             \end{proof}
         \begin{convention}
-            From now on, if $E$ is a non-archimedean normed field then its subring of power-bounded elements shall be denoted by $E^{\circ}$. 
+            From now on, if $E$ is a non-archimedean normed field then its subring of power-bounded elements shall be denoted by $\scrO_E$. 
         \end{convention}
         \begin{corollary}[Continuous representations of the \'etale fundamental group are torsors] \label{coro: continuous_representations_of_the_etale_fundamental_group_are_torsors}
             Let $\ell$ be a prime, let $E$ be an $\ell$-adic number field (i.e. a finite extension of $\Q_{\ell}$). For any smooth projective connected curve over a field $k$ along with any choice of discrete group $G$, there exists a canonical equivalence:
-                $$\Rep^n_{E^{\circ}}(\pi_1(X_{\fet}))^{\cont} \cong \Bun_{\underline{\GL_n(E^{\circ})}}(X)$$
-            between the groupoid of continuous $n$-dimensional $E^{\circ}$-linear representations of $\pi_1(X_{\fet})$ and that of $\GL_n(E^{\circ})$-torsors on $X$.
+                $$\Rep^n_{\scrO_E}(\pi_1(X_{\fet}))^{\cont} \cong \Bun_{\underline{\GL_n(\scrO_E)}}(X)$$
+            between the groupoid of continuous $n$-dimensional $\scrO_E$-linear representations of $\pi_1(X_{\fet})$ and that of $\GL_n(\scrO_E)$-torsors on $X$.
         \end{corollary}
         \begin{remark}[What about higher-dimensional representations ?]
-            Corollary \ref{coro: continuous_representations_of_the_etale_fundamental_group_are_torsors} does not hold for $\GL_n(E)$ (for any $n \geq 1$), as these groups are only locally profinite, as opposed to being globally profinite like $\GL_n(E^{\circ})$.
+            Corollary \ref{coro: continuous_representations_of_the_etale_fundamental_group_are_torsors} does not hold for $\GL_n(E)$ (for any $n \geq 1$), as these groups are only locally profinite, as opposed to being globally profinite like $\GL_n(\scrO_E)$.
         \end{remark}
     
         \begin{convention}[The Curve] \label{conv: base_curve}
@@ -222,10 +222,10 @@
                 $$\Rep_E^n(\pi_1(X_{\fet}))^{\cont} \cong \Bun_{\underline{\GL_n(E)}}(X)$$
         \end{proposition}
             \begin{proof}
-                Let $\rho: \pi_1(X_{\fet}) \to \GL_n(E)$ be a continuous representation. $\GL_n(E^{\circ})$ is an open subgroup of $\GL_n(E)$, so the preimage $H := \rho^{-1}(\GL_n(E^{\circ}))$ must be an open subgroup of $\pi_1(X_{\fet})$; since $\pi_1(X_{\fet})$ is profinite, $H$ is furthermore normal. Consequently, there exists a Galois $X$-scheme $X^H$ such that $\pi_1(X^H_{\fet}) \cong H$; as a result, we obtain the following pullback of topological groups:
+                Let $\rho: \pi_1(X_{\fet}) \to \GL_n(E)$ be a continuous representation. $\GL_n(\scrO_E)$ is an open subgroup of $\GL_n(E)$, so the preimage $H := \rho^{-1}(\GL_n(\scrO_E))$ must be an open subgroup of $\pi_1(X_{\fet})$; since $\pi_1(X_{\fet})$ is profinite, $H$ is furthermore normal. Consequently, there exists a Galois $X$-scheme $X^H$ such that $\pi_1(X^H_{\fet}) \cong H$; as a result, we obtain the following pullback of topological groups:
                     $$
                         \begin{tikzcd}
-                        	{\pi_1(X^H_{\fet})} & {\GL_n(E^{\circ})} \\
+                        	{\pi_1(X^H_{\fet})} & {\GL_n(\scrO_E)} \\
                         	{\pi_1(X_{\fet})} & {\GL_n(E)}
                         	\arrow[hook, from=1-2, to=2-2]
                         	\arrow["\rho", from=2-1, to=2-2]
@@ -234,7 +234,7 @@
                         	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
                         \end{tikzcd}
                     $$
-                Now, due to corollary \ref{coro: continuous_representations_of_the_etale_fundamental_group_are_torsors}, each representation $(\rho^H)^{\circ}: \pi_1(X^H_{\fet}) \to \GL_n(E^{\circ})$ corresponds to a unique $\underline{\GL_n(E^{\circ})}$-torsor on $X^H$, and since $\Bun_{\underline{\GL_n(E^{\circ})}}$ satisfies (profinite-)\'etale descent, one thus obtains in addition a unique $\underline{\GL_n(E^{\circ})}$-torsor on $X$, i.e. a representation $\rho^{\circ}: \pi_1(X_{\fet}) \to \GL_n(E^{\circ})$. There is thus a fully faithful embedding of $\Rep_E^n(\pi_1(X_{\fet}))^{\cont}$ into $\Bun_{\underline{\GL_n(E)}}(X)$. Now, to show that this embedding is also essentially surjective, observer that because $(\Sch_{/X})_{\profet} \cong \pi_1(X_{\fet})\-\Pro\Fin$, each $\underline{\GL_n(E)}$-torsor on $X$ corresponds to a unique (continuous) $\GL_n(E)$-torsor in $\pi_1(X_{\fet})\-\Pro\Fin$. But such a torsor is nothing but a continuous representation $\pi_1(X_{\fet}) \to \GL_n(E)$, so we are done.
+                Now, due to corollary \ref{coro: continuous_representations_of_the_etale_fundamental_group_are_torsors}, each representation $(\rho^H)^{\circ}: \pi_1(X^H_{\fet}) \to \GL_n(\scrO_E)$ corresponds to a unique $\underline{\GL_n(\scrO_E)}$-torsor on $X^H$, and since $\Bun_{\underline{\GL_n(\scrO_E)}}$ satisfies (profinite-)\'etale descent, one thus obtains in addition a unique $\underline{\GL_n(\scrO_E)}$-torsor on $X$, i.e. a representation $\rho^{\circ}: \pi_1(X_{\fet}) \to \GL_n(\scrO_E)$. There is thus a fully faithful embedding of $\Rep_E^n(\pi_1(X_{\fet}))^{\cont}$ into $\Bun_{\underline{\GL_n(E)}}(X)$. Now, to show that this embedding is also essentially surjective, observer that because $(\Sch_{/X})_{\profet} \cong \pi_1(X_{\fet})\-\Pro\Fin$, each $\underline{\GL_n(E)}$-torsor on $X$ corresponds to a unique (continuous) $\GL_n(E)$-torsor in $\pi_1(X_{\fet})\-\Pro\Fin$. But such a torsor is nothing but a continuous representation $\pi_1(X_{\fet}) \to \GL_n(E)$, so we are done.
             \end{proof}
         \begin{corollary}[Representations of the \'etale fundamental group are local systems] \label{coro: representations_of_the_etale_fundamental_group}
             Let $\ell$ be a prime and $E$ be an $\ell$-adic number field. In addition, fix a geometric point $\bar{x} \in X$. Then there exists a canonical equivalence as follows, for all $n \geq 1$:

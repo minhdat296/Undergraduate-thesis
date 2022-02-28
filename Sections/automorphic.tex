@@ -149,7 +149,7 @@
                 $$\cev{h}_X^*(\E) \cong \calL \boxtimes \E$$
         \end{definition}
         \begin{remark}
-            It is easy to see that Hecke eigensheaves form a full symmetric monoidal subcategory of $\Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(\Bun_{\GL_1}(X))$, which we shall denote by $\Eig_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$.
+            It is easy to see that Hecke eigensheaves form a full symmetric monoidal subcategory of $\Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(\Bun_{\GL_1}(X))$, which we shall denote by $\Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$.
         \end{remark}
         
         Lemma \ref{lemma: hecke_eigensheaves_extend_to_lower_degrees}, which is regarding the \say{globality} of Hecke eigensheaves is merely a technicality in service of theorem \ref{theorem: unramified_abelian_geometric_class_field_theory}. The reader can safely skip ahead and refer back to it later.
@@ -179,8 +179,8 @@
         Let us now begin our discussion of geometric class field theory with the unramified case. The proof of the tamely ramified case (cf. theorem \ref{theorem: tamely_ramified_abelian_geometric_class_field_theory}), as it turns out, will only include a slight modification of the proof of the unramified case (cf. theorem \ref{theorem: unramified_abelian_geometric_class_field_theory}).
         \begin{theorem}[Unramified abelian geometric class field theory] \label{theorem: unramified_abelian_geometric_class_field_theory}
             There exists a canonical equivalence between the groupoid of rank-$1$ $\ell$-adic local systems on $X$ and the groupoid of ($\ell$-adic) Hecke eigensheaves of rank $1$ on $\Bun_{\GL_1}(X)$:
-                $$\Autom: \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X) \to \Eig_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$$
-            which maps each $\ell$-adic local system $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X)$ to a Hecke eigensheaf $\Autom(\calL) \in \Eig_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$ with eigenvalue $\calL$.
+                $$\Autom: \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X) \to \Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$$
+            which maps each $\ell$-adic local system $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X)$ to a Hecke eigensheaf $\Autom(\calL) \in \Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$ with eigenvalue $\calL$.
         \end{theorem}
             \begin{proof}
                 Our strategy for this proof is to explicitly construct - for each $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X)$ - the corresponding Hecke eigensheaf $\Autom(\calL)$, and this will involve three steps:
@@ -246,9 +246,9 @@
                 \end{itemize}
         \end{definition}
         \begin{theorem}[Tamely ramified abelian geometric class field theory] \label{theorem: tamely_ramified_abelian_geometric_class_field_theory}
-            Suppose that $D$ is a tame Weil divisor on $X$. Then, there exists a canonical equivalence between the groupoid $\Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X \setminus D)^{\tame}$ of rank-$1$ $\ell$-adic local systems on $X \setminus D$ which correspond (via theorem \ref{theorem: galois_representations_are_sheaves_on_X}) to tamely ramified representations of $\pi_1^{\ab}((X \setminus D)_{\fet})$, and that of Hecke eigensheaves of rank $1$ on $\Bun_{\GL_1}(X \setminus D)$:
-                $$\Autom_D: \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X \setminus D) \to \Eig_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X \setminus D))$$
-            which maps each $\ell$-adic local system $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X)$ to a Hecke eigensheaf $\Autom(\calL) \in \Eig_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$ with eigenvalue $\calL$.
+            Suppose that $D$ is a tame Weil divisor on $X$. Then, there exists a canonical equivalence between the groupoid $\Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X \setminus D)$ of rank-$1$ $\ell$-adic local systems on $X \setminus D$ which correspond (via theorem \ref{theorem: galois_representations_are_sheaves_on_X}) to tamely ramified representations of $\pi_1^{\ab}((X \setminus D)_{\fet})$, and that of Hecke eigensheaves of rank $1$ on $\Bun_{\GL_1}(X \setminus D)$:
+                $$\Autom_D: \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X \setminus D) \to \Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X \setminus D))$$
+            which maps each $\ell$-adic local system $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X)$ to a Hecke eigensheaf $\Autom(\calL) \in \Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$ with eigenvalue $\calL$.
         \end{theorem}
             \begin{proof}
                 \noindent
@@ -260,42 +260,53 @@
         
         \begin{corollary}[Geometric Langlands for $\GL_1$] \label{coro: geometric_langlands_for_GL1}
             By putting theorem \ref{theorem: galois_representations_are_sheaves_on_X} (respectively theorem \ref{theorem: tamely_ramified_abelian_geometric_class_field_theory}) and theorem \ref{theorem: unramified_abelian_geometric_class_field_theory} together, one gets a canonical equivalence of categories as follows:
-                $$\Rep^1_{\bar{\Q}_{\ell}}(\pi_1^{\ab}((X \setminus D)_{\fet}))^{\cont} \cong \Eig_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X \setminus D))$$
+                $$\Rep^1_{\bar{\Q}_{\ell}}(\pi_1^{\ab}((X \setminus D)_{\fet}))^{\cont} \cong \Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X \setminus D))$$
                 $$\chi \mapsto \Autom_D(\chi)$$
             wherein $D$ is a tame Weil divisor on $X$ (the unramified version corresponds to taking $D \cong \varnothing$). What this essentially tells us is that $1$-dimensional continuous $\ell$-adic Galois representations are the same as automorphic forms associated to $\GL_1$, and as such, the combination of theorem \ref{theorem: galois_representations_are_sheaves_on_X} and theorem \ref{theorem: unramified_abelian_geometric_class_field_theory} can be understood as a geometrisation of the Global Langlands Correspondence for the (connnected reductive) group $\GL_1$\footnote{Incidentally, this is why it is commonly asserted that the Langlands Correspondence for $\GL_1$ \say{is just class field theory}.}. 
         \end{corollary}
         
     \subsection{Grothendieck's Sheaf-Function Dictionary and Hecke characters}
         As a final step, let us decategorify the left-hand side of the equivalence:
-            $$\Rep^1_{\bar{\Q}_{\ell}}(\pi_1^{\ab}((X \setminus D)_{\fet}))^{\cont} \cong \Eig_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X \setminus D))$$
-        from corollary \ref{coro: geometric_langlands_for_GL1} to obtain a correspondence between continuous $\ell$-adic characters of $\pi_1^{\ab}(X_{\fet})$ and so-called Hecke characters\footnote{\say{\textit{Die Gr\"o{\ss}encharaktere}} auf Deutsch.}, using Grothendieck's Sheaf-Function Dictionary. Doing so will yield us the usual version of Artin Reciprocity for global function fields over perfect fields of positive characteristics.
+            $$\Rep^1_{\bar{\Q}_{\ell}}(\pi_1^{\ab}((X \setminus D)_{\fet}))^{\cont} \cong \Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X \setminus D))$$
+        from corollary \ref{coro: geometric_langlands_for_GL1} to obtain a correspondence between continuous $\ell$-adic characters of $\pi_1^{\ab}(X_{\fet})$ and so-called Hecke characters\footnote{Auf Deutsch: \say{\textit{Die Gr\"o{\ss}encharaktere}}.}, using Grothendieck's Sheaf-Function Dictionary. Doing so will yield us the usual version of Artin Reciprocity for global function fields over perfect fields of positive characteristics, in terms of towers of finite abelian extensions and so-called Hecke characters (see lemma \ref{lemma: sheaf_function_correspondence}).
         
+        We begin with the notion of Weil sheaves, which will become necessary later on (cf. lemma \ref{lemma: sheaf_function_correspondence}) when we move on to computing the trace of the Frobenius endomorphism on $\ell$-adic sheaves.
+        \begin{convention}[Specialising to function fields of positive characteristics]
+            From now on, the base field $k$ from convention \ref{conv: automorphic_side_conventions} shall be of some prime characteristic $p$. Note that since $k$ is algebraically closed, it is perfect by virtue of containing all $p^{th}$ power roots.
+        \end{convention}
+        \begin{definition}[Weil sheaves] \label{def: weil_sheaves}
+            A \textbf{Weil sheaf} on $X$ is an $\ell$-adic sheaf $\calF \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X)$ that is Frobenius-equivariant, i.e. $\Frob_{X/k}^*\calF \cong \calF$.
+        \end{definition}
+        \begin{proposition}[Hecke eigensheaves are Weil sheaves] \label{prop: hecke_eigensheaves_are_weil_sheaves}
+            Let $D$ be a tame Weil divisor on $X$. Then, any $\ell$-adic local system of rank $1$ on $X$ (or equivalently, thanks to theorems \ref{theorem: unramified_abelian_geometric_class_field_theory} and \ref{theorem: tamely_ramified_abelian_geometric_class_field_theory}, a Hecke eigensheaf of rank $1$ on $\Bun_{\GL_1}(X \setminus D)$) is an instance of a Weil sheaf on $X$.
+        \end{proposition}
+            \begin{proof}
+                \cite[Proposition 5.19]{tendler_2010_geometric_class_field_theory_original}.
+            \end{proof}
+        
+        Let us now move on to Grothendieck's Sheaf-Function Dictionary/Corresondence\footnote{En Français: \say{\textit{La Correspondance Faisceaux-Fonctions de Grothendieck}}.}, which allows us to formally realise the notion of Hecke eigensheaves (as in definition \ref{def: hecke_eigensheaves}) as a categorification of the classical notion of Hecke characters (cf. lemma \ref{lemma: sheaf_function_correspondence}). In order to do this, we must introduce the central notion of traces of Frobenii.
+        \begin{definition}[Traces of Frobenii] \label{def: traces_of_frobenii}
+            For each geometric point $x \in X(k)$, we define the trace of Frobenius on an $\ell$-adic local system $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X)$ to be the trace of the Frobenius endomorphism on the stalk $\calL_x$ (which is computed in the usual manner) and write:
+                $$\trace(\Frob_{X/k}^*, \calL) := \trace(\Frob_x^*, \calL_x)$$
+        \end{definition}
         \begin{convention}[Global function field of $X$] \label{conv: global_function_field}
             Let us write $K$ for the global function field of $X$ (i.e the stalk of the structure sheaf of $X$ at the unique generic point), $\scrO_K$ for its ring of integers, and $\A_K$ for the corresponding ring of ad\`eles. For more details on these constructions, we refer the reader to \cite[Section VI.1]{neukirch_2010_algebraic_number_theory}.
         \end{convention}
-        \begin{convention}
-            From now on, the base field $k$ from convention \ref{conv: automorphic_side_conventions} shall be of some prime characteristic $p$. Note that since $k$ is algebraically closed, it is perfect by virtue of containing all $p^{th}$ power roots.
-        \end{convention}
         \begin{lemma}[Grothendieck's Sheaf-Function Correspondence] \label{lemma: sheaf_function_correspondence}
-            Let $D$ be a tame Weil divisor on $X$. Then, there is a canonical equivalence:
-                $$\Eig_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X \setminus D)) \cong \Rep^1_{\bar{\Q}_{\ell}}(\GL_1(K)\backslash\GL_1(\A_K)/\GL_1(\scrO_K))^{\cont}$$
+            Let $D$ be a tame Weil divisor on $X$. Then, there is a canonical equivalence between the category of Hecke eigensheaves of rank $1$ on $\Bun_{\GL_1}(X \setminus D)$ and that of continuous $\ell$-adic characters of the ad\`elic double quotient $\GL_1(K)\backslash\GL_1(\A_K)/\GL_1(\scrO_K)$, so-called $\ell$-adic \textbf{Hecke characters}:
+                $$\Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X \setminus D)) \cong \scrA_{\GL_1}(X \setminus D)$$
         \end{lemma}
             \begin{proof}
-                
+                Suppose that we are willing to take the special case of the Weil Uniformisation Theorem for $\Bun_{\GL_1}(X)$ (cf. \cite[Proposition 3.8]{tendler_2010_geometric_class_field_theory_original}\footnote{For details on Weil Uniformisation for $\Bun_G(X)$, with $G$ being a general connected reductive group, see \cite{heinloth2009uniformization}.}) for granted, which states that the group of $k$-rational points of $\Bun_{\GL_1}(X \setminus D)$ is nothing but the ad\`elic double-quotient $\GL_1(K)\backslash\GL_1(\A_K)/\GL_1(\scrO_K)$. Next, pick a geometric point $x \in X(k)$. By making use of proposition \ref{prop: hecke_eigensheaves_are_weil_sheaves} and theorem \ref{theorem: unramified_abelian_geometric_class_field_theory} (respectively, theorem \ref{theorem: tamely_ramified_abelian_geometric_class_field_theory}) in tandem, we can consider the trace of Frobenius on the eigenvalue $\Autom_D^{-1}(\E) \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X \setminus D)$ of each Hecke eigensheaf $\E \in \Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X \setminus D))$:
+                    $$\rho(x, \E) := \trace(\Frob_x^*, \Autom_D^{-1}(\E))$$
+                To show that taking traces of Frobenii in this manner will yield us a well-defined Hecke character $\rho(x, \E) \in \scrA_{\GL_1}(X \setminus D)$, recall first of all that by taking stalks of $\ell$-adic local systems $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X \setminus D)$ at geometric points $x \in X(k)$, one obtains a unique continuous $\ell$-adic character of $\pi_1((X \setminus D)_{\fet})$ (cf. theorem \ref{theorem: galois_representations_are_sheaves_on_X}); through corollary \ref{coro: unramified_galois_representations_induced_by_the_abel_jacobi_map} (respectively corollary \ref{coro: tamely_ramified_galois_representations_induced_by_the_abel_jacobi_map}), this means that one also gets a unique continuous $\ell$-adic character of $\pi_1((\Bun_{\GL_1}^{(1)}(X \setminus D))_{\fet})$. 
             \end{proof}
-        
-        \begin{definition}[Weil sheaves] \label{def: weil_sheaves}
-            
-        \end{definition}
             
         \begin{theorem}[Artin Reciprocity for global function fields] \label{theorem: artin_reciprocity_for_global_function_fields}
-            Fix a tame Weil divisor $D$ on $X$. There thus exists a canonical bijection:
-                $$\Rep^1_{\bar{\Q}_{\ell}}(\Gal(K^{\ab}/K))^{\cont} \cong \Rep^1_{\bar{\Q}_{\ell}}(\GL_1(K)\backslash\GL_1(\A_K)/\GL_1(\scrO_K))^{\cont}$$
-                $$\chi \mapsto \rho$$
-            such that for all places $v \not \in D$, one has $\chi(\Frob_v) = \rho(\varpi_v)$. 
+            Fix a tame Weil divisor $D$ on $X$. There thus exists a canonical bijection as below, such that for all places $v \not \in D$, one has $\chi(\Frob_v) = \rho(\varpi_v)$:
+                $$\scrA_{\GL_1}(X \setminus D) \cong \Rep^1_{\bar{\Q}_{\ell}}(\Gal(K^{\ab}/K))^{\cont}$$
+                $$\rho \mapsto \chi$$
         \end{theorem}
             \begin{proof}
-                The existence of a canonical bijection:
-                    $$\Rep^1_{\bar{\Q}_{\ell}}(\Gal(K^{\ab}/K))^{\cont} \cong \Rep^1_{\bar{\Q}_{\ell}}(\GL_1(K)\backslash\GL_1(\A_K)/\GL_1(\scrO_K))^{\cont}$$
-                comes directly from a combination of corollary \ref{coro: geometric_langlands_for_GL1} and lemma \ref{lemma: sheaf_function_correspondence}.
+                The existence of a canonical bijection as stated comes directly from a combination of corollary \ref{coro: geometric_langlands_for_GL1} and lemma \ref{lemma: sheaf_function_correspondence}, so let us focus on the \say{Frobenius-compatibility} condition $\chi(\Frob_v) = \rho(\varpi_v)$.
             \end{proof}
