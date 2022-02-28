@@ -9,7 +9,7 @@
             The set of effective divisors (respectively, effective divisors of degree $d$) shall be denoted by $|\Div_Y^{\eff}|$ (respectively, $|\Div_Y^{\eff, (d)}|$), and as a straightforward consequence of the definition of effective divisors, it is precisely the set of invertible\footnote{A quasi-coherent ideal sheaf $\calJ \subset \calO_Y$ is invertible if and only if its local sections $\calJ(V)$ are principal ideals of $\calO_Y(V)$.} quasi-coherent $\calO_Y$-ideals (respectively, quasi-coherent $\calO_Y$-ideals of degree $d$).
         \end{definition}
         \begin{remark}[Why do we care about divisors ?] 
-            Because the function field of the curve $X$ over $\Spec k$ from convention \ref{conv: base_curve} is some (global) field of the form $K \cong k'(t)$, where $k'/k$ is an algebraic extension (cf. proposition \ref{prop: curves_and_function_fields}), and since its ring of integers $\scrO_K \cong k'[t]$ is a Dedekind domain (this is due to Hilbert's Basis Theorem, which tells us that $\dim k'[t] = \dim k + 1 = 0 + 1 = 1$), every of the stalks $\calO_{X, x}$ at points $x \in |X|$ must be a discrete valuation ring. This tells us that there is a bijective correspondence between points $x \in |X|$ and places of $K$ that are trivial on $k'$. Now, also because $\scrO_K$ is a Dedekind domain, every ideal $\a$ therein factors into a (formal) product of primes, say $\a = \prod_{i = 1}^n \p_i^{e_i}$. Furthemore, $\scrO_K$ is actually a PID, as it is isomorphic to $k'[t]$, which is a UFD thanks to $k'$ itself being a UFD, by virtue of being a field. Thus, points $x \in |X|$ are not only in bijection with places of $K$ that are trivial on $k'$, but also effective divisors on $X$.
+            Because the function field of the curve $X$ over $\Spec k$ from convention \ref{conv: base_curve} is some (global) field of the form $K \cong k'(t)$, where $k'/k$ is an algebraic extension (cf. proposition \ref{prop: curves_and_function_fields}), and since its ring of integers $\bbO_X \cong k'[t]$ is a Dedekind domain (this is due to Hilbert's Basis Theorem, which tells us that $\dim k'[t] = \dim k + 1 = 0 + 1 = 1$), every of the stalks $\calO_{X, x}$ at points $x \in |X|$ must be a discrete valuation ring. This tells us that there is a bijective correspondence between points $x \in |X|$ and places of $K$ that are trivial on $k'$. Now, also because $\bbO_X$ is a Dedekind domain, every ideal $\a$ therein factors into a (formal) product of primes, say $\a = \prod_{i = 1}^n \p_i^{e_i}$. Furthemore, $\bbO_X$ is actually a PID, as it is isomorphic to $k'[t]$, which is a UFD thanks to $k'$ itself being a UFD, by virtue of being a field. Thus, points $x \in |X|$ are not only in bijection with places of $K$ that are trivial on $k'$, but also effective divisors on $X$.
         \end{remark}
         
         \begin{convention}
@@ -23,7 +23,8 @@
             \noindent
             \begin{itemize}
                 \item For us, $\Bun_{\GL_1}(X)$ shall denote the moduli space of line bundles on $X$. Traditionally, this is usually referred to as the \textbf{Picard stack} and denoted by $\Pic_{X/k}$ (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0372}{Tag 0372}]{stacks}), but we opt for the notation $\Bun_{\GL_1}(X)$ because in the wider context of the Geometric Langlands Programme, one works with $\Bun_G(X)$ for $G$ a general connected reductive group (of which $\GL_1$ is a special case), and to not confuse the moduli space $\Bun_{\GL_1}(X)$ with the group $|\Pic_{X/k}|$ (cf. convention \ref{conv: picard_group}). 
-                \item In addition, let us now suppose that the base field $k$ from convention \ref{conv: base_curve} is algebraically closed, and that our curve $X$ from convention \ref{conv: base_curve} is, in addition, geometrically connected. 
+                \item In addition, let us now suppose for now that the base field $k$ from convention \ref{conv: base_curve} is algebraically closed. We will relax this constraint later, as this is simply a matter of convenience.
+                \item Lastly, suppose that our curve $X$ from convention \ref{conv: base_curve} is, in addition, geometrically connected. 
             \end{itemize}
         \end{convention}
         \begin{remark}[The geometry of $\Bun_{\GL_1}$] \label{remark: geometry_of_the_picard_stack}
@@ -254,7 +255,7 @@
             \begin{proof}
                 \noindent
                 \begin{enumerate}
-                    \item \textbf{(Characteristic $0$):} For this case, one can simply mimic the proof of theorem \ref{theorem: unramified_abelian_geometric_class_field_theory}, owing to the fact that field extensions are always separable in characteristic $0$, while extensions in prime characteristics can be purely inseparable, a phenomenon that causes $\A_k^{(d - g + 1) - \deg D}$ (as in proposition \ref{prop: the_tamely_ramified_abel_jacobi_map_is_a_vector_bundle}) to not be \'etale-simply connected in positive characteristics, which causes problems because corollary \ref{coro: tamely_ramified_galois_representations_induced_by_the_abel_jacobi_map} can not then be used to equate $\ell$-adic local systems on $X^{(d)}$ and on $\Bun_{\GL_1}^{(d)}(X)$. 
+                    \item \textbf{(Characteristic $0$):} For this case, one can simply mimic the proof of theorem \ref{theorem: unramified_abelian_geometric_class_field_theory}, owing to the fact that field extensions are always separable in characteristic $0$, while extensions in prime characteristics can be purely inseparable, a phenomenon that causes $\A_X^{(d - g + 1) - \deg D}$ (as in proposition \ref{prop: the_tamely_ramified_abel_jacobi_map_is_a_vector_bundle}) to not be \'etale-simply connected in positive characteristics, which causes problems because corollary \ref{coro: tamely_ramified_galois_representations_induced_by_the_abel_jacobi_map} can not then be used to equate $\ell$-adic local systems on $X^{(d)}$ and on $\Bun_{\GL_1}^{(d)}(X)$. 
                     \item \textbf{(Characteristics $p > 0$):} 
                 \end{enumerate}
             \end{proof}
@@ -269,11 +270,11 @@
     \subsection{Grothendieck's Sheaf-Function Dictionary and Hecke characters}
         As a final step, let us decategorify the left-hand side of the monoidal equivalence:
             $$\Rep^1_{\bar{\Q}_{\ell}}(\pi_1^{\ab}((X \setminus D)_{\fet}))^{\cont} \cong \Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X \setminus D))$$
-        from corollary \ref{coro: geometric_langlands_for_GL1} to obtain a correspondence between continuous $\ell$-adic characters of $\pi_1^{\ab}(X_{\fet})$ and so-called Hecke characters\footnote{Auf Deutsch: \say{\textit{Die Gr\"o{\ss}encharaktere}}.}, using Grothendieck's Sheaf-Function Dictionary. Doing so will yield us the usual version of Artin Reciprocity for global function fields over perfect fields of positive characteristics, in terms of towers of finite abelian extensions and so-called Hecke characters (see lemma \ref{lemma: sheaf_function_correspondence}).
+        from corollary \ref{coro: geometric_langlands_for_GL1} to obtain a correspondence between continuous $\ell$-adic characters of $\pi_1^{\ab}(X_{\fet})$ and so-called Hecke characters\footnote{Auf Deutsch: \say{\textit{Die Gr\"o{\ss}encharaktere}}.}, using Grothendieck's Sheaf-Function Dictionary. Doing so will yield us the usual version of Artin Reciprocity for global function fields over perfect fields of positive characteristics, in terms of towers of finite abelian extensions and so-called Hecke characters (see theorem \ref{theorem: hecke_characters}).
         
-        We begin with the notion of Weil sheaves, which will become necessary later on (cf. lemma \ref{lemma: sheaf_function_correspondence}) when we move on to computing the trace of the Frobenius endomorphism on $\ell$-adic sheaves.
-        \begin{convention}[Specialising to function fields of positive characteristics]
-            From now on, the base field $k$ from convention \ref{conv: automorphic_side_conventions} shall be of some prime characteristic $p$. Note that since $k$ is algebraically closed, it is perfect by virtue of containing all $p^{th}$ power roots.
+        We begin with the notion of Weil sheaves, which will become necessary later on (cf. theorem \ref{theorem: hecke_characters}) when we move on to computing the trace of the Frobenius endomorphism on $\ell$-adic sheaves.
+        \begin{convention}[Specialising to function fields of positive characteristics] \label{conv: base_field_of_positive_characteristics}
+            From now on, the base field $k$ from convention \ref{conv: base_curve} shall be some finite field $\F_q$ (which we note to be perfect).
         \end{convention}
         \begin{definition}[Weil sheaves] \label{def: weil_sheaves}
             A \textbf{Weil sheaf} on $X$ is an $\ell$-adic sheaf $\calF \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X)$ such that $\Frob_{X/k}^*\calF \cong \calF$.
@@ -282,11 +283,11 @@
             Let $D$ be a tame Weil divisor on $X$. Then, any $\ell$-adic local system of rank $1$ on $X$ (or equivalently, thanks to theorems \ref{theorem: unramified_abelian_geometric_class_field_theory} and \ref{theorem: tamely_ramified_abelian_geometric_class_field_theory}, a Hecke eigensheaf of rank $1$ on $\Bun_{\GL_1}(X \setminus D)$) is an instance of a Weil sheaf on $X$.
         \end{proposition}
             \begin{proof}
-                \cite[Proposition 5.19]{tendler_2010_geometric_class_field_theory_original}.
+                \cite[Proposition 5.19]{tendler_2015_geometric_class_field_theory}.
             \end{proof}
         
-        Let us now move on to Grothendieck's Sheaf-Function Dictionary/Corresondence\footnote{En Français: \say{\textit{La Correspondance Faisceaux-Fonctions de Grothendieck}}.}, which allows us to formally realise the notion of Hecke eigensheaves (as in definition \ref{def: hecke_eigensheaves}) as a categorification of the classical notion of Hecke characters (cf. lemma \ref{lemma: sheaf_function_correspondence}). In order to do this, we must introduce the central notion of traces of Frobenii.
-        \begin{definition}[Traces of Frobenii] \label{def: traces_of_frobenii}
+        Let us now move on to Grothendieck's Sheaf-Function Dictionary/Corresondence\footnote{En Français: \say{\textit{La Correspondance Faisceaux-Fonctions de Grothendieck}}.}, which allows us to formally realise the notion of Hecke eigensheaves from definition \ref{def: hecke_eigensheaves} as a categorification of the classical notion of Hecke characters (cf. theorem \ref{theorem: hecke_characters}). 
+        \begin{definition}[Grothendieck's Sheaf-Function Correspondence] \label{def: traces_of_frobenii}
             For each geometric point $x \in X(k)$, we define the trace of Frobenius on an $\ell$-adic local system $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X)$ to be the trace of the Frobenius endomorphism on the stalk $\calL_x$ (which is computed in the usual manner) and write:
                 $$\trace(\Frob_{X/k}^*, \calL) := \trace(\Frob_x^{\sharp}, \calL_x)$$
         \end{definition}
@@ -298,16 +299,22 @@
                 This is a trivial consequence of the well-known fact from basic linear algebra that if $A, B$ are finite-dimensional square matrices then $\trace(A \tensor B) = \trace(A) \trace(B)$.
             \end{proof}
         \begin{convention}[Global function field of $X$] \label{conv: global_function_field}
-            Let us write $K$ for the global function field of $X$ (i.e the stalk of the structure sheaf of $X$ at the unique generic point), $\scrO_K$ for its ring of integers, and $\A_K$ for the corresponding ring of ad\`eles. For more details on these constructions, we refer the reader to \cite[Section VI.1]{neukirch_2010_algebraic_number_theory}.
+            Let us write $K_X$ for the global function field of $X$ (i.e the stalk of the structure sheaf of $X$ at the unique generic point), $\bbO_X$ for its ring of integers, and $\A_X$ for the corresponding ring of ad\`eles. Furthermore, if $D$ is a tame Weil divisor on $X$ then we shall write $\bbO_{X \setminus D}$ for the product $\prod_{x \in \supp(D)} \widehat{\calO}_{X, x}^{\x} \x \prod_{v \not \in \supp(D)} \widehat{\calO}_{X, v}$, which will always be implicitly understood to carry the subspace topology inherited from $\bbO_X$. For more details on these constructions, we refer the reader to \cite[Section VI.1]{neukirch_2010_algebraic_number_theory}. 
         \end{convention}
-        \begin{lemma}[Grothendieck's Sheaf-Function Correspondence] \label{lemma: sheaf_function_correspondence}
-            Let $D$ be a tame Weil divisor on $X$. Then, there is a canonical isomorphism between the group of Hecke eigensheaves of rank $1$ on $\Bun_{\GL_1}(X \setminus D)$ and that of continuous $\ell$-adic characters of $\GL_1(K)\backslash\GL_1(\A_K)/\GL_1(\scrO_K)$, so-called $\ell$-adic \textbf{Hecke characters}:
-                $$\Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X \setminus D)) \cong \scrA_{\GL_1}(X \setminus D)$$
+        \begin{lemma}[The Lang isogeny] \label{lemma: lang_isogeny}
+            If $G$ is an abelian algebraic group over $\Spec \F_q$ then there will exist a surjective topological group homomorphism $q_G: \pi_1(G_{\fet}) \to G(\F_q)$.
         \end{lemma}
             \begin{proof}
-                Suppose that we are willing to take the special case of the Weil Uniformisation Theorem for $\Bun_{\GL_1}(X)$ (cf. \cite[Proposition 3.8]{tendler_2010_geometric_class_field_theory_original}\footnote{For details on Weil Uniformisation for $\Bun_G(X)$, with $G$ being a general connected reductive group, see \cite{sorger_BunG_uniformisation}}) for granted, which states that the group of $k$-rational points of $\Bun_{\GL_1}(X \setminus D)$ is nothing but the ad\`elic double-quotient $\GL_1(K)\backslash\GL_1(\A_K)/\GL_1(\scrO_K)$. Next, pick a geometric point $x \in X(k)$. By making use of proposition \ref{prop: hecke_eigensheaves_are_weil_sheaves} and theorem \ref{theorem: unramified_abelian_geometric_class_field_theory} (respectively, theorem \ref{theorem: tamely_ramified_abelian_geometric_class_field_theory}) in tandem, we can consider the trace of Frobenius on the eigenvalue $\Autom_D^{-1}(\E) \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X \setminus D)$ of each Hecke eigensheaf $\E \in \Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X \setminus D))$:
+                The strategy is to make use of corollary \ref{remark: geometric_galois_correspondence}, since $G(\F_q)$ is finite and therefore corresponds uniquely to the quotient of $\pi_1(G_{\fet})$ by a normal subgroup of finite index. For that, we shall need to construct a Galois covering of $G$ with which to compute $\pi_1(G_{\fet})$; this turns out to be the \textbf{Lang isogeny} $l_G: G \to G$, which is defined by $l_G(g) := g^q - g$. For more details, see \cite[Theorem 4.4.17]{springer_linear_algebraic_groups}.
+            \end{proof}
+        \begin{theorem}[Hecke characters as traces of Frobenii] \label{theorem: hecke_characters}
+            Let $D$ be a tame Weil divisor on $X$. Then, there is a canonical isomorphism between the group of Hecke eigensheaves of rank $1$ on $\Bun_{\GL_1}(X \setminus D)$ and that of continuous $\ell$-adic characters of $\GL_1(K_X)\backslash\GL_1(\A_X)/\GL_1(\bbO_{X \setminus D})$, so-called $\ell$-adic \textbf{Hecke characters}:
+                $$\Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X \setminus D)) \cong \scrA_{\GL_1}(X \setminus D)$$
+        \end{theorem}
+            \begin{proof}
+                Suppose that we are willing to take the special case of the Weil Uniformisation Theorem for $\Bun_{\GL_1}(X)$ (cf. \cite[Proposition 3.8]{tendler_2015_geometric_class_field_theory}\footnote{For details on Weil Uniformisation for $\Bun_G(X)$, with $G$ being a general connected reductive group, see \cite{sorger_BunG_uniformisation}}) for granted, which states that the group of $k$-rational points of $\Bun_{\GL_1}(X \setminus D)$ is nothing but the ad\`elic double-quotient $\GL_1(K_X)\backslash\GL_1(\A_X)/\GL_1(\bbO_{X \setminus D})$. Next, pick a geometric point $x \in X(k)$. By making use of proposition \ref{prop: hecke_eigensheaves_are_weil_sheaves} and theorem \ref{theorem: unramified_abelian_geometric_class_field_theory} (respectively, theorem \ref{theorem: tamely_ramified_abelian_geometric_class_field_theory}) in tandem, we can consider the trace of Frobenius on the eigenvalue $\Autom_D^{-1}(\E) \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X \setminus D)$ of each Hecke eigensheaf $\E \in \Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X \setminus D))$:
                     $$\rho_x(\E) := \trace(\Frob_x^{\sharp}, \Autom_D^{-1}(\E))$$
-                To show that taking traces of Frobenii in this manner will yield us a well-defined Hecke character $\rho_x(\E) \in \scrA_{\GL_1}(X \setminus D)$, recall first of all that by taking stalks of $\ell$-adic local systems $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X \setminus D)$ at geometric points $x \in X(k)$, one obtains a unique continuous $\ell$-adic character of $\pi_1((X \setminus D)_{\fet})$ (cf. theorem \ref{theorem: galois_representations_are_sheaves_on_X}); through corollary \ref{coro: unramified_galois_representations_induced_by_the_abel_jacobi_map} (respectively corollary \ref{coro: tamely_ramified_galois_representations_induced_by_the_abel_jacobi_map}), this means that one also gets a unique continuous $\ell$-adic character of $\pi_1((\Bun_{\GL_1}^{(1)}(X \setminus D))_{\fet})$. 
+                
             \end{proof}
             
         \begin{theorem}[Artin Reciprocity for global function fields] \label{theorem: artin_reciprocity_for_global_function_fields}
@@ -316,5 +323,5 @@
                 $$\rho \mapsto \chi$$
         \end{theorem}
             \begin{proof}
-                The existence of a canonical group isomorphism as stated comes directly from a combination of corollary \ref{coro: geometric_langlands_for_GL1} and lemma \ref{lemma: sheaf_function_correspondence}, so let us focus on the \say{Frobenius-compatibility} condition $\chi(\Frob_v) = \rho(\varpi_v)$.
+                The existence of a canonical group isomorphism as stated comes directly from a combination of corollary \ref{coro: geometric_langlands_for_GL1} and theorem \ref{theorem: hecke_characters}, so let us focus on the \say{Frobenius-compatibility} condition $\chi(\Frob_v) = \rho(\varpi_v)$.
             \end{proof}
