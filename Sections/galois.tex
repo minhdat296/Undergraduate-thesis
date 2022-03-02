@@ -6,12 +6,7 @@
             \begin{enumerate}
                 \item \textbf{(Pro-completions):} Following \cite[Definition 2.1]{isaksen_2001_limits_and_colimits_in_pro_categories}, the \textbf{pro-completion} $\Pro(\C)$ of a small category $\C$ is the category whose objects are cofiltered diagrams in $\C$ and whose hom-sets are given by:
                     $$\Pro(\C)(\{X_i\}_{i \in \calI}, \{Y_j\}_{j \in \calJ}) \cong \underset{j \in \calJ}{\lim} \underset{i \in \calI}{\colim} \C(X_i, Y_j)$$
-                The dual notion is that of ind-completions; we denote the ind-completion of $\C$ by $\Ind(\C)$.
-                \item \textbf{(Pro-representable functors):} Let $\C$ be a small category, and suppose that $\C$ is enriched in some small \href{http://nlab-pages.s3.us-east-2.amazonaws.com/nlab/show/closed+monoidal+category}{\underline{closed monoidal category}} $\V$ (e.g. the category of finite sets or the category of sets where the monoidal structure is given by products). Then, a $\V$-presheaf:
-                    $$F: \C \to \V$$
-                on $\C^{\op}$ is said to be \textbf{pro-representable} if and only if its \textbf{pro-completion}:
-                    $$\Pro(F): \Pro(\C) \to \Pro(\V)$$
-                is representable as a $\Pro(\V)$-copresheaf on $\Pro(\C)^{\op}$.
+                \item \textbf{(Pro-representable functors):} Let $\C$ be a small category, and suppose that $\C$ is enriched in some small \href{http://nlab-pages.s3.us-east-2.amazonaws.com/nlab/show/closed+monoidal+category}{\underline{closed monoidal category}} $\V$ (e.g. the category of finite sets or the category of sets where the monoidal structure is given by products). Then, a $\V$-presheaf on $\C^{\op}$ is said to be \textbf{pro-representable} if and only if it is naturally isomorphic to a filtered colimit of representable presheaves on $\C^{\op}$.
             \end{enumerate}
         \end{definition}
         \begin{remark} \label{remark: pro_representable_functors_are_ind_objects}
@@ -179,70 +174,36 @@
                 \cite[\href{https://stacks.math.columbia.edu/tag/0C0J}{Tag 0C0J}]{stacks}.
             \end{proof}
     
-    \subsection{Grothendieck's Galois Theory}
-        We begin by checking whether or not \'etale fundamental group is dual - in some sense - to the construction of an Eilenberg-MacLane space, thereby having concrete connections to the $1^{st}$ \'etale cohomology group and in turn, admitting descriptions in terms of torsors.
-        \begin{remark}[Points of the moduli stack of $G$-torsors]
-            For proposition \ref{prop: etale_eckmann_hilton_duality}, a basic fact one should keep in mind is that should $G$ be a constant group\footnote{As opposed to say, an algebraic group or more general group schemes}, then the groupoid $\Bun_{\underline{G}}(X) := \Sch_{/\Spec k}(X, \underline{G})$ of \'etale $\underline{G}$-torsors\footnote{Here, $\underline{G}$ denotes the group scheme represented by $\coprod_{g \in G} \Spec k$. Note how it is \'etale over $\Spec k$.} on a scheme $X$ over a field $k$ is equivalent to the groupoid $\Bun_{\underline{G}}(\Spec k)(X) := \Sch_{/\Spec k}(X, \underline{G(k)})$ of $X$-points of the moduli stack of $\underline{G}$-torsors on $\Spec k$.
-        \end{remark}
-        \begin{proposition}[The \'etale Eckmann-Hilton Duality] \label{prop: etale_eckmann_hilton_duality}
-            For any smooth projective connected curve $X$\footnote{Actually, this proposition holds also when $X$ is any irreducible geometrically unibranch scheme (which can be thought of as analogues of path-connected spaces), but we are not interested in such generalities.} over a field $k$ and any constant profinite group $G$, there exists the following adjunction:
-                $$
-                    \begin{tikzcd}
-                    	{\Grp(\Fin)} & {(\Sch_{/X})_{\fet}}
-                    	\arrow[""{name=0, anchor=center, inner sep=0}, "{\Sch_{/\Spec k}(X, -)}"', bend right, from=1-1, to=1-2]
-                    	\arrow[""{name=1, anchor=center, inner sep=0}, "{\pi_1^{\fet}}"', bend right, from=1-2, to=1-1]
-                    	\arrow["\dashv"{anchor=center, rotate=-90}, draw=none, from=1, to=0]
-                    \end{tikzcd}
-                $$
-            and in addition, a canonical equivalence:
-                $$\Grp(\Pro\Fin)(\pi_1(X_{\fet}), G) \cong \Bun_{\underline{G}}(X)$$
-            between the groupoid of continuous homomorphisms $\pi_1(X_{\fet}) \to G$ of profinite groups and that of $\underline{G}$-torsors on $X$.
-        \end{proposition}
-            \begin{proof}
-                Each continuous homomorphism $\pi_1(X_{\fet}) \to G$ determines a unique $G$-torsor in $\pi_1(X_{\fet})\-\Pro\Fin$. Because there is an equivalence $\pi_1(X_{\fet})\-\Pro\Fin \cong (\Sch_{/X})_{\profet}$ (cf. proposition \ref{prop: categorical_galois_correspondence}) and because schemes are representable \'etale sheaves, each such $G$-torsor in $\pi_1(X_{\fet})\-\Pro\Fin$ corresponds to a unique $\underline{G}$-torsor on $X$. Such a $\underline{G}$-torsor on $X$, in turn, is an $X$-point of the classifying stack $\Bun_{\underline{G}}((\Spec k))$, i.e. a morphism $X \to \underline{G}$ of $k$-schemes, and the proposition follows suite.
-            \end{proof}
-        \begin{convention}
-            From now on, if $E$ is a non-archimedean normed field then its subring of power-bounded elements shall be denoted by $\scrO_E$. 
-        \end{convention}
-        \begin{corollary}[Continuous representations of the \'etale fundamental group are torsors] \label{coro: continuous_representations_of_the_etale_fundamental_group_are_torsors}
-            Let $\ell$ be a prime, let $E$ be an $\ell$-adic number field (i.e. a finite extension of $\Q_{\ell}$). For any smooth projective connected curve over a field $k$ along with any choice of discrete group $G$, there exists a canonical equivalence:
-                $$\Rep^n_{\scrO_E}(\pi_1(X_{\fet}))^{\cont} \cong \Bun_{\underline{\GL_n(\scrO_E)}}(X)$$
-            between the groupoid of continuous $n$-dimensional $\scrO_E$-linear representations of $\pi_1(X_{\fet})$ and that of $\GL_n(\scrO_E)$-torsors on $X$.
-        \end{corollary}
-        \begin{remark}[What about higher-dimensional representations ?]
-            Corollary \ref{coro: continuous_representations_of_the_etale_fundamental_group_are_torsors} does not hold for $\GL_n(E)$ (for any $n \geq 1$), as these groups are only locally profinite, as opposed to being globally profinite like $\GL_n(\scrO_E)$.
-        \end{remark}
+    \subsection{\texorpdfstring{$\ell$}{}-adic sheaves and Grothendieck's Galois Theory}
+        Let us firstly collect certain useful facts about adic sheaves on a suitable nice algebraic stack. In particular, we are interested in how categories of $\ell$-adic local systems are constructed and in addition, we are concerned with whether or not the category of $\ell$-adic local systems over a suitably reasonable scheme (e.g. a scheme satisfying certain finiteness conditions) is compatible with Grothendieck's Six Functor Formalism. Our main references are \cite{freitag_kiehl_etale_cohomology} and \cite{kiehl_weissauer_weil_conjecture_perverse_sheaves_and_l_adic_fourier_transform} (which together form a pair), as well as \cite{conrad_etale_cohomology}.
     
-        \begin{convention}[The Curve] \label{conv: base_curve}
-            Henceforth, $X$ shall be a smooth projective \textit{connected} curve over $\Spec k$ (with $k$ some field).
+        \begin{convention}[The setting for adic sheaves] \label{conv: l_adic_sheaves_conventions}
+            \noindent
+            \begin{itemize}
+                \item For the purposes of this appendix, $\calX$ shall be an algebraic stack that is locally of finite type over a base scheme $S$ that is affine, regular, Noetherian and of dimension $\leq 1$, and of characteristic $p \geq 0$ (e.g. $\calX \cong \Bun_G(X)$, with $X$ as in convention \ref{conv: automorphic_side_conventions} and $G$ some connected reductive group); moreoever, we would like to work under the assumption that every finite-type $S$-scheme $T$ is also of finite cohomological dimension. At the same time, $\Lambda$ shall be a Gorenstein local ring of dimension $0$\footnote{Hence Noetherian.} and characteristic $\ell \not = p$ (e.g. $\Lambda \cong \Z_{\ell}$). This is the same as in \cite{laszlo_olsson_adic_sheaves_on_artin_stacks_1}.
+                \item For $\calX$ and $\Lambda$ as above, write $\Shv_{\Lambda}^c(\calX_{\lisse\-\et})$ for the \textit{unbounded} derived category of (\'etale-)\href{https://stacks.math.columbia.edu/tag/03RW}{\underline{constructible}} sheaves of $\Lambda$-modules on the lisse-\'etale site of $\calX$, which is implicitly equipped with its natural t-structure.
+            \end{itemize}
         \end{convention}
+        \begin{remark}[About the assumptions on $\Lambda$]
+            It should be noted that we have required $\Lambda$ to be Noetherian because otherwise, we can not guarantee that $\Shv_{\Lambda}^c(\calX_{\lisse\-\et})$ would be a thick subcategory of the abelian category $\Lambda\mod(\calX_{\lisse\-\et})$ of sheaves of $\Lambda$-modules (the relevance of this fact will become clear shortly). In addition, we require that $\Lambda$ is Gorenstein so that as a Noetherian ring, it would admit a dualising complex (in fact, a Noetherian ring has a dualising complex if and only if it is a quotient of a finite-dimensional Gorenstein ring; cf. \cite[Corollary 1.4]{kawasaki_macaulayfication_of_noetherian_rings}). Lastly, $\dim \Lambda = 0$ because otherwise, we would have to keep track of cohomological shifts (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0AWS}{Tag 0AWS} and \href{https://stacks.math.columbia.edu/tag/0B5A}{Tag 0B5A}]{stacks}), which are inessential technicalities.
+        \end{remark}
         
-        \begin{proposition}[$\ell$-adic representations are $\ell$-adic torsors] \label{prop: E_representations_are_E_local_systems}
-            Let $\ell$ be a prime and $E$ be an $\ell$-adic number field. Then there exists a canonical equivalence of groupoids as follows, for all $n \geq 1$:
-                $$\Rep_E^n(\pi_1(X_{\fet}))^{\cont} \cong \Bun_{\underline{\GL_n(E)}}(X)$$
-        \end{proposition}
-            \begin{proof}
-                Let $\rho: \pi_1(X_{\fet}) \to \GL_n(E)$ be a continuous representation. $\GL_n(\scrO_E)$ is an open subgroup of $\GL_n(E)$, so the preimage $H := \rho^{-1}(\GL_n(\scrO_E))$ must be an open subgroup of $\pi_1(X_{\fet})$; since $\pi_1(X_{\fet})$ is profinite, $H$ is furthermore normal. Consequently, there exists a Galois $X$-scheme $X^H$ such that $\pi_1(X^H_{\fet}) \cong H$; as a result, we obtain the following pullback of topological groups:
-                    $$
-                        \begin{tikzcd}
-                        	{\pi_1(X^H_{\fet})} & {\GL_n(\scrO_E)} \\
-                        	{\pi_1(X_{\fet})} & {\GL_n(E)}
-                        	\arrow[hook, from=1-2, to=2-2]
-                        	\arrow["\rho", from=2-1, to=2-2]
-                        	\arrow[from=1-1, to=2-1]
-                        	\arrow["{(\rho^H)^{\circ}}", from=1-1, to=1-2]
-                        	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
-                        \end{tikzcd}
-                    $$
-                Now, due to corollary \ref{coro: continuous_representations_of_the_etale_fundamental_group_are_torsors}, each representation $(\rho^H)^{\circ}: \pi_1(X^H_{\fet}) \to \GL_n(\scrO_E)$ corresponds to a unique $\underline{\GL_n(\scrO_E)}$-torsor on $X^H$, and since $\Bun_{\underline{\GL_n(\scrO_E)}}$ satisfies (profinite-)\'etale descent, one thus obtains in addition a unique $\underline{\GL_n(\scrO_E)}$-torsor on $X$, i.e. a representation $\rho^{\circ}: \pi_1(X_{\fet}) \to \GL_n(\scrO_E)$. There is thus a fully faithful embedding of $\Rep_E^n(\pi_1(X_{\fet}))^{\cont}$ into $\Bun_{\underline{\GL_n(E)}}(X)$. Now, to show that this embedding is also essentially surjective, observer that because $(\Sch_{/X})_{\profet} \cong \pi_1(X_{\fet})\-\Pro\Fin$, each $\underline{\GL_n(E)}$-torsor on $X$ corresponds to a unique (continuous) $\GL_n(E)$-torsor in $\pi_1(X_{\fet})\-\Pro\Fin$. But such a torsor is nothing but a continuous representation $\pi_1(X_{\fet}) \to \GL_n(E)$, so we are done.
-            \end{proof}
-        \begin{corollary}[Representations of the \'etale fundamental group are local systems] \label{coro: representations_of_the_etale_fundamental_group}
-            Let $\ell$ be a prime and $E$ be an $\ell$-adic number field. In addition, fix a geometric point $\bar{x} \in X$. Then there exists a canonical equivalence as follows, for all $n \geq 1$:
-                $$\Shv^n_{\underline{E}}(X) \cong \Rep_E^n(\pi_1(X_{\fet}))^{\cont}$$
-                $$\calL \mapsto \calL_{\bar{x}}$$
-        \end{corollary}
+        \begin{definition}[$\m$-adic sheaves] \label{def: m_adic_sheaves}
             
-        The following result crucially exploits the fact that $\GL_1(E)$ is abelian, unlike $\GL_n(E)$ for $n \geq 2$.
+        \end{definition}
+        
+        \begin{definition}[$\ell$-adic sheaves] \label{def: l_adic_sheaves}
+            
+        \end{definition}
+            
+        \begin{theorem}[Galois representations are sheaves on $X$] \label{theorem: galois_representations_are_local_systems}
+            Fix a geometric point $\bar{x}$ of a connected Noetherian scheme $X$. Then, there is a canonical monoidal equivalence:
+                $$\Shv_{\bar{\Q}_{\ell}}^{\lisse}(X) \cong \Rep_{\bar{\Q}_{\ell}}(\pi_1(X_{\fet}))^{\cont}$$
+                $$\calL \mapsto \calL_{\bar{x}}$$
+        \end{theorem}
+            \begin{proof}
+                For now, see \cite[Theorem 1.4.5.7]{conrad_etale_cohomology}.\todo{Proof to be added later}
+            \end{proof}
         \begin{lemma}[Abelianising continuous characters] \label{lemma: abelianising_continuous_characters}
             Let $G$ be a topological group and $E$ a topological field. Then, there is a group isomorphism:
                 $$\Rep^1_E(G)^{\cont} \cong \Rep^1_E(G^{\ab})^{\cont}$$
@@ -253,12 +214,8 @@
                     $$\chi \mapsto \chi^{\ab}$$
                 coming from the canonical quotient map $G \to G^{\ab}$, so the only thing to do is to show that this homomorphism is surjective. For this, it shall suffice to show that the group $\Rep^1_E([G, G])^{\cont}$ is trivial: but this is evident from the fact that $\GL_1(E)$ is abelian and from the definition of the commutator subgroup $[G, G]$, namely that $[G, G] := \<ghg^{-1}h^{-1} \mid \forall g, h \in G\>$ (so for all $x \in [G, G]$ and all $\chi \in \Rep^1_E([G, G])$, $\chi(x) = 1$), so we are done.
             \end{proof}
-            
-        \begin{theorem}[Galois representations are sheaves on $X$] \label{theorem: galois_representations_are_sheaves_on_X}
-            Fix a geometric point $\bar{x} \in X$. Then, there is a canonical monoidal equivalence:
+        \begin{corollary} \label{coro: abelian_galois_characters_are_local_systems}
+            Fix a geometric point $\bar{x}$ of a connected Noetherian scheme $X$. Then, there is a canonical monoidal equivalence:
                 $$\Shv_{\bar{\Q}_{\ell}}^{\ad, 1}(X) \cong \Rep^1_{\bar{\Q}_{\ell}}(\pi_1^{\ab}(X_{\fet}))^{\cont}$$
                 $$\calL \mapsto \calL_{\bar{x}}$$
-        \end{theorem}
-            \begin{proof}
-                
-            \end{proof}
+        \end{corollary}

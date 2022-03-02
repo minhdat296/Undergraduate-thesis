@@ -1,0 +1,38 @@
+\begin{definition}[Prime divisors and Weil divisors] \label{def: prime_divisors_and_weil_divisors}
+            For our purposes, a \textbf{prime divisor} on $X$ (as in convention \ref{conv: base_curve}) shall be a closed point, and a \textbf{Weil divisor} shall be a formal finite linear combination of prime divisors. A Weil divisor is said to be \textbf{tame} if its coefficients are all equal to either $0$ or $1$ (i.e. if it is either empty or a pure sum of prime divisors).
+        \end{definition}
+        \begin{convention}[Line bundles with prescribed trivialisations] \label{conv: line_bundles_with_prescribed_trivialisations}
+            If $D$ is a tame Weil divisor on $X$ then we shall (abusively) denote by $\Bun_{\GL_1}(X \setminus D)$ the moduli space of line bundles $\calL \in \Bun_{\GL_1}(X)$ with a trivialisation $\calL|_D \cong \calO_X|_D$.
+        \end{convention}
+        \begin{proposition}[The tamely ramified Abel-Jacobi map is a vector bundle] \label{prop: the_tamely_ramified_abel_jacobi_map_is_a_vector_bundle}
+            Let $D$ be a tame Weil divisor on $X$. If $d \geq 2g - 1$ then every Abel-Jacobi map $\AJ_{(X \setminus D)/k}^{(d)}: \Div_{(X \setminus D)/k}^{\eff, (d)} \to \Bun_{\GL_1}^{(d)}(X \setminus D)$ will be a vector bundle with fibres over $k$-rational points being isomorphic to $\A^{(d - g + 1) - \deg D}_k$.
+        \end{proposition}
+            \begin{proof}
+                
+            \end{proof}
+        \begin{corollary}[Tamely ramified Galois representations induced by the Abel-Jacobi map] \label{coro: tamely_ramified_galois_representations_induced_by_the_abel_jacobi_map}
+            Like in corollary \ref{coro: unramified_galois_representations_induced_by_the_abel_jacobi_map}, we can make use of proposition \ref{prop: etale_homotopy_exact_sequence} (along with the fact that finite-dimensional affine spaces are \'etale-simply connected in characteristic $0$; cf. example \ref{example: etale_fundamental_group_of_the_affine_line}) to show that for $D$ any tame Weil divisor on $X$, there an equivalence between the categories of continuous $\ell$-adic characters of $\pi_1((\Div_{(X \setminus D)/k}^{\eff, (d)})_{\fet})$ and of $\pi_1((\Bun_{\GL_1}^{(d)}(X \setminus D))_{\fet})$ as below, wherein $(\AJ_{(X \setminus D)/k}^{(d)})^*$ is the pullback of $\ell$-adic sheaves along the Abel-Jacobi map $\AJ_{(X \setminus D)/k}^{(d)}: \Div_{(X \setminus D)/k}^{\eff, (d)} \to \Bun_{\GL_1}^{(d)}(X \setminus D)$:
+                $$\Rep^1_{\bar{\Q}_{\ell}}(\pi_1((\Div_{(X \setminus D)/k}^{\eff, (d)})_{\fet})) \cong \Rep^1_{\bar{\Q}_{\ell}}(\pi_1((\Bun_{\GL_1}^{(d)}(X \setminus D))_{\fet}))$$
+                $$\chi \mapsto \chi \circ (\AJ_{(X \setminus D)/k}^{(d)})^*$$
+        \end{corollary}
+        
+    \begin{theorem}[Tamely ramified abelian geometric class field theory] \label{theorem: tamely_ramified_abelian_geometric_class_field_theory}
+            Suppose that $D$ is a tame Weil divisor on $X$. Then, there exists a canonical monoidal equivalence between the groupoid $\Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X \setminus D)$ of rank-$1$ $\ell$-adic local systems on $X \setminus D$ which correspond (via theorem \ref{theorem: galois_representations_are_sheaves_on_X}) to tamely ramified representations of $\pi_1^{\ab}((X \setminus D)_{\fet})$, and that of Hecke eigensheaves of rank $1$ on $\Bun_{\GL_1}(X \setminus D)$:
+                $$\Autom_D: \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X \setminus D) \to \Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X \setminus D))$$
+            which maps each $\ell$-adic local system $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X)$ to a Hecke eigensheaf $\Autom(\calL) \in \Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$ with eigenvalue $\calL$.
+        \end{theorem}
+            \begin{proof}
+                \noindent
+                \begin{enumerate}
+                    \item \textbf{(Characteristic $0$):} For this case, one can simply mimic the proof of theorem \ref{theorem: unramified_abelian_geometric_class_field_theory}, owing to the fact that field extensions are always separable in characteristic $0$, while extensions in prime characteristics can be purely inseparable, a phenomenon that causes $\A_X^{(d - g + 1) - \deg D}$ (as in proposition \ref{prop: the_tamely_ramified_abel_jacobi_map_is_a_vector_bundle}) to not be \'etale-simply connected in positive characteristics, which causes problems because corollary \ref{coro: tamely_ramified_galois_representations_induced_by_the_abel_jacobi_map} can not then be used to equate $\ell$-adic local systems on $X^{(d)}$ and on $\Bun_{\GL_1}^{(d)}(X)$. 
+                    \item \textbf{(Characteristics $p > 0$):} 
+                \end{enumerate}
+            \end{proof}
+            
+    \begin{definition}[(Un)ramified Galois characters] \label{def: (un)ramified_galois_characters}
+            Let $D := \sum_{i = 1}^n e_i \p_i$ be a Weil divisor on $X$. Additionally, fix an $\ell$-adic character $\chi \in \Rep^1_{\bar{\Q}_{\ell}}(\Gal(\bar{K}/K))$ (or equivalently, an $\ell$-adic local system of rank $1$ on $X$, thanks to theorem \ref{theorem: galois_representations_are_sheaves_on_X}).
+                \begin{itemize}
+                    \item \textbf{(Ramification indices):} The \textbf{local ramification index} of $\chi$, for which we shall write $\ram_{\p_i}(\chi)$, is the smallest natural number $r_i$ such that $\chi$ becomes trivial on all higher ramification groups $G_{K_{\p_i}}^{r}$ with $r > r_i$; the \textbf{global ramification index} of $\chi$, denoted by $\ram(\chi)$, is the supremum of its local ramification indices. 
+                    \item \textbf{(Unramified and ramified $\ell$-adic Galois characters):} $\chi$ is said to be \textbf{unramified} if $\ram(\chi) \leq 0$, and \textbf{tamely ramified} if $\ram(\chi) \leq 1$.
+                \end{itemize}
+        \end{definition}
