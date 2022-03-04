@@ -44,17 +44,14 @@
         \end{definition}
         
         \begin{proposition}[The Categorical Galois Correspondence] \label{prop: categorical_galois_correspondence}
-            Fix a Galois category $(\calG, F)$ with terminal objects $\pt$. Then there are the following equivalences of categories:
+            For every Galois category $(\calG, F)$, there an equivalence of categories (cf. \cite[Propositions 5.2]{SGA1}):
                 $$\calG \cong \pi_1(\calG, F)\-\Fin\Sets$$
                 $$Y \mapsto F(Y)$$
+            Furthermore, one has the following equivalences characterising the relationship between subgroups of the fundamental group $\pi_1(\calG, F)$ and permutations of Galois covers in $\calG$ (cf. \cite[Propositions 5.5]{SGA1}):
                 $$\{\text{Finite-index subgroups of $\pi_1(\calG, F)$}\} \cong \pi_1(\calG, F)\-\Fin\Sets$$
                 $$H \mapsto \pi_1(\calG, F)/H$$
-            Furthermore, there is the following restricted equivalence:
                 $$\calG^{\Gal} \cong \{\text{Finite-index normal subgroups of $\pi_1(\calG, F)$}\}$$
         \end{proposition}
-            \begin{proof}
-                \todo{Cite a proof}
-            \end{proof}
             
         \begin{definition}[Universal covers] \label{def: universal_covers}
             Let $(\calG, F)$ be a Galois category. A pro-object $\tilde{X} \in \Pro(\calG)$ is called a \textbf{universal cover} if and only if its fundamental group $\pi_1(\tilde{X}) \cong \Aut(\Pro(F)(\tilde{X}))$ is trivial (i.e. if and only if it is simply-connected).
@@ -159,29 +156,53 @@
         \end{corollary}
         
         \begin{proposition}[\'Etale fundamental group of products]
-            Let $k$ be an algebraically closed field and let $X, Y$ be two connected schemes which are, respectively, proper and locally noetherian over $\Spec k$. In addition, fix two geometric points $x \in X$ and $y \in Y$. Then, there is a canonical isomorphism:
+            \cite[Corollaire 1.7]{SGA1} Let $k$ be an algebraically closed field and let $X, Y$ be two connected schemes which are, respectively, proper and locally noetherian over $\Spec k$. In addition, fix two geometric points $x \in X$ and $y \in Y$. Then, there is a canonical isomorphism:
                 $$\pi_1((X \x_{\Spec k} Y)_{\fet}, (x, y)) \cong \pi_1(X_{\fet}, x) \x \pi_1(Y_{\fet}, y)$$
         \end{proposition}
-            \begin{proof}
-                \cite[Corollaire 1.7]{SGA1}
-            \end{proof}
         
         \begin{proposition}[The \'etale homotopy exact sequence] \label{prop: etale_homotopy_exact_sequence}
-            Let $X$ be a connected scheme. If $f: Y \to X$ be a flat proper morphism of finite presentation whose geometric fibres $Y_{\bar{x}}$ are connected and reduced, then for any geometric point $\bar{x} \in X$, there exists a right-exact sequence of groups as follows:
+            \cite[\href{https://stacks.math.columbia.edu/tag/0C0J}{Tag 0C0J}]{stacks} Let $X$ be a connected scheme. If $f: Y \to X$ be a flat proper morphism of finite presentation whose geometric fibres $Y_{\bar{x}}$ are connected and reduced, then for any geometric point $\bar{x} \in X$, there exists a right-exact sequence of groups as follows:
                 $$\pi_1((Y_{\bar{x}})_{\fet}) \to \pi_1(Y_{\fet}) \to \pi_1(X_{\fet}) \to 1$$
         \end{proposition}
-            \begin{proof}
-                \cite[\href{https://stacks.math.columbia.edu/tag/0C0J}{Tag 0C0J}]{stacks}.
-            \end{proof}
     
     \subsection{\texorpdfstring{$\ell$}{}-adic sheaves and Grothendieck's Galois Theory}
-        Let us firstly collect certain useful facts about adic sheaves on a suitable nice algebraic stack. In particular, we are interested in how categories of $\ell$-adic local systems are constructed and in addition, we are concerned with whether or not the category of $\ell$-adic local systems over a suitably reasonable scheme (e.g. a scheme satisfying certain finiteness conditions) is compatible with Grothendieck's Six Functor Formalism. Our main references are \cite{freitag_kiehl_etale_cohomology} and \cite{kiehl_weissauer_weil_conjecture_perverse_sheaves_and_l_adic_fourier_transform} (which together form a pair), as well as \cite{conrad_etale_cohomology}.
-    
+        Let us firstly collect certain useful facts about $\ell$-adic sheaves on a suitable nice scheme. In particular, we are interested in how categories of $\ell$-adic local systems are constructed as well as whether or not the category of $\ell$-adic local systems over a suitably reasonable scheme (cf. convention \ref{conv: l_adic_sheaves_conventions}) is compatible with Grothendieck's Six Functor Formalism. Our main references are \cite{conrad_etale_cohomology}, \cite[Chapter 1]{behrend_l_adic_sheaves_for_algebraic_stacks}, and \cite{laszlo_olsson_adic_sheaves_on_artin_stacks_2}.
+        
+        \begin{convention}[Homological conventions]
+            If $\calA$ is an additive (respectively abelian) category then we shall write $\Ho(\calA)$ (respectively $\rmD(\calA)$) for the homotopy (respectively derived) category of $\Ch(\calA)$, the category of chain complexes in $\calA$; both shall be assumed to come equipped with its canonical triangulated structure that arises via mapping cones. Additionally, we shall be grading \textit{cohomologically}\footnote{\cite[Section 1.4]{conrad_etale_cohomology}, on the other hand, grades \textit{homologically}.}.
+        \end{convention}
+        
+        We begin with the notion of \textbf{Artin-Rees categories} (cf. definition \ref{def: artin_rees_categories}), which will help us define $\ell$-adic sheaves in very convenient terms. 
+        \begin{definition}[Artin-Rees categories] \label{def: artin_rees_categories}
+            The \textbf{Artin-Rees category} associated to an abelian category $\calA$ is the full subcategory of $\Pro(\calA)$ spanned by cofiltered diagrams $\{M_n\}_{n \in \Z}$; we denote it by $\AR(\calA)$. Of particular interest are the so-called \textbf{null systems}, which are objects $\{M_n\}_{n \in \Z} \in \AR(\calA)$ such that there exists $\nu \in \N$ so that for all $n \in \Z$ the morphism $M_n \to M_{n + \nu}$ is zero.
+        \end{definition}
+        \begin{proposition}[Artin-Rees categories are abelian] \label{prop: artin_rees_categories_are_abelian}
+            For any abelian category $\calA$, the associated Artin-Rees category $\AR(\calA)$ is also abelian, with zero objects being the null systems.
+        \end{proposition}
+        \begin{corollary}[AR-isomorphisms] \label{coro: AR_isomorphisms}
+            For any abelian category $\calA$, an isomorphism in $\AR(\calA)$ (henceforth referred to as an \textbf{AR-isomorphism}) is a morphism in $\Pro(\calA)$ whose kernel and cokernel are null.
+        \end{corollary}
+        \begin{proposition}[Artin-Rees categories are linear] \label{prop: artin_rees_categories_are_linear}
+            If a given abelian category $\calA$ is $\Lambda$-linear (i.e. if hom-sets of $\calA$ are $\Lambda$-modules) for some commutative ring $\Lambda$ (e.g. $\calA \cong \Lambda\mod$) then $\AR(\calA)$ will also be $\Lambda$-linear.
+        \end{proposition}
+        \begin{convention}
+            For now, suppose that $\Lambda$ is an Artinian commutative ring (hence Noetherian \textit{a priori}) that is adically separated and complete with respect to some ideal $\m$ therein (i.e. $\Lambda$ is its own $\m$-adic completion and $\bigcap_{n \in \N} \m^n = 0$). Note that we need the Noetherian hypothesis on $\Lambda$ in order to be able to endow it with the $\m$-adic topology. In addition, let us write $M_{-n} \cong M/\m^n$ for all $\Lambda$-modules $M$.
+        \end{convention}
+        \begin{remark}[Adic projective systems] \label{remark: adic_projective_systems}
+            Observe that for every finite $\Lambda$-module $M$, the corresponding cofiltered diagram of finite $\Lambda_n$-modules $\{M_n\}_{n \leq 0}$ enjoys an interesting property, which is that the transition maps $M_{n + 1} \tensor_{\Lambda_{n + 1}} \Lambda_n \to M_n$ are actually isomorphisms of (finite) $\Lambda_n$-modules. Any such cofiltered diagram of $\Lambda_n$-modules is said to be \textbf{strictly $\m$-adic} (cf. \cite[Definition 1.4.1.1]{conrad_etale_cohomology}). Now, because $\Lambda$ is $\m$-adically complete and separated, it can be shown that the aforementioned process of associating a strictly $\m$-adic projective system to a given finite $\Lambda$-module induces an equivalence between the category $\Lambda\mod^{\fin}$ of finite $\Lambda$-modules and the category ${}^{\leq 0}(\Lambda, \m)\mod^{\fin, \ad}$ of strictly $\m$-adic projective systems of finite $\Lambda_n$-modules: in one direction, the functor is $M \mapsto \{M_n\}_{n \leq 0}$ and in the converse direction, the functor is $\{M_n\}_{n \leq 0} \mapsto \underset{n \leq 0}{\lim} M_n$ (cf. \cite[\href{https://stacks.math.columbia.edu/tag/031D}{Tag 031D}]{stacks}). In doing so, we have endowed ${}^{\leq 0}(\Lambda, \m)\mod^{\fin, \ad}$ with the structure of an abelian category (namely that of $\Lambda\mod^{\fin}$), and so we might consider its associated Artin-Rees category.
+        \end{remark}
+        \begin{definition}[Torsion and adic objects] \label{def: torsion_objects_and_adic_objects}
+            Let $\calA$ be a $\Lambda$-linear abelian category. From such a category, one can construct an increasing family $\{\calA_n\}_{n \in \N}$ of subcategories of $\calA$ spanned by the so-called \textbf{$\m^n$-torsion objects}, which is to say that hom-sets between objects of each $\calA_n$ are $\m^n$-torsion $\Lambda$-modules.
+        \end{definition}
+        \begin{proposition}[Artin-Rees categories of adic projective systems] \label{prop: artin_rees_categories_of_adic_projective_systems}
+            Let $\calA$ be a $\Lambda$-linear abelian category and let $\calA_0$ be a $\Lambda$-linear finite abelian subcategory (i.e. one whose objects are all simultaneously Noetherian and Artinian\footnote{$\Lambda\mod^{\fin}$ is one such subcategories of $\Lambda\mod$, as a module over an Artinian ring is finitely generated if and only if it is Noetherian, which itself is the case if and only if said module is Artinian (cf. \cite[Theorem 4.15]{lam_first_course_in_noncommutative_rings}).}). Then, (cf. \cite[Proposition 2.2.4]{behrend_l_adic_sheaves_for_algebraic_stacks})
+        \end{proposition}
+        
         \begin{convention}[The setting for adic sheaves] \label{conv: l_adic_sheaves_conventions}
             \noindent
             \begin{itemize}
-                \item For the purposes of this appendix, $\calX$ shall be an algebraic stack that is locally of finite type over a base scheme $S$ that is affine, regular, Noetherian and of dimension $\leq 1$, and of characteristic $p \geq 0$ (e.g. $\calX \cong \Bun_G(X)$, with $X$ as in convention \ref{conv: automorphic_side_conventions} and $G$ some connected reductive group); moreoever, we would like to work under the assumption that every finite-type $S$-scheme $T$ is also of finite cohomological dimension. At the same time, $\Lambda$ shall be a Gorenstein local ring of dimension $0$\footnote{Hence Noetherian.} and characteristic $\ell \not = p$ (e.g. $\Lambda \cong \Z_{\ell}$). This is the same as in \cite{laszlo_olsson_adic_sheaves_on_artin_stacks_1}.
-                \item For $\calX$ and $\Lambda$ as above, write $\Shv_{\Lambda}^c(\calX_{\lisse\-\et})$ for the \textit{unbounded} derived category of (\'etale-)\href{https://stacks.math.columbia.edu/tag/03RW}{\underline{constructible}} sheaves of $\Lambda$-modules on the lisse-\'etale site of $\calX$, which is implicitly equipped with its natural t-structure.
+                \item For the purposes of this appendix, $\calX$ shall be an algebraic stack that is locally of finite type over a base scheme $S$ that is affine, regular, Noetherian and of dimension $\leq 1$, and of characteristic $p \geq 0$ (e.g. $\calX \cong \Bun_G(X)$, with $X$ as in convention \ref{conv: automorphic_side_conventions} and $G$ some connected reductive group); moreoever, we would like to work under the assumption that every finite-type $S$-scheme $T$ is also of finite cohomological dimension. At the same time, $\Lambda$ shall be a Gorenstein local ring of dimension $0$ with maximal ideal $\m$ and residue  characteristic $\ell \not = p$ (e.g. $\Lambda \cong \Z_{\ell}$). This is the same as in \cite{laszlo_olsson_adic_sheaves_on_artin_stacks_1}.
+                \item For $\calX$ and $\Lambda$ as above, write $\rmD_{\Lambda, c}(\calX_{\lisse\-\et})$ for the \textit{unbounded} derived category of \href{https://stacks.math.columbia.edu/tag/03RW}{\underline{constructible}} sheaves of $\Lambda$-modules on the lisse-\'etale site of $\calX$, which is implicitly equipped with its natural t-structure.
             \end{itemize}
         \end{convention}
         \begin{remark}[About the assumptions on $\Lambda$]
@@ -195,27 +216,22 @@
         \begin{definition}[$\ell$-adic sheaves] \label{def: l_adic_sheaves}
             
         \end{definition}
-            
-        \begin{theorem}[Galois representations are sheaves on $X$] \label{theorem: galois_representations_are_local_systems}
-            Fix a geometric point $\bar{x}$ of a connected Noetherian scheme $X$. Then, there is a canonical monoidal equivalence:
-                $$\Shv_{\bar{\Q}_{\ell}}^{\lisse}(X) \cong \Rep_{\bar{\Q}_{\ell}}(\pi_1(X_{\fet}))^{\cont}$$
-                $$\calL \mapsto \calL_{\bar{x}}$$
+        
+        \begin{lemma}
+            \cite[\href{https://stacks.math.columbia.edu/tag/0GIY}{Tag 0GIY}]{stacks} Fix a geometric point $\bar{x}$ of a connected and normal Noetherian scheme $X$. Then, there exists a canonical equivalence of categories $\Shv_{\underline{\Lambda}}^{\fin}(X) \cong \Rep_{\Lambda}^{\fin}(\pi_1(X, \bar{x}))^{\cont}$ given by $\calL \mapsto \calL_{\bar{x}}$.
+        \end{lemma}
+        \begin{theorem}[Galois representations are lisse adic sheaves] \label{theorem: galois_representations_are_local_systems}
+            Fix a geometric point $\bar{x}$ of a connected and normal Noetherian scheme $X$. Then, there is a canonical equivalence $\Shv_{\underline{\bar{\Q}_{\ell}}}^{\lisse}(X) \cong \Rep_{\bar{\Q}_{\ell}}^{\fin}(\pi_1(X_{\fet}, \bar{x}))^{\cont}$ given by $\calL \mapsto \calL_{\bar{x}}$, which happens to also be a monoidal functor.
         \end{theorem}
             \begin{proof}
-                For now, see \cite[Theorem 1.4.5.7]{conrad_etale_cohomology}.\todo{Proof to be added later}
+                
             \end{proof}
         \begin{lemma}[Abelianising continuous characters] \label{lemma: abelianising_continuous_characters}
-            Let $G$ be a topological group and $E$ a topological field. Then, there is a group isomorphism:
-                $$\Rep^1_E(G)^{\cont} \cong \Rep^1_E(G^{\ab})^{\cont}$$
+            Let $G$ be a topological group and $E$ a topological field. Then, there is a group isomorphism $\Rep^1_E(G)^{\cont} \cong \Rep^1_E(G^{\ab})^{\cont}$ given by $\chi \mapsto \chi^{\ab}$, with $\chi^{\ab}$ being the composition of $\chi$ with the canonical quotient map $G \to G^{\ab}$.
         \end{lemma}
             \begin{proof}
-                There is a natural injective group homomorphism:
-                    $$\Rep^1_E(G)^{\cont} \to \Rep^1_E(G^{\ab})^{\cont}$$
-                    $$\chi \mapsto \chi^{\ab}$$
-                coming from the canonical quotient map $G \to G^{\ab}$, so the only thing to do is to show that this homomorphism is surjective. For this, it shall suffice to show that the group $\Rep^1_E([G, G])^{\cont}$ is trivial: but this is evident from the fact that $\GL_1(E)$ is abelian and from the definition of the commutator subgroup $[G, G]$, namely that $[G, G] := \<ghg^{-1}h^{-1} \mid \forall g, h \in G\>$ (so for all $x \in [G, G]$ and all $\chi \in \Rep^1_E([G, G])$, $\chi(x) = 1$), so we are done.
+                Let us show that the homomorphism $\chi \to \chi^{\ab}$ is surjective. For this, it shall suffice to show that the group $\Rep^1_E([G, G])^{\cont}$ is trivial: but this is evident from the fact that $\GL_1(E)$ is abelian and from the definition of the commutator subgroup $[G, G]$, namely that $[G, G] := \<ghg^{-1}h^{-1} \mid \forall g, h \in G\>$ (so for all $x \in [G, G]$ and all $\chi \in \Rep^1_E([G, G])$, $\chi(x) = 1$), so we are done.
             \end{proof}
         \begin{corollary} \label{coro: abelian_galois_characters_are_local_systems}
-            Fix a geometric point $\bar{x}$ of a connected Noetherian scheme $X$. Then, there is a canonical monoidal equivalence:
-                $$\Shv_{\bar{\Q}_{\ell}}^{\ad, 1}(X) \cong \Rep^1_{\bar{\Q}_{\ell}}(\pi_1^{\ab}(X_{\fet}))^{\cont}$$
-                $$\calL \mapsto \calL_{\bar{x}}$$
+            Fix a geometric point $\bar{x}$ of a connected Noetherian scheme $X$. Then, on obtains an equivalence $\Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X) \cong \Rep^1_{\bar{\Q}_{\ell}}(\pi_1^{\ab}(X_{\fet}))^{\cont}$ via $\calL \mapsto \calL_{\bar{x}}$ by combining theorem \ref{theorem: galois_representations_are_local_systems} and lemma \ref{lemma: abelianising_continuous_characters}.
         \end{corollary}

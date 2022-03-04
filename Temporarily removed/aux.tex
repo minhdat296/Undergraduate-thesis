@@ -123,3 +123,13 @@ Furthermore, if $\pi$ is a profinite group\footnote{Which need not be strictly p
                 $$\Shv_{\Lambda}^c(\calX_{\lisse\-\et}) \cong \Shv_{\Lambda}^c((U_{\bullet})_{\et})$$
             Since (simplicial) algebraic spaces are \'etale-locally affine, this equivalence allows one to replace the (simplicial) algebraic spaces $U_{\bullet}$ by (simplicial) affine schemes. 
         \end{example}
+        
+        \begin{remark}[Strictly adic projective systems] \label{remark: strictly_adic_projective_systems}
+            \noindent
+            \begin{enumerate}
+                \item Observe that for every finite $\Lambda$-module $M$, the corresponding cofiltered diagram of finite $\Lambda_n$-modules $\{M_n\}_{n \in \N}$ enjoys an interesting property, which is that the transition maps $M_{n + 1} \tensor_{\Lambda_{n + 1}} \Lambda_n \to M_n$ are actually isomorphisms of (finite) $\Lambda_n$-modules. Any such cofiltered diagram of $\Lambda_n$-modules is said to be \textbf{strictly $\m$-adic} (cf. \cite[Definition 1.4.1.1]{conrad_etale_cohomology}). 
+            
+                Because $\Lambda$ is $\m$-adically complete and separated, it can be shown that the aforementioned process of associating a strictly $\m$-adic projective system to a given finite $\Lambda$-module induces an equivalence between the category $\Lambda\mod^{\fin}$ of finite $\Lambda$-modules and the category ${}^{\geq 0}(\Lambda, \m)\mod^{\fin, \ad}$ of strictly $\m$-adic projective systems of finite $\Lambda_n$-modules: in one direction, the functor is $M \mapsto \{M_n\}_{n \in \N}$ and in the converse direction, the functor is $\{M_n\}_{n \in \N} \mapsto \underset{n \in \N}{\lim} M_n$ (cf. \cite[\href{https://stacks.math.columbia.edu/tag/031D}{Tag 031D}]{stacks}).
+                \item As a category, however, ${}^{\geq 0}(\Lambda, \m)\mod^{\fin, \ad}$ turns out to not be too well-behaved: for instance, if $\{\varphi_n: M'_n \to M_n\}_{n \in \N}$ is a morphism of strictly $\m$-adic projective systems of finite $\Lambda_n$-modules then there will be no guarantee that $\{\ker \varphi_n\}_{n \in \N} \cong \ker \{\varphi_n\}_{n \in \N}$, as the left-hand side might even fail at being a strictly $\m$-adic projective system, let alone at being the sought-for kernel in this situation (cf. \cite[Example 1.4.1.3]{conrad_etale_cohomology}). Modifications are therefore in order, which are inspired by the Artin-Rees Lemma (cf. \cite[Example 1.4.1.4]{conrad_etale_cohomology}). In particular, we shall be enlarging the category ${}^{\geq 0}(\Lambda, \m)\mod^{\fin, \ad}$ to $(\Lambda, \m)\mod^{\ad}$, keeping only the strict $\m$-adicity condition. 
+            \end{enumerate}
+        \end{remark}
