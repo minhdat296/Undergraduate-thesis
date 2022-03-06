@@ -1,123 +1,126 @@
 \section{The Automorphic Side}
     \subsection{Symmetric powers of curves, Jacobians, and the Abel-Jacobi map}
-        \begin{convention}[The Picard group] \label{conv: picard_group}
-            For any base scheme $S$ and any $S$-scheme $Y$, we shall write $|\Pic_{Y/S}|$ for the group of isomorphism classes of line bundles on $Y$, whose group structure is given by tensor products of invertible quasi-coherent $\calO_{Y/S}$-modules.
-        \end{convention}
-        \begin{definition}[Divisors] \label{def: divisors}
-            Let $Y$ be a scheme. An \textbf{effective (Cartier) divisor}\footnote{Historically referred to as a \say{modulus}.} on $Y$ is then a closed subscheme $D \subset Y$ whose ideal sheaf $\calI_D$ is a line bundle on $Y$. Its \textbf{degree} is the \href{https://stacks.math.columbia.edu/tag/0AYQ}{\underline{degree}} of the line bundle $\calI_D$.  
-                
-            The set of effective divisors (respectively, effective divisors of degree $d$) shall be denoted by $|\Div_Y^{\eff}|$ (respectively, $|\Div_Y^{\eff, (d)}|$), and as a straightforward consequence of the definition of effective divisors, it is precisely the set of invertible\footnote{A quasi-coherent ideal sheaf $\calJ \subset \calO_Y$ is invertible if and only if its local sections $\calJ(V)$ are principal ideals of $\calO_Y(V)$.} quasi-coherent $\calO_Y$-ideals (respectively, quasi-coherent $\calO_Y$-ideals of degree $d$).
-        \end{definition}
-        \begin{remark}[Why do we care about divisors ?] 
-            Because the function field of the curve $X$ over $\Spec k$ from convention \ref{conv: automorphic_side_conventions} is some (global) field of the form $K \cong k'(t)$, where $k'/k$ is an algebraic extension (cf. proposition \ref{prop: curves_and_function_fields}), and since its ring of integers $\bbO_X \cong k'[t]$ is a Dedekind domain (this is due to Hilbert's Basis Theorem, which tells us that $\dim k'[t] = \dim k + 1 = 0 + 1 = 1$), every of the stalks $\calO_{X, x}$ at points $x \in |X|$ must be a discrete valuation ring. This tells us that there is a bijective correspondence between points $x \in |X|$ and places of $K$ that are trivial on $k'$. Now, also because $\bbO_X$ is a Dedekind domain, every ideal $\a$ therein factors into a (formal) product of primes, say $\a = \prod_{i = 1}^n \p_i^{e_i}$. Furthemore, $\bbO_X$ is actually a PID, as it is isomorphic to $k'[t]$, which is a UFD thanks to $k'$ itself being a UFD, by virtue of being a field. Thus, points $x \in |X|$ are not only in bijection with places of $K$ that are trivial on $k'$, but also effective divisors on $X$.
-        \end{remark}
-        
-        \begin{convention}
-            Given any effective divisor $D \subset Y$, any integer $n$, and any $\E \in \QCoh_X$, let us write $\E(nD) \cong \E \tensor_{\calO_Y} \calI_D^{\tensor (-n)}$ (wherein $\calI_D^{\tensor (-n)} \cong (\calI_D^{\tensor (-1)})^{\tensor n}$). In particular, note that $\calO_Y(-D) \cong \calI_D$.
-        \end{convention}
-        \begin{remark}[Addition of effective divisors] \label{remark: adding_effective_divisors}
-            Let $Y$ be a scheme. Because effective divisors are line bundles, they are trivially flat\footnote{Given any line bundle $\calL \in |\Pic_Y|$, the functor $- \tensor_{\calO_Y} \calL$ is an auto-equivalence of $\Coh_Y$, which is an abelian category, so $- \tensor_{\calO_Y} \calL$ is automatically (left-)exact.}, so given any pair of effective divisors $D, D' \subset Y$, one can define a new effective divisor $D + D'$ corresponding to the $\calO_Y$-ideal $\calI_D \calI_{D'}$, which is isomorphic to $\calI_D \tensor_{\calO_{X/k}} \calI_{D'}$ due to flatness, and hence $\deg(D + D') = \deg D + \deg D'$.
-        \end{remark}
-        
-        \begin{convention}[The setting for geometric class field theory] \label{conv: automorphic_side_conventions}
-            \noindent
-            \begin{itemize}
-                \item First of all, let us fix once and for all a smooth, projective, and geometrically connected curve over an algebraically closed field $k$ (we will actually relax the algebraic closure constraint on $k$ later, as this is simply a matter of convenience).
-                \item For us, $\Bun_{\GL_1}(X)$ shall denote the moduli space of line bundles on $X$. Traditionally, this is usually referred to as the \textbf{Picard stack} and denoted by $\Pic_{X/k}$ (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0372}{Tag 0372}]{stacks}), but we opt for the notation $\Bun_{\GL_1}(X)$ because in the wider context of the Geometric Langlands Programme, one works with $\Bun_G(X)$ for $G$ a general connected reductive group (of which $\GL_1$ is a special case), and to not confuse the moduli space $\Bun_{\GL_1}(X)$ with the group $|\Pic_{X/k}|$ (cf. convention \ref{conv: picard_group}). 
-            \end{itemize}
-        \end{convention}
-        \begin{remark}[The geometry of $\Bun_{\GL_1}$] \label{remark: geometry_of_the_picard_stack}
-            Since we are working with a smooth projective curve $X$ over an algebraically closed field (cf. convention \ref{conv: automorphic_side_conventions}) and hence over a separably closed field, the prestack $\Bun_{\GL_1}$ is \textit{a priori} represented by a scheme (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0B9Z}{Tag 0B9Z}]{stacks}) as an fppf sheaf on $X$ (and hence as an \'etale and as a Zariski sheaves, since the fppf toppology is finer than both these topologies). As a result, when considering sheaves on $\Bun_{\GL_1}(X)$, we will only need to know about sheaves on schemes instead of the entire fully general theory of sheaves on prestacks. Furthermore, if the genus of $X$ is $g \geq 0$, then one will have the following decomposision:
-                $$\Bun_{\GL_1}(X) \cong \coprod_{d \geq 0} \Bun_{\GL_1}^{(d)}(X)$$
-            wherein each $\Bun_{\GL_1}^{(d)}(X)$ is the moduli scheme of line bundles of degree $d$ on $X$, which is a proper smooth variety of dimension $g$ over $\Spec k$ (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0BA0}{Tag 0BA0}]{stacks}).
-        \end{remark}
-        
-        \begin{remark}[Moduli space of effective divisors] \label{remark: moduli_space_of_effective_divisors}
-            For any base scheme $S$ and any $S$-scheme $Y$, the \textbf{Hilbert functor} of closed subschemes of degree $d \geq 0$ is the presheaf:
-                $$\Hilb_{Y/S}^{(d)}: \Sch_{/S}^{\op} \to \Sets$$
-                $$T \mapsto \{\text{Finite locally free closed subschemes $D \subset Y_T$ of degree $d$}\}$$
-            Should $Y$ be a geometrically irreducible smooth proper (respectively projective) curve over a field $C$ then interestingly, not only are finite locally free closed subschemes $D \subset Y_{C'}$ of degree $d$ precisely the effective divisors of degree $d$ on $Y_{C'}$ for any field extension $C'/C$ (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0B9D}{Tag 0B9D}]{stacks}), but also, one has a bijection:
-                $$|\Div_{Y_{C'}/C'}^{\eff, (d)}| \cong \Hilb_{Y/C}^{(d)}(C')$$
-            between the set of $C'$-rational points of $\Hilb_{Y/C}^{(d)}$ and that of degree-$d$ effective divisors on $Y_{C'}$ (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0B9I}{Tag 0B9I}]{stacks}). From this, one see that should $Y$ be proper (respectively Zariski-locally projective) and flat over some arbitrary base scheme $S$, and if its fibres $Y_s$ over points $s \in |S|$ are geometrically irreducible smooth proper (respectively projective) curves, then $\Hilb_{Y/S}^{(d)}$ would be the moduli space of degree-$d$ effective divisors on $Y$; thus, for proper (respectively Zariski-locally projective) and flat morphisms $Y \to S$, let us suggestively write $\Div_{Y/S}^{\eff, (d)}$ instead of $\Hilb_{Y/S}^{(d)}$. It is known moreover that $\Hilb_{Y/C}^{(d)}$ is represented by a smooth proper variety of dimension $d$ over $\Spec C$ (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0B9I}{Tag 0B9I}]{stacks}). By putting everything together, one obtains a moduli space $\Div_{Y/C}^{\eff, (d)} \in (Y/C)_{\fppf}$ parametrising degree-$d$ effective divisors on $Y$, represented by a smooth proper variety of dimension $d$ over $\Spec C$ and naturally isomorphic to $\Hilb_{Y/C}^{(d)}$.
-        \end{remark}
-        
-        It should also be noted that what we have just discussed is not the only way to show that $\Div_{X/k}^{\eff, (d)}$ is represented by a smooth proper variety of dimension $d$. Remark \ref{remark: moduli_space_of_effective_divisors} serves more as a demonstration that there \textit{should} be a moduli space of effective divisors (of a given degree $d$), rather than that there \textit{is} one. In fact, by combining remark \ref{remark: quotients_of_schemes_by_finite_group_schemes}, lemma \ref{lemma: smoothness_of_symmetric_powers}, and proposition \ref{prop: symmetric_powers_of_curves_parametrise_divisors}, we shall see that the functor $\Div_{X/k}^{\eff, (d)}$ is represented by a smooth proper variety of (pure) dimension $d$ by virtue of being naturally isomorphic to the functor of points of $X^{(k)}$ (which, of course, is smooth, proper, and of dimension $d$). It is, however, important to know that $\Div_{X/k}^{\eff, (d)}$ indeed satisfies fppf descent (hence \'etale descent) to prove proposition \ref{prop: symmetric_powers_of_curves_parametrise_divisors}, and since this comes from the general fact that the Hilbert functor satisfies fppf descent, remark \ref{remark: moduli_space_of_effective_divisors} remains necessary. 
-        
-        We now know that effective divisors of a given degree $d$ are parametrised by some smooth proper variety $\Div_{Y/S}^{\eff, (d)}$ of (relative) dimension $d$, but this is not entirely satisfactory: we would also like to know the identity of this smooth proper variety, and we shall after proposition \ref{prop: symmetric_powers_of_curves_parametrise_divisors}.
-        \begin{remark}[Quotient of schemes by finite group schemes] \label{remark: quotients_of_schemes_by_finite_group_schemes}
-            For details on quotients of schemes by finite groups, we refer the reader to \cite[Expos\'e V]{SGA1}. For our purposes, we shall only need to keep in mind the following facts: 
-                \begin{enumerate}
-                    \item Let $S$ be a base scheme and $Y$ be an $S$-scheme that is either \textit{(quasi-)projective or (quasi-)affine}, and if additionally. If $G$ be a \textit{finite, flat, and locally of finite presentation} group $S$-scheme acting \textit{freely}\footnote{This is to ensure that the $G$-action induces an fppf equivalence relation on $Y$, since the $G$-action on $Y$ is free if and only if the corresponding homomorphism of sheaves of groups $G \to \Aut_{S_{\fppf}}(Y)$ is injective.} on $Y$, then the \href{https://stacks.math.columbia.edu/tag/025X}{\underline{algebraic space}} $Y/G$ is a scheme (cf. \cite[\href{https://stacks.math.columbia.edu/tag/07S7}{Tag 07S7}]{stacks}). 
-                    \item If $Y$ is a (quasi-)affine scheme $\Spec A$ then the quotient $Y/G$ will also be affine and will be isomorphic to $\Spec A^G$, thanks to the group-cohomological fact that $H^0(A, G) \cong A^G$. 
+        \subsubsection{Divisors}
+            \begin{convention}[The Picard group] \label{conv: picard_group}
+                For any base scheme $S$ and any $S$-scheme $Y$, we shall write $|\Pic_{Y/S}|$ for the group of isomorphism classes of line bundles on $Y$, whose group structure is given by tensor products of invertible quasi-coherent $\calO_{Y/S}$-modules.
+            \end{convention}
+            \begin{definition}[Divisors] \label{def: divisors}
+                Let $Y$ be a scheme. An \textbf{effective (Cartier) divisor}\footnote{Historically referred to as a \say{modulus}.} on $Y$ is then a closed subscheme $D \subset Y$ whose ideal sheaf $\calI_D$ is a line bundle on $Y$. Its \textbf{degree} is the \href{https://stacks.math.columbia.edu/tag/0AYQ}{\underline{degree}} of the line bundle $\calI_D$.  
                     
-                    If $Y$ is (quasi-)projective then $Y/G$ will also be (quasi-)projective.
-                \end{enumerate}
-        \end{remark}
-        \begin{definition}[Symmetric powers of schemes] \label{def: symmetric_powers_of_schemes}
-            Let $S$ be a base scheme and let $Y$ be an $S$-scheme that is either (quasi-)projective or (quasi-)affine\footnote{In particular, the curve $X$ from convention \ref{conv: automorphic_side_conventions} is projective.}. Then for any $d \geq 1$, the \textbf{$d^{th}$ symmetric power} of $Y$ is the quotient scheme $\Sym^d_S(Y) := Y^d/\underline{\Sigma_d}_{/S}$ of $Y$ by the constant symmetric $S$-group scheme $\underline{\Sigma_d}_{/S}$ on $d$ elements (which is finite, flat, and locally of finite presentation over $S$, since it is represented by $\coprod_{\sigma \in \Sigma_d} S$); here, $\underline{\Sigma_d}_{/S}$ acts via permutations, which is well-known to be a free action.
-        \end{definition}
-        \begin{convention}
-            Because the base field $k$ of our curve from convention \ref{conv: automorphic_side_conventions} is fixed, let us write $X^{(d)}$ instead of $\Sym^d_k(X)$ for simplicity.
-        \end{convention}
-        \begin{lemma}[Smoothness of symmetric powers] \label{lemma: smoothness_of_symmetric_powers}
-            If $Y$ is a smooth variety over some field $C$ of dimension $\leq 1$ then so is $\Sym_C^d(Y)$.
-        \end{lemma}
-            \begin{proof}
-                Smoothness is preserved by base change, so we might as well assume that $C$ is algebraically closed. The case $\dim Y = 0$ is trivial, so let us assume that $\dim Y = 1$ (i.e. that $Y$ is a curve); in this case, the formal completion of the stalk $\calO_{Y, y}$ at any point $y \in |Y|$ is necessarily isomorphic to $C[\![y]\!]$\footnote{We are intentionally confusing the point $y \in |Y|$ and the formal variable $y \in C[\![y]\!]$ because $(y)$ is the unique maximal ideal of $C[\![y]\!]$.}, since $\calO_{Y, y}$ shall be a finite-type commutative algebra over an algebraically closed field; as a result, the formal completion of the stalk $\calO_{\Sym^d_C(Y), \vec{y}}$ at any point $\vec{y} \in \Sym^d_C(Y)$ is isomorphic to symmetric formal power series ring $k[\![y_1, ..., y_d]\!]^{\Sigma_d}$, which itself is isomorphic to $k[\![y_1, ..., y_d]\!]$ \textit{a priori}. A Noetherian local ring $(A, \m)$ is regular if and only if its $\m$-adic completion is regular, and if $A, B$ are finite-type regular commutative algebras over an algebraically closed field $C$ then $A \tensor_C B$ will also be regular as a $C$-algebra, so $\Sym_C^d(Y)$ will be smooth if $C[\![y]\!]$ is regular, which is definitely the case since $\dim C[\![y]\!] = \dim_C (y)/(y)^2 = 1$.
-            \end{proof}
-        \begin{proposition}[Symmetric powers of curves parametrise divisors] \label{prop: symmetric_powers_of_curves_parametrise_divisors}
-            For each $d$, the moduli space $\Div_{X/k}^{\eff, (d)}$ is represented by the smooth variety $X^{(d)}$.
-        \end{proposition}
-            \begin{proof}
-                Let us denote \textit{unordered} $d$-tuples by $\<x_1, ..., x_d\>$ and also, write $[x]$ for the divisor cut out by any closed point $x \in |X|$. Now, to begin, consider the following $\Sigma_d$-invariant function, which if shown to be bijective will demonstrate that $\Div_{X/k}^{\eff, (d)}$ is represented by the smooth variety $X^{(d)}$ via \'etale descent (cf. \cite[\href{https://stacks.math.columbia.edu/tag/024V}{Tag 024V}]{stacks}):
-                    $$X^{(d)} \to |\Div_{X/k}^{\eff, (d)}|$$
-                    $$\<x_1, ..., x_d\> \mapsto [x_1] + ... + [x_d]$$
-                Now, $X$ is a geometrically connected smooth curve, so it is geometrically normal (cf. \cite[\href{https://stacks.math.columbia.edu/tag/056T}{Tag 056T}]{stacks}), which in turn implies that the stalk of its structure sheaf over its unique generic point is a normal local domain of Krull dimension $1$, hence a Dedekind domain (cf. \cite[\href{https://stacks.math.columbia.edu/tag/034X}{Tag 034X}]{stacks}). This implies that every divisor on $X$ splits into prime divisors (which correspond to closed points of $X$), and thus the function $\<x_1, ..., x_d\> \mapsto [x_1] + ... + [x_d]$ is surjective. Dedekind domains are special cases of UFDs, so we have also demonstrated that the function $\<x_1, ..., x_d\> \mapsto [x_1] + ... + [x_d]$ is injective.
-            \end{proof}
-        \begin{corollary}[$X \cong \Div_{X/k}^{\eff, (1)}$]
-            $k$-rational points of $X$ are precisely the degree-$1$ effective divisors.
-        \end{corollary}
-        \begin{convention}
-            From this point on, we shall write $\Div_{X/k}^{\eff, (d)}$ instead of $X^{(d)}$ whenever we would like to put emphasis on the fact that points of $X^{(d)}$ are effective divisors of degree $d$ on $X$ (such as in \ref{prop: the_unramified_abel_jacobi_map_is_a_projective_bundle}), and \textit{vice versa}, we shall write $X^{(d)}$ when symmetry is of importance, like in theorem \ref{theorem: unramified_abelian_geometric_class_field_theory}.
-        \end{convention}
-        
-        \begin{definition}[The Abel-Jacobi map] \label{def: the_abel_jacobi_map}
-            Let $Y$ be a geometrically connected smooth projective curve over some field $C$. Then, the \textbf{$d^{th}$ Abel-Jacobi map} associated to $Y/C$ is the morphism of smooth proper varieties:
-                $$\AJ_{Y/C}^{(d)}: \Div_{Y/C}^{\eff, (d)} \to \Bun_{\GL_1}^{(d)}(Y)$$
-            which section-wise (i.e. at each field extension $C'/C$) associates to each degree-$d$ effective divisor $D \in |\Div_{Y_{C'}/C'}^{\eff, (d)}|$ to its corresponding invertible quasi-coherent $\calO_{Y_{C'}}$-ideal $\calI_D \in |\Pic_{Y_{C'}/C'}^{(d)}|$.
-        \end{definition}
-        \begin{remark}[What does the Abel-Jacobi map do ?] \label{remark: abel_jacobi_map}
+                The set of effective divisors (respectively, effective divisors of degree $d$) shall be denoted by $|\Div_Y^{\eff}|$ (respectively, $|\Div_Y^{\eff, (d)}|$), and as a straightforward consequence of the definition of effective divisors, it is precisely the set of invertible\footnote{A quasi-coherent ideal sheaf $\calJ \subset \calO_Y$ is invertible if and only if its local sections $\calJ(V)$ are principal ideals of $\calO_Y(V)$.} quasi-coherent $\calO_Y$-ideals (respectively, quasi-coherent $\calO_Y$-ideals of degree $d$).
+            \end{definition}
+            \begin{remark}[Why do we care about divisors ?] 
+                Because the function field of the curve $X$ over $\Spec k$ from convention \ref{conv: automorphic_side_conventions} is some (global) field of the form $K \cong k'(t)$, where $k'/k$ is an algebraic extension (cf. proposition \ref{prop: curves_and_function_fields}), and since its ring of integers $\bbO_X \cong k'[t]$ is a Dedekind domain (this is due to Hilbert's Basis Theorem, which tells us that $\dim k'[t] = \dim k + 1 = 0 + 1 = 1$), every of the stalks $\calO_{X, x}$ at points $x \in |X|$ must be a discrete valuation ring. This tells us that there is a bijective correspondence between points $x \in |X|$ and places of $K$ that are trivial on $k'$. Now, also because $\bbO_X$ is a Dedekind domain, every ideal $\a$ therein factors into a (formal) product of primes, say $\a = \prod_{i = 1}^n \p_i^{e_i}$. Furthemore, $\bbO_X$ is actually a PID, as it is isomorphic to $k'[t]$, which is a UFD thanks to $k'$ itself being a UFD, by virtue of being a field. Thus, points $x \in |X|$ are not only in bijection with places of $K$ that are trivial on $k'$, but also effective divisors on $X$.
+            \end{remark}
             
-        \end{remark}
-        \begin{convention}[Genus of the curve] \label{conv: genus_of_the_curve}
-            From now on, denote the \href{https://stacks.math.columbia.edu/tag/0BY6}{\underline{genus}} of our curve $X$ by $g$.
-        \end{convention}
-        \begin{proposition}[The Abel-Jacobi map is a projective bundle] \label{prop: the_unramified_abel_jacobi_map_is_a_projective_bundle}
-            If $d \geq 2g - 1$ then every Abel-Jacobi map $\AJ_{X/k}^{(d)}: \Div_{X/k}^{\eff, (d)} \to \Bun_{\GL_1}^{(d)}(X)$ will be a surjective smooth projective morphism with fibres\footnote{Note that these are precisely the geometric fibres, since $k$ is algebraically closed.} over $k$-rational points isomorphic to $\P^{d - g}_k$.
-        \end{proposition}
-            \begin{proof}
-                Let us note, first of all, that thanks due to a descent-theoretic feature of the \'etale topology, namely \cite[\href{https://stacks.math.columbia.edu/tag/024V}{Tag 024V}]{stacks}, it shall suffice to demonstrate that the \textit{set-theoretic} fibres of the Abel-Jacobi maps are in bijection with the set of $k$-rational points of $\P_k^{d - g}$; for the same reason, it also suffices to only show that the Abel-Jacobi map is surjective at each point $k$-rational point $\calL \in |\Bun_{\GL_1}^{(d)}(X)|$. We shall proceed in steps, for the sake of clarity.
+            \begin{convention}
+                Given any effective divisor $D \subset Y$, any integer $n$, and any $\E \in \QCoh_X$, let us write $\E(nD) \cong \E \tensor_{\calO_Y} \calI_D^{\tensor (-n)}$ (wherein $\calI_D^{\tensor (-n)} \cong (\calI_D^{\tensor (-1)})^{\tensor n}$). In particular, note that $\calO_Y(-D) \cong \calI_D$.
+            \end{convention}
+            \begin{remark}[Addition of effective divisors] \label{remark: adding_effective_divisors}
+                Let $Y$ be a scheme. Because effective divisors are line bundles, they are trivially flat\footnote{Given any line bundle $\calL \in |\Pic_Y|$, the functor $- \tensor_{\calO_Y} \calL$ is an auto-equivalence of $\Coh_Y$, which is an abelian category, so $- \tensor_{\calO_Y} \calL$ is automatically (left-)exact.}, so given any pair of effective divisors $D, D' \subset Y$, one can define a new effective divisor $D + D'$ corresponding to the $\calO_Y$-ideal $\calI_D \calI_{D'}$, which is isomorphic to $\calI_D \tensor_{\calO_{X/k}} \calI_{D'}$ due to flatness, and hence $\deg(D + D') = \deg D + \deg D'$.
+            \end{remark}
+            
+            \begin{convention}[The setting for geometric class field theory] \label{conv: automorphic_side_conventions}
+                \noindent
+                \begin{itemize}
+                    \item First of all, let us fix once and for all a smooth, projective, and geometrically connected curve over an algebraically closed field $k$ (we will actually relax the algebraic closure constraint on $k$ later, as this is simply a matter of convenience).
+                    \item For us, $\Bun_{\GL_1}(X)$ shall denote the moduli space of line bundles on $X$. Traditionally, this is usually referred to as the \textbf{Picard stack} and denoted by $\Pic_{X/k}$ (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0372}{Tag 0372}]{stacks}), but we opt for the notation $\Bun_{\GL_1}(X)$ because in the wider context of the Geometric Langlands Programme, one works with $\Bun_G(X)$ for $G$ a general connected reductive group (of which $\GL_1$ is a special case), and to not confuse the moduli space $\Bun_{\GL_1}(X)$ with the group $|\Pic_{X/k}|$ (cf. convention \ref{conv: picard_group}). 
+                \end{itemize}
+            \end{convention}
+            \begin{remark}[The geometry of $\Bun_{\GL_1}$] \label{remark: geometry_of_the_picard_stack}
+                Since we are working with a smooth projective curve $X$ over an algebraically closed field (cf. convention \ref{conv: automorphic_side_conventions}) and hence over a separably closed field, the prestack $\Bun_{\GL_1}$ is \textit{a priori} represented by a scheme (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0B9Z}{Tag 0B9Z}]{stacks}) as an fppf sheaf on $X$ (and hence as an \'etale and as a Zariski sheaves, since the fppf toppology is finer than both these topologies). As a result, when considering sheaves on $\Bun_{\GL_1}(X)$, we will only need to know about sheaves on schemes instead of the entire fully general theory of sheaves on prestacks. Furthermore, if the genus of $X$ is $g \geq 0$, then one will have the following decomposision:
+                    $$\Bun_{\GL_1}(X) \cong \coprod_{d \geq 0} \Bun_{\GL_1}^{(d)}(X)$$
+                wherein each $\Bun_{\GL_1}^{(d)}(X)$ is the moduli scheme of line bundles of degree $d$ on $X$, which is a proper smooth variety of dimension $g$ over $\Spec k$ (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0BA0}{Tag 0BA0}]{stacks}).
+            \end{remark}
+            
+            \begin{remark}[Moduli space of effective divisors] \label{remark: moduli_space_of_effective_divisors}
+                For any base scheme $S$ and any $S$-scheme $Y$, the \textbf{Hilbert functor} of closed subschemes of degree $d \geq 0$ is the presheaf:
+                    $$\Hilb_{Y/S}^{(d)}: \Sch_{/S}^{\op} \to \Sets$$
+                    $$T \mapsto \{\text{Finite locally free closed subschemes $D \subset Y_T$ of degree $d$}\}$$
+                Should $Y$ be a geometrically irreducible smooth proper (respectively projective) curve over a field $C$ then interestingly, not only are finite locally free closed subschemes $D \subset Y_{C'}$ of degree $d$ precisely the effective divisors of degree $d$ on $Y_{C'}$ for any field extension $C'/C$ (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0B9D}{Tag 0B9D}]{stacks}), but also, one has a bijection:
+                    $$|\Div_{Y_{C'}/C'}^{\eff, (d)}| \cong \Hilb_{Y/C}^{(d)}(C')$$
+                between the set of $C'$-rational points of $\Hilb_{Y/C}^{(d)}$ and that of degree-$d$ effective divisors on $Y_{C'}$ (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0B9I}{Tag 0B9I}]{stacks}). From this, one see that should $Y$ be proper (respectively Zariski-locally projective) and flat over some arbitrary base scheme $S$, and if its fibres $Y_s$ over points $s \in |S|$ are geometrically irreducible smooth proper (respectively projective) curves, then $\Hilb_{Y/S}^{(d)}$ would be the moduli space of degree-$d$ effective divisors on $Y$; thus, for proper (respectively Zariski-locally projective) and flat morphisms $Y \to S$, let us suggestively write $\Div_{Y/S}^{\eff, (d)}$ instead of $\Hilb_{Y/S}^{(d)}$. It is known moreover that $\Hilb_{Y/C}^{(d)}$ is represented by a smooth proper variety of dimension $d$ over $\Spec C$ (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0B9I}{Tag 0B9I}]{stacks}). By putting everything together, one obtains a moduli space $\Div_{Y/C}^{\eff, (d)} \in (Y/C)_{\fppf}$ parametrising degree-$d$ effective divisors on $Y$, represented by a smooth proper variety of dimension $d$ over $\Spec C$ and naturally isomorphic to $\Hilb_{Y/C}^{(d)}$.
+            \end{remark}
+            
+            It should also be noted that what we have just discussed is not the only way to show that $\Div_{X/k}^{\eff, (d)}$ is represented by a smooth proper variety of dimension $d$. Remark \ref{remark: moduli_space_of_effective_divisors} serves more as a demonstration that there \textit{should} be a moduli space of effective divisors (of a given degree $d$), rather than that there \textit{is} one. In fact, by combining remark \ref{remark: quotients_of_schemes_by_finite_group_schemes}, lemma \ref{lemma: smoothness_of_symmetric_powers}, and proposition \ref{prop: symmetric_powers_of_curves_parametrise_divisors}, we shall see that the functor $\Div_{X/k}^{\eff, (d)}$ is represented by a smooth proper variety of (pure) dimension $d$ by virtue of being naturally isomorphic to the functor of points of $X^{(k)}$ (which, of course, is smooth, proper, and of dimension $d$). It is, however, important to know that $\Div_{X/k}^{\eff, (d)}$ indeed satisfies fppf descent (hence \'etale descent) to prove proposition \ref{prop: symmetric_powers_of_curves_parametrise_divisors}, and since this comes from the general fact that the Hilbert functor satisfies fppf descent, remark \ref{remark: moduli_space_of_effective_divisors} remains necessary. 
+            
+            We now know that effective divisors of a given degree $d$ are parametrised by some smooth proper variety $\Div_{Y/S}^{\eff, (d)}$ of (relative) dimension $d$, but this is not entirely satisfactory: we would also like to know the identity of this smooth proper variety, and we shall after proposition \ref{prop: symmetric_powers_of_curves_parametrise_divisors}.
+            \begin{remark}[Quotient of schemes by finite group schemes] \label{remark: quotients_of_schemes_by_finite_group_schemes}
+                For details on quotients of schemes by finite groups, we refer the reader to \cite[Expos\'e V]{SGA1}. For our purposes, we shall only need to keep in mind the following facts: 
                     \begin{enumerate}
-                        \item \textbf{(Projectivity):} Let us first apply the Riemann-Roch Theorem (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0BS6}{Tag 0BS6}]{stacks}; note that the theorem is applicable to our situation because $X$ is a geometrically connected smooth projective curve and therefore a Gorenstein\footnote{Smooth schemes are Gorenstein because their stalks are regular local rings.} scheme of equidimension $1$ over a field), which tells us that should $\E \in \Vect_{X/k}^n$ be a be a locally free quasi-coherent $\calO_{X/k}$-module of constant rank $n$, then:
-                            $$\chi(X, \E) = \deg(\E) - \frac12\rank(\E) \deg(\omega_{X/k})$$
-                        where $\omega_{X/k}$ denotes the dualising sheaf (which is a line bundle due also to the Riemann-Roch Theorem) and $\chi(X, \E)$ denotes the Euler characteristic of $\E$ as a coherent sheaf on the proper $k$-scheme $X$. Because $\deg(\omega_{X/k}) = 2g - 2$ (thanks to \cite[\href{https://stacks.math.columbia.edu/tag/0C19}{Tag 0C19}]{stacks}, which is applicable in this situation because $X$ is a proper Gorenstein $k$-scheme such that $H^0_{\Zar}(X, \calO_{X/k}) \cong k$), the above tells us that for any degree-$d$ line bundle $\calL \in |\Bun_{\GL_1}^{(d)}(X)|$, we have:
-                            $$\chi(X, \calL) = \deg(\calL) - \frac12 \rank(\calL) \deg(\omega_{X/k}) = d - \frac12 \cdot 1 \cdot (2g - 2) = d - g + 1$$
-                        Line bundles are particular cases of coherent sheaves with support dimension $\leq 0$, and since $X$ is proper over a field, we can apply \cite[\href{https://stacks.math.columbia.edu/tag/0AYT}{Tag 0AYT}]{stacks} to get that:
-                            $$\dim_k H^0_{\Zar}(X, \calL) = \chi(X, \calL) = d - g + 1$$
-                        This implies that the (set-theoretic) fibres of $\AJ_{X/k}^{(d)}$ over $k$-rational points $\calL \in |\Bun_{\GL_1}^{(d)}(X)|$ are isomorphic to $\P^{d - g}_k$ (empty if $d < g$).
-                        \item \textbf{(Smoothness):} $\Bun_{\GL_1}^{(d)}(X)$ is smooth (cf. remark \ref{remark: geometry_of_the_picard_stack}), hence it is regular, and $X^{(d)}$ is also smooth (cf. lemma \ref{lemma: smoothness_of_symmetric_powers}) and hence it is Cohen-Macaulay (because regular local rings are Cohen-Macaulay \textit{a priori}; cf. \cite[\href{https://stacks.math.columbia.edu/tag/00NQ}{Tag 00NQ}]{stacks}). Moreover, we have shown above that given any $\calL \in \Bun_{\GL_1}^{(d)}(X)$, the corresponding fibre of the Abel-Jacobi map is isomorphic to $\P^{d - g}_k$, and since $\dim \Bun_{\GL_1}^{(d)}(X) = g$ (cf. remark \ref{remark: geometry_of_the_picard_stack}) while $\dim X^{(d)} = \dim \Div_{X/k}^{\eff, (d)} = d$ (cf. remark \ref{remark: moduli_space_of_effective_divisors}), we have:
-                            $$\dim \P^{d - g}_k = \dim (\AJ_{X/k}^{(d)})^{-1}(\calL) = \dim \Div_{X/k}^{\eff, (d)} - \dim \Bun_{\GL_1}^{(d)}(X) = d - g$$
-                        The Miracle Flatness Theorem (cf. \cite[\href{https://stacks.math.columbia.edu/tag/00R4}{Tag 00R4}]{stacks}) can then be applied, which tells us that the Abel-Jacobi map is flat everywhere, and because the fibres are isomorphic to $\P^{d - g}_k$, which is smooth over $\Spec k$, this means that the Abel-Jacobi map is also smooth everywhere.
-                        \item \textbf{(Surjectivity):} Finally, let us demonstrate that the canonical map $H^0_{\Zar}(X, \calL) \to H^0(X, \calL|_D)$ is surjective
+                        \item Let $S$ be a base scheme and $Y$ be an $S$-scheme that is either \textit{(quasi-)projective or (quasi-)affine}, and if additionally. If $G$ be a \textit{finite, flat, and locally of finite presentation} group $S$-scheme acting \textit{freely}\footnote{This is to ensure that the $G$-action induces an fppf equivalence relation on $Y$, since the $G$-action on $Y$ is free if and only if the corresponding homomorphism of sheaves of groups $G \to \Aut_{S_{\fppf}}(Y)$ is injective.} on $Y$, then the \href{https://stacks.math.columbia.edu/tag/025X}{\underline{algebraic space}} $Y/G$ is a scheme (cf. \cite[\href{https://stacks.math.columbia.edu/tag/07S7}{Tag 07S7}]{stacks}). 
+                        \item If $Y$ is a (quasi-)affine scheme $\Spec A$ then the quotient $Y/G$ will also be affine and will be isomorphic to $\Spec A^G$, thanks to the group-cohomological fact that $H^0(A, G) \cong A^G$. 
+                        
+                        If $Y$ is (quasi-)projective then $Y/G$ will also be (quasi-)projective.
                     \end{enumerate}
-            \end{proof}
-        \begin{corollary}[Unramified Galois representations induced by the Abel-Jacobi map] \label{coro: unramified_galois_representations_induced_by_the_abel_jacobi_map}
-            Because $\AJ_{X/k}^{(d)}$ is proper and smooth, it is proper, flat, and of finite presentation, so by proposition \ref{prop: etale_homotopy_exact_sequence} there is an induced \'etale homotopy sequence as follows:
-                $$\pi_1((\P^{d - g}_k)_{\fet}) \to \pi_1((\Div_{X/k}^{\eff, (d)})_{\fet}) \to \pi_1((\Bun_{\GL_1}^{(d)}(X))_{\fet}) \to 1$$
-            Since $\P^{d - g}_k$ is \'etale-simply connected (this is a consequence of $k$ being algebraically closed; cf. example \ref{example: etale_fundamental_group_of_a_curve}), one thus obtains an equivalence between the categories of continuous $\ell$-adic characters of $\pi_1((\Div_{X/k}^{\eff, (d)})_{\fet})$ and of $\pi_1((\Bun_{\GL_1}^{(d)}(X))_{\fet})$ as below, wherein $(\AJ_{X/k}^{(d)})^*$ is the pullback of $\ell$-adic sheaves along the Abel-Jacobi map $\AJ_{X/k}^{(d)}: \Div_{X/k}^{\eff, (d)} \to \Bun_{\GL_1}^{(d)}(X)$:
-                $$\Rep^1_{\bar{\Q}_{\ell}}(\pi_1((\Div_{X/k}^{\eff, (d)})_{\fet})) \cong \Rep^1_{\bar{\Q}_{\ell}}(\pi_1((\Bun_{\GL_1}^{(d)}(X))_{\fet}))$$
-                $$\chi \mapsto \chi \circ (\AJ_{X/k}^{(d)})^*$$
-        \end{corollary}
+            \end{remark}
+            
+        \subsubsection{Symmetric powers of curves; the Abel-Jacobi map}
+            \begin{definition}[Symmetric powers of schemes] \label{def: symmetric_powers_of_schemes}
+                Let $S$ be a base scheme and let $Y$ be an $S$-scheme that is either (quasi-)projective or (quasi-)affine\footnote{In particular, the curve $X$ from convention \ref{conv: automorphic_side_conventions} is projective.}. Then for any $d \geq 1$, the \textbf{$d^{th}$ symmetric power} of $Y$ is the quotient scheme $\Sym^d_S(Y) := Y^d/\underline{\Sigma_d}_{/S}$ of $Y$ by the constant symmetric $S$-group scheme $\underline{\Sigma_d}_{/S}$ on $d$ elements (which is finite, flat, and locally of finite presentation over $S$, since it is represented by $\coprod_{\sigma \in \Sigma_d} S$); here, $\underline{\Sigma_d}_{/S}$ acts via permutations, which is well-known to be a free action.
+            \end{definition}
+            \begin{convention}
+                Because the base field $k$ of our curve from convention \ref{conv: automorphic_side_conventions} is fixed, let us write $X^{(d)}$ instead of $\Sym^d_k(X)$ for simplicity.
+            \end{convention}
+            \begin{lemma}[Smoothness of symmetric powers] \label{lemma: smoothness_of_symmetric_powers}
+                If $Y$ is a smooth variety over some field $C$ of dimension $\leq 1$ then so is $\Sym_C^d(Y)$.
+            \end{lemma}
+                \begin{proof}
+                    Smoothness is preserved by base change, so we might as well assume that $C$ is algebraically closed. The case $\dim Y = 0$ is trivial, so let us assume that $\dim Y = 1$ (i.e. that $Y$ is a curve); in this case, the formal completion of the stalk $\calO_{Y, y}$ at any point $y \in |Y|$ is necessarily isomorphic to $C[\![y]\!]$\footnote{We are intentionally confusing the point $y \in |Y|$ and the formal variable $y \in C[\![y]\!]$ because $(y)$ is the unique maximal ideal of $C[\![y]\!]$.}, since $\calO_{Y, y}$ shall be a finite-type commutative algebra over an algebraically closed field; as a result, the formal completion of the stalk $\calO_{\Sym^d_C(Y), \vec{y}}$ at any point $\vec{y} \in \Sym^d_C(Y)$ is isomorphic to symmetric formal power series ring $k[\![y_1, ..., y_d]\!]^{\Sigma_d}$, which itself is isomorphic to $k[\![y_1, ..., y_d]\!]$ \textit{a priori}. A Noetherian local ring $(A, \m)$ is regular if and only if its $\m$-adic completion is regular, and if $A, B$ are finite-type regular commutative algebras over an algebraically closed field $C$ then $A \tensor_C B$ will also be regular as a $C$-algebra, so $\Sym_C^d(Y)$ will be smooth if $C[\![y]\!]$ is regular, which is definitely the case since $\dim C[\![y]\!] = \dim_C (y)/(y)^2 = 1$.
+                \end{proof}
+            \begin{proposition}[Symmetric powers of curves parametrise divisors] \label{prop: symmetric_powers_of_curves_parametrise_divisors}
+                For each $d$, the moduli space $\Div_{X/k}^{\eff, (d)}$ is represented by the smooth variety $X^{(d)}$.
+            \end{proposition}
+                \begin{proof}
+                    Let us denote \textit{unordered} $d$-tuples by $\<x_1, ..., x_d\>$ and also, write $[x]$ for the divisor cut out by any closed point $x \in |X|$. Now, to begin, consider the following $\Sigma_d$-invariant function, which if shown to be bijective will demonstrate that $\Div_{X/k}^{\eff, (d)}$ is represented by the smooth variety $X^{(d)}$ via \'etale descent (cf. \cite[\href{https://stacks.math.columbia.edu/tag/024V}{Tag 024V}]{stacks}):
+                        $$X^{(d)} \to |\Div_{X/k}^{\eff, (d)}|$$
+                        $$\<x_1, ..., x_d\> \mapsto [x_1] + ... + [x_d]$$
+                    Now, $X$ is a geometrically connected smooth curve, so it is geometrically normal (cf. \cite[\href{https://stacks.math.columbia.edu/tag/056T}{Tag 056T}]{stacks}), which in turn implies that the stalk of its structure sheaf over its unique generic point is a normal local domain of Krull dimension $1$, hence a Dedekind domain (cf. \cite[\href{https://stacks.math.columbia.edu/tag/034X}{Tag 034X}]{stacks}). This implies that every divisor on $X$ splits into prime divisors (which correspond to closed points of $X$), and thus the function $\<x_1, ..., x_d\> \mapsto [x_1] + ... + [x_d]$ is surjective. Dedekind domains are special cases of UFDs, so we have also demonstrated that the function $\<x_1, ..., x_d\> \mapsto [x_1] + ... + [x_d]$ is injective.
+                \end{proof}
+            \begin{corollary}[$X \cong \Div_{X/k}^{\eff, (1)}$]
+                $k$-rational points of $X$ are precisely the degree-$1$ effective divisors.
+            \end{corollary}
+            \begin{convention}
+                From this point on, we shall write $\Div_{X/k}^{\eff, (d)}$ instead of $X^{(d)}$ whenever we would like to put emphasis on the fact that points of $X^{(d)}$ are effective divisors of degree $d$ on $X$ (such as in \ref{prop: the_unramified_abel_jacobi_map_is_a_projective_bundle}), and \textit{vice versa}, we shall write $X^{(d)}$ when symmetry is of importance, like in theorem \ref{theorem: unramified_abelian_geometric_class_field_theory}.
+            \end{convention}
+            
+            \begin{definition}[The Abel-Jacobi map] \label{def: the_abel_jacobi_map}
+                Let $Y$ be a geometrically connected smooth projective curve over some field $C$. Then, the \textbf{$d^{th}$ Abel-Jacobi map} associated to $Y/C$ is the morphism of smooth proper varieties:
+                    $$\AJ_{Y/C}^{(d)}: \Div_{Y/C}^{\eff, (d)} \to \Bun_{\GL_1}^{(d)}(Y)$$
+                which section-wise (i.e. at each field extension $C'/C$) associates to each degree-$d$ effective divisor $D \in |\Div_{Y_{C'}/C'}^{\eff, (d)}|$ to its corresponding invertible quasi-coherent $\calO_{Y_{C'}}$-ideal $\calI_D \in |\Pic_{Y_{C'}/C'}^{(d)}|$.
+            \end{definition}
+            \begin{remark}[What does the Abel-Jacobi map do ?] \label{remark: abel_jacobi_map}
+                
+            \end{remark}
+            \begin{convention}[Genus of the curve] \label{conv: genus_of_the_curve}
+                From now on, denote the \href{https://stacks.math.columbia.edu/tag/0BY6}{\underline{genus}} of our curve $X$ by $g$.
+            \end{convention}
+            \begin{proposition}[The Abel-Jacobi map is a projective bundle] \label{prop: the_unramified_abel_jacobi_map_is_a_projective_bundle}
+                If $d \geq 2g - 1$ then every Abel-Jacobi map $\AJ_{X/k}^{(d)}: \Div_{X/k}^{\eff, (d)} \to \Bun_{\GL_1}^{(d)}(X)$ will be a surjective smooth projective morphism with fibres\footnote{Note that these are precisely the geometric fibres, since $k$ is algebraically closed.} over $k$-rational points isomorphic to $\P^{d - g}_k$.
+            \end{proposition}
+                \begin{proof}
+                    Let us note, first of all, that thanks due to a descent-theoretic feature of the \'etale topology, namely \cite[\href{https://stacks.math.columbia.edu/tag/024V}{Tag 024V}]{stacks}, it shall suffice to demonstrate that the \textit{set-theoretic} fibres of the Abel-Jacobi maps are in bijection with the set of $k$-rational points of $\P_k^{d - g}$; for the same reason, it also suffices to only show that the Abel-Jacobi map is surjective at each point $k$-rational point $\calL \in |\Bun_{\GL_1}^{(d)}(X)|$. We shall proceed in steps, for the sake of clarity.
+                        \begin{enumerate}
+                            \item \textbf{(Projectivity):} Let us first apply the Riemann-Roch Theorem (cf. \cite[\href{https://stacks.math.columbia.edu/tag/0BS6}{Tag 0BS6}]{stacks}; note that the theorem is applicable to our situation because $X$ is a geometrically connected smooth projective curve and therefore a Gorenstein\footnote{Smooth schemes are Gorenstein because their stalks are regular local rings.} scheme of equidimension $1$ over a field), which tells us that should $\E \in \Vect_{X/k}^n$ be a be a locally free quasi-coherent $\calO_{X/k}$-module of constant rank $n$, then:
+                                $$\chi(X, \E) = \deg(\E) - \frac12\rank(\E) \deg(\omega_{X/k})$$
+                            where $\omega_{X/k}$ denotes the dualising sheaf (which is a line bundle due also to the Riemann-Roch Theorem) and $\chi(X, \E)$ denotes the Euler characteristic of $\E$ as a coherent sheaf on the proper $k$-scheme $X$. Because $\deg(\omega_{X/k}) = 2g - 2$ (thanks to \cite[\href{https://stacks.math.columbia.edu/tag/0C19}{Tag 0C19}]{stacks}, which is applicable in this situation because $X$ is a proper Gorenstein $k$-scheme such that $H^0_{\Zar}(X, \calO_{X/k}) \cong k$), the above tells us that for any degree-$d$ line bundle $\calL \in |\Bun_{\GL_1}^{(d)}(X)|$, we have:
+                                $$\chi(X, \calL) = \deg(\calL) - \frac12 \rank(\calL) \deg(\omega_{X/k}) = d - \frac12 \cdot 1 \cdot (2g - 2) = d - g + 1$$
+                            Line bundles are particular cases of coherent sheaves with support dimension $\leq 0$, and since $X$ is proper over a field, we can apply \cite[\href{https://stacks.math.columbia.edu/tag/0AYT}{Tag 0AYT}]{stacks} to get that:
+                                $$\dim_k H^0_{\Zar}(X, \calL) = \chi(X, \calL) = d - g + 1$$
+                            This implies that the (set-theoretic) fibres of $\AJ_{X/k}^{(d)}$ over $k$-rational points $\calL \in |\Bun_{\GL_1}^{(d)}(X)|$ are isomorphic to $\P^{d - g}_k$ (empty if $d < g$).
+                            \item \textbf{(Smoothness):} $\Bun_{\GL_1}^{(d)}(X)$ is smooth (cf. remark \ref{remark: geometry_of_the_picard_stack}), hence it is regular, and $X^{(d)}$ is also smooth (cf. lemma \ref{lemma: smoothness_of_symmetric_powers}) and hence it is Cohen-Macaulay (because regular local rings are Cohen-Macaulay \textit{a priori}; cf. \cite[\href{https://stacks.math.columbia.edu/tag/00NQ}{Tag 00NQ}]{stacks}). Moreover, we have shown above that given any $\calL \in \Bun_{\GL_1}^{(d)}(X)$, the corresponding fibre of the Abel-Jacobi map is isomorphic to $\P^{d - g}_k$, and since $\dim \Bun_{\GL_1}^{(d)}(X) = g$ (cf. remark \ref{remark: geometry_of_the_picard_stack}) while $\dim X^{(d)} = \dim \Div_{X/k}^{\eff, (d)} = d$ (cf. remark \ref{remark: moduli_space_of_effective_divisors}), we have:
+                                $$\dim \P^{d - g}_k = \dim (\AJ_{X/k}^{(d)})^{-1}(\calL) = \dim \Div_{X/k}^{\eff, (d)} - \dim \Bun_{\GL_1}^{(d)}(X) = d - g$$
+                            The Miracle Flatness Theorem (cf. \cite[\href{https://stacks.math.columbia.edu/tag/00R4}{Tag 00R4}]{stacks}) can then be applied, which tells us that the Abel-Jacobi map is flat everywhere, and because the fibres are isomorphic to $\P^{d - g}_k$, which is smooth over $\Spec k$, this means that the Abel-Jacobi map is also smooth everywhere.
+                            \item \textbf{(Surjectivity):} Finally, let us demonstrate that the canonical map $H^0_{\Zar}(X, \calL) \to H^0(X, \calL|_D)$ is surjective
+                        \end{enumerate}
+                \end{proof}
+            \begin{corollary}[Unramified Galois representations induced by the Abel-Jacobi map] \label{coro: unramified_galois_representations_induced_by_the_abel_jacobi_map}
+                Because $\AJ_{X/k}^{(d)}$ is proper and smooth, it is proper, flat, and of finite presentation, so by proposition \ref{prop: etale_homotopy_exact_sequence} there is an induced \'etale homotopy sequence as follows:
+                    $$\pi_1((\P^{d - g}_k)_{\fet}) \to \pi_1((\Div_{X/k}^{\eff, (d)})_{\fet}) \to \pi_1((\Bun_{\GL_1}^{(d)}(X))_{\fet}) \to 1$$
+                Since $\P^{d - g}_k$ is \'etale-simply connected (this is a consequence of $k$ being algebraically closed; cf. example \ref{example: etale_fundamental_group_of_a_curve}), one thus obtains an equivalence between the categories of continuous $\ell$-adic characters of $\pi_1((\Div_{X/k}^{\eff, (d)})_{\fet})$ and of $\pi_1((\Bun_{\GL_1}^{(d)}(X))_{\fet})$ as below, wherein $(\AJ_{X/k}^{(d)})^*$ is the pullback of $\ell$-adic sheaves along the Abel-Jacobi map $\AJ_{X/k}^{(d)}: \Div_{X/k}^{\eff, (d)} \to \Bun_{\GL_1}^{(d)}(X)$:
+                    $$\Rep^1_{\bar{\Q}_{\ell}}(\pi_1((\Div_{X/k}^{\eff, (d)})_{\fet})) \cong \Rep^1_{\bar{\Q}_{\ell}}(\pi_1((\Bun_{\GL_1}^{(d)}(X))_{\fet}))$$
+                    $$\chi \mapsto \chi \circ (\AJ_{X/k}^{(d)})^*$$
+            \end{corollary}
     
      \subsection{Hecke eigensheaves and geometric class field theory}
         \begin{convention}[Symmetric powers of line bundles] \label{conv: symmetric_powers_of_line_bundles}
@@ -159,7 +162,6 @@
                     $$\E_{\calL^{(2g - 1 - n)}} \cong \bigotimes_{i = 1}^n \calL_{x_i}^{\tensor (-1)} \boxtimes (\cev{h}_{x_1}^* \circ ... \circ \cev{h}_{x_n}^*)(\E_{\calL^{(2g - 1)}})$$
             \end{proof}
             
-        Let us now begin our discussion of geometric class field theory with the unramified case. 
         \begin{theorem}[Unramified abelian geometric class field theory] \label{theorem: unramified_abelian_geometric_class_field_theory}
             There exists a canonical monoidal equivalence between the groupoid of rank-$1$ $\ell$-adic local systems on $X$ and the groupoid of ($\ell$-adic) Hecke eigensheaves of rank $1$ on $\Bun_{\GL_1}(X)$:
                 $$\Autom: \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X) \to \Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$$
