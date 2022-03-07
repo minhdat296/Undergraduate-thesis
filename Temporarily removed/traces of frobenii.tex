@@ -1,0 +1,39 @@
+\begin{definition}[Traces of Frobenii] \label{def: traces_of_frobenii}
+            Let $Z$ be a scheme of finite type over $\Spec k$. For each geometric point $\bar{z} \in Z(\bar{\F}_q)$, we define the trace of Frobenius on an $\ell$-adic local system $\calF \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(Z)$ at $\bar{z}$ to be the trace of the Frobenius endomorphism on the stalk $\calF_{\bar{z}}$, i.e. $\trace(\Frob_{\bar{z}}^{\flat}, \calF_{\bar{z}})$. Since $\calF$ is an $\ell$-adic local system of rank $1$, one obtains a function as follows in doing so:
+                $$\frob(-, \calF): Z(\bar{\F}_q) \to \bar{\Q}_{\ell}$$
+        \end{definition}
+        \begin{remark}[Traces of Frobenii as functions on rational points] \label{remark: traces_of_frobenii_as_functions_on_rational_points}
+            Let us first remark that we do not define functions associated to $\ell$-adic local systems $\calF \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(Z)$ over the set $Z(\bar{\F}_q)$ instead of $Z(\F_q)$ out of necessity, not convenience, and this is because stalks of \'etale sheaves can only be computed over geometric points (cf. \cite[\href{https://stacks.math.columbia.edu/tag/03PN}{Tag 03PN}]{stacks}). But we do want functions over $Z(\F_q)$ as well, and for this, recall that $Z(\F_q) \cong Z(\bar{\F}_q)^{\Gal(\bar{\F}_q/\F_q)}$. Defining a function:
+                $$\frob(-, \calF): Z(\F_q) \to \bar{\Q}_{\ell}$$
+            coming from the trace of the Frobenius endomorphism on $\calF$ then becomes a simple matter of domain restriction.
+        \end{remark}
+        \begin{remark}[Basic properties of traces of Frobenii] \label{remark: basic_properties_of_traces_of_frobenii}
+            The following properties are trivial consequences of definition \ref{def: traces_of_frobenii}:
+                \begin{itemize}
+                    \item For any pair of rank-$1$ $\ell$-adic local systems $\calF, \calF' \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(Z)$ and any fixed geometric point $\bar{z} \in Z(\bar{\F}_q)$, one has:
+                        $$\frob(\bar{z}, \calF \tensor \calF') = \frob(\bar{z}, \calF) \frob(\bar{z}, \calF')$$
+                    \item Let $f: Y \to Z$ be a morphism between $\F_q$-schemes that are locally of finite type and let $\calF$ be an $\ell$-adic local system of rank $1$ on $Z$. Then the following diagram commutes\footnote{To prove that the diagram indeed commutes, recall also the basic sheaf-theoretic fact that for any geometric point $\bar{y} \in Y(\bar{\F}_q)$ over a fixed geometric point $\bar{z} \in Z(\bar{F}_q)$ (i.e. such that $f_{\bar{\F}_q}(\bar{y}) = \bar{z}$), one has an isomorphism $(f^*\calF)_{f_{\bar{\F}_q}(\bar{y})} \cong \calF_{\bar{z}}$ of stalks.}:
+                        $$
+                            \begin{tikzcd}
+                            	{Y(\bar{\F}_q)} && {Z(\bar{\F}_q)} \\
+                            	& {\bar{\Q}_{\ell}}
+                            	\arrow["{\frob(-, \calF)}", from=1-3, to=2-2]
+                            	\arrow["{\frob(-, f^*\calF)}"', from=1-1, to=2-2]
+                            	\arrow["{f_{\bar{\F}_q}}", from=1-1, to=1-3]
+                            \end{tikzcd}
+                        $$
+                \end{itemize}
+        \end{remark}
+        
+        \begin{lemma}[The Lang isogeny] \label{lemma: lang_isogeny}
+            If $G$ is a connected and smooth algebraic group over $\Spec \F_q$ then there will exist a surjective topological group homomorphism $q_G: \pi_1(G_{\fet}) \to G(\F_q)$.
+        \end{lemma}
+            \begin{proof}
+                The strategy is to make use of corollary \ref{remark: geometric_galois_correspondence}, since $G(\F_q)$ is finite and therefore corresponds uniquely to the quotient of $\pi_1(G_{\fet})$ by a normal subgroup of finite index. For that, we shall need to construct a Galois covering of $G$ with which to compute $\pi_1(G_{\fet})$; this turns out to be the \textbf{Lang isogeny} $l_G: G \to G$, which is defined by $l_G(g) := \Frob_G(g)g^{-1}$. For more details, see \cite[Theorem 4.4.17]{springer_linear_algebraic_groups}.
+            \end{proof}
+        \begin{proposition}[Grothendieck's Sheaf-Function Correspondence] \label{prop: sheaf_function_correspondence}
+            For each $\xi \in \Rep^1_{\bar{\Q}_{\ell}}(G(\F_q))^{\cont}$ there exists $\tilde{\xi} \in \Rep^1_{\bar{\Q}_{\ell}}(\pi_1(G_{\fet}))^{\cont}$ such that $\tilde{\xi} := \xi \circ q_G$ (with $q_G$ as in lemma \ref{lemma: lang_isogeny}), which corresponds to some $\calF^{\xi} \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(G)$ by theorem \ref{theorem: galois_representations_are_local_systems}. We claim that $\frob(-, \calF^{\xi}) = \xi$ as continuous $\ell$-adic characters of $G(\F_q)$.
+        \end{proposition}
+            \begin{proof}
+                
+            \end{proof}
