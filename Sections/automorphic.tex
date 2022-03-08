@@ -127,7 +127,7 @@
             \noindent
             \begin{itemize}
                 \item Write $\sigma^{(d)}: X^d \to X^{(d)}$ for the canonical quotient map and set $\Delta_X^{(d)} := \sigma^{(d)} \circ \Delta_X^d$. Next, for each $\ell$-adic local system $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}(X)$, we can construct an $\ell$-adic local system $\calL^{(d)} \in \Shv_{\underline{\bar{\Q}_{\ell}}}(X^{(d)})$ given by $\calL^{(d)} \cong ((\Delta_X^{(d)})_*\calL)^{\Sigma_d}$. 
-                \item In addition, write $\tilde{h}_X^{(d)}: X \x X^{(d)} \to X^{(d + 1)}$ for the map given by $(-[x], D) \mapsto [x] + D$, and likewise, write $\cev{h}_X^{(d)}: X \x \Bun_{\GL_1}^{(d)}(X) \to \Bun_{\GL_1}^{(d + 1)}(X)$ for the map given by $\cev{h}_X^{(d)}(-[x], \E) \cong \E(-[x])$. Also, let the map $\cev{H}_X^{(d)}: \Bun_{\GL_1}^{(1)}(X) \x \Bun_{\GL_1}^{(d)}(X) \to \Bun_{\GL_1}^{(d + 1)}(X)$ be given by $\cev{H}_X^{(d)}(\calL', \calL) \cong \calL' \tensor_{\calO_X} \calL$.
+                \item In addition, write $\tilde{h}_X^{(d)}: X \x X^{(d)} \to X^{(d + 1)}$ for the map given by $(-[x], D) \mapsto [x] + D$, and likewise, write $\cev{h}_X^{(d)}: X \x \Bun_{\GL_1}^{(d)}(X) \to \Bun_{\GL_1}^{(d + 1)}(X)$ for the map given by $\cev{h}_X^{(d)}(-[x], \E) \cong \E(-[x])$. 
             \end{itemize}
         \end{convention}
         \begin{definition}[Hecke eigensheaves] \label{def: hecke_eigensheaves}
@@ -135,7 +135,7 @@
                 $$\cev{h}_X^*(\E) \cong \calL \boxtimes \E$$
         \end{definition}
         \begin{remark}
-            It is easy to see that Hecke eigensheaves form a full symmetric monoidal subcategory of $\Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(\Bun_{\GL_1}(X))$, which we shall denote by $\Hecke\Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$.
+            It is easy to see that Hecke eigensheaves form a full symmetric monoidal subcategory of $\Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(\Bun_{\GL_1}(X))$, which we shall denote by $\Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$. In fact, the set of isomorphism classes of Hecke eigensheaves form a subgroup of $\Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(\Bun_{\GL_1}(X))$ with respect to tensor products. 
         \end{remark}
         
         Lemma \ref{lemma: hecke_eigensheaves_extend_to_lower_degrees}, which is regarding the \say{globality} of Hecke eigensheaves is merely a technicality in service of theorem \ref{theorem: unramified_abelian_geometric_class_field_theory}. The reader can safely skip ahead and refer back to it later.
@@ -164,8 +164,8 @@
             
         \begin{theorem}[Unramified abelian geometric class field theory] \label{theorem: unramified_abelian_geometric_class_field_theory}
             There exists a canonical monoidal equivalence between the groupoid of rank-$1$ $\ell$-adic local systems on $X$ and the groupoid of ($\ell$-adic) Hecke eigensheaves of rank $1$ on $\Bun_{\GL_1}(X)$:
-                $$\Autom: \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X) \to \Hecke\Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$$
-            which maps each $\ell$-adic local system $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X)$ to a Hecke eigensheaf $\Autom(\calL) \in \Hecke\Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$ with eigenvalue $\calL$.
+                $$\Autom: \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X) \to \Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$$
+            which maps each $\ell$-adic local system $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X)$ to a Hecke eigensheaf $\Autom(\calL) \in \Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$ with eigenvalue $\calL$.
         \end{theorem}
             \begin{proof}
                 Our strategy for this proof is to explicitly construct - for each $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X)$ - the corresponding Hecke eigensheaf $\Autom(\calL)$, and this will involve three steps:
@@ -226,39 +226,78 @@
         
         \begin{corollary}[Geometric Langlands for $\GL_1$] \label{coro: geometric_langlands_for_GL1}
             By putting theorem \ref{theorem: galois_representations_are_local_systems} and theorem \ref{theorem: unramified_abelian_geometric_class_field_theory} together, one gets a canonical monoidal equivalence of categories as follows:
-                $$\Rep^1_{\bar{\Q}_{\ell}}(\pi_1^{\ab}(X_{\fet}))^{\cont} \cong \Hecke\Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$$
-                $$\chi \mapsto \Autom_D(\chi)$$
+                $$\Rep^1_{\bar{\Q}_{\ell}}(\pi_1^{\ab}(X_{\fet}))^{\cont} \cong \Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$$
+                $$\chi \mapsto \Autom(\chi)$$
             What this essentially tells us is that $1$-dimensional continuous $\ell$-adic Galois representations are the same as automorphic forms associated to $\GL_1$, and as such, the combination of theorem \ref{theorem: galois_representations_are_local_systems} and theorem \ref{theorem: unramified_abelian_geometric_class_field_theory} can be understood as a geometrisation of the Global Langlands Correspondence for the (connnected reductive) group $\GL_1$\footnote{Incidentally, this is why it is commonly asserted that the Langlands Correspondence for $\GL_1$ \say{is just class field theory}.}. 
         \end{corollary}
         
     \subsection{Grothendieck's Sheaf-Function Correspondence and Artin Reciprocity}
         As a final step, let us decategorify the left-hand side of the monoidal equivalence:
-            $$\Rep^1_{\bar{\Q}_{\ell}}(\pi_1^{\ab}(X_{\fet}))^{\cont} \cong \Hecke\Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$$
-        from corollary \ref{coro: geometric_langlands_for_GL1} to obtain a correspondence between continuous $\ell$-adic characters of $\pi_1^{\ab}(X_{\fet})$ and so-called Hecke characters\footnote{Auf Deutsch: \say{\textit{Die Gr\"o{\ss}encharaktere}}.}, using Grothendieck's Sheaf-Function Correspondence. Doing so will yield us the usual version of Artin Reciprocity for global function fields over perfect fields of positive characteristics, in terms of towers of finite abelian extensions and so-called Hecke characters (see theorem \ref{theorem: hecke_characters_from_hecke_eigensheaves}).
+            $$\Rep^1_{\bar{\Q}_{\ell}}(\pi_1^{\ab}(X_{\fet}))^{\cont} \cong \Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$$
+        from corollary \ref{coro: geometric_langlands_for_GL1} to obtain a correspondence between continuous $\ell$-adic characters of $\pi_1^{\ab}(X_{\fet})$ and so-called Hecke characters\footnote{Auf Deutsch: \say{\textit{Die Gr\"o{\ss}encharaktere}}.}, using Grothendieck's Sheaf-Function Correspondence. Doing so will yield us the usual version of Artin Reciprocity for global function fields over perfect fields of positive characteristics, in terms of towers of finite abelian extensions and so-called Hecke characters (see theorems \ref{theorem: hecke_characters_from_hecke_eigensheaves} and \ref{theorem: artin_reciprocity_for_global_function_fields}).
         
-        \subsubsection{The Grothendieck-Lefschetz trace formula}
+        \subsubsection{Traces of Frobenii and Grothendieck's Sheaf-Function Correspondence via character sheaves}
             We begin by introducing Grothendieck's Sheaf-Function Corresondence\footnote{En Français: \say{\textit{La Correspondance Faisceaux-Fonctions de Grothendieck}}.}, which allows us to formally realise the notion of Hecke eigensheaves from definition \ref{def: hecke_eigensheaves} as a categorification of the classical notion of Hecke characters (cf. theorem \ref{theorem: hecke_characters_from_hecke_eigensheaves}). For this, let us first discuss traces of Frobenius endomorphisms on $\ell$-adic sheaves, which unfortunately only makes sense over positive characteristics.
             \begin{convention} \label{conv: frobenii}
                 From now on, the base field $k$ from convention \ref{conv: automorphic_side_conventions} shall be some finite field $\F_q$ (which we note to be perfect). This gives us access to the (absolute) Frobenius on $X_S$, with $S$ being some perfect scheme over $\Spec \F_q$, which we denote by $\Frob_{X_S}$.
             \end{convention}
-            \begin{convention} \label{conv: derived_categories_of_constructible_sheaves}
-                If $\calY$ is a scheme and $\Lambda$ is a Noetherian ring then we write $\rmD_{\Lambda, \cons}(\calY_{\et})$ for the \textit{unbounded} derived category of \href{https://stacks.math.columbia.edu/tag/03RW}{\underline{constructible}} sheaves of $\Lambda$-modules on the \'etale site of $\calY$, which is implicitly equipped with its natural t-structure. This category has a natural triangulated full subcategory spanned by objects that are locally of finite $\Tor$-dimension; we denote this subcategory by $\rmD_{\Lambda, \cons}^{\tor\fin}(\calY_{\et})$
-            \end{convention}
-            \begin{remark}[$\Tor$-finiteness for constructible sheaves] \label{remark: tor_finiteness_for_constructible_sheaves}
-                
-            \end{remark}
-            \begin{convention} \label{conv: trace_formula_conventions}
-                For our purposes, $\calY$ shall be a scheme that is locally of finite type\footnote{Althought $\calY$ might actually be an algebraic stack of finite type over a base scheme $S$ that is affine, regular, Noetherian and of dimension $\leq 1$, and of characteristic $p \geq 0$ (for details, see \cite{laszlo_olsson_adic_sheaves_on_artin_stacks_1} and \cite{laszlo_olsson_adic_sheaves_on_artin_stacks_2}), e.g. $\calY \cong \Bun_G(X)$, with $X$ as in convention \ref{conv: automorphic_side_conventions} and $G$ some connected reductive group (such as $\GL_1$).} and stratifies into countably many connected components, each of which is of finite type over $\Spec \F_q$. Moreoever, we would like to work under the assumption that every finite-type $\F_q$-scheme $T$ is also of finite cohomological dimension. At the same time, $\Lambda$ shall be a Gorenstein local ring of dimension $0$ with maximal ideal $\m$ and residue  characteristic $\ell \not = p$ (e.g. $\Lambda \cong \Z_{\ell}$); this is the same as in \cite{laszlo_olsson_adic_sheaves_on_artin_stacks_1}.
-            \end{convention}
             
-            \begin{lemma}[The Grothendieck-Lefschetz trace formula] \label{lemma: the_trace_formula}
-                \cite[\href{https://stacks.math.columbia.edu/tag/03UG}{Tag 03UG}]{stacks} Let $\calY$ as in convention \ref{conv: trace_formula_conventions} be separated also, and let $\Lambda$ as in convention \ref{conv: trace_formula_conventions} be finite. Then, the following identity holds for any $\calF \in \rmD_{\Lambda, \cons}^{\tor\fin}(\calY_{\et})$:
-                    $$\trace(\Frob_{\calY}^* \mid \calF) = \sum_{y \in \calY(\F_q)} \trace(\Frob_{\bar{y}}^{\sharp} \mid \calF_{\bar{y}})$$
+            \begin{definition}[Traces of Frobenii] \label{def: traces_of_frobenii}
+                Let $Z$ be a scheme of finite type over $\Spec k$. For each geometric point $\bar{z} \in Z(\bar{\F}_q)$, we define the trace of Frobenius on an $\ell$-adic local system $\calF \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(Z)$ at $\bar{z}$ to be the trace of the Frobenius endomorphism on the stalk $\calF_{\bar{z}}$, i.e. $\trace(\Frob_{\bar{z}}^{\flat}, \calF_{\bar{z}})$. Since $\calF$ is an $\ell$-adic local system of rank $1$, one obtains a function $\frob^{\calF}: Z(\bar{\F}_q) \to \bar{\Q}_{\ell}$ in doing so.
+            \end{definition}
+            \begin{remark}[Traces of Frobenii as functions on rational points] \label{remark: traces_of_frobenii_as_functions_on_rational_points}
+                Let us first remark that we do not define functions associated to $\ell$-adic local systems $\calF \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(Z)$ over the set $Z(\bar{\F}_q)$ instead of $Z(\F_q)$ out of necessity, not convenience, and this is because stalks of \'etale sheaves can only be computed over geometric points (cf. \cite[\href{https://stacks.math.columbia.edu/tag/03PN}{Tag 03PN}]{stacks}). But we do want functions over $Z(\F_q)$ as well, and for this, recall that $Z(\F_q) \cong Z(\bar{\F}_q)^{\Gal(\bar{\F}_q/\F_q)}$. Defining a function $\frob^{\calF}: Z(\F_q) \to \bar{\Q}_{\ell}$ coming from the trace of the Frobenius endomorphism on $\calF$ then becomes a simple matter of domain restriction.
+            \end{remark}
+            \begin{remark}[Basic properties of traces of Frobenii] \label{remark: basic_properties_of_traces_of_frobenii}
+                The following properties are trivial consequences of definition \ref{def: traces_of_frobenii}:
+                    \begin{itemize}
+                        \item For any pair of rank-$1$ $\ell$-adic local systems $\calF, \calF' \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(Z)$ and any fixed geometric point $\bar{z} \in Z(\bar{\F}_q)$, one has $\frob^{\calF \tensor \calF'} = \frob^{\calF} \frob^{\calF'}$.
+                        \item Let $\theta: Y \to Z$ be a morphism between $\F_q$-schemes that are locally of finite type and let $\calF$ be an $\ell$-adic local system of rank $1$ on $Z$. Then $f^{\theta^*\calF} = f^{\calF} \circ \theta_{\bar{\F}_q}$\footnote{To prove this, simply recall also the basic sheaf-theoretic fact that for any geometric point $\bar{y} \in Y(\bar{\F}_q)$ over a fixed geometric point $\bar{z} \in Z(\bar{F}_q)$ (i.e. such that $\theta_{\bar{\F}_q}(\bar{y}) = \bar{z}$), one has an isomorphism $(\theta^*\calF)_{\theta_{\bar{\F}_q}(\bar{y})} \cong \calF_{\bar{z}}$ of stalks.}.
+                    \end{itemize}
+            \end{remark}
+            
+            In order to obtain continuous $\ell$-adic characters via taking traces of Frobenii on $\ell$-adic local systems $\calF$, it is crucial that we demonstrate how for a suitable group scheme $G$, the function $\frob^{\calF}$ as in definition \ref{def: traces_of_frobenii} gives rise to a continuous group homomorphism $\xi^{\calF}: G(\F_q) \to \bar{\Q}_{\ell}^{\x}$. For this, it will be convenient to have the notion of \textbf{character sheaves} at our disposal, for which a good reference is \cite[Section 1]{cunningham_roe_function_sheaf_dictionary_quasi_characters_p_adic_tori} (whose presentation we shall also follow closely).
+            \begin{definition}[Character sheaves] \label{def: character_sheaves}
+                Let $k$ be a field and $G$ be a Noetherian\footnote{In \cite{cunningham_roe_function_sheaf_dictionary_quasi_characters_p_adic_tori}, the more specialised case of smooth group schemes over $\Spec \F_q$ is considered.} commutative group scheme over $\Spec k$, whose group structure is given by $\mu_G: G \x G \to G$. In such a situation, a ($\ell$-adic) \textbf{character sheaf} of $G$ shall be an $\ell$-adic local system $\E$ of rank $1$ over $G$, such that $\mu_G^*\E \cong \E \boxtimes \E$\footnote{In \cite{cunningham_roe_function_sheaf_dictionary_quasi_characters_p_adic_tori}, it is also required that character sheaves are Weil sheaves (cf. definition \ref{def: weil_sheaves}), but our omission of this extra condition will turn out to not be an issue, as Hecke eigensheaves are Weil sheaves \textit{a priori} (cf. lemma \ref{lemma: hecke_eigensheaves_are_weil_sheaves}); in addition, the Weil sheaf condition only makes sense for group schemes of prime characteristics.}.
+            \end{definition}
+            \begin{remark}[Rigid symmetric monoidal categories of character sheaves] \label{remark: rigid_monoidal_categories_of_character_sheaves}
+                \cite[Subsection 1.2]{cunningham_roe_function_sheaf_dictionary_quasi_characters_p_adic_tori} It can be easily checked, through verifying the relevant axioms, that $\ell$-adic character sheaves on a given Noetherian commutative group scheme $G$ over $\Spec k$ (for some field $k$) form a rigid symmetric monoidal subcategory of $\Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(G)$, which we denote by $\Char\Shv_{\bar{\Q}_{\ell}}(G)$. Interestingly, if $G$ is a \textit{smooth} commutative group scheme over $\Spec \F_q$ then $\Char\Shv_{\bar{\Q}_{\ell}}(G)$ will actually be a groupoid, a phenomenon that is in perfect analogy with Schur's Lemma (cf. \cite[Lemma 3.6]{lam_first_course_in_noncommutative_rings}) and coincidentally, can be shown via a straightforward application of Schur's Lemma to stalks of character sheaves (cf. \cite[Lemma 1.3]{cunningham_roe_function_sheaf_dictionary_quasi_characters_p_adic_tori}); as a consequence, the isomorphism classes of character sheaves of a smooth commutative group scheme over $\Spec \F_q$ form an abelian group. 
+            \end{remark}
+            \begin{theorem}[Grothendieck's Sheaf-Function Correspondence] \label{theorem: sheaf_function_correspondence}
+                \cite[Proposition 1.14]{cunningham_roe_function_sheaf_dictionary_quasi_characters_p_adic_tori} If $G$ is a connected commutative algebraic group over $\Spec \F_q$ then taking traces of Frobenii (in the sense of definition \ref{def: traces_of_frobenii}) will yield us a group isomorphism $\Char\Shv_{\bar{\Q}_{\ell}}(G) \cong \Rep_{\bar{\Q}_{\ell}}^1(G(\F_q))^{\cont}$.
+            \end{theorem}
+            \begin{corollary}[Grothendieck's Sheaf-Function Correspondence for character sheaves on the identity component] \label{coro: sheaf_function_correspondence_on_identity_component}
+                
+            \end{corollary}
+                \begin{proof}
+                    First of all, recall that for any scheme $Y$ that is locally of finite type over a field $k$, there exists a maximal $k$-subalgebra $O(Y)$ of $\Gamma(Y, \calO_Y)$ which is \'etale over $k$ (cf. \cite[Proposition 5.44]{milne_algebraic_groups}). We can then define the scheme $\pi_0(Y)$ of \say{connected components} of $Y$ to be $\Spm O(Y)$ and in doing so, we will have obtained a morphism $Y \to \pi_0(Y)$ that is universal among all \'etale $\F_q$-schemes via the fundamental adjunction:
+                        $$
+                            \begin{tikzcd}
+                            	{{}^{k/}\Comm\Alg^{\op}} & {\Sch_{/\Spec k}}
+                            	\arrow[""{name=0, anchor=center, inner sep=0}, "{\Spec }"', bend right, from=1-1, to=1-2]
+                            	\arrow[""{name=1, anchor=center, inner sep=0}, "\Gamma"', bend right, from=1-2, to=1-1]
+                            	\arrow["\dashv"{anchor=center, rotate=-90}, draw=none, from=1, to=0]
+                            \end{tikzcd}
+                        $$
+                    Now, let $G$ be a locally algebraic group over $\Spec k$, let $G_0$ be the connected component of the identity thereof. It is known that the universal morphism $G \to \pi_0(G)$ induces the following short exact sequence of locally algebraic groups (cf. \cite[Proposition 5.48]{milne_algebraic_groups}):
+                        $$
+                            \begin{tikzcd}
+                            	1 & {G_0} & G & {\pi_0(G)} & 1
+                            	\arrow[from=1-1, to=1-2]
+                            	\arrow["\ker", from=1-2, to=1-3]
+                            	\arrow[from=1-3, to=1-4]
+                            	\arrow[from=1-4, to=1-5]
+                            \end{tikzcd}
+                        $$
+                    
+                \end{proof}
+            
+            It turns out that Hecke eigensheaves on $\Bun_{\GL_1}(X)$, which is rather fortunate for us, as this directly implies that Hecke eigensheaves correspond to certain continuous $\ell$-adic characters of $\Bun_{\GL_1}(X)(\F_q)$ via theorem \ref{theorem: sheaf_function_correspondence}.
+            \begin{lemma}[Hecke eigensheaves are character sheaves] \label{lemma: hecke_eigensheaves_are_character_sheaves}
+                \cite[Proposition 7.5]{tendler_2015_geometric_class_field_theory} If $\cev{H}_X: \Bun_{\GL_1}^{(1)}(X) \x \Bun_{\GL_1}(X) \to \Bun_{\GL_1}(X)$ is the group operation on $\Bun_{\GL_1}(X)$, given by $\cev{H}_X(\calL', \calL) \cong \calL' \tensor_{\calO_X} \calL$, then any Hecke eigensheaf $\E \in \Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$ satisfies the character sheaf property with respect to $\cev{H}_X$.
             \end{lemma}
-            \begin{corollary}[The trace formula for locally algebraic groups] \label{coro: the_trace_formula_for_locally_algebraic_groups}
-                Because group schemes are \textit{a priori} separated over fields (cf. \cite[\href{https://stacks.math.columbia.edu/tag/047L}{Tag 047L}]{stacks}), lemma \ref{lemma: the_trace_formula} is perfectly applicable to our situation, as the group scheme $\Bun_{\GL_1}(X)$ is locally of finite type (cf. remark \ref{remark: geometry_of_the_picard_stack}). In particular, for any $\ell$-adic local system $\calF \in \Shv_{\underline{\bar{\Q}_{\ell}}}^1(G)$ on a locally algebraic commutative $\F_q$-group scheme $G$ (such as $\Bun_{\GL_1}(X)$), one has the following identity, which essentially tells us that taking traces of Frobenii is compatible with the (comutative!) group structure on $G$:
-                    $$\trace(\Frob_G^* \mid \calF) = \sum_{y \in G(\F_q)} \trace(\Frob_{\bar{y}}^{\sharp} \mid \calF_{\bar{y}})$$
-                What this means for us is that given any $\ell$-adic local system $\calF \in \Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$ (whose stalks are isomorphic to $\bar{\Q}_{\ell}$), one obtains an $\ell$-adic character of $G(\F_q)$ instead of a mere $\bar{\Q}_{\ell}$-valued function on $G(\F_q)$.
+            \begin{corollary}[Traces of Frobenii define $\ell$-adic characters] \label{coro: traces_of_frobenii_define_l_adic_characters}
+                
             \end{corollary}
         
         \subsubsection{Artin Reciprocity for global function fields over finite fields}
@@ -270,29 +309,31 @@
                 For theorem \ref{theorem: hecke_characters_from_hecke_eigensheaves}, suppose that we are willing to take the special case of the Weil Uniformisation Theorem for $\Bun_{\GL_1}(X)$ (cf. \cite[Proposition 3.8]{tendler_2015_geometric_class_field_theory}\footnote{For details on Weil Uniformisation for $\Bun_G(X)$, with $G$ being a general connected reductive group, see \cite{sorger_BunG_uniformisation}}) for granted, which states that there is a group isomorphism $\Bun_{\GL_1}(X)(\F_q) \cong \GL_1(K_X)\backslash\GL_1(\A_X)/\GL_1(\bbO_{X})$.
             \end{convention}
             \begin{definition}[Hecke characters] \label{def: hecke_characters}
-                A \textbf{Hecke character} of $X$ (or rather, of $K_X$) is a continuous $\ell$-adic character of $\GL_1(K_X)\backslash\GL_1(\A_X)/\GL_1(\bbO_{X})$. The group of Hecke characters of $X$ is denoted by $\Hecke\Char_{\GL_1}(X)$
+                A \textbf{Hecke character} of $X$ (or rather, of $K_X$) is a continuous $\ell$-adic character of $\GL_1(K_X)\backslash\GL_1(\A_X)/\GL_1(\bbO_{X})$. The group of Hecke characters of $X$ is denoted by $\scrA_{\GL_1}(X)$
             \end{definition}
             \begin{theorem}[Hecke characters from Hecke eigensheaves] \label{theorem: hecke_characters_from_hecke_eigensheaves}
                 There is a canonical group isomorphism:
-                    $$\Hecke\Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X)) \cong \Hecke\Char_{\GL_1}(X)$$
+                    $$\Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X)) \cong \scrA_{\GL_1}(X)$$
             \end{theorem}
                 \begin{proof}
-                    \noindent
-                    \begin{itemize}
-                        \item From corollary \ref{coro: the_trace_formula_for_locally_algebraic_groups} and convention \ref{conv: weil_uniformisation}, it can be deduced that any Hecke eigensheaf $\E \in \Hecke\Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$ (which is an instance of an $\ell$-adic local system on $\Bun_{\GL_1}(X)$) gives rise to an $\ell$-adic character $\xi \in \Hecke\Char_{\GL_1}(X)$.
-                        \item Conversely, consider an arbitrary element $\xi \in \Hecke\Char_{\GL_1}(X)$. 
-                    \end{itemize}
+                    
                 \end{proof}
             
             Before we can conclude with Artin's Reciprocity Law for global function fields over finite fields, we will need to understand what it means for $\ell$-adic local systems to be \textbf{Weil sheaves} beforehand, as we are interested in how the Frobenius element of $\Gal(K^{\ab}/K)$ behaves under Artin Reciprocity.
             \begin{definition}[Weil sheaves] \label{def: weil_sheaves}
                 Let $k$ be an algebraically closed (hence perfect) field of characteristic $p > 0$. The category of $\ell$-adic \textbf{Weil sheaves} of rank $1$ on a scheme $Z$ that is locally of finite type over $\Spec k$ is the full subcategory of $\Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(Z)$ on which the pullback functor $\Frob_Z^*: \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(Z) \to \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(Z)$ is an equivalence\footnote{In other words, we can think of Weil sheaves as Frobenius-fixed $\ell$-adic local systems.}, and we suggestively denote it by $\Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(Z)^{\Frob}$.
             \end{definition}
+            \begin{lemma}[Hecke eigensheaves are Weil sheaves] \label{lemma: hecke_eigensheaves_are_weil_sheaves}
+                Any Hecke eigensheaf on $\Bun_{\GL_1}(X)$ is a Weil sheaf.
+            \end{lemma}
+                \begin{proof}
+                    
+                \end{proof}
             \begin{theorem}[Artin Reciprocity for global function fields] \label{theorem: artin_reciprocity_for_global_function_fields}
-                There exists a canonical group isomorphism as below, such that for all places $v$ of $K$, one has $\chi(\Frob_v) = \xi(\varpi_v)$:
-                    $$\Hecke\Char_{\GL_1}(X) \cong \Rep^1_{\bar{\Q}_{\ell}}(\Gal(K^{\ab}/K))^{\cont}$$
+                There exists a canonical group isomorphism as below, such that for all places $v$ of $K$, one has $\chi(\Frob_v) = \xi(\alpha_v)$:
+                    $$\scrA_{\GL_1}(X) \cong \Rep^1_{\bar{\Q}_{\ell}}(\Gal(K^{\ab}/K))^{\cont}$$
                     $$\xi \mapsto \chi$$
             \end{theorem}
                 \begin{proof}
-                    The existence of a canonical group isomorphism as stated comes directly from a combination of corollary \ref{coro: geometric_langlands_for_GL1} and theorem \ref{theorem: hecke_characters_from_hecke_eigensheaves}, so let us focus on the \say{Frobenius-compatibility} condition $\chi(\Frob_v) = \xi(\varpi_v)$.
+                    The existence of a canonical group isomorphism as stated comes directly from a combination of corollary \ref{coro: geometric_langlands_for_GL1} and theorem \ref{theorem: hecke_characters_from_hecke_eigensheaves}, so let us focus on the \say{Frobenius-compatibility} condition $\chi(\Frob_v) = \xi(\alpha_v)$.
                 \end{proof}

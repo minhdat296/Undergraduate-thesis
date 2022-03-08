@@ -31,9 +31,24 @@
             \begin{proof}
                 The strategy is to make use of corollary \ref{remark: geometric_galois_correspondence}, since $G(\F_q)$ is finite and therefore corresponds uniquely to the quotient of $\pi_1(G_{\fet})$ by a normal subgroup of finite index. For that, we shall need to construct a Galois covering of $G$ with which to compute $\pi_1(G_{\fet})$; this turns out to be the \textbf{Lang isogeny} $l_G: G \to G$, which is defined by $l_G(g) := \Frob_G(g)g^{-1}$. For more details, see \cite[Theorem 4.4.17]{springer_linear_algebraic_groups}.
             \end{proof}
-        \begin{proposition}[Grothendieck's Sheaf-Function Correspondence] \label{prop: sheaf_function_correspondence}
+        \begin{proposition}
             For each $\xi \in \Rep^1_{\bar{\Q}_{\ell}}(G(\F_q))^{\cont}$ there exists $\tilde{\xi} \in \Rep^1_{\bar{\Q}_{\ell}}(\pi_1(G_{\fet}))^{\cont}$ such that $\tilde{\xi} := \xi \circ q_G$ (with $q_G$ as in lemma \ref{lemma: lang_isogeny}), which corresponds to some $\calF^{\xi} \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(G)$ by theorem \ref{theorem: galois_representations_are_local_systems}. We claim that $\frob(-, \calF^{\xi}) = \xi$ as continuous $\ell$-adic characters of $G(\F_q)$.
         \end{proposition}
             \begin{proof}
                 
             \end{proof}
+            
+    \begin{convention} \label{conv: derived_categories_of_constructible_sheaves}
+                If $\calY$ is a scheme and $\Lambda$ is a Noetherian ring then we write $\rmD_{\Lambda, \cons}(\calY_{\et})$ for the \textit{unbounded} derived category of \href{https://stacks.math.columbia.edu/tag/03RW}{\underline{constructible}} sheaves of $\Lambda$-modules on the \'etale site of $\calY$, which is implicitly equipped with its natural t-structure. This category has a natural triangulated full subcategory spanned by objects that are locally of finite $\Tor$-dimension; we denote this subcategory by $\rmD_{\Lambda, \cons}^{\tor\fin}(\calY_{\et})$
+            \end{convention}
+            \begin{remark}[$\Tor$-finiteness for constructible sheaves] \label{remark: tor_finiteness_for_constructible_sheaves}
+                
+            \end{remark}
+            \begin{convention} \label{conv: trace_formula_conventions}
+                For our purposes, $\calY$ shall be a scheme that is locally of finite type\footnote{Althought $\calY$ might actually be an algebraic stack of finite type over a base scheme $S$ that is affine, regular, Noetherian and of dimension $\leq 1$, and of characteristic $p \geq 0$ (for details, see \cite{laszlo_olsson_adic_sheaves_on_artin_stacks_1} and \cite{laszlo_olsson_adic_sheaves_on_artin_stacks_2}), e.g. $\calY \cong \Bun_G(X)$, with $X$ as in convention \ref{conv: automorphic_side_conventions} and $G$ some connected reductive group (such as $\GL_1$).} and stratifies into countably many connected components, each of which is of finite type over $\Spec \F_q$. Moreoever, we would like to work under the assumption that every finite-type $\F_q$-scheme $T$ is also of finite cohomological dimension. At the same time, $\Lambda$ shall be a Gorenstein local ring of dimension $0$ with maximal ideal $\m$ and residue  characteristic $\ell \not = p$ (e.g. $\Lambda \cong \Z_{\ell}$); this is the same as in \cite{laszlo_olsson_adic_sheaves_on_artin_stacks_1}.
+            \end{convention}
+            
+            \begin{lemma}[The Grothendieck-Lefschetz trace formula] \label{lemma: the_trace_formula}
+                \cite[\href{https://stacks.math.columbia.edu/tag/03UG}{Tag 03UG}]{stacks} Let $\calY$ as in convention \ref{conv: trace_formula_conventions} be separated also, and let $\Lambda$ as in convention \ref{conv: trace_formula_conventions} be finite. Then, the following trace formula holds for any $\calF \in \rmD_{\Lambda, \cons}^{\tor\fin}(\calY_{\et})$:
+                    $$\trace(\Frob_{\calY}^* \mid \calF) = \sum_{y \in \calY(\F_q)} \frob^{\calF}(\bar{y})$$
+            \end{lemma}
