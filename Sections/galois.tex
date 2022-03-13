@@ -126,41 +126,22 @@
                 
                 Another interesting case that one might wish to consider is that of elliptic curves; for the sake of simplicity, let us work with an elliptic curve $E$ over an algebraically closed field $k$ of characteristic $0$. First of all, because $k$ is algebraically closed, every $k$-rational point $x \in E(k)$ is automatically geometric; therefore, we might as well work with $x = 0$. Now, it can be shown without too much difficulty (cf. \cite[Proposition 5.11]{kundu_etale_fundamental_group_of_elliptic_curves}) that every scheme finite \'etale over an elliptic curve over any field is automatically Galois. Together with the definition of $\pi_1(E_{\fet})$, this implies that for any cofinal diagram $\{Y_i\}_{i \in \calI}$ in $(\Sch_{/E})_{\fet}$, one has:
                     $$\pi_1(E_{\fet}) \cong \underset{i \in \calI}{\lim} \Aut(F_0(Y_i)) \cong \underset{i \in \calI}{\lim} \Aut(|(Y_i)_0|)$$
-                Luckily, there is a canonical choice of such a cofinal diagram, namely $\{E[n]\}_{n \in \N}$ (cf. \cite[Proposition 3.8]{kundu_etale_fundamental_group_of_elliptic_curves}), which are nothing but the fibres over $0 \in E(k)$ (i.e. kernels) of the $n$-torsion maps $[n]: E \to E$ (this is why we chose the base point $x = 0$). It is well-known that:
-                    $$\Aut(|E[n]|) \cong (\Z/n\Z)^{\oplus 2}$$
-                so by taking the limit, one obtains:
+                Luckily, there is a canonical choice of such a cofinal diagram, namely $\{E[n]\}_{n \in \N}$ (cf. \cite[Proposition 3.8]{kundu_etale_fundamental_group_of_elliptic_curves}), which are nothing but the fibres over $0 \in E(k)$ (i.e. kernels) of the $n$-torsion maps $[n]: E \to E$ (this is why we chose the base point $x = 0$). It is well-known that $\Aut(|E[n]|) \cong (\Z/n\Z)^{\oplus 2}$, so by taking the limit, one obtains:
                     $$\pi_1(E_{\fet}) \cong \hat{\Z}^{\oplus 2}$$
                 Elliptic curves over (algebraically closed) fields of positive characteristics $p_0$ behave somewhat differently, but it is also difficult to compute their \'etale fundamental groups (provided). If $E$ is supersingular (i.e. if the $p_0$-torsion map $[p_0]: E \to E$ has trivial kernel) then one has the following description of the \'etale fundamental group of $E$ (cf. \cite[Proposition 5.13]{kundu_etale_fundamental_group_of_elliptic_curves}):
                     $$\pi_1(E_{\fet}) \cong \bigoplus_{(p) \in |\Spec \Z| \setminus \{(0), (p_0)\}} \Z_p^{\oplus 2}$$
                 and otherwise, if $E$ is an ordinary elliptic curve, one has the following (cf. \cite[Proposition 5.14]{kundu_etale_fundamental_group_of_elliptic_curves}):
                     $$\pi_1(E_{\fet}) \cong \Z_{p_0} \oplus \bigoplus_{(p) \in |\Spec \Z| \setminus \{(0), (p_0)\}} \Z_p^{\oplus 2}$$
             \end{example}
-            \begin{example}[\'Etale fundamental group of the affine line] \label{example: etale_fundamental_group_of_the_affine_line}
-                If $k$ is a field then $\pi_1((\A^1_k)_{\fet}) \cong \Gal(\bar{k}/k)$ when $\chara k = 0$, and hence $\pi_1((\A^1_k)_{\fet}) \cong 1$ if $k$ is furthermore algebraically closed. If however $\chara k > 0$, then $\pi_1((\A^1_k)_{\fet})$ can fail to be trivial even when $k$ is algebraically closed. For now, see \cite[Theorem 6.13, Remark 6.23, and Exercises 6.28 and 6.29]{lenstra_1985_galois_theory_for_schemes}.
-            \end{example}
         
         \subsubsection{Properties of \'etale fundamental groups}
             Now, let us make sure that the \'etale fundamental group $\pi_1(X_{\fet}, \bar{x})$ as defined in definition \ref{def: etale_fundamental_groups} is meaningful as a formal construction. Namely, we would like to know the behaviours of $\pi_1(X_{\fet}, \bar{x})$ when we change the base point and when we base-change (cf. proposition \ref{prop: etale_fundamental_groups_do_not_depend_on_base_points}), as well as whether or not \'etale fibrations induce homotopy exact sequences of fundamental groups (cf. proposition \ref{prop: etale_homotopy_exact_sequence}). 
             \begin{proposition}[\'Etale fundamental group do not depend on base points] \label{prop: etale_fundamental_groups_do_not_depend_on_base_points}
-                Let $f: Y \to X$ be a morphism of connected qcqs\footnote{quasi-compact and quasi-separated} schemes such that the base change functor:
-                    $$(\Sch_{/X})_{\fet} \to (\Sch_{/Y})_{\fet}$$
-                    $$X' \mapsto X' \x_X Y$$
-                is an equivalence of Galois categories. Then, for any choice of geometric points $\bar{x} \in X$ and $\bar{y} \in Y$, one has the following isomorphism of \'etale fundamental groups $\pi_1(X_{\fet}, \bar{x}) \cong \pi_1(Y_{\fet}, \bar{y})$.
+                \cite[\href{https://stacks.math.columbia.edu/tag/0BQA}{Tag 0BQA}]{stacks} Let $f: Y \to X$ be a morphism of connected qcqs\footnote{quasi-compact and quasi-separated} schemes such that the base change functor $X' \mapsto X' \x_X Y$ is an equivalence of Galois categories between $(\Sch_{/X})_{\fet}$ and $(\Sch_{/Y})_{\fet}$. Then, for any choice of geometric points $\bar{x} \in X$ and $\bar{y} \in Y$, one has the following isomorphism of \'etale fundamental groups $\pi_1(X_{\fet}, \bar{x}) \cong \pi_1(Y_{\fet}, \bar{y})$.
             \end{proposition}
-                \begin{proof}
-                    This is an immediate consequence of the assumption that the base change functor:
-                        $$(\Sch_{/X})_{\fet} \to (\Sch_{/Y})_{\fet}$$
-                        $$X' \mapsto X' \x_X Y$$
-                    is an equivalence and from the definition of \'etale fundamental groups (cf. definition \ref{def: etale_fundamental_groups}).
-                \end{proof}
             \begin{corollary}[Uniqueness of \'etale fundamental groups] \label{coro: etale_fundamental_group_uniqueness}
                 For any connected qcqs scheme $X$ and any pair of possibly distinct geometric points $\bar{x}, \bar{x}' \in X$, one has any isomorphism of \'etale fundamental groups $\pi_1(X_{\fet}, \bar{x}) \cong \pi_1(X_{\fet}, \bar{x}')$, and therefore it makes sense to only speak of \textit{the} fundamental group of $X$, which we shall denote by $\pi_1(X_{\fet})$.
             \end{corollary}
-            
-            \begin{proposition}[\'Etale fundamental group of products]
-                \cite[Corollaire 1.7]{SGA1} Let $k$ be an algebraically closed field and let $X, Y$ be two connected schemes which are, respectively, proper and locally noetherian over $\Spec k$. In addition, fix two geometric points $x \in X$ and $y \in Y$. Then, there is a canonical isomorphism:
-                    $$\pi_1((X \x_{\Spec k} Y)_{\fet}, (x, y)) \cong \pi_1(X_{\fet}, x) \x \pi_1(Y_{\fet}, y)$$
-            \end{proposition}
             
             \begin{proposition}[The \'etale homotopy exact sequence] \label{prop: etale_homotopy_exact_sequence}
                 \cite[\href{https://stacks.math.columbia.edu/tag/0C0J}{Tag 0C0J}]{stacks} Let $X$ be a connected scheme. If $f: Y \to X$ be a flat proper morphism of finite presentation whose geometric fibres $Y_{\bar{x}}$ are connected and reduced, then for any geometric point $\bar{x} \in X$, there exists a right-exact sequence of groups as follows:
