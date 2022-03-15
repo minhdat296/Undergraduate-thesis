@@ -168,7 +168,7 @@
             \begin{proof}
                 Our strategy for this proof is to explicitly construct - for each $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X)$ - the corresponding Hecke eigensheaf $\Autom(\calL)$, and this will involve three steps:
                     \begin{enumerate}
-                        \item \textbf{(A \say{Hecke eigensheaf} on $X^{(d)}$):} In this step we shall construct an $\ell$-local system on $X^{(d)}$ (hence on $\bigcup_{d \geq 2g - 1} X^{(d)}$); cf. proposition \ref{prop: the_unramified_abel_jacobi_map_is_a_projective_bundle} satisfying an analogue of the Hecke eigensheaf property (cf. definition \ref{def: hecke_eigensheaves}) with the purpose in mind being that by pushing this local system forward using the Abel-Jacobi map, one shall obtain a legitimate Hecke eigensheaf on $\Bun_{\GL_1}^{(d)}(X)$ (hence on $\bigcup_{d \geq 2g - 1} \Bun_{\GL_1}^{(d)}(X)$).
+                        \item \textbf{(A \say{Hecke eigensheaf} on $X^{(d)}$):} In this step we shall construct an $\ell$-local system on $X^{(d)}$ (hence on $\bigcup_{d \geq 2g - 1} X^{(d)}$; cf. proposition \ref{prop: the_unramified_abel_jacobi_map_is_a_projective_bundle}) satisfying an analogue of the Hecke eigensheaf property (cf. definition \ref{def: hecke_eigensheaves}) with the purpose in mind being that by pushing this local system forward using the Abel-Jacobi map, one shall obtain a legitimate Hecke eigensheaf on $\Bun_{\GL_1}^{(d)}(X)$ (hence on $\bigcup_{d \geq 2g - 1} \Bun_{\GL_1}^{(d)}(X)$).
                         
                         The first observation that one can make is that there is an isomorphism $(\sigma^{(d)})^*\calL^{(d)} \cong \calL^{\boxtimes d}$ of $\ell$-adic local systems on $X^d$. Next, notice how there are commutative diagrams of the following form, wherein the maps $\tilde{h}_X^{(d)}$ are given by $(-[x], D) \mapsto [x] + D$ (cf. remark \ref{remark: adding_effective_divisors} and convention \ref{conv: symmetric_powers_of_line_bundles}):
                             $$
@@ -305,7 +305,7 @@
                         	\arrow[from=1-4, to=1-5]
                         \end{tikzcd}
                     $$
-                One thus infers that any investigation of character sheaves on smooth commutative group schemes can be broken down into analyses of character sheaves on connected commutative group schemes of finite type and of those on \'etale commutative group schemes (see lemmas \ref{lemma: sheaf_function_correspondence_for_connected_algebraic_groups} and \ref{lemma: sheaf_function_correspondence_for_etale_commutative_group_scheme} respectively).
+                One thus infers that any investigation of character sheaves on smooth commutative group schemes can be broken down into analyses of character sheaves on connected commutative group schemes of finite type and of those on \'etale commutative group schemes (see lemmas \ref{lemma: sheaf_function_correspondence_for_connected_algebraic_groups} and \ref{lemma: sheaf_function_correspondence_for_etale_commutative_group_schemes} respectively).
             \end{remark}
             \begin{remark}[The category of compact Hausdorff abelian groups] \label{remark: the_category_of_compact_hausdorff_abelian_groups}
                 A fine technicality that one shall need to keep in mind for theorem \ref{theorem: sheaf_function_correspondence_for_smooth_groups} is that the category $\Comp\Ab$ of (small) compact Hausdorff abelian groups is equivalent to the opposite category $\Ab^{\op}$ of abelian groups (cf. \cite[Proposition IV.5.2]{maclane}) and therefore is abelian, as the opposite of any abelian category is also abelian category (this is a straightforward consequence of the definition of abelian categories; cf. \cite[Section VIII.3]{maclane})\footnote{For all $n \geq 2$, the groups $\GL_n(\bar{\Q}_{\ell})$ are - in addition to being non-abelian - actually only strictly locally compact instead of being compact. This makes higher-dimensional representations of \'etale fundamental groups much harder to analyse.}.
@@ -398,12 +398,36 @@
                         $$
                     from which one infers that $\cev{h}_X^* \Frob_{\Bun_{\GL_1}(X)}^* \E_{\calL} \cong (\id_X \x \Frob_{\Bun_{\GL_1}(X)})^* \cev{h}_X^* \E_{\calL} \cong \calL \boxtimes \Frob_{\Bun_{\GL_1}(X)}^* \E_{\calL}$, which in turn tells us that $\Frob^*_{\Bun_{\GL_1}(X)} \E_{\calL}$ is a Hecke eigensheaf with eigenvalue $\calL$. This can be interpreted as $\cev{h}_X^*$ acting on $\E_{\calL}$ and $\Frob^*_{\Bun_{\GL_1}(X)} \E_{\calL}$ as $\calL \boxtimes -$, so we shall now attempt to show that $\calL \boxtimes -$ is a faithful functor. For this, recall that faithful flatness is a local property and so we can simply check whether $\calL_{\bar{x}} \tensor -$ is a faithful functor for all geometric points $\bar{x} \in X$. However, $\calL_{\bar{x}}$ is a finite-dimensional vector space, so it is faithfully flat \textit{a priori}, so the functor $\calL_{\bar{x}} \tensor -$ is necessarily faithful. As stated, this implies that $\E_{\calL} \cong \Frob_{\Bun_{\GL_1}(X)}^* \E_{\calL}$, i.e. that $\E_{\calL}$ is a Weil sheaf on $\Bun_{\GL_1}(X)$.
                 \end{proof}
+            \begin{remark}[The character sheaf condition for $\Bun_{\GL_1}(X)$] \label{remark: character_sheaf_condition_for_BunGL1}
+                Let $\mu_X: \Bun_{\GL_1}(X) \x \Bun_{\GL_1}(X) \to \Bun_{\GL_1}(X)$ denote the group structure on $\Bun_{\GL_1}(X)$. Note that for the smooth commutative group $\F_q$-scheme $\Bun_{\GL_1}(X)$, the character sheaf condition (with respect to $\mu_X$) is equivalent to requiring that for all $d \geq 0$, one has $(\mu_X^{(d)})^*\E_{\calL^{(d + 1)}} \cong \E_{\calL^{(1)}} \boxtimes \E_{\calL^{(d)}}$, where $\mu_X^{(d)}: \Bun_{\GL_1}^{(1)}(X) \x \Bun_{\GL_1}^{(d)}(X) \to \Bun_{\GL_1}^{(d + 1)}(X)$ is given by $\mu_X^{(d)}(\calL', \calL) \cong \calL' \tensor_{\calO_X} \calL$. 
+            \end{remark}
             \begin{lemma}[Hecke eigensheaves are character sheaves] \label{lemma: hecke_eigensheaves_are_character_sheaves}
-                There exists a monoidal equivalence:
+                There exists a group isomorphism:
                     $$\Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X)) \cong \Char\Shv_{\underline{\bar{\Q}_{\ell}}}(\Bun_{\GL_1}(X))$$
             \end{lemma}
                 \begin{proof}
-                    
+                    The group structures on $\Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$ and on $\Char\Shv_{\underline{\bar{\Q}_{\ell}}}(\Bun_{\GL_1}(X))$ are both inherited from $\Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(\Bun_{\GL_1}(X))$, so it shall suffice to show that the two underlying sets are in bijetion.
+                    \begin{itemize}
+                        \item \textbf{(Hecke eigensheaves are character sheaves):} First of all, it is easy to check that the following diagram commutes:
+                            $$
+                                \begin{tikzcd}
+                                	{X \x \Bun_{\GL_1}^{(d)}(X)} && {\Bun_{\GL_1}^{(1)}(X) \x \Bun_{\GL_1}^{(d)}(X)} \\
+                                	& {\Bun_{\GL_1}^{(d + 1)}(X)}
+                                	\arrow["{\cev{h}_X^{(d)}}"', from=1-1, to=2-2]
+                                	\arrow["{\AJ_{X/\F_q}^{(1)} \x \id_{\Bun_{\GL_1}^{(d)}(X)}}", from=1-1, to=1-3]
+                                	\arrow["{\mu_X^{(d)}}", from=1-3, to=2-2]
+                                \end{tikzcd}
+                            $$
+                        Next, recall that the $d^{th}$ Abel-Jacobi maps $\AJ_{X/\F_q}^{(d)}$ (for all $d \geq 0$) is invertible at the level of sheaf pullback, i.e. the functor $(\AJ_{X/\F_q}^{(d)})^*$ is an equivalence (cf. corollary \ref{coro: unramified_galois_representations_induced_by_the_abel_jacobi_map}). As a result, one has the following for all Hecke eigensheaves $\E_{\calL^{(d + 1)}} \in \Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}^{(d + 1)}(X))$ (corresponding to $\calL^{(d + 1)} \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X^{(d + 1)})$ in the sense of corollary \ref{coro: unramified_galois_representations_induced_by_the_abel_jacobi_map}) with eigenvalue $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X)$:
+                            $$(\mu_X^{(d)})^*\E_{\calL^{(d + 1)}} \cong (\AJ_{X/\F_q}^{(1)} \x \id_{\Bun_{\GL_1}^{(d)}(X)})_* (\cev{h}_X^{(d)})^* \E_{\calL^{(d + 1)}} \cong (\AJ_{X/\F_q}^{(1)})_*\calL \boxtimes \E_{\calL^{(d)}}$$
+                        wherein the $\ell$-adic local system $\E_{\calL^{(d)}}$ corresponds to $\calL^{(d)} \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X^{(d)})$ (again, in the sense of corollary \ref{coro: unramified_galois_representations_induced_by_the_abel_jacobi_map}). Now, observe that - again due to corollary \ref{coro: unramified_galois_representations_induced_by_the_abel_jacobi_map} - corresponding to $(\AJ_{X/\F_q}^{(1)})_*\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X^{(1)})$ is an $\ell$-adic local system $\E_{\calL^{(1)}} \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(\Bun_{\GL_1}^{(1)}(X))$. Putting everything together then yields the following, which is precisely the character sheaf property for $\Bun_{\GL_1}(X)$:
+                            $$\mu_X^{(d)})^*\E_{\calL^{(d + 1)}} \cong \E_{\calL^{(1)}} \boxtimes \E_{\calL^{(d)}}$$
+                        \item \textbf{(Character sheaves are Hecke eigensheaves):} Let $\E$ be a character sheaf on $\Bun_{\GL_1}(X)$. Then, we have:
+                            $$\cev{h}_X^*\E_{\calL^{(d + 1)}} \cong (\AJ_{X/\F_q}^{(1)} \x \id_{\Bun_{\GL_1}^{(d)}(X)})^* (\mu_X^{(d)})^* \E_{\calL^{(d + 1)}} \cong (\AJ_{X/\F_q}^{(1)})^*\E_{\calL^{(1)}} \boxtimes \E_{\calL^{(d)}}$$
+                        Another application of corollary \ref{coro: unramified_galois_representations_induced_by_the_abel_jacobi_map} tells us that $(\AJ_{X/\F_q}^{(1)})^*\E_{\calL^{(1)}} \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(\Bun_{\GL_1}^{(1)}(X))$ corresponds to $\calL \in \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X)$. This implies that:
+                            $$\cev{h}_X^*\E_{\calL^{(d + 1)}} \cong \calL \boxtimes \E^{\calL^{(d)}}$$
+                        which tells us that $\E$ is a Hecke eigensheaf with eigenvalue $\calL$.
+                    \end{itemize}
                 \end{proof}
             \begin{convention}[Weil Uniformisation] \label{conv: weil_uniformisation}
                 For theorem \ref{theorem: hecke_characters_from_hecke_eigensheaves}, suppose that we are willing to take the special case of the Weil Uniformisation Theorem for $\Bun_{\GL_1}(X)$ (cf. \cite[Proposition 3.8]{tendler_2015_geometric_class_field_theory}\footnote{For details on Weil Uniformisation for $\Bun_G(X)$, with $G$ being a general connected reductive group, see \cite{sorger_BunG_uniformisation}}) for granted, which states that there is a group isomorphism $\Bun_{\GL_1}(X)(\F_q) \cong \GL_1(K_X)\backslash\GL_1(\A_X)/\GL_1(\bbO_{X})$.
@@ -416,7 +440,7 @@
                     $$\trace(\Frob_{\Bun_{\GL_1}(X)}^* \mid -): \Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X)) \to \scrA_{\GL_1}(X)$$
             \end{theorem}
                 \begin{proof}
-                    
+                    Straightforward from lemma \ref{lemma: hecke_eigensheaves_are_character_sheaves}.
                 \end{proof}
             
             \begin{theorem}[Artin Reciprocity for global function fields] \label{theorem: artin_reciprocity_for_global_function_fields}
