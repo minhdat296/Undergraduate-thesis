@@ -1,0 +1,129 @@
+\documentclass{beamer}
+
+\input{commands.tex}
+
+%Information to be included in the title page:
+\title{Geometric unramified abelian class field theory for curves\\and\\The Langlands Correspondence for $\GL_1$ over global function fields over finite fields}
+\author{Dat Minh Ha (UCID: 30067407)}
+\institute{Department of Mathematics and Statistics\\University of Calgary}
+\date{March 23rd 2022}
+
+\begin{document}
+
+    \frame{\titlepage}
+    
+    \begin{frame}
+        \frametitle{The Langlands Correspondence ?}
+        
+        The Langlands Correspondence is a reciprocity law in the spirit of those of Gau{\ss}, Legendre, Kronecker-Weber, and then finally E. Artin. In short, it asserts that in studying roots of polynomials via Galois groups, one is actually looking at certain highly symmetric functions, known as automorphic forms.
+        $$\left\{\text{Galois representations}\right\} \cong \left\{\text{Automorphic forms}\right\}$$
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Galois representations ?}
+        
+        \begin{itemize}
+            \item Groups encode symmetries of spaces, so are best understood via their actions. We understand linear algebra over fields very well, so a natural method for studying groups $G$ is looking at their \textbf{linear representations}, i.e. homomorphisms:
+                $$\rho: G \to \Aut(V)$$
+            \item Infinite-dimensional vector spaces are nasty, so we restrict our attention to finite-dimensional representations.
+            \item (Absolute) Galois groups are no different, so one studies Galois groups via so-called \textbf{Galois representations}:
+                $$\rho: \Gal(\bar{K}/K) \to \GL_n(E)$$
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Back to the Langlands Correspondence ...}
+        
+        \begin{itemize}
+            \item The Modularity Theorem (over $\Q$)\footnote{Which implies Fermat's Last Theorem!} is a special case of the Langlands Correspondence, namely the case concerning $2$-dimensional representations of $\Gal(\bar{\Q}/\Q)$. It tells us that to every elliptic curve one can associate a unique modular form of a certain kind\footnote{Which can be thought of as a special kind of automorphic form.}. The Langlands Programme therefore benefits the study of elliptic curves for say, cryptography, greatly.
+            \item We are interested in something very similar (at least in spirit), albeit much simpler.
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Function fields}
+        
+        Let $k$ be any field. Then there is an equivalence of categories:
+            $$\{\text{Field extensions $K/k$ of ft. and $k$-alg. hom.}\}^{\op}$$
+            $$\cong$$
+            $$\{\text{Varieties $X/k$ and dominant rational maps}\}$$
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Function fields}
+        
+        For curves, it's even better:
+            $$\{\text{Field extensions $K/k$ of $\trdeg = 1$ and $k$-alg. hom.}\}^{\op}$$
+            $$\cong$$
+            $$\{\text{Curves $X/k$ and dominant rational maps}\}$$
+            $$\cong$$
+            $$\{\text{Non-singular projective curves $X/k$ and dominant rational maps}\}$$
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Function fields}
+        
+        \begin{itemize}
+            \item Understanding (smooth) curves $X$ will help us understand algebraic extensions of the \textbf{global function field} $K_X \cong k(t)$. E.g. the function field of $\P^1_k$ (for any field $k$) is actually $k(t)$ itself.
+            \item When we say that a field $K$ is \textbf{global}, we roughly mean that it behaves similarly to fields like $\Q$, $\F_p(t)$, or $\bbC(t)$, in the sense that for each of them, there exists a set of ultranorms $v$, such that the topological completions with respect to all of them are locally compact Hausdorff non-discrete topological fields such as $\Q_p$, $\F_p(\!(t)\!)$, or $\bbC(\!(t)\!)$.
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{The \'etale fundamental group}
+        
+        \begin{itemize}
+            \item But we are actually interested in the absolute Galois group $\Gal(\bar{K}/K)$ of global fields $K$. 
+            \item The \textbf{\'etale fundamental group} is a gadget that, when given a suitably nice algebraic variety $X$ (e.g. a geometrically connected smooth projective curve), shall return the absolute Galois group of its global function field $K_X$. We denote it by $\pi_1(X_{\fet})$.
+            \item For technical reasons, we care more about the \textbf{abelianised} \'etale fundamental group $\pi_1^{\ab}(X_{\fet})$, which can be thought of as the Galois group of the maximal abelian extension of $K_X$.
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{The \'etale fundamental group}
+        
+        Miraculously\footnote{Although technically this is actually by design.}, the \'etale fundamental group behaves remarkably similar to the usual topological fundamental group\footnote{In fact, the two can even be related in very precise manners, but we shall not get into this.}. In particular, we have the following two technical results:
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{The \'etale fundamental group}
+        
+        (Normal) subgroups of finite indices of $\pi_1(X_{\fet})$ are in bijection with finite\footnote{hence algebraic} (Galois) extensions of $K_X$.
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{The \'etale fundamental group}
+        
+        \begin{itemize}
+            \item \textit{Finite-dimensional} continuous $\bar{\Q}_{\ell}$-linear representations of $\pi_1(X_{\fet})$ form a category that is equivalent to that of \textit{finite-rank} so-called \textbf{$\ell$-adic local systems} on $X$ (best thought of as a categorification of the notion of locally constant vector-valued functions). 
+                $$\Rep^{\cont, \fin}_{\bar{\Q}_{\ell}}(\pi_1(X_{\fet})) \cong \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, \fin}(X)$$
+            \item We are particularly interested in $1$-dimensional representations, so-called \textbf{characters}, for which we can say more: continuous $\ell$-adic characters of $\pi_1^{\ab}(X)$ forms a category that is equivalent to that of rank-$1$ $\ell$-adic local systems on $X$. These are much easier to analyse, since $\GL_n$ is only abelian when $n = 1$.
+                $$\Rep^{\cont, 1}_{\bar{\Q}_{\ell}}(\pi_1(X_{\fet})) \cong \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X)$$
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Automorphic forms}
+        
+        On the other side of the Langlands Correspondence are automorphic forms. In order to discuss these entities, however, we will first need to fix some notations. 
+        
+        For any global field $K$, one denotes by $\bbO_K$ its ring of integers (elements of norm $\leq 1$ with respect to every ultranorm $v$ of $K$\footnote{One might think of them as points in the corresponding closed unit discs.}) and by $\A_K$ its ring of (rational) ad\`eles.
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Automorphic forms}
+        
+        Then, one can speak of \textbf{automorphic forms} attached to $\GL_n$, which are integrable functions on $\GL_n(K)\backslash\GL_n(\A_K)/\GL_n(\bbO_K)$, subjected to certain growth conditions.
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Hecke characters and Hecke eigensheaves}
+        
+        These functions - much like Galois representations - also admit a categoried analogue, namely that of ($\ell$-adic) \textbf{Hecke eigensheaves}. 
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{}
+    \end{frame}
+
+\end{document}
