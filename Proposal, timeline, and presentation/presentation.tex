@@ -1,6 +1,8 @@
-\documentclass{beamer}
+\documentclass[professionalfonts]{beamer}
+
 \usepackage{tikz-cd}
 \usepackage{tikz}
+
 \input{commands.tex}
 
 %Information to be included in the title page:
@@ -32,7 +34,10 @@
     \end{frame}
     
     \begin{frame}{The plan}
-        I shall attempt to explain the ingredients at play, as well as how this correspondence relates to my project.
+        \begin{itemize}
+            \item I shall attempt to explain the ingredients at play, as well as how this correspondence relates to my project.
+            \item For the sake of time and for the sake of not invoking any categorical and/or algebro-geometric notions such as sheaves and schemes, I unfortunately will \textit{not} be able to say too much about what I have actually done, but rather, only why I care about this problem. However, I will be very happy to explain things in details to anyone interested later on.
+        \end{itemize}
     \end{frame}
     
     \begin{frame}{Galois representations ?}
@@ -45,14 +50,6 @@
         \end{itemize}
     \end{frame}
     
-    \begin{frame}{Back to the Langlands Correspondence ...}
-        
-        \begin{itemize}
-            \item The Modularity Theorem (over $\Q$)\footnote{Which implies Fermat's Last Theorem!} is a special case of the Langlands Correspondence, namely the case concerning $2$-dimensional representations of $\Gal(\bar{\Q}/\Q)$. It tells us that to every elliptic curve one can associate a unique modular form of a certain kind\footnote{Which can be thought of as a special kind of automorphic form.}. The Langlands Programme therefore benefits the study of elliptic curves for say, cryptography, greatly.
-            \item We are interested in something very similar (at least in spirit), albeit much simpler.
-        \end{itemize}
-    \end{frame}
-    
     \begin{frame}{Automorphic forms}
         On the other side of the Langlands Correspondence are \textbf{automorphic forms}. These are - in rough terms - functions of great arithmetic significance and close ties to entities such as Eisenstein series and L-functions (of which $\zeta$-functions are special cases), and as such are of interest when one tries to answer questions regarding patterns that prime numbers as a whole exhibit, such as analogues of the Riemann Hypothesis/Conjecture.
     \end{frame}
@@ -62,25 +59,13 @@
     \end{frame}
     
     \begin{frame}{Function fields}
-        Let $k$ be any field. Then there is an equivalence of categories:
-            $$\{\text{Field extensions $K/k$ of ft. and $k$-alg. hom.}\}^{\op}$$
-            $$\cong$$
-            $$\{\text{Varieties $X/k$ and dominant rational maps}\}$$
-    \end{frame}
-    
-    \begin{frame}{Function fields}
-        For curves, it's even better:
-            $$\{\text{Field extensions $K/k$ of $\trdeg = 1$ and $k$-alg. hom.}\}^{\op}$$
-            $$\cong$$
-            $$\{\text{Curves $X/k$ and dominant rational maps}\}$$
-            $$\cong$$
-            $$\{\text{Non-singular projective curves $X/k$ and dominant rational maps}\}$$
-    \end{frame}
-    
-    \begin{frame}{Function fields}
         \begin{itemize}
-            \item Understanding (smooth) curves $X$ will help us understand algebraic extensions of the \textbf{global function field} $K_X$. E.g. the function field of $\P^1_k$ (for any field $k$) is actually $k(t)$ itself.
-            \item When we say that a field $K$ is \textbf{global}, we roughly mean that it behaves similarly to fields like $\Q$, $\F_p(t)$, or $\bbC(t)$, in the sense that for each of them, there exists a set of ultranorms $v$, such that the topological completions with respect to all of them are locally compact Hausdorff non-discrete topological fields such as $\R, \Q_p$, $\F_p(\!(t)\!)$, or $\bbC(\!(t)\!)$.
+            \item Let $k$ be any field. Then there is an equivalence of categories:
+                $$\{\text{Field extensions $K/k$ of ft. and $k$-alg. hom.}\}^{\op}$$
+                $$\cong$$
+                $$\{\text{Varieties $X/k$ and dominant rational maps}\}$$
+            As such, every algebraic varieties $X$ has a so-called \textbf{function field} - denoted by $K_X$ - an algebriac analogue of the field of globally meromorphic/rational functions of a complex manifold\footnote{For manifold coming from varieties over $\bbC$, such as $\P^1_{\bbC}$, these two notions actually coincide.}.
+            \item These function fields are \textbf{global}, in the sense that, at each point $x \in X$, there exists a localisation of $K_X$ (e.g. algebraic extensions of $k(\!(t)\!)$), analogous to the field of functions that are holomorphic/regular at the point $x \in X$ (that is, had $X$ been a complex manifold). 
         \end{itemize}
     \end{frame}
     
@@ -97,6 +82,10 @@
             \item Obtaining the Global Artin Reciproty Law in the traditional manner (e.g. via Galois cohomology) is no small feat, and while the result is very impressive and important, it is not at all obvious how we might make the jump from $\GL_1$ to matrix groups of higher dimensions.
             \item To that end, we construct a "toy model" of the Reciprocity Law - much like how one might construct mathematical models in order to derive predictions in the natural sciences - via a process known as "categorification".
         \end{itemize}
+    \end{frame}
+    
+    \begin{frame}{Geometric vs. function-theoretic Langlands Correspodences}
+        The geometric version of the Langlands Correspondence is supposedly easier to state and prove, despite the complicated language that it is stated in. 
     \end{frame}
     
     \begin{frame}{Geometric vs. function-theoretic Langlands Correspodences}

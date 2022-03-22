@@ -159,7 +159,14 @@
                 If we now take $d := 2g - 1 - n$, we will get the following equation on $\Spec k \x \Bun_{\GL_1}^{2g - 1 - n}(X)$, which yields us a \textit{unique} Hecke eigensheaf $\E_{\calL^{(2g - 1 - n)}}$ on $\bigcup_{d \geq 2g - 1 - n} \Bun_{\GL_1}^{(d)}(X)$ from $\E_{\calL^{(2g - 1)}}$ (which we have already):
                     $$\E_{\calL^{(2g - 1 - n)}} \cong \bigotimes_{i = 1}^n \calL_{x_i}^{\tensor (-1)} \boxtimes (\cev{h}_{x_1}^* \circ ... \circ \cev{h}_{x_n}^*)(\E_{\calL^{(2g - 1)}})$$
             \end{proof}
-            
+        
+        \begin{remark}[Pullbacks, pushforwards, and tensor products] \label{remark: pullbacks_pushforwards_and_tensor_products}
+            We are going to be liberally employing the commutativity of pullbacks and pushforwards of abelian sheaves with (external) tensor products in the proofs of theorem \ref{theorem: unramified_abelian_geometric_class_field_theory} and results that follow, so it shall be worthwhile to recall the details of these commutativity identities. To that end, let $S$ be a base scheme, and let $f: X' \to X$ and $g: Y' \to Y$ be morphisms of $S$-schemes. In addition, denote by $\Shv$ an abelian sheaf theory, by which we mean one such that for all $S$-schemes, the category $\Shv(Z)$ is abelian (e.g. $\ell$-adic sheaves or quasi-coherent sheaves).
+            \begin{itemize}
+                \item \textbf{(Pullbacks and tensor products):} Recall that for all morphisms of $S$-schemes $\theta: Z' \to Z$, the pullback functor $\theta^*: \Shv(Z) \to \Shv(Z')$ commutes with tensor products of objects in $\Shv(Z)$. 
+                \item \textbf{(Pushforwards and tensor products):}
+            \end{itemize}
+        \end{remark}
         \begin{theorem}[Unramified abelian geometric class field theory] \label{theorem: unramified_abelian_geometric_class_field_theory}
             There exists a canonical monoidal equivalence between the groupoid of rank-$1$ $\ell$-adic local systems on $X$ and the groupoid of ($\ell$-adic) Hecke eigensheaves of rank $1$ on $\Bun_{\GL_1}(X)$:
                 $$\Autom: \Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X) \to \Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))$$
@@ -315,7 +322,12 @@
                     $$\trace(\Frob_H^* \mid -): \Char\Shv_{\underline{\bar{\Q}_{\ell}}}(H) \to \Rep_{\bar{\Q}_{\ell}}^1(H(\F_q))$$
             \end{lemma}
             \begin{lemma}[Grothendieck's Sheaf-Function Correspondence for \'etale commutative group schemes] \label{lemma: sheaf_function_correspondence_for_etale_commutative_group_schemes}
-                \cite[Proposition 2.7]{cunningham_roe_function_sheaf_dictionary_quasi_characters_p_adic_tori} 
+                \noindent
+                \begin{enumerate}
+                    \item \textbf{(Surjectivity and splitting):} \cite[Proposition 2.6]{cunningham_roe_function_sheaf_dictionary_quasi_characters_p_adic_tori} If $Q$ is an \'etale commutative algebraic group over $\Spec \F_q$ then there will be a splitting surjective group homomrphism given by taking traces of Frobenii as follows:
+                        $$\trace(\Frob_Q^* \mid -): \Char\Shv_{\underline{\bar{\Q}_{\ell}}}(Q) \to \Rep_{\bar{\Q}_{\ell}}^1(Q(\F_q))$$
+                    \item 
+                \end{enumerate}
             \end{lemma}
                 \begin{proof}
                     
@@ -342,7 +354,7 @@
                             	\arrow["{\trace(\Frob_{G^0}^* \mid -)}", from=1-4, to=2-4]
                             \end{tikzcd}
                         $$
-                    Now, because $G^0$ is a connected commutative algebraic group, we get via lemma \ref{lemma: sheaf_function_correspondence_for_connected_algebraic_groups} to see that $\trace(\Frob_{G^0}^* \mid -)$ must be an isomorphism; at the same time, $\trace(\Frob_{\pi_0(G)^* \mid -})$ is surjective due to $\pi_0(G)$ being \'etale as a commutative algebraic group over $\Spec \F_q$ (cf. \cite[Proposition 2.6]{cunningham_roe_function_sheaf_dictionary_quasi_characters_p_adic_tori}). An application of the Snake Lemma then yields us the following red long exact sequence in $\Ab$, from which one clearly sees that the cokernel of $\trace(\Frob_G^* \mid -)$ is trivial and the map is therefore surjective as claimed:
+                    Now, because $G^0$ is a connected commutative algebraic group, we get via lemma \ref{lemma: sheaf_function_correspondence_for_connected_algebraic_groups} to see that $\trace(\Frob_{G^0}^* \mid -)$ must be an isomorphism; at the same time, $\trace(\Frob_{\pi_0(G)^* \mid -})$ is surjective due to $\pi_0(G)$ being \'etale as a commutative algebraic group over $\Spec \F_q$ (cf. lemma \ref{lemma: sheaf_function_correspondence_for_etale_commutative_group_schemes}). An application of the Snake Lemma then yields us the following red long exact sequence in $\Ab$, from which one clearly sees that the cokernel of $\trace(\Frob_G^* \mid -)$ is trivial and the map is therefore surjective as claimed:
                         $$
                             \begin{tikzcd}
                             	{\textcolor{red}{0}} & {\textcolor{red}{\ker \trace(\Frob_{\pi_0(G)}^* \mid -)}} & {\textcolor{red}{\ker \trace(\Frob_G^* \mid -)}} & {\textcolor{red}{0}} \\
