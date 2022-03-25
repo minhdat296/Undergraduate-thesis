@@ -7,7 +7,7 @@
 
 %Information to be included in the title page:
 \title{Geometric unramified abelian class field theory for curves\\and\\The Langlands Correspondence for $\GL_1$ over global function fields over finite fields}
-\author{Dat Minh Ha (UCID: 30067407)}
+\author{Dat Minh Ha (UCID: 30067407)\\Supervisor: Dr. Jerrod M. Smith}
 \institute{Department of Mathematics and Statistics\\University of Calgary}
 \date{March 23rd 2022}
 
@@ -56,6 +56,13 @@
     
     \begin{frame}{Automorphic forms}
          We focus on automorphic forms instead of L-functions (and so on) because doing so gives us access to the powerful tools of harmonic analysis (Fourier analysis for topologically groups\footnote{Hopefully, we will be able to figure out what happens over non-abelian topological groups like $\GL_n$!} more general than the circle group $\GL_1$). 
+         
+         \begin{figure}[H]
+            \centering
+            \includegraphics[width=5cm,height=5cm,keepaspectratio]{Proposal, timeline, and presentation/automorphic_forms.png}
+            \caption{A domain for automorphic forms}
+            \label{fig: automorphic_forms}
+        \end{figure}
     \end{frame}
     
     \begin{frame}{Function fields}
@@ -80,12 +87,8 @@
     \begin{frame}{What is actually being done ?}
         \begin{itemize}
             \item Obtaining the Global Artin Reciproty Law in the traditional manner (e.g. via Galois cohomology) is no small feat, and while the result is very impressive and important, it is not at all obvious how we might make the jump from $\GL_1$ to matrix groups of higher dimensions.
-            \item To that end, we construct a "toy model" of the Reciprocity Law - much like how one might construct mathematical models in order to derive predictions in the natural sciences - via a process known as "categorification".
+            \item To that end, we construct a "toy model" of the Reciprocity Law via a process known as "categorification". This is supposed to make the statement of the Reciprocity Law more intuitive.
         \end{itemize}
-    \end{frame}
-    
-    \begin{frame}{Geometric vs. function-theoretic Langlands Correspodences}
-        The geometric version of the Langlands Correspondence is supposedly easier to state and prove, despite the complicated language that it is stated in. 
     \end{frame}
     
     \begin{frame}{Geometric vs. function-theoretic Langlands Correspodences}
@@ -99,6 +102,22 @@
                 $$\cong$$
                 $$\left\{\text{Autmorphic forms attached to $\GL_1(K)$}\right\}$$
         \end{itemize}
+    \end{frame}
+    
+    \begin{frame}{Geometric vs. function-theoretic Langlands Correspodences}
+        \begin{itemize}
+            \item Our geometric version is not perfect. For instance, we have a poor understanding of the situation when $K$ is instead a global field of characteristic $0$, such as $\Q$ or $\bbC(t)$. Even the $\GL_2$ case is extremely complicated (with the classical version being the Modularity Theorem!) and not likely to be proven for another while, and we don't even know what the $\GL_3$ case might look like!
+            \item However, for global fields of positive characteristics, the geometric Langlands Correspondence is known for every $\GL_n$ (Lafforgue's Theorem).
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}{Thank you for your attention!}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=10cm,height=10cm,keepaspectratio]{Proposal, timeline, and presentation/weight2cut.png}
+            \caption{Ceci n'est pas une pipe ?}
+            \label{fig: arithmetic_naan}
+        \end{figure}
     \end{frame}
 
 \end{document}

@@ -1,5 +1,7 @@
 \documentclass[a4paper, 11pt]{article}
 
+%\usepackage[center]{titlesec}
+
 \usepackage{amsfonts, amssymb, amsmath, amsthm}
 
 \usepackage{pdfrender, xcolor}
@@ -61,6 +63,8 @@
 %\usepackage{amsthm}
 \renewcommand\qedsymbol{$\blacksquare$}
 \usepackage{tikz-cd}
+\tikzcdset{scale cd/.style={every label/.append style={scale=#1},
+    cells={nodes={scale=#1}}}}
 \usepackage{tikz}
 \usepackage{setspace}
 \usepackage[version=3]{mhchem}
@@ -105,7 +109,15 @@
 \AtEndDocument{\addtocontents{tdo}{\string\Endoftdo}}
 \makeatother
 
+\usepackage{fancyhdr}
 \usepackage{lipsum}
+
+\pagestyle{fancy}
+\headheight=14pt
+
+\fancyhf{}
+
+\thispagestyle{fancy}
 
 %   Reduce the margin of the summary:
 \def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
