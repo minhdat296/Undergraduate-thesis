@@ -452,28 +452,10 @@
             \begin{theorem}[Artin Reciprocity for global function fields over finite fields] \label{theorem: artin_reciprocity_for_function_fields_over_finite_fields}
                 \cite[Theorem VI.5.5]{neukirch_2010_algebraic_number_theory} There is a group isomorphism, called the \textbf{Artin map}:
                     $$\Artin_X: \Rep^{\cont, 1}_{\bar{\Q}_{\ell}}(\pi_1(X_{\fet})) \to \scrA_{\GL_1}(X, \bar{\Q}_{\ell})$$
-                such that $\Artin_X(\chi(\Frob_x)) = \Artin_X(\chi)([x])$ for any $\ell$-adic character $\chi \in \Rep^{\cont, 1}_{\bar{\Q}_{\ell}}(\pi_1(X_{\fet}))$ and any closed point $x \in |X|$ (here, $[x]$ denotes the line bundle corresponding to the effective divisor $[x] \in \Div_{X/\F_q}^{\eff, (1)}$; cf. proposition \ref{prop: symmetric_powers_of_curves_parametrise_divisors}).
+                such that $\chi(\Frob_x) = \Artin_X(\chi)(x)$ for any $\ell$-adic character $\chi \in \Rep^{\cont, 1}_{\bar{\Q}_{\ell}}(\pi_1(X_{\fet}))$ and any closed point $x \in |X|$ (viewed as the line bundle corresponding to the effective divisor $[x] \in \Div_{X/\F_q}^{\eff, (1)}$; cf. proposition \ref{prop: symmetric_powers_of_curves_parametrise_divisors}).
             \end{theorem}
                 \begin{proof}
-                    Simply consider the following commutative diagram, wherein all the arrows are monoidal equivalences:
-                        $$
-                            \begin{tikzcd}
-                            	{\Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(\Bun_{\GL_1}^{(1)}(X))} && {\Eig\Shv_{\underline{\bar{\Q}_{\ell}}}^1(\Bun_{\GL_1}(X))} \\
-                            	{\Rep^{\cont, 1}_{\bar{\Q}_{\ell}}(\pi_1((\Bun_{\GL_1}^{(1)}(X))_{\fet}))} && {\scrA_{\GL_1}(X, \bar{\Q}_{\ell})} \\
-                            	& {\Shv_{\underline{\bar{\Q}_{\ell}}}^{\ad, 1}(X)} \\
-                            	& {\Rep^{\cont, 1}_{\bar{\Q}_{\ell}}(\pi_1(X_{\fet}))}
-                            	\arrow["{\Autom_X}"', from=3-2, to=1-3]
-                            	\arrow[from=3-2, to=4-2]
-                            	\arrow["{{\text{Proposition \ref{prop: hecke_characters_from_hecke_eigensheaves}}}}", from=1-3, to=2-3]
-                            	\arrow["{\Artin_X}"', dashed, from=4-2, to=2-3]
-                            	\arrow["{(\AJ_{X/\F_q}^{(1)})^*}"', from=2-1, to=4-2]
-                            	\arrow["{(\AJ_{X/\F_q}^{(1)})^*}"', from=1-1, to=3-2]
-                            	\arrow[from=1-1, to=2-1]
-                            	\arrow["{[\Autom_X]}", dashed, from=1-1, to=1-3]
-                            	\arrow["{[\Artin_X]}", dashed, from=2-1, to=2-3]
-                            \end{tikzcd}             
-                        $$
-                    
+                    The Artin map $\Artin_X: \Rep^{\cont, 1}_{\bar{\Q}_{\ell}}(\pi_1(X_{\fet})) \to \scrA_{\GL_1}(X, \bar{\Q}_{\ell})$ exists as an obvious consequence of theorem \ref{prop: hecke_characters_from_hecke_eigensheaves} and corollary \ref{coro: geometric_langlands_for_GL1}. 
                 \end{proof}
                 
             \begin{lemma}[Abelianising continuous characters] \label{lemma: abelianising_continuous_characters}
