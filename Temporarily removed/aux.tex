@@ -143,3 +143,11 @@ Furthermore, if $\pi$ is a profinite group\footnote{Which need not be strictly p
             \begin{example}[\'Etale fundamental group of the affine line] \label{example: etale_fundamental_group_of_the_affine_line}
                 If $k$ is a field then $\pi_1((\A^1_k)_{\fet}) \cong \Gal(\bar{k}/k)$ when $\chara k = 0$, and hence $\pi_1((\A^1_k)_{\fet}) \cong 1$ if $k$ is furthermore algebraically closed. If however $\chara k > 0$, then $\pi_1((\A^1_k)_{\fet})$ can fail to be trivial even when $k$ is algebraically closed. For now, see \cite[Theorem 6.13, Remark 6.23, and Exercises 6.28 and 6.29]{lenstra_1985_galois_theory_for_schemes}.
             \end{example}
+            
+    \begin{remark}[Pullbacks, pushforwards, and tensor products] \label{remark: pullbacks_pushforwards_and_tensor_products}
+            We are going to be liberally employing the commutativity of pullbacks and pushforwards of abelian sheaves with (external) tensor products in the proofs of theorem \ref{theorem: unramified_abelian_geometric_class_field_theory} and results that follow, so it shall be worthwhile to recall the details of these commutativity identities. To that end, let $S$ be a base scheme, and let $f: X' \to X$ and $g: Y' \to Y$ be morphisms of $S$-schemes. In addition, denote by $\Shv$ an abelian sheaf theory, by which we mean one such that for all $S$-schemes, the category $\Shv(Z)$ is abelian (e.g. $\ell$-adic sheaves or quasi-coherent sheaves).
+            \begin{itemize}
+                \item \textbf{(Pullbacks and tensor products):} Recall that for all morphisms of $S$-schemes $\theta: Z' \to Z$, the pullback functor $\theta^*: \Shv(Z) \to \Shv(Z')$ commutes with tensor products of objects in $\Shv(Z)$. 
+                \item \textbf{(Pushforwards and tensor products):}
+            \end{itemize}
+        \end{remark}
