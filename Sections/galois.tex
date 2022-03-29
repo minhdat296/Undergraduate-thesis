@@ -147,9 +147,36 @@
             \end{proposition}
     
     \subsection{\texorpdfstring{$\ell$}{}-adic sheaves and Grothendieck's Galois Theory}
-        Let us firstly collect certain useful facts about $\ell$-adic sheaves on a suitable nice scheme. In particular, we are interested in how categories of $\ell$-adic local systems are constructed as well as whether or not the category of $\ell$-adic local systems over a suitably reasonable scheme (cf. convention \ref{conv: l_adic_sheaves_conventions}) is compatible with Grothendieck's Six Functor Formalism.
+        Let us firstly collect certain useful facts about $\ell$-adic sheaves on a suitable nice scheme. In particular, we are interested in how categories of $\ell$-adic local systems are constructed as well as whether or not the category of $\ell$-adic local systems over a suitably reasonable scheme (cf. convention \ref{conv: l_adic_sheaves_conventions}) is compatible with Grothendieck's Six Functor Formalism. Due to spatial constraints, there shall not be any proof in this subsection; we shall, however, provide precise references.
         
-        \subsubsection{\texorpdfstring{$\ell$}{}-adic sheaves and the Monodromy Correspondence}
-            \begin{convention} \label{conv: condensed_coefficient_ring_for_adic_sheaves}
-                For now, let $X$ be a scheme over a field $k$ with structural morphism $f: X \to \Spec k$ and let $\Lambda$ shall be a commutative condensed ring (i.e. a sheaf of commutative rings over the pro-\'etale site of $\Spec k$). 
+        \subsubsection{Artin-Rees categories and adic objects}
+            We begin with the notion of \textbf{Artin-Rees categories}.
+            \begin{definition}[Artin-Rees categories] \label{def: artin_rees_categories}
+                The \textbf{Artin-Rees category} associated to an abelian category $\calA$ is the full subcategory of $\Pro(\calA)$ spanned by cofiltered diagrams $\{M_n\}_{n \in \Z}$; we denote it by $\AR(\calA)$. Of particular interest are the so-called \textbf{null systems}, which are objects $\{M_n\}_{n \in \Z} \in \AR(\calA)$ such that there exists $\nu \in \N$ so that for all $n \in \Z$ the morphism $M_n \to M_{n + \nu}$ is zero.
+            \end{definition}
+            \begin{proposition}[Artin-Rees categories are abelian] \label{prop: artin_rees_categories_are_abelian}
+                For any abelian category $\calA$, the associated Artin-Rees category $\AR(\calA)$ is also abelian, with zero objects being the null systems.
+            \end{proposition}
+            \begin{corollary}[AR-isomorphisms] \label{coro: AR_isomorphisms}
+                For any abelian category $\calA$, an isomorphism in $\AR(\calA)$ (henceforth referred to as an \textbf{AR-isomorphism}) is a morphism in $\Pro(\calA)$ whose kernel and cokernel are null.
+            \end{corollary}
+            \begin{proposition}[Artin-Rees categories are linear] \label{prop: artin_rees_categories_are_linear}
+                For all rings $\Lambda$, if a given abelian category $\calA$ is $\Lambda$-linear (i.e. if hom-sets of $\calA$ are $\Lambda$-modules) for some commutative ring $\Lambda$ (e.g. $\calA \cong \Lambda\mod$) then the associated Artin-Rees category $\AR(\calA)$ will also be $\Lambda$-linear.
+            \end{proposition}
+            
+            \begin{convention}[The setting for adic sheaves] \label{conv: l_adic_sheaves_conventions}
+                For our purposes, $\calX$ shall be a scheme that is locally of finite type\footnote{Althought $\calX$ might actually be an algebraic stack of finite type over $S$; for details, see \cite{laszlo_olsson_adic_sheaves_on_artin_stacks_1} and \cite{laszlo_olsson_adic_sheaves_on_artin_stacks_2}. It should also be noted that in \cite[Subsection 1.4]{conrad_etale_cohomology}, it was only required that $\calX$ would be Noetherian, which is not sufficient for us, as $\Bun_{\GL_1}(X)$ is merely locally of finite type, and hence only locally Noetherian \textit{a priori}.} over a base scheme $S$, which we take to be is affine, regular, Noetherian\footnote{Note that this implies that $\calX$ is locally Noetherian (cf. \cite[\href{https://stacks.math.columbia.edu/tag/01T6}{Tag 01T6}]{stacks}).} and of dimension $\leq 1$, and of characteristic $p \geq 0$ (e.g. $\calX \cong \Bun_G(X)$, with $X$ as in convention \ref{conv: automorphic_side_conventions} and $G$ some connected reductive group); moreoever, we would like to work under the assumption that every finite-type $S$-scheme $T$ is also of finite cohomological dimension. In addition, $\Lambda$ shall be a Gorenstein local ring of dimension $0$ with maximal ideal $\m$ and residue characteristic $\ell \not = p$ (e.g. $\Lambda \cong \Z_{\ell}$).
             \end{convention}
+            \begin{definition}[$\m$-adic sheaves] \label{def: m_adic_sheaves}
+                An \textbf{$\m$-adic sheaf} (also called a \textbf{$\Lambda$-sheaf}) on $\calX$ is a cofiltered diagram $\calF_{\bullet} := \{\calF_n\}_{n \geq 1}$ of sheaves of $\Lambda/\m^n$-modules such that the canonical maps $\calF_{n + 1}/\m^{n + 1} \to \calF_n$ are isomorphisms of sheaves of $\Lambda/\m^n$-modules for all $n \geq 1$. It is said to be \textbf{constructible} if its components $\calF_n \in \Lambda/\m^n\mod(\calX_{\et})$ are all \href{https://stacks.math.columbia.edu/tag/03RW}{\underline{constructible}}.
+            \end{definition}
+            \begin{definition}[Lisse sheaves] \label{def: lisse_sheaves}
+                A constructible $\m$-adic sheaf $\calF_{\bullet}$ on $\calX$ is said to be lisse if its components $\calF_n$ are locally constant sheaves of $\Lambda/\m^n$-modules.
+            \end{definition}
+            
+            \begin{theorem}[Galois representations are lisse $\bar{\Q}_{\ell}$-sheaves] \label{theorem: galois_representations_are_lisse_sheaves}
+                \cite[Theorem 1.4.5.7]{conrad_etale_cohomology} Let $\calX$ be a connected Noetherian scheme and fix a geometric point $\bar{x} \in \calX$. Then, there exists a monoidal equivalence of categories $(-)_{\bar{x}}: \Shv_{\bar{\Q}_{\ell}}^{\lisse}(\calX) \to \Rep_{\bar{\Q}_{\ell}}^{\fin}(\pi_1(\calX_{\fet}))$, sending lisse $\bar{\Q}_{\ell}$-sheaves on $\calX$ to their stalks at $\bar{x}$.
+            \end{theorem}
+            
+        \subsubsection{Six functors}
+            
