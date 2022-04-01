@@ -1,0 +1,14 @@
+    \begin{lemma}[Varieties and field extensions] \label{lemma: varieties_and_field_extensions}
+            \cite[\href{https://stacks.math.columbia.edu/tag/0BXN}{Tag 0BXN}]{stacks} Let $k$ be a field. Then, $\trdeg_k K_X = \dim X$ for all varieties $X/k$, and there exists a canonical equivalence of categories as follows:
+                $$\{\text{Finite-type field extensions $K/k$ and $k$-algebra homomorphisms}\}^{\op}$$
+                $$\cong$$
+                $$\{\text{Varieties $X/k$ and \href{https://stacks.math.columbia.edu/tag/01RI}{\underline{dominant}} \href{https://stacks.math.columbia.edu/tag/01RR}{\underline{rational}} maps}\}$$
+        \end{lemma}
+        Through lemma \ref{lemma: varieties_and_field_extensions}, one obtains the following regarding the relationship between curves (i.e. algebraic varieties of dimension $1$) and their function fields (which \textit{a priori} are of transcedence degree $1$ over the ground field) with little difficulty:
+        \begin{proof}
+                The first equivalence is an obvious consequence of lemma \ref{lemma: varieties_and_field_extensions}. To show that the second equivalence holds, note firstly that there is an evident fully faithful functor from the third category to the second; we shall need to show that this functor is also essentially surjective. For this, simply recall that for each curve $X/k$, there exists a non-singular projective curve $\tilde{X}/k$ that is birational to $X/k$, namely $X^{\nu} \cup \{\infty_1, ..., \infty_n\}$, the normalisation $X^{\nu}/k$ of $X/k$ with finitely many extra points (recall also that any normal Noetherian scheme of dimension $\leq 1$ is \textit{a priori} non-singular; cf. \cite[\href{https://stacks.math.columbia.edu/tag/0BX2}{Tag 0BX2}]{stacks}).
+            \end{proof}
+            
+\begin{proof}
+                If $f: X \to Y$ is a dominant map of varieties and if $\eta_X$ and $\eta_Y$ are the unique generic points of $X$ and $Y$ (unique because varieties are integral by definition, and every integral scheme \textit{a priori} has a unique generic point), then $f(\eta_X) = \eta_Y$ per the definition of dominant morphisms. The residue field at generic points are precisely the function fields (consider the stalk of the structure sheaves at the generic points to see why this is the case), so we have obtained a map of function fields $K_Y \to K_X$. We leave the proof of finiteness up to the reader.
+            \end{proof}

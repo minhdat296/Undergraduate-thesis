@@ -5,8 +5,7 @@
             \begin{definition}[Pro-representable functors] \label{def: pro_representable_functors}
                 \noindent
                 \begin{enumerate}
-                    \item \textbf{(Pro-completions):} Following \cite[Definition 2.1]{isaksen_2001_limits_and_colimits_in_pro_categories}, the \textbf{pro-completion} $\Pro(\C)$ of a small category $\C$ is the category whose objects are cofiltered diagrams in $\C$ and whose hom-sets are given by:
-                        $$\Pro(\C)(\{X_i\}_{i \in \calI}, \{Y_j\}_{j \in \calJ}) \cong \underset{j \in \calJ}{\lim} \underset{i \in \calI}{\colim} \C(X_i, Y_j)$$
+                    \item \textbf{(Pro-completions):} Following \cite[Definition 2.1]{isaksen_2001_limits_and_colimits_in_pro_categories}, the \textbf{pro-completion} $\Pro(\C)$ of a small category $\C$ is the category whose objects are cofiltered diagrams in $\C$ and whose hom-sets are given by $\Pro(\C)(\{X_i\}_{i \in \calI}, \{Y_j\}_{j \in \calJ}) \cong \underset{j \in \calJ}{\lim} \underset{i \in \calI}{\colim} \C(X_i, Y_j)$.
                     \item \textbf{(Pro-representable functors):} Let $\C$ be a small category, and suppose that $\C$ is enriched in some small \href{http://nlab-pages.s3.us-east-2.amazonaws.com/nlab/show/closed+monoidal+category}{\underline{closed monoidal category}} $\V$ (e.g. the category of finite sets or the category of sets where the monoidal structure is given by products). Then, a $\V$-presheaf on $\C^{\op}$ is said to be \textbf{pro-representable} if and only if it is naturally isomorphic to a filtered colimit of representable presheaves on $\C^{\op}$.
                 \end{enumerate}
             \end{definition}
@@ -121,15 +120,6 @@
                 For instance, we have:
                     $$\pi_1((\P^1_k)_{\fet}) \cong \Gal(\bar{k}/k)$$
                 (since the function field of $\P^1_k$ is $k(t)$), which tells us that $\P^1_k$ is simply \'etale-connected if and only if $k$ is algebraically closed (since $\Gal(\bar{k}/k)$ is \textit{a fortiori} trivial in that case). 
-                
-                Another interesting case that one might wish to consider is that of elliptic curves; for the sake of simplicity, let us work with an elliptic curve $E$ over an algebraically closed field $k$ of characteristic $0$. First of all, because $k$ is algebraically closed, every $k$-rational point $x \in E(k)$ is automatically geometric; therefore, we might as well work with $x = 0$. Now, it can be shown without too much difficulty (cf. \cite[Proposition 5.11]{kundu_etale_fundamental_group_of_elliptic_curves}) that every scheme finite \'etale over an elliptic curve over any field is automatically Galois. Together with the definition of $\pi_1(E_{\fet})$, this implies that for any cofinal diagram $\{Y_i\}_{i \in \calI}$ in $(\Sch_{/E})_{\fet}$, one has:
-                    $$\pi_1(E_{\fet}) \cong \underset{i \in \calI}{\lim} \Aut(F_0(Y_i)) \cong \underset{i \in \calI}{\lim} \Aut(|(Y_i)_0|)$$
-                Luckily, there is a canonical choice of such a cofinal diagram, namely $\{E[n]\}_{n \in \N}$ (cf. \cite[Proposition 3.8]{kundu_etale_fundamental_group_of_elliptic_curves}), which are nothing but the fibres over $0 \in E(k)$ (i.e. kernels) of the $n$-torsion maps $[n]: E \to E$ (this is why we chose the base point $x = 0$). It is well-known that $\Aut(|E[n]|) \cong (\Z/n\Z)^{\oplus 2}$, so by taking the limit, one obtains:
-                    $$\pi_1(E_{\fet}) \cong \hat{\Z}^{\oplus 2}$$
-                Elliptic curves over (algebraically closed) fields of positive characteristics $p_0$ behave somewhat differently, but it is also difficult to compute their \'etale fundamental groups (provided). If $E$ is supersingular (i.e. if the $p_0$-torsion map $[p_0]: E \to E$ has trivial kernel) then one has the following description of the \'etale fundamental group of $E$ (cf. \cite[Proposition 5.13]{kundu_etale_fundamental_group_of_elliptic_curves}):
-                    $$\pi_1(E_{\fet}) \cong \bigoplus_{(p) \in |\Spec \Z| \setminus \{(0), (p_0)\}} \Z_p^{\oplus 2}$$
-                and otherwise, if $E$ is an ordinary elliptic curve, one has the following (cf. \cite[Proposition 5.14]{kundu_etale_fundamental_group_of_elliptic_curves}):
-                    $$\pi_1(E_{\fet}) \cong \Z_{p_0} \oplus \bigoplus_{(p) \in |\Spec \Z| \setminus \{(0), (p_0)\}} \Z_p^{\oplus 2}$$
             \end{example}
         
         \subsubsection{Properties of \'etale fundamental groups}
@@ -147,36 +137,54 @@
             \end{proposition}
     
     \subsection{\texorpdfstring{$\ell$}{}-adic sheaves and Grothendieck's Galois Theory}
-        Let us firstly collect certain useful facts about $\ell$-adic sheaves on a suitable nice scheme. In particular, we are interested in how categories of $\ell$-adic local systems are constructed as well as whether or not the category of $\ell$-adic local systems over a suitably reasonable scheme (cf. convention \ref{conv: l_adic_sheaves_conventions}) is compatible with Grothendieck's Six Functor Formalism. Due to spatial constraints, there shall not be any proof in this subsection; we shall, however, provide precise references.
-        
-        \subsubsection{Artin-Rees categories and adic objects}
-            We begin with the notion of \textbf{Artin-Rees categories}.
+        \subsubsection{Artin-Rees categories and adic sheaves}
             \begin{definition}[Artin-Rees categories] \label{def: artin_rees_categories}
-                The \textbf{Artin-Rees category} associated to an abelian category $\calA$ is the full subcategory of $\Pro(\calA)$ spanned by cofiltered diagrams $\{M_n\}_{n \in \Z}$; we denote it by $\AR(\calA)$. Of particular interest are the so-called \textbf{null systems}, which are objects $\{M_n\}_{n \in \Z} \in \AR(\calA)$ such that there exists $\nu \in \N$ so that for all $n \in \Z$ the morphism $M_n \to M_{n + \nu}$ is zero.
+                The \textbf{Artin-Rees category} associated to an abelian category $\calA$ is the full subcategory of $\Pro(\calA)$ spanned by cofiltered diagrams $\{M_n\}_{n \in \Z}$; we denote it by $\calA_{\bullet}^{\AR})$. Of particular interest are the so-called \textbf{null systems}, which are objects $\{M_n\}_{n \in \Z} \in \calA_{\bullet}^{\AR})$ such that there exists $\nu \in \N$ so that for all $n \in \Z$ the morphism $M_n \to M_{n + \nu}$ is zero.
             \end{definition}
+            
             \begin{proposition}[Artin-Rees categories are abelian] \label{prop: artin_rees_categories_are_abelian}
-                For any abelian category $\calA$, the associated Artin-Rees category $\AR(\calA)$ is also abelian, with zero objects being the null systems.
+                For any abelian category $\calA$, the associated Artin-Rees category $\calA_{\bullet}^{\AR})$ is also abelian, with zero objects being the null systems.
             \end{proposition}
             \begin{corollary}[AR-isomorphisms] \label{coro: AR_isomorphisms}
-                For any abelian category $\calA$, an isomorphism in $\AR(\calA)$ (henceforth referred to as an \textbf{AR-isomorphism}) is a morphism in $\Pro(\calA)$ whose kernel and cokernel are null.
+                For any abelian category $\calA$, an isomorphism in $\calA_{\bullet}^{\AR})$ (henceforth referred to as an \textbf{AR-isomorphism}) is a morphism in $\Pro(\calA)$ whose kernel and cokernel are null.
             \end{corollary}
-            \begin{proposition}[Artin-Rees categories are linear] \label{prop: artin_rees_categories_are_linear}
-                For all rings $\Lambda$, if a given abelian category $\calA$ is $\Lambda$-linear (i.e. if hom-sets of $\calA$ are $\Lambda$-modules) for some commutative ring $\Lambda$ (e.g. $\calA \cong \Lambda\mod$) then the associated Artin-Rees category $\AR(\calA)$ will also be $\Lambda$-linear.
+            \begin{proposition}[Artin-Rees categories are tensor categories] \label{prop: artin_rees_categories_are_linear}
+                For all rings $\Lambda$, if a given abelian category $\calA$ is (locally finite) $\Lambda$-linear\footnote{I.e. if hom-sets of $\calA$ are (locally finite) $\Lambda$-modules.} for some commutative ring $\Lambda$ (e.g. $\calA \cong \Lambda\mod$) then the associated Artin-Rees category $\calA_{\bullet}^{\AR})$ will also be a (locally finite) $\Lambda$-linear abelian category. Furthermore, if $\calA$ is (closed) symmetric monoidal then $\calA_{\bullet}^{\AR})$ will also be (closed) symmetric monoidal (with respect to term-wise tensor products). 
             \end{proposition}
+                \begin{proof}
+                    The first assertion is \cite[Example 1.4.1.6]{conrad_etale_cohomology}.
+                \end{proof}
             
             \begin{convention}[The setting for adic sheaves] \label{conv: l_adic_sheaves_conventions}
-                For our purposes, $\calX$ shall be a scheme that is locally of finite type\footnote{Althought $\calX$ might actually be an algebraic stack of finite type over $S$; for details, see \cite{laszlo_olsson_adic_sheaves_on_artin_stacks_1} and \cite{laszlo_olsson_adic_sheaves_on_artin_stacks_2}. It should also be noted that in \cite[Subsection 1.4]{conrad_etale_cohomology}, it was only required that $\calX$ would be Noetherian, which is not sufficient for us, as $\Bun_{\GL_1}(X)$ is merely locally of finite type, and hence only locally Noetherian \textit{a priori}.} over a base scheme $S$, which we take to be is affine, regular, Noetherian\footnote{Note that this implies that $\calX$ is locally Noetherian (cf. \cite[\href{https://stacks.math.columbia.edu/tag/01T6}{Tag 01T6}]{stacks}).} and of dimension $\leq 1$, and of characteristic $p \geq 0$ (e.g. $\calX \cong \Bun_G(X)$, with $X$ as in convention \ref{conv: automorphic_side_conventions} and $G$ some connected reductive group); moreoever, we would like to work under the assumption that every finite-type $S$-scheme $T$ is also of finite cohomological dimension. In addition, $\Lambda$ shall be a Gorenstein local ring of dimension $0$ with maximal ideal $\m$ and residue characteristic $\ell \not = p$ (e.g. $\Lambda \cong \Z_{\ell}$).
+                For our purposes, $\calX$ shall be a scheme that is locally of finite type\footnote{Althought $\calX$ might actually be an algebraic stack of finite type over $S$; for details, see \cite{laszlo_olsson_adic_sheaves_on_artin_stacks_1} and \cite{laszlo_olsson_adic_sheaves_on_artin_stacks_2}. It should also be noted that in \cite[Subsection 1.4]{conrad_etale_cohomology}, it was only required that $\calX$ would be Noetherian, which is not sufficient for us, as $\Bun_{\GL_1}(X)$ is merely locally of finite type, and hence only locally Noetherian \textit{a priori}.} over a base scheme $S$, which we take to be is affine, regular, Noetherian\footnote{Note that this implies that $\calX$ is locally Noetherian (cf. \cite[\href{https://stacks.math.columbia.edu/tag/01T6}{Tag 01T6}]{stacks}).} and of dimension $\leq 1$, and of characteristic $p \geq 0$; moreoever, we would like to work under the assumption that every finite-type $S$-scheme $T$ is also of finite cohomological dimension. In addition, $\Lambda$ shall be a discrete valuation ring with maximal ideal $\m$, residue characteristic $\ell \not = p$ (e.g. $\Lambda \cong \Z_{\ell}$), and fraction field $K$.
             \end{convention}
-            \begin{definition}[$\m$-adic sheaves] \label{def: m_adic_sheaves}
-                An \textbf{$\m$-adic sheaf} (also called a \textbf{$\Lambda$-sheaf}) on $\calX$ is a cofiltered diagram $\calF_{\bullet} := \{\calF_n\}_{n \geq 1}$ of sheaves of $\Lambda/\m^n$-modules such that the canonical maps $\calF_{n + 1}/\m^{n + 1} \to \calF_n$ are isomorphisms of sheaves of $\Lambda/\m^n$-modules for all $n \geq 1$. It is said to be \textbf{constructible} if its components $\calF_n \in \Lambda/\m^n\mod(\calX_{\et})$ are all \href{https://stacks.math.columbia.edu/tag/03RW}{\underline{constructible}}.
+            
+            \begin{definition}[Torsion objects in tensor categories] \label{def: torsion_objects_in_tensor_categories}
+                Let $A$ be a commutative ring, $I$ be an ideal of $A$, and $(\calA, \tensor, \1)$ be an $A$-linear clsoed monoidal category. Then, the subcategory of $\calA$ spanned by $I$-torsion objects is the one wherein the hom-sets are $\Hom_{\calA/I}(M, N) \cong A/I \tensor_A \Hom_\calA(M, N)$.
             \end{definition}
-            \begin{definition}[Lisse sheaves] \label{def: lisse_sheaves}
-                A constructible $\m$-adic sheaf $\calF_{\bullet}$ on $\calX$ is said to be lisse if its components $\calF_n$ are locally constant sheaves of $\Lambda/\m^n$-modules.
+            \begin{definition}[Adic objects and lisse objects of Artin-Rees categories] \label{def: adic_objects_and_lisse_objects_of_artin_rees_categories}
+                Consider the Artin-Rees category $\calA_{\bullet}^{\AR}$ associated to a locally finite $\Lambda$-linear closed monoidal category $(\calA, \tensor, \1)$. 
+                    \begin{enumerate}
+                        \item \textbf{(Adic objects):} $\calA_{\bullet}^{\AR}$ admits a full subcategory, denoted by $\calA_{\bullet}^{\ad}$, whose objects $\{M_n\}_{n \in \Z}$ are such that:
+                            \begin{itemize}
+                                \item $M_n \cong 0$ for all $n < 0$,
+                                \item $M_n$ is $\m^{n + 1}$-torsion for all $n \geq 0$, and
+                                \item the canonical maps $\Lambda/\m^{n + 2} \tensor_{\Lambda} \Hom_{\calA_{\bullet}^{\AR}}(M_{\bullet}, N_{\bullet}) \to \Hom_{\calA_{\bullet}^{\AR}}(M_{\bullet}, N_{\bullet})/\m^n$ are isomorphisms of $\Lambda/\m^{n + 1}$-modules for all $n \geq 0$.
+                            \end{itemize}
+                        Objects of this full subcategory are said to be \textbf{$\m$-adic}.
+                        \item \textbf{(Lisse objects):} Let $\calA_{\bullet}^{\fin}$ denote the category of Artin-Rees projective systems of finite (i.e. Artinian and Noetherian) objects of $\calA$. Objects of the category $\calA_{\bullet}^{\lisse} := \calA_{\bullet}^{\ad} \cap \calA_{\bullet}^{\fin}$ are then said to be \textbf{lisse}. 
+                    \end{enumerate}
             \end{definition}
+            \begin{proposition}[Adic categories are tensor categories] \label{prop: adic_categories_are_tensor_categories}
+                Let $\calA$ be a locally finite $\Lambda$-linear closed monoidal category. Then, we shall have a tower $\calA_{\bullet}^{\lisse} \subset \calA_{\bullet}^{\ad} \subset \calA_{\bullet}^{\AR}$ of locally finite $\Lambda$-linear closed monoidal categories, wherein the inclusions are fully faithful monoidal functors.
+            \end{proposition}
+            \begin{example}[Adic and lisse $\Lambda$-sheaves] \label{example: adic_sheaves}
+                Recall first of all that the category of constructible \'etale sheaves of $\Lambda$-modules on a Noetherian scheme (of which $\Lambda\mod^{\cons}(\calX_{\et})$ is a special case) is a locally finite $\Lambda$-linear closed monoidal category (to see why, combine \cite[Propositions 3.20 and 3.22]{behrend_l_adic_sheaves_for_algebraic_stacks}). Then, the category of adic constructible $\m$-adic sheaves on $\calX$ (also called constructible $\Lambda$-sheaves), commonly denoted by $\Shv_{\Lambda}^{\ad}(\calX)$, is nothing but $\Lambda\mod^{\cons}(\calX_{\et})_{\bullet}^{\ad}$, and the category of lisse $\m$-adic sheaves on $\calX$, denoted by $\Shv_{\Lambda}^{\lisse}(\calX)$ is simply $\Lambda\mod^{\cons}(\calX_{\et})_{\bullet}^{\lisse}$.
+            \end{example}
             
             \begin{theorem}[Galois representations are lisse $\bar{\Q}_{\ell}$-sheaves] \label{theorem: galois_representations_are_lisse_sheaves}
-                \cite[Theorem 1.4.5.7]{conrad_etale_cohomology} Let $\calX$ be a connected Noetherian scheme and fix a geometric point $\bar{x} \in \calX$. Then, there exists a monoidal equivalence of categories $(-)_{\bar{x}}: \Shv_{\bar{\Q}_{\ell}}^{\lisse}(\calX) \to \Rep_{\bar{\Q}_{\ell}}^{\fin}(\pi_1(\calX_{\fet}))$, sending lisse $\bar{\Q}_{\ell}$-sheaves on $\calX$ to their stalks at $\bar{x}$.
+                \cite[Theorem 1.4.5.7]{conrad_etale_cohomology} Let $\calX$ be a connected Noetherian scheme and fix a geometric point $\bar{x} \in \calX$. Then, there exists a monoidal equivalence given by $\calF \mapsto \calF_{\bar{x}}$, from the symmetric monoidal category $\Shv_{\bar{\Q}_{\ell}}^{\lisse}(\calX)$ of lisse $\bar{\Q}_{\ell}$-sheaves to the symmetric monoidal category $\Rep_{\bar{\Q}_{\ell}}^{\cont, \fin}(\pi_1(\calX_{\fet}))$ of finite-dimensional continuous $\bar{\Q}_{\ell}$-representations of $\pi_1(X_{\fet})$.
             \end{theorem}
             
-        \subsubsection{Six functors}
+        \subsubsection{Pullbacks and pushforwards}
             
