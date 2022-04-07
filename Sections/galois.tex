@@ -1,62 +1,7 @@
 \section{The Galois Side}
     \subsection{\'Etale fundamental groups}
         \subsubsection{Construction of \'etale fundamental groups}
-            Let us begin with an auxiliary notion, that of pro-representable functors, which is necessary for our first important construction, that of Galois categories.
-            \begin{definition}[Pro-representable functors] \label{def: pro_representable_functors}
-                \noindent
-                \begin{enumerate}
-                    \item \textbf{(Pro-completions):} Following \cite[Definition 2.1]{isaksen_2001_limits_and_colimits_in_pro_categories}, the \textbf{pro-completion} $\Pro(\C)$ of a small category $\C$ is the category whose objects are cofiltered diagrams in $\C$ and whose hom-sets are given by $\Pro(\C)(\{X_i\}_{i \in \calI}, \{Y_j\}_{j \in \calJ}) \cong \underset{j \in \calJ}{\lim} \underset{i \in \calI}{\colim} \C(X_i, Y_j)$.
-                    \item \textbf{(Pro-representable functors):} Let $\C$ be a small category, and suppose that $\C$ is enriched in some small \href{http://nlab-pages.s3.us-east-2.amazonaws.com/nlab/show/closed+monoidal+category}{\underline{closed monoidal category}} $\V$ (e.g. the category of finite sets or the category of sets where the monoidal structure is given by products). Then, a $\V$-presheaf on $\C^{\op}$ is said to be \textbf{pro-representable} if and only if it is naturally isomorphic to a filtered colimit of representable presheaves on $\C^{\op}$.
-                \end{enumerate}
-            \end{definition}
-            \begin{remark} \label{remark: pro_representable_functors_are_ind_objects}
-                Observe that due to Yoneda's Lemma, for $\C$ any small category and $\V$ any small closed monoidal category, the category of pro-representable $\V$-presheaves on $\C^{\op}$ is equivalent to $\Pro(\C)^{\op}$.
-                
-                Additionally, note that any pro-completion of a finite complete small category is necessarily cofiltered, since every finite cone must therefore admit a cone. Furthermore, pro-completions are their own maximal cofinal cofiltered subdiagram.
-            \end{remark}
-            
-            We now officially begin our discussion of Grothendieck's Galois Theory with the notion of Galois categories, axiomatic settings in which one can \say{do Galois theory}, in the sense of classifying subobjects of a given universal object by checking whether or not they remain stable under certain \say{Galois group} actions; the idea is that Galois categories behave similarly to the category of finite sets (which can be thought of as the prototypical Galois category), in the same manner that sheaf topoi resemble the category of sets. Do keep in mind that for the sake of convenience (although without loss of generality, at least for our purposes), definition \ref{def: galois_categories} is a combination of \cite[D\'efinition V.4.5.1]{SGA1} and \cite[\href{https://stacks.math.columbia.edu/tag/0BMY}{Tag 0BMY}]{stacks}; namely, we require that the fibre functor is \textit{pro-representable}, which the latter source does not.
-            \begin{definition}[Galois categories and their fundamental groups] \label{def: galois_categories}
-                \noindent
-                \begin{itemize}
-                    \item \textbf{(Galois categories):} A \textbf{Galois category} is defined via the data contained in a pair $(\calG, F)$ consisting of:
-                    \begin{itemize}
-                        \item a \textit{finitely complete and finitely cocomplete} small category $\calG$, wherein objects can all be written as finite coproducts of \textit{connected} objects\footnote{Objects $X \in \calG$ such that the copresheaf $\calG(X, -)$ preserves all coproducts.}.
-                        \item a \textit{pro-representable} functor $F: \calG \to \Fin\Sets$ - called the \textbf{fibre functor} - which we shall require to be exact and to reflect isomorphisms (i.e. for all bijections $Fx \cong Fy$ between finite sets, one has an isomorphism $x \cong y$ in $\calG$).
-                    \end{itemize}
-                    \item \textbf{(Galois objects):} An object $X$ of a Galois category $\calG$ is a \textbf{Galois object} if and only if it has no non-trivial automorphisms, i.e. if and only if $X/\Aut_{\calG}(X) \cong \pt$, with $\pt$ a terminal object of $\calG$.\footnote{Note that Galois categories must have terminal objects, as they are finitely complete and terminal objects are nothing but the limit of the empty diagram (which is finite by virtue of containing no vertices and no edges).}
-                    \item \textbf{(Galois functors):} A \textbf{Galois functor} is an exact functor $\Phi: \calG \to \calG'$ between Galois categories $(\calG, F), (\calG', F')$ which preserves connected objects and commute with the fibre functors in the following manner:
-                        $$
-                            \begin{tikzcd}
-                            	\calG && {\calG'} \\
-                            	& {\Fin\Sets}
-                            	\arrow["F"', from=1-1, to=2-2]
-                            	\arrow["{F'}", from=1-3, to=2-2]
-                            	\arrow["\Phi", from=1-1, to=1-3]
-                            \end{tikzcd}
-                        $$
-                \end{itemize}
-            \end{definition}
-            \begin{definition}[Fundamental groups of Galois categories] \label{def: fundamental_groups_of_galois_categories}
-                The \textbf{fundamental group} of a given Galois category $(\calG, F)$, denoted by $\pi_1(\calG, F)$, is defined to be the automorphism group $\Aut(\Pro(F))$.
-            \end{definition}
-            
-            \begin{proposition}[The Categorical Galois Correspondence] \label{prop: categorical_galois_correspondence}
-                For every Galois category $(\calG, F)$, there an equivalence of categories (cf. \cite[Propositions 5.2]{SGA1}):
-                    $$\calG \cong \pi_1(\calG, F)\-\Fin\Sets$$
-                    $$Y \mapsto F(Y)$$
-                Furthermore, one has the following equivalences characterising the relationship between subgroups of the fundamental group $\pi_1(\calG, F)$ and permutations of Galois covers in $\calG$ (cf. \cite[Propositions 5.5]{SGA1}):
-                    $$\{\text{Finite-index subgroups of $\pi_1(\calG, F)$}\}^{\op} \cong \pi_1(\calG, F)\-\Fin\Sets$$
-                    $$H \mapsto \pi_1(\calG, F)/H$$
-                    $$\calG^{\Gal} \cong \{\text{Finite-index normal subgroups of $\pi_1(\calG, F)$}\}$$
-            \end{proposition}
-                
-            \begin{definition}[Universal covers] \label{def: universal_covers}
-                Let $(\calG, F)$ be a Galois category. A pro-object $\tilde{X} \in \Pro(\calG)$ is called a \textbf{universal cover} if and only if its fundamental group $\pi_1(\tilde{X}) \cong \Aut(\Pro(F)(\tilde{X}))$ is trivial (i.e. if and only if it is simply-connected).
-            \end{definition}
-            \begin{remark}[Fundamental groups are automorphism groups of universal covers] \label{remark: fundamental_groups_are_automorphism_groups_of_universal_covers}
-                
-            \end{remark}
+            \cite{MATH525_covering_spaces_and_fundamental_group_project} \todo{Cite MATH525 paper}
             
             Let us now try to adapt definitions \ref{def: galois_categories} and \ref{def: fundamental_groups_of_galois_categories} to a appropriate categories of schemes, namely those spanned by schemes finite-\'etale over a given base.
             \begin{remark}[\'Etale vs. finite-\'etale] \label{remark: etale_vs_finite_etale}
@@ -77,8 +22,6 @@
                     $$F_{\bar{x}}: (\Sch_{/X})_{\fet} \to \Fin\Sets$$
                     $$Y \mapsto |Y_{\bar{x}}|$$
                 We should also verify that the sets $|Y_{\bar{x}}|$ are indeed finite. To this end, let us first apply the fact that pullbacks of \'etale morphisms are \'etale to see that if $Y$ is affine over $X$ then $Y_{\bar{x}}$ will have to be the spectrum of an \'etale $\bar{\kappa}_x$-algebra; however, according to \cite[\href{https://stacks.math.columbia.edu/tag/00U3}{Tag 00U3}]{stacks}, this means that $Y_{\bar{x}} \cong \Spec (\bar{\kappa}_x)^{\oplus N}$ for some finite $N$. The locality of \'etale-ness and the finiteness of $Y$ as an $X$-scheme then tells us that in general, $Y_{\bar{x}}$ must be a finite disjoint union of affine schemes of the form $\Spec (\bar{\kappa}_x)^{\oplus N}$, meaning that $Y_{\bar{x}} \cong \Spec (\bar{\kappa}_x)^{\oplus N'}$ for some finite $N'$. The set $|Y_{\bar{x}}|$ is therefore always finite. One also sees that an immediate consequence of this proof is that $F_{\bar{x}}$ necessarily \textit{reflects isomorphisms} and is \textit{right-exact}. 
-                
-                It thus remains to show that $F_{\bar{x}}$ is \textit{pro-representable}. For this, observe first of all that as a functor on $\Sch_{/X}$ (as opposed to a functor on $(\Sch_{/X})_{\fet}$), $F_{\bar{x}}$ is naturally isomorphic to $\Sch_{/X}(\bar{x}, -)$. Then, we get the pro-representability of $F_{\bar{x}}$ from the fact that $\bar{x}$ is a pro-object of $(\Sch_{/\Spec \kappa_x})_{\fet}$.
                 
                 We have thus constructed a well-defined fibre functor, in the sense of definition \ref{def: galois_categories}:
                     $$F_{\bar{x}}: (\Sch_{/X})_{\fet} \to \Fin\Sets$$
